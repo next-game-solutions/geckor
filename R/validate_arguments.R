@@ -15,7 +15,6 @@
 #'
 validate_arguments <- function(arg_max_attempts = NULL,
                                arg_vs_currencies = NULL) {
-
   if (!is.null(arg_max_attempts)) {
     if (!(is.integer(arg_max_attempts) & arg_max_attempts > 0)) {
       rlang::abort("`max_attempts` must be a positive integer")
