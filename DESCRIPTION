@@ -28,6 +28,8 @@ Imports:
     dplyr,
     magrittr,
     knitr,
-    lifecycle
+    lifecycle,
+    jsonlite,
+    rlang
 VignetteBuilder: knitr
 RdMacros: lifecycle
