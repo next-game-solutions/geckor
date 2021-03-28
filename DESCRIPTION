@@ -19,3 +19,7 @@ Suggests:
     spelling
 Config/testthat/edition: 3
 Language: en-US
+Imports: 
+    httr,
+    dplyr,
+    magrittr
