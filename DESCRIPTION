@@ -1,14 +1,18 @@
 Package: geckor
-Title: What the Package Does (One Line, Title Case)
+Title: R Client for the CoinGecko API
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
+Authors@R: c(
+    person("Sergey", "Mastitsky",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "sergey@nextgamesolutions.com"),
+    person("Next Game Solutions", role = c("cph"))
+  )
+Description: Collect the current and historical cryptocurrency market data using 
+    the CoinGecko public API.
 License: MIT + file LICENSE
+URL: https://github.com/next-game-solutions/geckor
+BugReports: https://github.com/next-game-solutions/geckor/issues
+Depends: R (>= 4.0)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -19,3 +23,13 @@ Suggests:
     spelling
 Config/testthat/edition: 3
 Language: en-US
+Imports: 
+    httr,
+    dplyr,
+    magrittr,
+    knitr,
+    lifecycle,
+    jsonlite,
+    rlang
+VignetteBuilder: knitr
+RdMacros: lifecycle
