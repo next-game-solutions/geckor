@@ -26,6 +26,8 @@ Language: en-US
 Imports: 
     httr,
     dplyr,
-    magrittr
+    magrittr,
+    knitr,
+    lifecycle
 VignetteBuilder: knitr
 RdMacros: lifecycle
