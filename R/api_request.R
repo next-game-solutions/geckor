@@ -21,7 +21,7 @@ api_request <- function(url, max_attempts = 3L) {
     rlang::abort("`url` must be a character value")
   }
 
-  #validate_arguments(arg_max_attempts = max_attempts)
+  validate_arguments(arg_max_attempts = max_attempts)
 
   ua <- httr::user_agent(
     sprintf(
