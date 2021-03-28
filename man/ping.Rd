@@ -4,7 +4,7 @@
 \alias{ping}
 \title{API health check}
 \usage{
-ping(...)
+ping()
 }
 \value{
 Returns \code{TRUE} if the service is available and \code{FALSE} otherwise.

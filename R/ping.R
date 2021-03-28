@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' ping()
-ping <- function(...) {
+ping <- function() {
   base_url <- "https://api.coingecko.com"
   url <- httr::modify_url(base_url, path = c("api", "v3", "ping"))
   ua <- httr::user_agent(
