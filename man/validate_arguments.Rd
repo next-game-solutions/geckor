@@ -4,7 +4,13 @@
 \alias{validate_arguments}
 \title{Validate arguments}
 \usage{
-validate_arguments(arg_max_attempts = NULL, arg_vs_currencies = NULL)
+validate_arguments(
+  arg_max_attempts = NULL,
+  arg_vs_currencies = NULL,
+  arg_include_market_cap = NULL,
+  arg_include_24h_vol = NULL,
+  arg_include_24h_change = NULL
+)
 }
 \arguments{
 \item{arg_max_attempts}{(integer): number of additional attempts to call

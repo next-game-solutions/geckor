@@ -14,7 +14,10 @@
 #' @keywords internal
 #'
 validate_arguments <- function(arg_max_attempts = NULL,
-                               arg_vs_currencies = NULL) {
+                               arg_vs_currencies = NULL,
+                               arg_include_market_cap = NULL,
+                               arg_include_24h_vol = NULL,
+                               arg_include_24h_change = NULL) {
   if (!is.null(arg_max_attempts)) {
     if (!(is.integer(arg_max_attempts) & arg_max_attempts > 0)) {
       rlang::abort("`max_attempts` must be a positive integer")
@@ -24,6 +27,35 @@ validate_arguments <- function(arg_max_attempts = NULL,
   if (!is.null(arg_vs_currencies)) {
     if (!is.character(arg_vs_currencies)) {
       rlang::abort("`vs_currencies` must be a character vector")
+    }
+
+    supported_vs_currencies <- supported_currencies(
+      max_attempts = max_attempts
+    )
+
+    if (!all(arg_vs_currencies %in% supported_vs_currencies)) {
+      rlang::abort(c(
+        "The following base currencies are not currently supported:",
+        arg_vs_currencies[!arg_vs_currencies %in% supported_vs_currencies]
+      ))
+    }
+  }
+
+  if (!is.null(arg_include_market_cap)) {
+    if (!is.logical(arg_include_market_cap)) {
+      rlang::abort("`include_market_cap` must be boolean")
+    }
+  }
+
+  if (!is.null(arg_include_24h_vol)) {
+    if (!is.logical(arg_include_24h_vol)) {
+      rlang::abort("`include_24h_vol` must be boolean")
+    }
+  }
+
+  if (!is.null(arg_include_24h_change)) {
+    if (!is.logical(include_24h_change)) {
+      rlang::abort("`include_24h_change` must be boolean")
     }
   }
 }
