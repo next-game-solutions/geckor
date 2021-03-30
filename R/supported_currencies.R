@@ -2,7 +2,7 @@
 #'
 #' Retrieves a list of base currencies currently supported by the CoinGecko API
 #'
-#' @eval function_params("max_attempts")
+#' @eval function_params(c("max_attempts", "api_note"))
 #'
 #' @return Character vector with abbreviated names of the currencies.
 #' @export

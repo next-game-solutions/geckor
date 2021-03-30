@@ -14,6 +14,7 @@
 #' @keywords internal
 #'
 validate_arguments <- function(arg_max_attempts = NULL,
+                               arg_coin_ids = NULL,
                                arg_vs_currencies = NULL,
                                arg_include_market_cap = NULL,
                                arg_include_24h_vol = NULL,
@@ -24,14 +25,18 @@ validate_arguments <- function(arg_max_attempts = NULL,
     }
   }
 
+  if (!is.null(arg_coin_ids)) {
+    if (!is.character(arg_coin_ids)) {
+      rlang::abort("`coin_ids` must be a character vector")
+    }
+  }
+
   if (!is.null(arg_vs_currencies)) {
     if (!is.character(arg_vs_currencies)) {
       rlang::abort("`vs_currencies` must be a character vector")
     }
 
-    supported_vs_currencies <- supported_currencies(
-      max_attempts = max_attempts
-    )
+    supported_vs_currencies <- supported_currencies()
 
     if (!all(arg_vs_currencies %in% supported_vs_currencies)) {
       rlang::abort(c(

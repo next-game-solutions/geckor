@@ -6,7 +6,7 @@
 \usage{
 crypto_price(
   coin_ids,
-  vs_currencies,
+  vs_currencies = c("usd"),
   include_market_cap = TRUE,
   include_24h_vol = TRUE,
   include_24h_change = TRUE,
@@ -14,17 +14,16 @@ crypto_price(
 )
 }
 \arguments{
-\item{coin_ids}{(character): a vector with names of the cryptocurrencies of
-interest (all in lower case). An up-to-date list of supported
-cryptocurrencies can be retrieved with the \code{\link[=supported_cryptocurrencies]{supported_cryptocurrencies()}}
-function. If \code{coin_ids} contains at least one unsupported currency,
-the call will fail with the respective error message.}
+\item{coin_ids}{(character): a vector with IDs of the cryptocurrencies of
+interest. An up-to-date list of supported cryptocurrencies and their
+IDs can be retrieved with the \code{\link[=supported_cryptos]{supported_cryptos()}}
+function.}
 
 \item{vs_currencies}{(character): a vector with
 names of the base currencies to benchmark against, e.g.
-\code{c("usd", "eur", "btc")}. An up-to-date list of supported base
-currencies (both fiat and cryptocurrencies) can be retrieved with the
-\code{\link[=supported_currencies]{supported_currencies()}} function. If \code{vs_currencies}
+\code{c("usd", "eur", "btc")}. An up-to-date list of supported
+\code{vs_currencies} (both fiat and cryptocurrencies) can be retrieved with
+the \code{\link[=supported_currencies]{supported_currencies()}} function. If \code{vs_currencies}
 contains at least one unsupported currency, the call will fail with the
 respective error message.}
 
@@ -47,7 +46,7 @@ backoff. Defaults to \code{3}.}
 \value{
 A tibble, which by the default will have the following columns:
 \itemize{
-\item \code{coin} (character): names of the cryptocurrencies, ordered alphabetically;
+\item \code{coin_id} (character): IDs of the cryptocurrencies, ordered alphabetically;
 \item \code{vs_currency} (character): names of the base currencies to express the
 price in;
 \item \code{last_updated_at} (POSIXct, UTC timezone): timestamp of the last price

@@ -2,18 +2,17 @@
 #'
 #' The current price of any cryptocurrencies in any other supported currencies
 #'
-#' @param coin_ids (character): a vector with names of the cryptocurrencies of
-#'     interest (all in lower case). An up-to-date list of supported
-#'     cryptocurrencies can be retrieved with the [supported_cryptocurrencies()]
-#'     function. If `coin_ids` contains at least one unsupported currency,
-#'     the call will fail with the respective error message.
+#' @param coin_ids (character): a vector with IDs of the cryptocurrencies of
+#'     interest. An up-to-date list of supported cryptocurrencies and their
+#'     IDs can be retrieved with the [supported_cryptos()]
+#'     function.
 #'
 #' @eval function_params(c("vs_currencies", "include_market_cap",
 #'                         "include_24h_vol", "include_24h_change",
 #'                         "max_attempts", "api_note"))
 #'
 #' @return A tibble, which by the default will have the following columns:
-#' * `coin` (character): names of the cryptocurrencies, ordered alphabetically;
+#' * `coin_id` (character): IDs of the cryptocurrencies, ordered alphabetically;
 #' * `vs_currency` (character): names of the base currencies to express the
 #' price in;
 #' * `last_updated_at` (POSIXct, UTC timezone): timestamp of the last price
@@ -32,12 +31,13 @@
 #'                   vs_currencies = c("usd", "eur", "gbp"))
 #' print(r)
 crypto_price <- function(coin_ids,
-                         vs_currencies,
+                         vs_currencies = c("usd"),
                          include_market_cap = TRUE,
                          include_24h_vol = TRUE,
                          include_24h_change = TRUE,
                          max_attempts = 3L) {
   validate_arguments(
+    arg_coin_ids = coin_ids,
     arg_vs_currencies = vs_currencies,
     arg_include_market_cap = include_market_cap,
     arg_include_24h_vol = include_24h_vol,
@@ -102,8 +102,8 @@ crypto_price <- function(coin_ids,
         )
       )
   }) %>%
-    dplyr::bind_rows(.id = "coin") %>%
-    dplyr::arrange(coin)
+    dplyr::bind_rows(.id = "coin_id") %>%
+    dplyr::arrange(coin_id)
 
   return(result)
 }

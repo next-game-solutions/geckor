@@ -14,9 +14,9 @@ function_params <- function(arguments) {
 
     vs_currencies = "@param vs_currencies (character): a vector with
        names of the base currencies to benchmark against, e.g.
-       `c(\"usd\", \"eur\", \"btc\")`. An up-to-date list of supported base
-       currencies (both fiat and cryptocurrencies) can be retrieved with the
-       [supported_currencies()] function. If `vs_currencies`
+       `c(\"usd\", \"eur\", \"btc\")`. An up-to-date list of supported
+       `vs_currencies` (both fiat and cryptocurrencies) can be retrieved with
+       the [supported_currencies()] function. If `vs_currencies`
        contains at least one unsupported currency, the call will fail with the
        respective error message.",
 
