@@ -12,7 +12,9 @@
 #'    expected to be built properly before passing onto this function.
 #'    The returned data are expected to be in JSON format. This function
 #'    will automatically parse the response object and return a named R list
-#'    with the respective elements.
+#'    with the respective elements. If not data can be retrieved (e.g. because
+#'    of the misspecified query parameters), the function will return nothing
+#'    (`NULL`).
 #'
 #' @keywords internal
 #'
@@ -69,6 +71,10 @@ api_request <- function(url, max_attempts = 3L) {
     httr::content(r, "text"),
     simplifyVector = FALSE
   )
+
+  if (length(parsed) == 0) {
+    return(NULL)
+  }
 
   return(parsed)
 }

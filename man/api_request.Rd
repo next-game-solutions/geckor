@@ -27,6 +27,8 @@ This function only performs \code{GET} requests. The \code{url} is
 expected to be built properly before passing onto this function.
 The returned data are expected to be in JSON format. This function
 will automatically parse the response object and return a named R list
-with the respective elements.
+with the respective elements. If not data can be retrieved (e.g. because
+of the misspecified query parameters), the function will return nothing
+(\code{NULL}).
 }
 \keyword{internal}

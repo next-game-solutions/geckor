@@ -59,7 +59,7 @@ validate_arguments <- function(arg_max_attempts = NULL,
   }
 
   if (!is.null(arg_include_24h_change)) {
-    if (!is.logical(include_24h_change)) {
+    if (!is.logical(arg_include_24h_change)) {
       rlang::abort("`include_24h_change` must be boolean")
     }
   }

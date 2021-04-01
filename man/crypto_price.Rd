@@ -44,7 +44,9 @@ first attempt fails (i.e. its call status is different from
 backoff. Defaults to \code{3}.}
 }
 \value{
-A tibble, which by the default will have the following columns:
+A tibble, which by the default will contain the following columns (use
+arguments \code{include_market_cap}, \code{include_24h_vol} and \code{include_24h_change}
+to control the inclusion of the corresponding columns):
 \itemize{
 \item \code{coin_id} (character): IDs of the cryptocurrencies, ordered alphabetically;
 \item \code{vs_currency} (character): names of the base currencies to express the
@@ -64,9 +66,12 @@ The current price of any cryptocurrencies in any other supported currencies
 This function is based on the public
 CoinGecko API, which has a limit of 100 calls per minute. Please
 keep this limit in mind when developing your applications.
+
+If not data can be retrieved (e.g. because of the misspecified
+query parameters), this function will return nothing (\code{NULL}).
 }
 \examples{
-r <- crypto_price(coin_ids = c("aave", "tron", "btc"),
+r <- crypto_price(coin_ids = c("aave", "tron", "bitcoin"),
                   vs_currencies = c("usd", "eur", "gbp"))
 print(r)
 }

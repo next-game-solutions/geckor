@@ -11,7 +11,12 @@
 #'                         "include_24h_vol", "include_24h_change",
 #'                         "max_attempts", "api_note"))
 #'
-#' @return A tibble, which by the default will have the following columns:
+#' @details If not data can be retrieved (e.g. because of the misspecified
+#'    query parameters), this function will return nothing (`NULL`).
+#'
+#' @return A tibble, which by the default will contain the following columns (use
+#'    arguments `include_market_cap`, `include_24h_vol` and `include_24h_change`
+#'    to control the inclusion of the corresponding columns):
 #' * `coin_id` (character): IDs of the cryptocurrencies, ordered alphabetically;
 #' * `vs_currency` (character): names of the base currencies to express the
 #' price in;
@@ -27,7 +32,7 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples
-#' r <- crypto_price(coin_ids = c("aave", "tron", "btc"),
+#' r <- crypto_price(coin_ids = c("aave", "tron", "bitcoin"),
 #'                   vs_currencies = c("usd", "eur", "gbp"))
 #' print(r)
 crypto_price <- function(coin_ids,
@@ -61,6 +66,11 @@ crypto_price <- function(coin_ids,
   )
 
   r <- api_request(url = url, max_attempts = max_attempts)
+
+  if (is.null(r)) {
+    message("No data found. Check if the query parameters are specified correctly")
+    return(NULL)
+  }
 
   result <- lapply(r, function(x) {
     if (include_market_cap) {
