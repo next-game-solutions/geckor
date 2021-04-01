@@ -1,4 +1,4 @@
-#' Get CoinGecko currencies
+#' Get CoinGecko cryptocurrencies
 #'
 #' Retrieves a list of cryptocurrencies currently supported by the CoinGecko API
 #'
@@ -12,8 +12,10 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' r <- supported_cryptos()
 #' head(r, 10)
+#' }
 supported_cryptos <- function(max_attempts = 3L) {
   validate_arguments(arg_max_attempts = max_attempts)
 

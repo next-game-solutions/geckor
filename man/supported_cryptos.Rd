@@ -2,7 +2,7 @@
 % Please edit documentation in R/supported_cryptos.R
 \name{supported_cryptos}
 \alias{supported_cryptos}
-\title{Get CoinGecko currencies}
+\title{Get CoinGecko cryptocurrencies}
 \usage{
 supported_cryptos(max_attempts = 3L)
 }
@@ -30,6 +30,8 @@ CoinGecko API, which has a limit of 100 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- supported_cryptos()
 head(r, 10)
+}
 }
