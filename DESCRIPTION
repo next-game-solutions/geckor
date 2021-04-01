@@ -30,6 +30,8 @@ Imports:
     knitr,
     lifecycle,
     jsonlite,
-    rlang
+    rlang,
+    tibble,
+    tidyr
 VignetteBuilder: knitr
 RdMacros: lifecycle

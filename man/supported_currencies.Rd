@@ -19,6 +19,11 @@ Character vector with abbreviated names of the currencies.
 \description{
 Retrieves a list of base currencies currently supported by the CoinGecko API
 }
+\details{
+This function is based on the public
+CoinGecko API, which has a limit of 100 calls per minute. Please
+keep this limit in mind when developing your applications.
+}
 \examples{
 r <- supported_currencies()
 print(r)
