@@ -1,5 +1,5 @@
-test_that("supported_cryptos returns correct objects", {
-  r <- supported_cryptos()
+test_that("supported_coins returns correct objects", {
+  r <- supported_coins()
 
   expect_s3_class(r, "tbl")
 
