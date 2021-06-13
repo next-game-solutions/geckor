@@ -32,6 +32,8 @@ Imports:
     jsonlite,
     rlang,
     tibble,
-    tidyr
+    tidyr,
+    tidyselect,
+    progress
 VignetteBuilder: knitr
 RdMacros: lifecycle

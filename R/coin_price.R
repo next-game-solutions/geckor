@@ -1,30 +1,29 @@
-#' Get the current cryptocurrency prices
+#' Get the current coin prices
 #'
-#' The current price of any cryptocurrencies in any other supported currencies
+#' The current price of supported coins in any supported currencies
 #'
-#' @param coin_ids (character): a vector with IDs of the cryptocurrencies of
-#'     interest. An up-to-date list of supported cryptocurrencies and their
-#'     IDs can be retrieved with the [supported_cryptos()]
-#'     function.
+#' @param coin_ids (character): a vector with IDs of the coins of
+#'     interest. An up-to-date list of supported coins and their
+#'     IDs can be retrieved with the [supported_coins()] function.
 #'
 #' @eval function_params(c("vs_currencies", "include_market_cap",
 #'                         "include_24h_vol", "include_24h_change",
-#'                         "max_attempts", "api_note"))
+#'                          "max_attempts", "api_note"))
 #'
-#' @details If not data can be retrieved (e.g. because of the misspecified
+#' @details If no data can be retrieved (e.g. because of the misspecified
 #'    query parameters), this function will return nothing (`NULL`).
 #'
 #' @return A tibble, which by the default will contain the following columns (use
 #'    arguments `include_market_cap`, `include_24h_vol` and `include_24h_change`
 #'    to control the inclusion of the corresponding columns):
-#' * `coin_id` (character): IDs of the cryptocurrencies, ordered alphabetically;
+#' * `coin_id` (character): coin IDs, ordered alphabetically;
 #' * `vs_currency` (character): names of the base currencies to express the
 #' price in;
 #' * `last_updated_at` (POSIXct, UTC timezone): timestamp of the last price
 #' update;
-#' * `market_cap` (double): current market cap;
+#' * `market_cap` (double): current market capitalisation;
 #' * `vol_24h` (double): trading volume in the last 24 hours;
-#' * `price_percent_change_24h` (double): percentage change of the price
+#' * `price_percent_change_24h` (double): percentage change of the price as
 #' compared to 24 hours ago.
 #'
 #' @export
@@ -33,15 +32,17 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' r <- crypto_price(coin_ids = c("aave", "tron", "bitcoin"),
-#'                   vs_currencies = c("usd", "eur", "gbp"))
+#' r <- coin_price(
+#'   coin_ids = c("aave", "tron", "bitcoin"),
+#'   vs_currencies = c("usd", "eur", "gbp")
+#' )
 #' print(r)
-crypto_price <- function(coin_ids,
-                         vs_currencies = c("usd"),
-                         include_market_cap = TRUE,
-                         include_24h_vol = TRUE,
-                         include_24h_change = TRUE,
-                         max_attempts = 3L) {
+coin_price <- function(coin_ids,
+                       vs_currencies = c("usd"),
+                       include_market_cap = TRUE,
+                       include_24h_vol = TRUE,
+                       include_24h_change = TRUE,
+                       max_attempts = 3L) {
   validate_arguments(
     arg_coin_ids = coin_ids,
     arg_vs_currencies = vs_currencies,
