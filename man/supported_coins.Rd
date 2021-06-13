@@ -2,7 +2,7 @@
 % Please edit documentation in R/supported_coins.R
 \name{supported_coins}
 \alias{supported_coins}
-\title{Get CoinGecko cryptocurrencies}
+\title{Get CoinGecko coins}
 \usage{
 supported_coins(max_attempts = 3L)
 }
@@ -22,7 +22,7 @@ A tibble with three columns:
 }
 }
 \description{
-Retrieves a list of cryptocurrencies currently supported by the CoinGecko API
+Retrieves a list of coins currently supported by the CoinGecko API
 }
 \details{
 This function is based on the public

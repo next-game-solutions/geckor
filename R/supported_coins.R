@@ -1,6 +1,6 @@
-#' Get CoinGecko cryptocurrencies
+#' Get CoinGecko coins
 #'
-#' Retrieves a list of cryptocurrencies currently supported by the CoinGecko API
+#' Retrieves a list of coins currently supported by the CoinGecko API
 #'
 #' @eval function_params(c("max_attempts", "api_note"))
 #'

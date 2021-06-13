@@ -3,6 +3,7 @@ test_that("coin_price returns correct results", {
     coin_ids = c("aave", "tron", "bitcoin"),
     vs_currencies = "abc"
   ))
+
   expect_null(coin_price(
     coin_ids = c("abcdefg"),
     vs_currencies = "usd"

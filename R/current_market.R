@@ -131,7 +131,7 @@ current_market <- function(coin_ids,
           coin_id = .data$id,
           last_updated_at = .data$last_updated
         ) %>%
-        dplyr::mutate(vs_currency = .data$vs_currency) %>%
+        dplyr::mutate(vs_currency = vs_currency) %>%
         dplyr::relocate(.data$vs_currency, .after = .data$name) %>%
         dplyr::relocate(.data$last_updated_at, .after = vs_currency) %>%
         dplyr::relocate(.data$price_change_percentage_1h_in_currency,
