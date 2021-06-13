@@ -30,6 +30,7 @@
 #' @export
 #'
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @examples
 #' r <- crypto_price(coin_ids = c("aave", "tron", "bitcoin"),
@@ -113,7 +114,7 @@ crypto_price <- function(coin_ids,
       )
   }) %>%
     dplyr::bind_rows(.id = "coin_id") %>%
-    dplyr::arrange(coin_id)
+    dplyr::arrange(.data$coin_id)
 
   return(result)
 }

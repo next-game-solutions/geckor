@@ -14,7 +14,7 @@ ping <- function() {
   url <- httr::modify_url(base_url, path = c("api", "v3", "ping"))
   ua <- httr::user_agent(
     sprintf(
-      "tronr/%s (R client for the CoinGecko API; https://github.com/next-game-solutions/geckor)",
+      "geckor/%s (R client for the CoinGecko API; https://github.com/next-game-solutions/geckor)",
       utils::packageVersion("geckor")
     )
   )
