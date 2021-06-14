@@ -32,17 +32,17 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' r <- coin_price(
+#' r <- current_price(
 #'   coin_ids = c("aave", "tron", "bitcoin"),
 #'   vs_currencies = c("usd", "eur", "gbp")
 #' )
 #' print(r)
-coin_price <- function(coin_ids,
-                       vs_currencies = c("usd"),
-                       include_market_cap = TRUE,
-                       include_24h_vol = TRUE,
-                       include_24h_change = TRUE,
-                       max_attempts = 3L) {
+current_price <- function(coin_ids,
+                          vs_currencies = c("usd"),
+                          include_market_cap = TRUE,
+                          include_24h_vol = TRUE,
+                          include_24h_change = TRUE,
+                          max_attempts = 3L) {
   validate_arguments(
     arg_coin_ids = coin_ids,
     arg_vs_currencies = vs_currencies,

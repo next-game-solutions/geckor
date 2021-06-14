@@ -1,15 +1,15 @@
-test_that("coin_price returns correct results", {
-  expect_error(coin_price(
+test_that("current_price returns correct results", {
+  expect_error(current_price(
     coin_ids = c("aave", "tron", "bitcoin"),
     vs_currencies = "abc"
   ))
 
-  expect_null(coin_price(
+  expect_null(current_price(
     coin_ids = c("abcdefg"),
     vs_currencies = "usd"
   ))
 
-  r <- coin_price(
+  r <- current_price(
     coin_ids = c("aave", "tron", "bitcoin"),
     vs_currencies = c("usd", "eur", "gbp")
   )

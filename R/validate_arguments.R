@@ -18,7 +18,8 @@ validate_arguments <- function(arg_max_attempts = NULL,
                                arg_vs_currencies = NULL,
                                arg_include_market_cap = NULL,
                                arg_include_24h_vol = NULL,
-                               arg_include_24h_change = NULL) {
+                               arg_include_24h_change = NULL,
+                               arg_date = NULL) {
   if (!is.null(arg_max_attempts)) {
     if (!(is.integer(arg_max_attempts) & arg_max_attempts > 0)) {
       rlang::abort("`max_attempts` must be a positive integer")
@@ -61,6 +62,12 @@ validate_arguments <- function(arg_max_attempts = NULL,
   if (!is.null(arg_include_24h_change)) {
     if (!is.logical(arg_include_24h_change)) {
       rlang::abort("`include_24h_change` must be boolean")
+    }
+  }
+
+  if (!is.null(arg_date)) {
+    if (!inherits(arg_date, "Date")) {
+      rlang::abort("`date` must be of class Date")
     }
   }
 }
