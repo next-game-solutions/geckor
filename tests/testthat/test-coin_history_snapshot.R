@@ -1,26 +1,26 @@
 test_that("history_snapshot returns correct results", {
-  expect_error(history_snapshot(
+  expect_error(coin_history_snapshot(
     coin_id = c("abscde"),
     date = as.Date("2021-05-01"),
     vs_currencies = c("usd", "gbp"),
     max_attempts = 1L
   ))
 
-  expect_error(history_snapshot(
+  expect_error(coin_history_snapshot(
     coin_id = c("cardano"),
     date = as.Date("2021-05-01"),
     vs_currencies = c("abcde", "gbp"),
     max_attempts = 1L
   ))
 
-  expect_null(history_snapshot(
+  expect_null(coin_history_snapshot(
     coin_id = c("cardano"),
     date = as.Date("1900-05-01"),
     vs_currencies = c("usd", "gbp"),
     max_attempts = 1L
   ))
 
-  r <- history_snapshot(
+  r <- coin_history_snapshot(
     coin_id = "cardano",
     date = as.Date("2021-05-01"),
     vs_currencies = c("usd", "eth")
