@@ -76,4 +76,11 @@ keep this limit in mind when developing your applications.
 If no data can be retrieved (e.g. because of the misspecified
 query parameters), this function will return nothing (\code{NULL}).
 }
+\examples{
+r <- current_market(
+  coin_ids = c("bitcoin", "ethereum", "cardano"),
+  vs_currency = "usd"
+)
+print(r)
+}
 \keyword{internal}
