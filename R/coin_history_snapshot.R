@@ -31,16 +31,24 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' r <- history_snapshot(
+#' r <- coin_history_snapshot(
 #'   coin_id = "cardano",
 #'   date = as.Date("2021-05-01"),
 #'   vs_currencies = c("usd", "eth")
 #' )
 #' print(r)
-history_snapshot <- function(coin_id,
-                             date,
-                             vs_currencies,
-                             max_attempts = 3L) {
+coin_history_snapshot <- function(coin_id,
+                                  date,
+                                  vs_currencies,
+                                  max_attempts = 3L) {
+  if (length(coin_id) > 1L) {
+    rlang::abort("Only one `coin_id` is allowed")
+  }
+
+  if (length(date) > 1L) {
+    rlang::abort("Only one `date` is allowed")
+  }
+
   validate_arguments(
     arg_coin_ids = coin_id,
     arg_date = date,
