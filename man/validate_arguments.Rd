@@ -10,7 +10,8 @@ validate_arguments(
   arg_vs_currencies = NULL,
   arg_include_market_cap = NULL,
   arg_include_24h_vol = NULL,
-  arg_include_24h_change = NULL
+  arg_include_24h_change = NULL,
+  arg_date = NULL
 )
 }
 \arguments{

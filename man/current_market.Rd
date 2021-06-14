@@ -7,10 +7,9 @@
 current_market(coin_ids, vs_currency, max_attempts = 3L)
 }
 \arguments{
-\item{coin_ids}{(character): a vector with IDs of the cryptocurrencies of
-interest. An up-to-date list of supported cryptocurrencies and their
-IDs can be retrieved with the \code{\link[=supported_coins]{supported_coins()}} function. Can be
-of length 1.}
+\item{coin_ids}{(character): a vector with IDs of the coins of interest.
+An up-to-date list of supported coins and their IDs can be retrieved
+with the \code{\link[=supported_coins]{supported_coins()}} function. Can be of length 1.}
 
 \item{vs_currency}{(character): a single character value specifying the
 name of the base currency to benchmark against, e.g. \code{"usd"}. An up-to-date
@@ -83,4 +82,3 @@ r <- current_market(
 )
 print(r)
 }
-\keyword{internal}

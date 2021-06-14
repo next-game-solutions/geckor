@@ -2,10 +2,9 @@
 #'
 #' Metrics describing the current market status of a set of coins
 #'
-#' @param coin_ids (character): a vector with IDs of the cryptocurrencies of
-#'     interest. An up-to-date list of supported cryptocurrencies and their
-#'     IDs can be retrieved with the [supported_coins()] function. Can be
-#'     of length 1.
+#' @param coin_ids (character): a vector with IDs of the coins of interest.
+#'     An up-to-date list of supported coins and their IDs can be retrieved
+#'     with the [supported_coins()] function. Can be of length 1.
 #' @param vs_currency (character): a single character value specifying the
 #' name of the base currency to benchmark against, e.g. `"usd"`. An up-to-date
 #' list of supported currencies (both fiat and cryptocurrencies) can be
@@ -55,10 +54,10 @@
 #' (in particular, 1 hour, 24 hours, 7 days, 14 days, 30 days, 200 days,
 #' and 1 year).
 #'
+#' @export
+#'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
-#'
-#' @keywords internal
 #'
 #' @examples
 #' r <- current_market(
