@@ -28,7 +28,7 @@ validate_arguments <- function(arg_max_attempts = NULL,
 
   if (!is.null(arg_coin_ids)) {
     if (!is.character(arg_coin_ids)) {
-      rlang::abort("`coin_ids` must be a character vector")
+      rlang::abort("Coin IDs must be of class character")
     }
   }
 
@@ -66,8 +66,8 @@ validate_arguments <- function(arg_max_attempts = NULL,
   }
 
   if (!is.null(arg_date)) {
-    if (!inherits(arg_date, "Date")) {
-      rlang::abort("`date` must be of class Date")
+    if (class(arg_date) != "Date") {
+      rlang::abort("All dates must be of class Date")
     }
   }
 }
