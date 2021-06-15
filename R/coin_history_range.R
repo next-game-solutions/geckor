@@ -2,42 +2,43 @@
 #'
 #' Retrieves TRX market data for a range of historical dates
 #'
-#' @param vs_currency (character): name of the base currency to benchmark TRX
-#'     against (`usd` by default). An up-to-date list of supported currencies
+#' @param coin_id (character): ID of the coin of interest. An up-to-date list of
+#'     supported coins and their IDs can be retrieved with the
+#'     [supported_coins()] function.
+#' @param vs_currency (character): name of the base currency to benchmark
+#'     against. An up-to-date list of supported currencies
 #'     (both fiat and cryptocurrencies) can be retrieved with the
-#'     [get_supported_coingecko_currencies()] function. If an unsupported
+#'     [supported_currencies()] function. If an unsupported
 #'     `vs_currency` is requested, the call will fail with the respective error
 #'     message.
-#' @eval function_params(c("min_timestamp", "max_timestamp", "max_attempts"))
+#' @param from (POSIXct): timestamp of the beginning of the period of interest
+#' (`YYYY-MM-DD HH:MM:SS`).
+#' @param to (POSIXct): timestamp of the end of the period of interest
+#' (`YYYY-MM-DD HH:MM:SS`).
+#' @eval function_params(c("max_attempts"))
 #'
 #' @details This function returns hourly data for periods of up to 90 days,
-#'     and daily data for periods above 90 days.
-#'
-#' The minimal acceptable `min_timestamp` is `"1510185600000"` (which
-#'     corresponds to `2017-11-09 00:00:00`) as no data are available for
-#'     earlier dates. Attempts to retrieve data for earlier dates will fail
-#'     with the corresponding error message.
-#'
-#' Attempts to request a future `max_timestamp` for which no history exists
-#'     yet will also fail with the corresponding error message.
+#'     and daily data for periods longer than 90 days.
 #'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
 #' * `vs_currency` (character): same as the argument `vs_currency`;
-#' * `price` (double): TRX price, as of `datetime`;
+#' * `price` (double): coin price as of `timestamp`;
 #' * `total_trading_vol` (double): a 24 h rolling-window trading volume, as
 #' of `timestampt`;
-#' * `market_cap` (double): TRX market cap, as of `timestamp`.
+#' * `market_cap` (double): market capitalisation, as of `timestamp`.
 #'
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @export
 #'
 #' @examples
-#' r <- get_trx_market_data_for_time_range(
-#'   vs_currency = "eur",
-#'   min_timestamp = "1609495210000",
-#'   max_timestamp = "1609533900000"
+#' r <- coin_history_range(
+#'   coin_id = "cardano",
+#'   vs_currency = "usd",
+#'   from = as.POSIXct("2021-01-01 13:00:00", tz = "UTC"),
+#'   to = as.POSIXct("2021-01-01 18:00:00", tz = "UTC")
 #' )
 #' print(r)
 coin_history_range <- function(coin_id,
