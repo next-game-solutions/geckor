@@ -49,5 +49,4 @@ test_that("history_snapshot returns correct results", {
   expect_type(r$price, "double")
   expect_type(r$market_cap, "double")
   expect_type(r$total_volume, "double")
-
 })

@@ -1,4 +1,4 @@
-test_that("history returns correct results", {
+test_that("coin_history returns correct results", {
   expect_error(coin_history(
     coin_id = "abcde",
     days = 7,
