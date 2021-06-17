@@ -1,13 +1,15 @@
 test_that("supported_exchanges returns correct results", {
   r <- supported_exchanges()
 
-  expect_named(r, c("exchange_id",
-                    "name",
-                    "year_established",
-                    "country",
-                    "url",
-                    "trust_score",
-                    "trading_volume_24h_btc"))
+  expect_named(r, c(
+    "exchange_id",
+    "name",
+    "year_established",
+    "country",
+    "url",
+    "trust_score",
+    "trading_volume_24h_btc"
+  ))
 
   expect_s3_class(r, "tbl")
   expect_type(r$exchange_id, "character")
