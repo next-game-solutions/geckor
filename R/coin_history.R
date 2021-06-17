@@ -1,6 +1,6 @@
 #' Get historical market data
 #'
-#' Market data for a coin from the last N days
+#' Retrieves market data for a coin for the last N days
 #'
 #' @param coin_id (character): ID of the coin of interest. An up-to-date list of
 #'     supported coins and their IDs can be retrieved with the
@@ -17,7 +17,7 @@
 #'     present the data will differ - see "Details".
 #' @param interval (character or `NULL`): time interval to present the data.
 #'     The only currently supported interval is `daily`. Defaults to `NULL`.
-#' @eval function_params("max_attempts")
+#' @eval function_params(c("max_attempts", "api_note"))
 #'
 #' @details If `days = 1` and `interval = NULL`, the data will be returned for
 #'    every few minutes (typically 3-8 minutes). If `days` is between 2 and 90
@@ -27,6 +27,7 @@
 #'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
+#' * `coin_id` (character): coin ID;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price` (double): coin price, as of `datetime`;
 #' * `total_volume` (double): a 24 h rolling-window trading volume, as
@@ -88,7 +89,7 @@ coin_history <- function(coin_id,
   r <- api_request(url = url, max_attempts = max_attempts)
 
   if (length(r$prices) == 0) {
-    message("No data found")
+    message("No data found. Check if the query parameters are specified correctly")
     return(NULL)
   }
 
@@ -98,6 +99,7 @@ coin_history <- function(coin_id,
         origin = as.Date("1970-01-01"),
         tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
       ),
+      coin_id = coin_id,
       vs_currency = vs_currency,
       price = x[[2]]
     )
