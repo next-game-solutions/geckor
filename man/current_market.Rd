@@ -65,7 +65,7 @@ and 1 year).
 }
 }
 \description{
-Metrics describing the current market status of a set of coins
+Retrieves metrics describing the current market status of a set of coins
 }
 \details{
 This function is based on the public

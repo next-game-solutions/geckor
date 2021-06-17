@@ -2,7 +2,7 @@
 % Please edit documentation in R/current_price.R
 \name{current_price}
 \alias{current_price}
-\title{Get the current coin prices}
+\title{Current coin prices}
 \usage{
 current_price(
   coin_ids,
@@ -59,7 +59,7 @@ compared to 24 hours ago.
 }
 }
 \description{
-The current price of supported coins in any supported currencies
+Retrieves the current price of supported coins in any supported currencies
 }
 \details{
 This function is based on the public
