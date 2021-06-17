@@ -36,6 +36,7 @@ backoff. Defaults to \code{3}.}
 A tibble with the following columns:
 \itemize{
 \item \code{timestamp} (POSIXct);
+\item \code{coin_id} (character): coin ID;
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price} (double): coin price, as of \code{datetime};
 \item \code{total_volume} (double): a 24 h rolling-window trading volume, as
@@ -44,9 +45,13 @@ of \code{timestamp};
 }
 }
 \description{
-Market data for a coin from the last N days
+Retrieves market data for a coin for the last N days
 }
 \details{
+This function is based on the public
+CoinGecko API, which has a limit of 100 calls per minute. Please
+keep this limit in mind when developing your applications.
+
 If \code{days = 1} and \code{interval = NULL}, the data will be returned for
 every few minutes (typically 3-8 minutes). If \code{days} is between 2 and 90
 (inclusive) and \code{interval = NULL}, an (approximately) hourly time step will
