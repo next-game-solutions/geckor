@@ -1,6 +1,6 @@
-#' Get the current coin prices
+#' Current coin prices
 #'
-#' The current price of supported coins in any supported currencies
+#' Retrieves the current price of supported coins in any supported currencies
 #'
 #' @param coin_ids (character): a vector with IDs of the coins of
 #'     interest. An up-to-date list of supported coins and their

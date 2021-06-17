@@ -2,7 +2,7 @@
 % Please edit documentation in R/supported_exchanges.R
 \name{supported_exchanges}
 \alias{supported_exchanges}
-\title{Get supported exchanges}
+\title{A list of supported exchanges}
 \usage{
 supported_exchanges(max_attempts = 3L)
 }
@@ -14,7 +14,21 @@ first attempt fails (i.e. its call status is different from
 backoff. Defaults to \code{3}.}
 }
 \value{
-Character vector with abbreviated names of the exchanges.
+A tibble with the following columns:
+\itemize{
+\item \code{exchange_id} (character): exchange ID;
+\item \code{name} (character): common name of the exchange;
+\item \code{year_established} (integer): year when the exchange was established;
+\item \code{exchange} (character): country where the exchange is registered and / or
+has headquarters;
+\item \code{url} (character): web address of the exchange;
+\item \code{trust_score} (integer): an indicator of how much an exchange can be
+trusted (ranges from 1 to 10; see
+\href{https://www.coingecko.com/en/methodology}{Methodology} on the CoinGecko's
+website);
+\item \code{trading_volume_24h_btc} (double): trading volume on the exchange in the
+last 24 hours (expressed in Bitcoin).
+}
 }
 \description{
 Retrieves a list of exchanges supported by the CoinGecko API

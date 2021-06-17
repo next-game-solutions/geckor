@@ -1,10 +1,24 @@
-#' Get supported exchanges
+#' A list of supported exchanges
 #'
 #' Retrieves a list of exchanges supported by the CoinGecko API
 #'
 #' @eval function_params(c("max_attempts", "api_note"))
 #'
-#' @return Character vector with abbreviated names of the exchanges.
+#' @return A tibble with the following columns:
+#'
+#' * `exchange_id` (character): exchange ID;
+#' * `name` (character): common name of the exchange;
+#' * `year_established` (integer): year when the exchange was established;
+#' * `exchange` (character): country where the exchange is registered and / or
+#' has headquarters;
+#' * `url` (character): web address of the exchange;
+#' * `trust_score` (integer): an indicator of how much an exchange can be
+#' trusted (ranges from 1 to 10; see
+#' [Methodology](https://www.coingecko.com/en/methodology) on the CoinGecko's
+#' website);
+#' * `trading_volume_24h_btc` (double): trading volume on the exchange in the
+#' last 24 hours (expressed in Bitcoin).
+#'
 #' @export
 #'
 #' @examples

@@ -1,6 +1,6 @@
 #' Current market status
 #'
-#' Metrics describing the current market status of a set of coins
+#' Retrieves metrics describing the current market status of a set of coins
 #'
 #' @param coin_ids (character): a vector with IDs of the coins of interest.
 #'     An up-to-date list of supported coins and their IDs can be retrieved
