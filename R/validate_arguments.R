@@ -16,6 +16,7 @@
 validate_arguments <- function(arg_max_attempts = NULL,
                                arg_coin_ids = NULL,
                                arg_vs_currencies = NULL,
+                               arg_exchange_id = NULL,
                                arg_include_market_cap = NULL,
                                arg_include_24h_vol = NULL,
                                arg_include_24h_change = NULL,
@@ -50,6 +51,12 @@ validate_arguments <- function(arg_max_attempts = NULL,
   if (!is.null(arg_include_market_cap)) {
     if (!is.logical(arg_include_market_cap)) {
       rlang::abort("`include_market_cap` must be boolean")
+    }
+  }
+
+  if (!is.null(arg_exchange_id)) {
+    if (!is.character(arg_exchange_id) | length(arg_exchange_id) != 1) {
+      rlang::abort("`exchange_id` must be a single character value")
     }
   }
 
