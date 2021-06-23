@@ -1,35 +1,8 @@
 test_that("coin_history returns correct results", {
-  expect_error(coin_history(
-    coin_id = "abcde",
-    days = 7,
-    vs_currency = "usd",
-    max_attempts = 1L
-  ))
-
-  expect_error(coin_history(
-    coin_id = "bitcoin",
-    days = 7,
-    vs_currency = "abcde",
-    max_attempts = 1L
-  ))
-
-  expect_error(coin_history(
-    coin_id = "bitcoin",
-    days = 7,
-    vs_currency = "eur",
-    interval = "monthly"
-  ))
-
-  expect_error(coin_history(
-    coin_id = c("bitcoin", "cardano"),
-    days = 7,
-    vs_currency = "eur"
-  ))
-
   r <- coin_history(
     coin_id = "bitcoin",
     vs_currency = "usd",
-    days = 7
+    days = 7L
   )
 
   expect_named(r, c(
