@@ -1,17 +1,8 @@
 test_that("current_market returns correct results", {
-  expect_null(current_market(
-    coin_ids = c("abscde"),
-    vs_currency = "usd"
-  ))
-
-  expect_error(current_market(
-    coin_ids = c("bitcoin"),
-    vs_currency = "abcde"
-  ))
-
   r <- current_market(
     coin_ids = c("aave", "tron", "bitcoin"),
-    vs_currency = "usd"
+    vs_currency = "usd",
+    max_attempts = 1L
   )
 
   expect_s3_class(r, "tbl")

@@ -1,7 +1,7 @@
 test_that("supported_currencies returns correct results", {
-  result <- supported_currencies()
-  expect_type(result, "character")
-  expect_true(is.vector(result))
-  expect_true(length(result) > 0)
-  expect_true(all(c("usd", "gbp", "eur", "btc", "eth") %in% result))
+  r <- supported_currencies(max_attempts = 1L)
+  expect_type(r, "character")
+  expect_true(is.vector(r))
+  expect_true(length(r) > 0)
+  expect_true(all(c("usd", "gbp", "eur", "btc", "eth") %in% r))
 })

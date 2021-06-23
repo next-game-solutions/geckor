@@ -21,6 +21,9 @@
 #'
 #' @export
 #'
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#'
 #' @examples
 #' r <- supported_exchanges()
 #' print(r)
@@ -31,15 +34,6 @@ supported_exchanges <- function(max_attempts = 3L) {
   p <- 1L
 
   query_parameters <- list(per_page = 100L)
-
-  pb <- progress::progress_bar$new(
-    total = NA,
-    clear = TRUE,
-    force = TRUE,
-    format = ":spin Fetching data... Elapsed time: :elapsedfull"
-  )
-
-  pb$tick(0)
 
   while (TRUE) {
     query_parameters$page <- p
@@ -59,8 +53,6 @@ supported_exchanges <- function(max_attempts = 3L) {
     data <- c(data, r)
 
     p <- p + 1
-
-    pb$tick()
   }
 
   data_parsed <- lapply(

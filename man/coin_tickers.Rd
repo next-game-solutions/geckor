@@ -86,5 +86,4 @@ keep this limit in mind when developing your applications.
 \examples{
 r <- coin_tickers(coin_id = "cardano", exchange_id = "binance")
 print(r)
-
 }

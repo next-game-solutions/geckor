@@ -88,15 +88,6 @@ current_market <- function(coin_ids,
     sparkline = tolower(FALSE)
   )
 
-  pb <- progress::progress_bar$new(
-    total = NA,
-    clear = TRUE,
-    force = TRUE,
-    format = ":spin Fetching data... Elapsed time: :elapsedfull"
-  )
-
-  pb$tick(0)
-
   while (TRUE) {
     query_parameters$page <- p
 
@@ -120,8 +111,6 @@ current_market <- function(coin_ids,
     }
 
     p <- p + 1
-
-    pb$tick()
   }
 
   data_parsed <- lapply(

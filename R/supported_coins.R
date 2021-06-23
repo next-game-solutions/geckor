@@ -9,6 +9,8 @@
 #' * `symbol` (character): coin symbol;
 #' * `name` (character): coin common name.
 #'
+#' @importFrom magrittr %>%
+#'
 #' @export
 #'
 #' @examples

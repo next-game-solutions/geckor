@@ -1,29 +1,8 @@
 test_that("coin_history_ohlc returns correct results", {
-  expect_error(coin_history_ohlc(
-    coin_id = "abcde",
-    vs_currency = "usd",
-    days = 7,
-    max_attempts = 1L
-  ))
-
-  expect_error(coin_history_ohlc(
-    coin_id = "cardano",
-    vs_currency = "abcde",
-    days = 7,
-    max_attempts = 1L
-  ))
-
-  expect_error(coin_history_ohlc(
-    coin_id = "cardano",
-    vs_currency = "usd",
-    days = 11,
-    max_attempts = 1L
-  ))
-
   r <- coin_history_ohlc(
     coin_id = "cardano",
     vs_currency = "usd",
-    days = 7,
+    days = 7L,
     max_attempts = 1L
   )
 
