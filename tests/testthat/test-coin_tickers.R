@@ -1,7 +1,9 @@
 test_that("coin_tickers returns correct results", {
-  r <- coin_tickers(coin_id = "cardano",
-                    exchange_id = "binance",
-                    max_attempts = 1L)
+  r <- coin_tickers(
+    coin_id = "cardano",
+    exchange_id = "binance",
+    max_attempts = 1L
+  )
 
   expect_named(r, c(
     "exchange_id", "exchange_name",
