@@ -4,10 +4,10 @@ test_that("trending_coins returns correct results", {
   expect_s3_class(r, "tbl")
   expect_named(r, c(
     "timestamp", "popularity_rank_24h",
-    "coin_id" , "name",
+    "coin_id", "name",
     "symbol", "market_cap_rank",
     "price_btc"
-    ))
+  ))
   expect_s3_class(r$timestamp, "POSIXct")
   expect_type(r$popularity_rank_24h, "integer")
   expect_type(r$coin_id, "character")
