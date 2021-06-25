@@ -56,7 +56,7 @@ exchange_rate <- function(currency = NULL,
   result <- r %>%
     lapply(tibble::as_tibble) %>%
     dplyr::bind_rows() %>%
-    dplyr::select(-unit) %>%
+    dplyr::select(-.data$unit) %>%
     dplyr::rename(price_in_btc = .data$value)
 
   return(
