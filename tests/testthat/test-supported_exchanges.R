@@ -1,5 +1,7 @@
 test_that("supported_exchanges returns correct results", {
-  r <- supported_exchanges(max_attempts = 3L)
+  r <- supported_exchanges(max_attempts = 2L)
+
+  Sys.sleep(1)
 
   expect_named(r, c(
     "exchange_id",
