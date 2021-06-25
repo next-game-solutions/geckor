@@ -28,7 +28,6 @@
 #' # get exchange rates for a set of currencies:
 #' r2 <- exchange_rate(currency = c("usd", "eur", "gbp"))
 #' print(r2)
-#'
 exchange_rate <- function(currency = NULL,
                           max_attempts = 3L) {
   validate_arguments(
@@ -60,9 +59,11 @@ exchange_rate <- function(currency = NULL,
     dplyr::rename(price_in_btc = .data$value)
 
   return(
-    dplyr::bind_cols(timestamp = ts,
-                     currency = names(r),
-                     result) %>%
+    dplyr::bind_cols(
+      timestamp = ts,
+      currency = names(r),
+      result
+    ) %>%
       dplyr::arrange(currency)
   )
 }
