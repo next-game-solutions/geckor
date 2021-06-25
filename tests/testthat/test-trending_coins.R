@@ -1,5 +1,5 @@
 test_that("trending_coins returns correct results", {
-  r <- trending_coins(max_attempts = 1L)
+  r <- trending_coins(max_attempts = 3L)
 
   expect_s3_class(r, "tbl")
   expect_named(r, c(

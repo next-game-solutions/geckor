@@ -1,5 +1,5 @@
 test_that("supported_currencies returns correct results", {
-  r <- supported_currencies(max_attempts = 1L)
+  r <- supported_currencies(max_attempts = 3L)
   expect_type(r, "character")
   expect_true(is.vector(r))
   expect_true(length(r) > 0)
