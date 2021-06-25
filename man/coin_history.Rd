@@ -11,7 +11,7 @@ coin_history(coin_id, vs_currency, days, interval = NULL, max_attempts = 3L)
 supported coins and their IDs can be retrieved with the
 \code{\link[=supported_coins]{supported_coins()}} function.}
 
-\item{vs_currency}{(character): name of the base currency to benchmark
+\item{vs_currency}{(character): id of the base currency to benchmark
 against. An up-to-date list of supported currencies
 (both fiat and cryptocurrencies) can be retrieved with the
 \code{\link[=supported_currencies]{supported_currencies()}} function. If an unsupported

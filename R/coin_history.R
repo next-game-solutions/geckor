@@ -5,7 +5,7 @@
 #' @param coin_id (character): ID of the coin of interest. An up-to-date list of
 #'     supported coins and their IDs can be retrieved with the
 #'     [supported_coins()] function.
-#' @param vs_currency (character): name of the base currency to benchmark
+#' @param vs_currency (character): id of the base currency to benchmark
 #'     against. An up-to-date list of supported currencies
 #'     (both fiat and cryptocurrencies) can be retrieved with the
 #'     [supported_currencies()] function. If an unsupported

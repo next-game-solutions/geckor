@@ -36,7 +36,7 @@ api_request <- function(url, max_attempts = 3L) {
     r <- try(httr::GET(url, ua), silent = FALSE)
 
     if (class(r) == "try-error" || httr::http_error(r)) {
-      delay <- stats::runif(n = 1, min = 0, max = 2^attempt - 1)
+      delay <- stats::runif(n = 1, min = attempt, max = 2^attempt)
       message(
         "\nAPI request failed. Retrying after ",
         round(delay, 2), " seconds..."
