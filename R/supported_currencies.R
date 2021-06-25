@@ -16,7 +16,7 @@ supported_currencies <- function(max_attempts = 3L) {
   url <- build_get_request(
     base_url = "https://api.coingecko.com",
     path = c("api", "v3", "simple", "supported_vs_currencies"),
-    query_parameters = list()
+    query_parameters = NULL
   )
 
   supported_currencies <- api_request(
