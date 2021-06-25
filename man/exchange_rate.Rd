@@ -46,5 +46,4 @@ print(r1)
 # get exchange rates for a set of currencies:
 r2 <- exchange_rate(currency = c("usd", "eur", "gbp"))
 print(r2)
-
 }
