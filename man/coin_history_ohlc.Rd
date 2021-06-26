@@ -43,7 +43,7 @@ A tibble with the following columns:
 }
 }
 \description{
-Retrieves open-high-low-close price data for the last \code{n} days
+Retrieves open-high-low-close price data for the last \emph{n} days
 }
 \details{
 This function is based on the public

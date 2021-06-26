@@ -1,6 +1,6 @@
 #' Historical OHLC price data
 #'
-#' Retrieves open-high-low-close price data for the last `n` days
+#' Retrieves open-high-low-close price data for the last _n_ days
 #'
 #' @eval function_params(c("coin_id", "vs_currency"))
 #' @param days (numeric or `"max"`): number of days to look back. The only
