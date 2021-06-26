@@ -30,12 +30,12 @@ function_params <- function(arguments) {
        contains at least one unsupported currency, the call will fail with the
        respective error message.",
     include_market_cap = "@param include_market_cap (boolean, defaults to
-       `TRUE`): whether to return the market cap information.",
+       `TRUE`): whether to return the market capitalisation information.",
     include_24h_vol = "@param include_24h_vol (boolean, defaults to `TRUE`):
-       whether to return the trading volume for the last 24 hours.",
+       whether to return the trading volume for the last 24 h.",
     include_24h_change = "@param include_24h_change (boolean, defaults to
        `TRUE`): whether to return the price percentage change compared to 24
-       hours ago.",
+       h ago.",
     api_note = "@details This function is based on the public
                [CoinGecko API](https://www.coingecko.com/api/documentations/v3),
                which has a limit of 50 calls per minute. Please

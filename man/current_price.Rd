@@ -27,14 +27,14 @@ contains at least one unsupported currency, the call will fail with the
 respective error message.}
 
 \item{include_market_cap}{(boolean, defaults to
-\code{TRUE}): whether to return the market cap information.}
+\code{TRUE}): whether to return the market capitalisation information.}
 
 \item{include_24h_vol}{(boolean, defaults to \code{TRUE}):
-whether to return the trading volume for the last 24 hours.}
+whether to return the trading volume for the last 24 h.}
 
 \item{include_24h_change}{(boolean, defaults to
 \code{TRUE}): whether to return the price percentage change compared to 24
-hours ago.}
+h ago.}
 
 \item{max_attempts}{(double, positive): specifies the
 maximum number of attempts to call the CoinGecko API (e.g., if
@@ -47,12 +47,12 @@ arguments \code{include_market_cap}, \code{include_24h_vol} and \code{include_24
 to control the inclusion of the corresponding columns):
 \itemize{
 \item \code{coin_id} (character): coin IDs, ordered alphabetically;
-\item \code{vs_currency} (character): names of the base currencies to express the
-price in;
-\item \code{last_updated_at} (POSIXct, UTC timezone): timestamp of the last price
+\item \code{vs_currency} (character): base currency used to express the
+price of \code{coin_id} in;
+\item \code{last_updated_at} (POSIXct, UTC time zone): timestamp of the last price
 update;
 \item \code{market_cap} (double): current market capitalisation;
-\item \code{vol_24h} (double): trading volume in the last 24 hours;
+\item \code{vol_24h} (double): trading volume in the last 24 h;
 \item \code{price_percent_change_24h} (double): percentage change of the price as
 compared to 24 hours ago.
 }
@@ -66,8 +66,8 @@ This function is based on the public
 which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 
-If no data can be retrieved (e.g. because of the misspecified
-query parameters), this function will return nothing (\code{NULL}).
+If no data can be retrieved (e.g. because of a misspecified
+query parameter), nothing (\code{NULL}) will be returned.
 }
 \examples{
 r <- current_price(

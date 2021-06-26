@@ -6,19 +6,19 @@
 #'                         "include_24h_vol", "include_24h_change",
 #'                         "max_attempts", "api_note"))
 #'
-#' @details If no data can be retrieved (e.g. because of the misspecified
-#'    query parameters), this function will return nothing (`NULL`).
+#' @details If no data can be retrieved (e.g. because of a misspecified
+#'    query parameter), nothing (`NULL`) will be returned.
 #'
 #' @return A tibble, which by the default will contain the following columns (use
 #'    arguments `include_market_cap`, `include_24h_vol` and `include_24h_change`
 #'    to control the inclusion of the corresponding columns):
 #' * `coin_id` (character): coin IDs, ordered alphabetically;
-#' * `vs_currency` (character): names of the base currencies to express the
-#' price in;
-#' * `last_updated_at` (POSIXct, UTC timezone): timestamp of the last price
+#' * `vs_currency` (character): base currency used to express the
+#' price of `coin_id` in;
+#' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last price
 #' update;
 #' * `market_cap` (double): current market capitalisation;
-#' * `vol_24h` (double): trading volume in the last 24 hours;
+#' * `vol_24h` (double): trading volume in the last 24 h;
 #' * `price_percent_change_24h` (double): percentage change of the price as
 #' compared to 24 hours ago.
 #'
