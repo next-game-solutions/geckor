@@ -2,7 +2,7 @@
 % Please edit documentation in R/supported_currencies.R
 \name{supported_currencies}
 \alias{supported_currencies}
-\title{Get CoinGecko currencies}
+\title{CoinGecko currencies}
 \usage{
 supported_currencies(max_attempts = 3)
 }

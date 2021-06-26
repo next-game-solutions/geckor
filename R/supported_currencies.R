@@ -1,4 +1,4 @@
-#' Get CoinGecko currencies
+#' CoinGecko currencies
 #'
 #' Retrieves a list of base currencies currently supported by the CoinGecko API
 #'
