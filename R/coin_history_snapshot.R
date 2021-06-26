@@ -1,23 +1,21 @@
 #' History snapshot for a coin
 #'
-#' Historical market data on a given date for a coin
+#' Coin-specific market data for a given historical date
 #'
 #' @eval function_params("coin_id")
 #' @param date (Date): date of interest. If no data exist for the requested
 #'     date, nothing (`NULL`) will be returned.
-#' @eval function_params(c("vs_currencies", "max_attempts", "api_note"))
+#' @eval function_params(c("vs_currencies", "max_attempts"))
 #'
-#' @details If no data can be retrieved (e.g. because of the misspecified
-#'    query parameters), this function will return nothing (`NULL`).
 #' @eval function_params("api_note")
 #'
 #' @return If the requested data exist, this function will return a tibble with
 #'    with as many rows as the length of `vs_currencies` and the following
 #'    columns:
 #' * `coin_id` (character): coin ID;
-#' * `symbol` (character): coin symbol;
-#' * `name` (character): coin common name;
-#' * `date` (Date): historical date;
+#' * `symbol` (character): symbol of the coin;
+#' * `name` (character): common name of the coin;
+#' * `date` (Date): the same as the argument `date`;
 #' * `vs_currency` (character): currency, in which the coin's `price` is
 #' expressed (ordered alphabetically);
 #' * `price` (double): price of the coin;

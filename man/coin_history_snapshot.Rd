@@ -33,9 +33,9 @@ with as many rows as the length of \code{vs_currencies} and the following
 columns:
 \itemize{
 \item \code{coin_id} (character): coin ID;
-\item \code{symbol} (character): coin symbol;
-\item \code{name} (character): coin common name;
-\item \code{date} (Date): historical date;
+\item \code{symbol} (character): symbol of the coin;
+\item \code{name} (character): common name of the coin;
+\item \code{date} (Date): the same as the argument \code{date};
 \item \code{vs_currency} (character): currency, in which the coin's \code{price} is
 expressed (ordered alphabetically);
 \item \code{price} (double): price of the coin;
@@ -44,17 +44,9 @@ expressed (ordered alphabetically);
 }
 }
 \description{
-Historical market data on a given date for a coin
+Coin-specific market data for a given historical date
 }
 \details{
-This function is based on the public
-\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
-which has a limit of 50 calls per minute. Please
-keep this limit in mind when developing your applications.
-
-If no data can be retrieved (e.g. because of the misspecified
-query parameters), this function will return nothing (\code{NULL}).
-
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
 which has a limit of 50 calls per minute. Please
