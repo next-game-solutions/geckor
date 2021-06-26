@@ -10,7 +10,7 @@ ping()
 Returns \code{TRUE} if the service is available and \code{FALSE} otherwise.
 }
 \description{
-Pings the CoinGecko API to check its current status
+Pings the CoinGecko API to check if the service is available
 }
 \details{
 This function has no arguments.
