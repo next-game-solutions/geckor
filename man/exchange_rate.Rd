@@ -16,9 +16,8 @@ function will return exchange rates for all supported currencies.}
 
 \item{max_attempts}{(double, positive): specifies the
 maximum number of attempts to call the CoinGecko API (e.g., if
-the first call fails, with a status different from \code{200}).
-Additional attempts are implemented with an exponential backoff.
-Defaults to 3.}
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:

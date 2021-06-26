@@ -41,9 +41,8 @@ function_params <- function(arguments) {
                keep this limit in mind when developing your applications.",
     max_attempts = "@param max_attempts (double, positive): specifies the
                maximum number of attempts to call the CoinGecko API (e.g., if
-               the first call fails, with a status different from `200`).
-               Additional attempts are implemented with an exponential backoff.
-               Defaults to 3."
+               the first call fails for some reason). Additional attempts are
+               implemented with an exponential backoff. Defaults to 3."
   )
 
   return(descriptions[arguments])
