@@ -31,12 +31,14 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' r <- coin_history_ohlc(
 #'   coin_id = "cardano",
 #'   vs_currency = "usd",
 #'   days = 7
 #' )
 #' print(r)
+#' }
 coin_history_ohlc <- function(coin_id,
                               vs_currency,
                               days,

@@ -58,6 +58,8 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- coin_history(coin_id = "bitcoin", vs_currency = "usd", days = 30)
 print(r)
+}
 }

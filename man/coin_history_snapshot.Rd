@@ -53,10 +53,12 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- coin_history_snapshot(
   coin_id = "cardano",
   date = as.Date("2021-05-01"),
   vs_currencies = c("usd", "eth")
 )
 print(r)
+}
 }

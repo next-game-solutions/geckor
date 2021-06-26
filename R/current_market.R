@@ -52,11 +52,13 @@
 #' @importFrom rlang .data
 #'
 #' @examples
+#' \donttest{
 #' r <- current_market(
 #'   coin_ids = c("bitcoin", "ethereum", "cardano"),
 #'   vs_currency = "usd"
 #' )
 #' print(r)
+#' }
 current_market <- function(coin_ids,
                            vs_currency,
                            max_attempts = 3) {

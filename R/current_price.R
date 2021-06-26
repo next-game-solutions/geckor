@@ -28,11 +28,13 @@
 #' @importFrom rlang .data
 #'
 #' @examples
+#' \donttest{
 #' r <- current_price(
 #'   coin_ids = c("aave", "tron", "bitcoin"),
 #'   vs_currencies = c("usd", "eur", "gbp")
 #' )
 #' print(r)
+#' }
 current_price <- function(coin_ids,
                           vs_currencies = c("usd"),
                           include_market_cap = TRUE,

@@ -22,6 +22,7 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' # get exchange rates for all supported currencies
 #' r1 <- exchange_rate()
 #' print(r1)
@@ -29,6 +30,7 @@
 #' # get exchange rates for a set of currencies:
 #' r2 <- exchange_rate(currency = c("usd", "eur", "gbp"))
 #' print(r2)
+#' }
 exchange_rate <- function(currency = NULL,
                           max_attempts = 3) {
   validate_arguments(

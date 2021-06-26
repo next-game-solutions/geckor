@@ -27,6 +27,7 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' r <- coin_history_range(
 #'   coin_id = "cardano",
 #'   vs_currency = "usd",
@@ -34,6 +35,7 @@
 #'   to = as.POSIXct("2021-01-01 18:00:00", tz = "UTC")
 #' )
 #' print(r)
+#' }
 coin_history_range <- function(coin_id,
                                vs_currency,
                                from,

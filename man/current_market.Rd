@@ -76,9 +76,11 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- current_market(
   coin_ids = c("bitcoin", "ethereum", "cardano"),
   vs_currency = "usd"
 )
 print(r)
+}
 }

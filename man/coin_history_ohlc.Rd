@@ -60,10 +60,12 @@ body) depends on the value of \code{days} as follows:
 }
 }
 \examples{
+\donttest{
 r <- coin_history_ohlc(
   coin_id = "cardano",
   vs_currency = "usd",
   days = 7
 )
 print(r)
+}
 }

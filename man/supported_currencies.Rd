@@ -25,6 +25,8 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- supported_currencies()
 print(r)
+}
 }

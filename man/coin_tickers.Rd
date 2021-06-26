@@ -84,6 +84,8 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- coin_tickers(coin_id = "cardano", exchange_id = "binance")
 print(r)
+}
 }

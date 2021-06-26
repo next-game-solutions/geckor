@@ -25,8 +25,10 @@
 #' @importFrom rlang .data
 #'
 #' @examples
+#' \donttest{
 #' r <- supported_exchanges()
 #' print(r)
+#' }
 supported_exchanges <- function(max_attempts = 3) {
   validate_arguments(arg_max_attempts = max_attempts)
 

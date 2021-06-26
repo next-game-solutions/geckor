@@ -70,9 +70,11 @@ If no data can be retrieved (e.g. because of a misspecified
 query parameter), nothing (\code{NULL}) will be returned.
 }
 \examples{
+\donttest{
 r <- current_price(
   coin_ids = c("aave", "tron", "bitcoin"),
   vs_currencies = c("usd", "eur", "gbp")
 )
 print(r)
+}
 }

@@ -7,8 +7,6 @@
 #' @return Returns `TRUE` if the service is available and `FALSE` otherwise.
 #' @export
 #'
-#' @examples
-#' ping()
 ping <- function() {
   base_url <- "https://api.coingecko.com"
   url <- httr::modify_url(base_url, path = c("api", "v3", "ping"))

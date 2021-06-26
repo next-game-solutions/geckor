@@ -52,6 +52,7 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- coin_history_range(
   coin_id = "cardano",
   vs_currency = "usd",
@@ -59,4 +60,5 @@ r <- coin_history_range(
   to = as.POSIXct("2021-01-01 18:00:00", tz = "UTC")
 )
 print(r)
+}
 }

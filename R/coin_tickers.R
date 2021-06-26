@@ -65,8 +65,10 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' r <- coin_tickers(coin_id = "cardano", exchange_id = "binance")
 #' print(r)
+#' }
 coin_tickers <- function(coin_id,
                          exchange_id,
                          max_attempts = 3) {
