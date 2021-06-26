@@ -1,6 +1,6 @@
 #' Definitions of common function arguments
 #'
-#' Used to automatically generate documentation for commonly occurring arguments
+#' Used to automatically generate documentation for frequently used arguments
 #'
 #' @param arguments (character): vector with names of the arguments to be
 #'     documented.
