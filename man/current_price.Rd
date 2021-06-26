@@ -37,10 +37,10 @@ whether to return the trading volume for the last 24 hours.}
 hours ago.}
 
 \item{max_attempts}{(double, positive): specifies the
-maximum number of additional attempts to call the CoinGecko API
-if the first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to 3.}
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails, with a status different from \code{200}).
+Additional attempts are implemented with an exponential backoff.
+Defaults to 3.}
 }
 \value{
 A tibble, which by the default will contain the following columns (use

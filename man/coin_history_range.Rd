@@ -24,10 +24,10 @@ fail with the respective error message.}
 (\verb{YYYY-MM-DD HH:MM:SS}).}
 
 \item{max_attempts}{(double, positive): specifies the
-maximum number of additional attempts to call the CoinGecko API
-if the first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to 3.}
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails, with a status different from \code{200}).
+Additional attempts are implemented with an exponential backoff.
+Defaults to 3.}
 }
 \value{
 A tibble with the following columns:

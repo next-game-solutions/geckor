@@ -1,6 +1,6 @@
 #' Make an API call
 #'
-#' Performs `GET` requests, with an exponential backoff mechanism built in
+#' Performs `GET` requests, with a built-in exponential backoff mechanism
 #'
 #' @param url (character): URL to call.
 #' @eval function_params(c("max_attempts"))
