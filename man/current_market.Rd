@@ -9,11 +9,11 @@ current_market(coin_ids, vs_currency, max_attempts = 3)
 \arguments{
 \item{coin_ids}{(character): a vector with IDs of the coins of
 interest. An up-to-date list of supported coins and their
-IDs can be retrieved with the \code{\link[=supported_coins]{supported_coins()}} function.}
+IDs can be obtained with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
 \item{vs_currency}{(character): name of the base currency to
-to express the price in. An up-to-date list of supported currencies (both
-fiat and cryptocurrencies) can be retrieved with the \code{\link[=supported_currencies]{supported_currencies()}}
+express the price in. An up-to-date list of supported currencies (both
+fiat and cryptocurrencies) can be obtained with the \code{\link[=supported_currencies]{supported_currencies()}}
 function. If an unsupported \code{vs_currency} is requested, the call will
 fail with the respective error message.}
 

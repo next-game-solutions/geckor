@@ -16,16 +16,16 @@ function_params <- function(arguments) {
        with the [supported_coins()] function.",
     coin_ids = "@param coin_ids (character): a vector with IDs of the coins of
        interest. An up-to-date list of supported coins and their
-       IDs can be retrieved with the [supported_coins()] function.",
+       IDs can be obtained with the [supported_coins()] function.",
     vs_currency = "@param vs_currency (character): name of the base currency to
-       to express the price in. An up-to-date list of supported currencies (both
-       fiat and cryptocurrencies) can be retrieved with the [supported_currencies()]
+       express the price in. An up-to-date list of supported currencies (both
+       fiat and cryptocurrencies) can be obtained with the [supported_currencies()]
        function. If an unsupported `vs_currency` is requested, the call will
        fail with the respective error message.",
     vs_currencies = "@param vs_currencies (character): a vector with
        names of the base currencies to express the price in, e.g.
        `c(\"usd\", \"eur\", \"btc\")`. An up-to-date list of supported
-       `vs_currencies` (both fiat and cryptocurrencies) can be retrieved with
+       `vs_currencies` (both fiat and cryptocurrencies) can be obtained with
        the [supported_currencies()] function. If `vs_currencies`
        contains at least one unsupported currency, the call will fail with the
        respective error message.",
