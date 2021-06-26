@@ -1,47 +1,48 @@
-#' Current market status
+#' Current market data
 #'
-#' Retrieves metrics describing the current market status of a set of coins
+#' Retrieves current market data for a set of coins
 #'
 #' @eval function_params(c("coin_ids", "vs_currency", "max_attempts"))
 #'
-#' @details If no data can be retrieved (e.g., because of the misspecified
-#'    query parameters), this function will return nothing (`NULL`).
+#' @details If no data can be retrieved (e.g., because of a misspecified
+#'    query parameter), nothing (`NULL`) will be returned.
 #' @eval function_params("api_note")
 #'
 #' @return If the requested data exist, this function will return a tibble with
-#'    with as many rows as the length of `coin_ids` and the following columns:
+#'    as many rows as the length of `coin_ids` and the following columns:
 #' * `coin_id` (character): coin IDs, ordered by `market_cap` (see below);
-#' * `symbol` (character): coin symbol;
-#' * `name` (character): coin common name;
-#' * `last_updated_at` (POSIXct, UTC timezone): timestamp of the last update;
+#' * `symbol` (character): symbol of the coin;
+#' * `name` (character): common name of the coin;
+#' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last update;
 #' * `current_price` (double): current price (as of `last_updated_at`),
 #' expressed in `vs_currency`;
 #' * `market_cap` (double): current market capitalisation;
 #' * `market_cap_rank` (integer): current rank of the coin in terms of its
 #' market capitalisation;
-#' * `fully_diluted_valuation` (double): fully diluted valuation of the coin'
-#' project;
-#' * `total_volume` (double): total trading volume in the last 24 hours;
-#' * `high_24h` (double): max price recorded in the last 24 hours;
-#' * `low_24h` (double): min price recorded in the last 24 hours;
-#' * `price_change_24h` (double): price change as compared to 24 hours ago;
+#' * `fully_diluted_valuation` (double):
+#' [fully diluted valuation](https://handbook.clerky.com/fundraising/fully-diluted-capitalization)
+#' of the coin's project;
+#' * `total_volume` (double): total trading volume in the last 24 h;
+#' * `high_24h` (double): max price recorded in the last 24 h;
+#' * `low_24h` (double): min price recorded in the last 24 h;
+#' * `price_change_24h` (double): price change as compared to 24 h ago;
 #' * `price_change_percentage_24h` (double): percentage change of the price as
 #' compared to 24 hours ago;
 #' * `circulating_supply` (double): coin supply currently in circulation;
 #' * `total_supply` (double): total supply that can potentially be circulated;
-#' * `max_supply` (double): max possible supply that can be circulated;
+#' * `max_supply` (double): max possible supply;
 #' * `ath` (double): all-time high price;
 #' * `ath_change_percentage` (double): percentage change of the all-time high
 #' price compared to the current price;
-#' * `ath_date` (POSIXct, UTC timezone): timestamp of when the all-time high
-#' price has been recorded;
+#' * `ath_date` (POSIXct, UTC time zone): timestamp of when the all-time high
+#' price was recorded;
 #' * `atl` (double): all-time low price;
 #' * `atl_change_percentage` (double): percentage change of the all-time low
 #' price compared to the current price;
 #' * `atl_date` (POSIXct, UTC timezone): timestamp of when the all-time low
-#' price has been recorded;
+#' price was recorded;
 #' * `price_change_percentage_<time>_in_currency`: columns containing the
-#' percentage change in price as compared to various periods in the past
+#' percentage change in price as compared to various points in the past
 #' (in particular, 1 hour, 24 hours, 7 days, 14 days, 30 days, 200 days,
 #' and 1 year).
 #'
