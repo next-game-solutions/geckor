@@ -2,23 +2,22 @@
 % Please edit documentation in R/supported_coins.R
 \name{supported_coins}
 \alias{supported_coins}
-\title{Get CoinGecko coins}
+\title{CoinGecko coins}
 \usage{
-supported_coins(max_attempts = 3L)
+supported_coins(max_attempts = 3)
 }
 \arguments{
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 A tibble with three columns:
 \itemize{
-\item \code{coin_id}(character): coin IDs, ordered alphabetically;
-\item \code{symbol} (character): coin symbol;
-\item \code{name} (character): coin common name.
+\item \code{coin_id} (character): coin IDs, ordered alphabetically;
+\item \code{symbol} (character): coin symbols;
+\item \code{name} (character): common names of the coins.
 }
 }
 \description{
@@ -26,7 +25,8 @@ Retrieves a list of coins currently supported by the CoinGecko API
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{

@@ -4,29 +4,28 @@
 \alias{coin_history_snapshot}
 \title{History snapshot for a coin}
 \usage{
-coin_history_snapshot(coin_id, date, vs_currencies, max_attempts = 3L)
+coin_history_snapshot(coin_id, date, vs_currencies, max_attempts = 3)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An up-to-date list of
-supported coins and their IDs can be retrieved with the
-\code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest. An
+up-to-date list of supported coins and their IDs can be retrieved
+with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
 \item{date}{(Date): date of interest. If no data exist for the requested
 date, nothing (\code{NULL}) will be returned.}
 
 \item{vs_currencies}{(character): a vector with
-names of the base currencies to benchmark against, e.g.
+names of the base currencies to express the price in, e.g.
 \code{c("usd", "eur", "btc")}. An up-to-date list of supported
-\code{vs_currencies} (both fiat and cryptocurrencies) can be retrieved with
+\code{vs_currencies} (both fiat and cryptocurrencies) can be obtained with
 the \code{\link[=supported_currencies]{supported_currencies()}} function. If \code{vs_currencies}
 contains at least one unsupported currency, the call will fail with the
 respective error message.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 If the requested data exist, this function will return a tibble with
@@ -34,9 +33,9 @@ with as many rows as the length of \code{vs_currencies} and the following
 columns:
 \itemize{
 \item \code{coin_id} (character): coin ID;
-\item \code{symbol} (character): coin symbol;
-\item \code{name} (character): coin common name;
-\item \code{date} (Date): historical date;
+\item \code{symbol} (character): symbol of the coin;
+\item \code{name} (character): common name of the coin;
+\item \code{date} (Date): same as the argument \code{date};
 \item \code{vs_currency} (character): currency, in which the coin's \code{price} is
 expressed (ordered alphabetically);
 \item \code{price} (double): price of the coin;
@@ -45,21 +44,21 @@ expressed (ordered alphabetically);
 }
 }
 \description{
-Historical market data on a given date for a coin
+Coin-specific market data for a given historical date
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
-
-If no data can be retrieved (e.g. because of the misspecified
-query parameters), this function will return nothing (\code{NULL}).
 }
 \examples{
+\donttest{
 r <- coin_history_snapshot(
   coin_id = "cardano",
   date = as.Date("2021-05-01"),
   vs_currencies = c("usd", "eth")
 )
 print(r)
+}
 }

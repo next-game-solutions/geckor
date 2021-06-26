@@ -4,37 +4,35 @@
 \alias{coin_history_ohlc}
 \title{Historical OHLC price data}
 \usage{
-coin_history_ohlc(coin_id, vs_currency, days, max_attempts = 3L)
+coin_history_ohlc(coin_id, vs_currency, days, max_attempts = 3)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An up-to-date list of
-supported coins and their IDs can be retrieved with the
-\code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest. An
+up-to-date list of supported coins and their IDs can be retrieved
+with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
-\item{vs_currency}{(character): name of the base currency to benchmark
-against. An up-to-date list of supported currencies
-(both fiat and cryptocurrencies) can be retrieved with the
-\code{\link[=supported_currencies]{supported_currencies()}} function. If an unsupported
-\code{vs_currency} is requested, the call will fail with the respective error
-message.}
+\item{vs_currency}{(character): name of the base currency to
+express the price in. An up-to-date list of supported currencies (both
+fiat and cryptocurrencies) can be obtained with the \code{\link[=supported_currencies]{supported_currencies()}}
+function. If an unsupported \code{vs_currency} is requested, the call will
+fail with the respective error message.}
 
 \item{days}{(numeric or \code{"max"}): number of days to look back. The only
 acceptable values are 1, 7, 14, 30, 90, 180, 365 and \code{"max"}. Attempts to
-assign any other values will fail with the corresponding console message.
+assign any other values will fail with the corresponding error message.
 If \code{days = "max"}, the entire available history will be retrieved.
 Depending on the value of \code{days}, the time interval used to present the
 data will differ - see "Details".}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:
 \itemize{
-\item \code{timestamp} (POSIXct): timestamp;
+\item \code{timestamp} (POSIXct);
 \item \code{coin_id} (character): coin ID;
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price_open} (double): coin price in the beginning of a time interval;
@@ -44,11 +42,12 @@ A tibble with the following columns:
 }
 }
 \description{
-Retrieves open-high-low-close price data for the last \code{n} days
+Retrieves open-high-low-close price data for the last \emph{n} days
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 
 Granularity of the retrieved data
@@ -61,10 +60,12 @@ body) depends on the value of \code{days} as follows:
 }
 }
 \examples{
+\donttest{
 r <- coin_history_ohlc(
   coin_id = "cardano",
   vs_currency = "usd",
   days = 7
 )
 print(r)
+}
 }

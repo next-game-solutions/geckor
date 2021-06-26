@@ -2,21 +2,20 @@
 % Please edit documentation in R/coin_history_range.R
 \name{coin_history_range}
 \alias{coin_history_range}
-\title{Get historical TRX market data}
+\title{Get historical market data}
 \usage{
-coin_history_range(coin_id, vs_currency, from, to, max_attempts = 3L)
+coin_history_range(coin_id, vs_currency, from, to, max_attempts = 3)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An up-to-date list of
-supported coins and their IDs can be retrieved with the
-\code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest. An
+up-to-date list of supported coins and their IDs can be retrieved
+with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
-\item{vs_currency}{(character): name of the base currency to benchmark
-against. An up-to-date list of supported currencies
-(both fiat and cryptocurrencies) can be retrieved with the
-\code{\link[=supported_currencies]{supported_currencies()}} function. If an unsupported
-\code{vs_currency} is requested, the call will fail with the respective error
-message.}
+\item{vs_currency}{(character): name of the base currency to
+express the price in. An up-to-date list of supported currencies (both
+fiat and cryptocurrencies) can be obtained with the \code{\link[=supported_currencies]{supported_currencies()}}
+function. If an unsupported \code{vs_currency} is requested, the call will
+fail with the respective error message.}
 
 \item{from}{(POSIXct): timestamp of the beginning of the period of interest
 (\verb{YYYY-MM-DD HH:MM:SS}).}
@@ -24,11 +23,10 @@ message.}
 \item{to}{(POSIXct): timestamp of the end of the period of interest
 (\verb{YYYY-MM-DD HH:MM:SS}).}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:
@@ -42,13 +40,19 @@ of \code{timestampt};
 }
 }
 \description{
-Retrieves TRX market data for a range of historical dates
+Retrieves coin-specific market data for a range of historical dates
 }
 \details{
-This function returns hourly data for periods of up to 90 days,
+This function returns hourly data for periods of up to 90 days
 and daily data for periods longer than 90 days.
+
+This function is based on the public
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
+keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- coin_history_range(
   coin_id = "cardano",
   vs_currency = "usd",
@@ -56,4 +60,5 @@ r <- coin_history_range(
   to = as.POSIXct("2021-01-01 18:00:00", tz = "UTC")
 )
 print(r)
+}
 }

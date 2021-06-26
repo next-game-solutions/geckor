@@ -2,16 +2,15 @@
 % Please edit documentation in R/supported_currencies.R
 \name{supported_currencies}
 \alias{supported_currencies}
-\title{Get CoinGecko currencies}
+\title{CoinGecko currencies}
 \usage{
-supported_currencies(max_attempts = 3L)
+supported_currencies(max_attempts = 3)
 }
 \arguments{
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 Character vector with abbreviated names of the currencies.
@@ -21,10 +20,13 @@ Retrieves a list of base currencies currently supported by the CoinGecko API
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- supported_currencies()
 print(r)
+}
 }

@@ -1,6 +1,7 @@
 #' Exchange rates
 #'
-#' Retrieves current exchange rate for a crypto- of fiat currency in Bitcoin
+#' Retrieves the current exchange rate for a crypto- of fiat currency in Bitcoin
+#'
 #' @param currency (character or `NULL`): a vector with abbreviated names of the
 #'     currencies of interest. An up-to-date list of supported currencies (both
 #'     fiat and cryptocurrencies) can be retrieved with the [supported_currencies()]
@@ -18,9 +19,13 @@
 #' * `price_in_btc` (double): price in Bitcoin;
 #' * `type` (character): type of the currency (`"fiat"` or `"crypto"`).
 #'
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#'
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' # get exchange rates for all supported currencies
 #' r1 <- exchange_rate()
 #' print(r1)
@@ -28,8 +33,9 @@
 #' # get exchange rates for a set of currencies:
 #' r2 <- exchange_rate(currency = c("usd", "eur", "gbp"))
 #' print(r2)
+#' }
 exchange_rate <- function(currency = NULL,
-                          max_attempts = 3L) {
+                          max_attempts = 3) {
   validate_arguments(
     arg_vs_currencies = currency,
     arg_max_attempts = max_attempts

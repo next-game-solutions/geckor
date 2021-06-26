@@ -1,28 +1,26 @@
 #' Exchange tickers
 #'
-#' Retrieves the most recent tickers for a coin
+#' Retrieves the most recent exchange tickers for a coin
 #'
-#' @param coin_id (character): ID of the coin of interest. An up-to-date list of
-#'     supported coins and their IDs can be retrieved with the
-#'     [supported_coins()] function.
-#' @param exchange_id (character): ID of the exchange to retrive the data from.
-#'     An up-to-date list of supported exchanges and their IDs can be retrieved
+#' @eval function_params("coin_id")
+#' @param exchange_id (character): ID of the exchange to retrieve the data from.
+#'     An up-to-date list of supported exchanges and their IDs can be obtained
 #'     with the [supported_exchanges()] function.
 #' @eval function_params(c("max_attempts", "api_note"))
 #'
 #' @return A tibble with the following columns:
 #'
-#' * `exchange_id` (character): exchange ID;
+#' * `exchange_id` (character);
 #' * `exchange_name` (character): common name of the exchange;
 #' * `coin_id` (character): coin ID;
 #' * `name` (character): common name of the coin;
-#' * `base` (character): symbol of the base currency in the trading pair;
-#' * `target` (character): symbol of the target currency in the trading pair;
-#' * `trust_score` (character): trust score of this trading pair at this exchange
+#' * `base` (character): symbol of the base currency in a trading pair;
+#' * `target` (character): symbol of the target currency in a trading pair;
+#' * `trust_score` (character): trust score of a trading pair at a given exchange
 #' (`"green"`, `"orange"`, `"red"`; see
 #' [this](https://blog.coingecko.com/trust-score/) and
 #' [this](https://blog.coingecko.com/trust-score-2/) articles on the CoinGecko
-#' website);
+#' website for details);
 #' * `last_price` (double): last price reported by this exchange for this
 #' trading pair;
 #' * `last_fetch_at` (POSIXct, UTC time zone): timestamp of when `last_price`
@@ -34,19 +32,19 @@
 #' (highest price a buyer is willing to buy; see
 #' [Investopedia](https://www.investopedia.com/terms/b/bid-askspread.asp) for
 #' details);
-#' `trading_volume_24` (double): trading volume (in `target` currency)
-#' recorded in the last 24 hours (as of `last_traded_at`);
-#' * `last_price_btc` (double): last price reported by this exchange for this
-#' `coin_id`, expressed in Bitcoin;
-#' * `last_price_eth` (double): last price reported by this exchange for this
-#' `coin_id`, expressed in Ethereum;
-#' * `last_price_usd` (double): last price reported by this exchange for this
-#' * `coin_id`, expressed in US dollars;
-#' * `trading_volume_24h_btc` (double): 24-hours trading volume expressed in
+#' * `trading_volume_24h` (double): trading volume (in `target` currency)
+#' recorded in the last 24 h (as of `last_traded_at`);
+#' * `last_price_btc` (double): last price reported by a given exchange for a
+#' coin, expressed in Bitcoin;
+#' * `last_price_eth` (double): last price reported by a given exchange for a
+#' coin, expressed in Ethereum;
+#' * `last_price_usd` (double): last price reported by a given exchange for a
+#' coin, expressed in US dollar;
+#' * `trading_volume_24h_btc` (double): 24-h trading volume expressed in
 #' Bitcoin (as of `last_traded_at`);
-#' * `trading_volume_24h_eth` (double): 24-hours trading volume expressed in
+#' * `trading_volume_24h_eth` (double): 24-h trading volume expressed in
 #' Ethereum;
-#' * `trading_volume_24h_usd` (double): 24-hours trading volume expressed in
+#' * `trading_volume_24h_usd` (double): 24-h trading volume expressed in
 #' US dollars;
 #' * `cost_to_move_up_2percent_usd` and `cost_to_move_down_2percent_usd`
 #' (double): 2% market depth (see
@@ -56,22 +54,22 @@
 #' outlier (see "Outlier detection" in
 #' [Methodology](https://www.coingecko.com/en/methodology) on the GoinGecko
 #' website);
-#' * `is_stale` (logical): an indicator of whether the ticker's price nos not
+#' * `is_stale` (logical): an indicator of whether the ticker's price has not
 #' been updated for a while (see "Outlier detection" in
 #' [Methodology](https://www.coingecko.com/en/methodology) on the GoinGecko
 #' website);
 #' * `trade_url` (character): URL to this trading pair's page.
 #'
-#' @importFrom magrittr %>%
-#'
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' r <- coin_tickers(coin_id = "cardano", exchange_id = "binance")
 #' print(r)
+#' }
 coin_tickers <- function(coin_id,
                          exchange_id,
-                         max_attempts = 3L) {
+                         max_attempts = 3) {
   if (length(coin_id) > 1L) {
     rlang::abort("Only one `coin_id` is allowed")
   }
@@ -151,8 +149,7 @@ coin_tickers <- function(coin_id,
       trade_url = x$trade_url
     )
     return(result)
-  }) %>%
-    dplyr::bind_rows()
+  })
 
-  return(data_parsed)
+  return(dplyr::bind_rows(data_parsed))
 }

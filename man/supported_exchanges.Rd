@@ -2,16 +2,15 @@
 % Please edit documentation in R/supported_exchanges.R
 \name{supported_exchanges}
 \alias{supported_exchanges}
-\title{A list of supported exchanges}
+\title{CoinGecko exchanges}
 \usage{
-supported_exchanges(max_attempts = 3L)
+supported_exchanges(max_attempts = 3)
 }
 \arguments{
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:
@@ -19,15 +18,15 @@ A tibble with the following columns:
 \item \code{exchange_id} (character): exchange ID;
 \item \code{name} (character): common name of the exchange;
 \item \code{year_established} (integer): year when the exchange was established;
-\item \code{exchange} (character): country where the exchange is registered and / or
-has headquarters;
+\item \code{country} (character): country where the exchange is registered and / or
+has its headquarters;
 \item \code{url} (character): web address of the exchange;
 \item \code{trust_score} (integer): an indicator of how much an exchange can be
 trusted (ranges from 1 to 10; see
-\href{https://www.coingecko.com/en/methodology}{Methodology} on the CoinGecko's
+\href{https://www.coingecko.com/en/methodology}{Methodology} on the CoinGecko
 website);
-\item \code{trading_volume_24h_btc} (double): trading volume on the exchange in the
-last 24 hours (expressed in Bitcoin).
+\item \code{trading_volume_24h_btc} (double): trading volume in the last 24 h,
+expressed in Bitcoin.
 }
 }
 \description{
@@ -35,10 +34,13 @@ Retrieves a list of exchanges supported by the CoinGecko API
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- supported_exchanges()
 print(r)
+}
 }

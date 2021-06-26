@@ -1,15 +1,13 @@
-#' Get CoinGecko coins
+#' CoinGecko coins
 #'
 #' Retrieves a list of coins currently supported by the CoinGecko API
 #'
 #' @eval function_params(c("max_attempts", "api_note"))
 #'
 #' @return A tibble with three columns:
-#' * `coin_id`(character): coin IDs, ordered alphabetically;
-#' * `symbol` (character): coin symbol;
-#' * `name` (character): coin common name.
-#'
-#' @importFrom magrittr %>%
+#' * `coin_id` (character): coin IDs, ordered alphabetically;
+#' * `symbol` (character): coin symbols;
+#' * `name` (character): common names of the coins.
 #'
 #' @export
 #'
@@ -18,7 +16,7 @@
 #' r <- supported_coins()
 #' head(r, 10)
 #' }
-supported_coins <- function(max_attempts = 3L) {
+supported_coins <- function(max_attempts = 3) {
   validate_arguments(arg_max_attempts = max_attempts)
 
   url <- build_get_request(
@@ -38,8 +36,7 @@ supported_coins <- function(max_attempts = 3L) {
       symbol = x$symbol,
       name = x$name
     )
-  }) %>%
-    dplyr::bind_rows()
+  })
 
-  return(result)
+  return(dplyr::bind_rows(result))
 }

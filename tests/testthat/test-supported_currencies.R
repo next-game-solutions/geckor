@@ -1,5 +1,5 @@
 test_that("supported_currencies returns correct results", {
-  r <- supported_currencies(max_attempts = 3L)
+  r <- supported_currencies(max_attempts = 1)
 
   Sys.sleep(1)
 

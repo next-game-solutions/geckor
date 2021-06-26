@@ -1,24 +1,17 @@
-#' Get historical TRX market data
+#' Get historical market data
 #'
-#' Retrieves TRX market data for a range of historical dates
+#' Retrieves coin-specific market data for a range of historical dates
 #'
-#' @param coin_id (character): ID of the coin of interest. An up-to-date list of
-#'     supported coins and their IDs can be retrieved with the
-#'     [supported_coins()] function.
-#' @param vs_currency (character): name of the base currency to benchmark
-#'     against. An up-to-date list of supported currencies
-#'     (both fiat and cryptocurrencies) can be retrieved with the
-#'     [supported_currencies()] function. If an unsupported
-#'     `vs_currency` is requested, the call will fail with the respective error
-#'     message.
+#' @eval function_params(c("coin_id", "vs_currency"))
 #' @param from (POSIXct): timestamp of the beginning of the period of interest
 #' (`YYYY-MM-DD HH:MM:SS`).
 #' @param to (POSIXct): timestamp of the end of the period of interest
 #' (`YYYY-MM-DD HH:MM:SS`).
 #' @eval function_params(c("max_attempts"))
 #'
-#' @details This function returns hourly data for periods of up to 90 days,
+#' @details This function returns hourly data for periods of up to 90 days
 #'     and daily data for periods longer than 90 days.
+#' @eval function_params("api_note")
 #'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
@@ -34,6 +27,7 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' r <- coin_history_range(
 #'   coin_id = "cardano",
 #'   vs_currency = "usd",
@@ -41,11 +35,12 @@
 #'   to = as.POSIXct("2021-01-01 18:00:00", tz = "UTC")
 #' )
 #' print(r)
+#' }
 coin_history_range <- function(coin_id,
                                vs_currency,
                                from,
                                to,
-                               max_attempts = 3L) {
+                               max_attempts = 3) {
   if (length(coin_id) > 1L) {
     rlang::abort("Only one `coin_id` is allowed")
   }

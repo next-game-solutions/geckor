@@ -1,19 +1,11 @@
 #' Historical OHLC price data
 #'
-#' Retrieves open-high-low-close price data for the last `n` days
+#' Retrieves open-high-low-close price data for the last _n_ days
 #'
-#' @param coin_id (character): ID of the coin of interest. An up-to-date list of
-#'     supported coins and their IDs can be retrieved with the
-#'     [supported_coins()] function.
-#' @param vs_currency (character): name of the base currency to benchmark
-#'     against. An up-to-date list of supported currencies
-#'     (both fiat and cryptocurrencies) can be retrieved with the
-#'     [supported_currencies()] function. If an unsupported
-#'     `vs_currency` is requested, the call will fail with the respective error
-#'     message.
+#' @eval function_params(c("coin_id", "vs_currency"))
 #' @param days (numeric or `"max"`): number of days to look back. The only
 #'     acceptable values are 1, 7, 14, 30, 90, 180, 365 and `"max"`. Attempts to
-#'     assign any other values will fail with the corresponding console message.
+#'     assign any other values will fail with the corresponding error message.
 #'     If `days = "max"`, the entire available history will be retrieved.
 #'     Depending on the value of `days`, the time interval used to present the
 #'     data will differ - see "Details".
@@ -27,7 +19,7 @@
 #' * above 30: 4 days.
 #'
 #' @return A tibble with the following columns:
-#' * `timestamp` (POSIXct): timestamp;
+#' * `timestamp` (POSIXct);
 #' * `coin_id` (character): coin ID;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price_open` (double): coin price in the beginning of a time interval;
@@ -35,20 +27,21 @@
 #' * `price_low` (double): lowest coin price observed within a time interval;
 #' * `price_close` (double): coin price in the end of a time interval.
 #'
-#' @importFrom magrittr %>%
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' r <- coin_history_ohlc(
 #'   coin_id = "cardano",
 #'   vs_currency = "usd",
 #'   days = 7
 #' )
 #' print(r)
+#' }
 coin_history_ohlc <- function(coin_id,
                               vs_currency,
                               days,
-                              max_attempts = 3L) {
+                              max_attempts = 3) {
   if (length(coin_id) > 1L) {
     rlang::abort("Only one `coin_id` is allowed")
   }
@@ -108,8 +101,7 @@ coin_history_ohlc <- function(coin_id,
       price_low = x[[4]],
       price_close = x[[5]]
     )
-  }) %>%
-    dplyr::bind_rows()
+  })
 
-  return(prices)
+  return(dplyr::bind_rows(prices))
 }

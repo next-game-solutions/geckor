@@ -1,6 +1,6 @@
 #' Make an API call
 #'
-#' Performs `GET` requests, with an exponential backoff mechanism built in
+#' Performs `GET` requests, with a built-in exponential backoff mechanism
 #'
 #' @param url (character): URL to call.
 #' @eval function_params(c("max_attempts"))
@@ -18,7 +18,7 @@
 #'
 #' @keywords internal
 #'
-api_request <- function(url, max_attempts = 3L) {
+api_request <- function(url, max_attempts = 3) {
   if (!is.character(url)) {
     rlang::abort("`url` must be a character value")
   }
@@ -27,7 +27,7 @@ api_request <- function(url, max_attempts = 3L) {
 
   ua <- httr::user_agent(
     sprintf(
-      "tronr/%s (R client for the CoinGecko API; https://github.com/next-game-solutions/geckor)",
+      "geckor/%s (R client for the CoinGecko API; https://github.com/next-game-solutions/geckor)",
       utils::packageVersion("geckor")
     )
   )

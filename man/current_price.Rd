@@ -10,37 +10,36 @@ current_price(
   include_market_cap = TRUE,
   include_24h_vol = TRUE,
   include_24h_change = TRUE,
-  max_attempts = 3L
+  max_attempts = 3
 )
 }
 \arguments{
 \item{coin_ids}{(character): a vector with IDs of the coins of
 interest. An up-to-date list of supported coins and their
-IDs can be retrieved with the \code{\link[=supported_coins]{supported_coins()}} function.}
+IDs can be obtained with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
 \item{vs_currencies}{(character): a vector with
-names of the base currencies to benchmark against, e.g.
+names of the base currencies to express the price in, e.g.
 \code{c("usd", "eur", "btc")}. An up-to-date list of supported
-\code{vs_currencies} (both fiat and cryptocurrencies) can be retrieved with
+\code{vs_currencies} (both fiat and cryptocurrencies) can be obtained with
 the \code{\link[=supported_currencies]{supported_currencies()}} function. If \code{vs_currencies}
 contains at least one unsupported currency, the call will fail with the
 respective error message.}
 
 \item{include_market_cap}{(boolean, defaults to
-\code{TRUE}): whether to return the market cap information.}
+\code{TRUE}): whether to return the market capitalisation information.}
 
 \item{include_24h_vol}{(boolean, defaults to \code{TRUE}):
-whether to return the trading volume for the last 24 hours.}
+whether to return the trading volume for the last 24 h.}
 
 \item{include_24h_change}{(boolean, defaults to
 \code{TRUE}): whether to return the price percentage change compared to 24
-hours ago.}
+h ago.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 A tibble, which by the default will contain the following columns (use
@@ -48,12 +47,12 @@ arguments \code{include_market_cap}, \code{include_24h_vol} and \code{include_24
 to control the inclusion of the corresponding columns):
 \itemize{
 \item \code{coin_id} (character): coin IDs, ordered alphabetically;
-\item \code{vs_currency} (character): names of the base currencies to express the
-price in;
-\item \code{last_updated_at} (POSIXct, UTC timezone): timestamp of the last price
+\item \code{vs_currency} (character): base currency used to express the
+price of \code{coin_id} in;
+\item \code{last_updated_at} (POSIXct, UTC time zone): timestamp of the last price
 update;
 \item \code{market_cap} (double): current market capitalisation;
-\item \code{vol_24h} (double): trading volume in the last 24 hours;
+\item \code{vol_24h} (double): trading volume in the last 24 h;
 \item \code{price_percent_change_24h} (double): percentage change of the price as
 compared to 24 hours ago.
 }
@@ -63,16 +62,19 @@ Retrieves the current price of supported coins in any supported currencies
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 
-If no data can be retrieved (e.g. because of the misspecified
-query parameters), this function will return nothing (\code{NULL}).
+If no data can be retrieved (e.g. because of a misspecified
+query parameter), nothing (\code{NULL}) will be returned.
 }
 \examples{
+\donttest{
 r <- current_price(
   coin_ids = c("aave", "tron", "bitcoin"),
   vs_currencies = c("usd", "eur", "gbp")
 )
 print(r)
+}
 }

@@ -4,23 +4,22 @@
 \alias{api_request}
 \title{Make an API call}
 \usage{
-api_request(url, max_attempts = 3L)
+api_request(url, max_attempts = 3)
 }
 \arguments{
 \item{url}{(character): URL to call.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 A named list, the structure of which will vary depending on the
 actual \code{GET} request made.
 }
 \description{
-Performs \code{GET} requests, with an exponential backoff mechanism built in
+Performs \code{GET} requests, with a built-in exponential backoff mechanism
 }
 \details{
 This function only performs \code{GET} requests. The \code{url} is

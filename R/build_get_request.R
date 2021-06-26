@@ -12,9 +12,10 @@
 #'     Can be a `NULL` value.
 #'
 #' @details No validation of the base URL is performed by this function,
-#'     so users are advised to ensure the URL is correctly formatted and encoded.
+#'     so users are advised to ensure that the base URL is correctly
+#'     formatted and encoded.
 #'
-#' @return A URL that can be used in a `GET` request.
+#' @return A URL that is ready to be used in a `GET` request.
 #'
 #' @keywords internal
 #'

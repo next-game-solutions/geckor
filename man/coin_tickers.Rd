@@ -4,37 +4,36 @@
 \alias{coin_tickers}
 \title{Exchange tickers}
 \usage{
-coin_tickers(coin_id, exchange_id, max_attempts = 3L)
+coin_tickers(coin_id, exchange_id, max_attempts = 3)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An up-to-date list of
-supported coins and their IDs can be retrieved with the
-\code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest. An
+up-to-date list of supported coins and their IDs can be retrieved
+with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
-\item{exchange_id}{(character): ID of the exchange to retrive the data from.
-An up-to-date list of supported exchanges and their IDs can be retrieved
+\item{exchange_id}{(character): ID of the exchange to retrieve the data from.
+An up-to-date list of supported exchanges and their IDs can be obtained
 with the \code{\link[=supported_exchanges]{supported_exchanges()}} function.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
-\code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+\item{max_attempts}{(double, positive): specifies the
+maximum number of attempts to call the CoinGecko API (e.g., if
+the first call fails for some reason). Additional attempts are
+implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:
 \itemize{
-\item \code{exchange_id} (character): exchange ID;
+\item \code{exchange_id} (character);
 \item \code{exchange_name} (character): common name of the exchange;
 \item \code{coin_id} (character): coin ID;
 \item \code{name} (character): common name of the coin;
-\item \code{base} (character): symbol of the base currency in the trading pair;
-\item \code{target} (character): symbol of the target currency in the trading pair;
-\item \code{trust_score} (character): trust score of this trading pair at this exchange
+\item \code{base} (character): symbol of the base currency in a trading pair;
+\item \code{target} (character): symbol of the target currency in a trading pair;
+\item \code{trust_score} (character): trust score of a trading pair at a given exchange
 (\code{"green"}, \code{"orange"}, \code{"red"}; see
 \href{https://blog.coingecko.com/trust-score/}{this} and
 \href{https://blog.coingecko.com/trust-score-2/}{this} articles on the CoinGecko
-website);
+website for details);
 \item \code{last_price} (double): last price reported by this exchange for this
 trading pair;
 \item \code{last_fetch_at} (POSIXct, UTC time zone): timestamp of when \code{last_price}
@@ -46,19 +45,19 @@ the ask price (lowest price a seller is willing to sell) and the bid price
 (highest price a buyer is willing to buy; see
 \href{https://www.investopedia.com/terms/b/bid-askspread.asp}{Investopedia} for
 details);
-\code{trading_volume_24} (double): trading volume (in \code{target} currency)
-recorded in the last 24 hours (as of \code{last_traded_at});
-\item \code{last_price_btc} (double): last price reported by this exchange for this
-\code{coin_id}, expressed in Bitcoin;
-\item \code{last_price_eth} (double): last price reported by this exchange for this
-\code{coin_id}, expressed in Ethereum;
-\item \code{last_price_usd} (double): last price reported by this exchange for this
-\item \code{coin_id}, expressed in US dollars;
-\item \code{trading_volume_24h_btc} (double): 24-hours trading volume expressed in
+\item \code{trading_volume_24h} (double): trading volume (in \code{target} currency)
+recorded in the last 24 h (as of \code{last_traded_at});
+\item \code{last_price_btc} (double): last price reported by a given exchange for a
+coin, expressed in Bitcoin;
+\item \code{last_price_eth} (double): last price reported by a given exchange for a
+coin, expressed in Ethereum;
+\item \code{last_price_usd} (double): last price reported by a given exchange for a
+coin, expressed in US dollar;
+\item \code{trading_volume_24h_btc} (double): 24-h trading volume expressed in
 Bitcoin (as of \code{last_traded_at});
-\item \code{trading_volume_24h_eth} (double): 24-hours trading volume expressed in
+\item \code{trading_volume_24h_eth} (double): 24-h trading volume expressed in
 Ethereum;
-\item \code{trading_volume_24h_usd} (double): 24-hours trading volume expressed in
+\item \code{trading_volume_24h_usd} (double): 24-h trading volume expressed in
 US dollars;
 \item \code{cost_to_move_up_2percent_usd} and \code{cost_to_move_down_2percent_usd}
 (double): 2\% market depth (see
@@ -68,7 +67,7 @@ website for details);
 outlier (see "Outlier detection" in
 \href{https://www.coingecko.com/en/methodology}{Methodology} on the GoinGecko
 website);
-\item \code{is_stale} (logical): an indicator of whether the ticker's price nos not
+\item \code{is_stale} (logical): an indicator of whether the ticker's price has not
 been updated for a while (see "Outlier detection" in
 \href{https://www.coingecko.com/en/methodology}{Methodology} on the GoinGecko
 website);
@@ -76,14 +75,17 @@ website);
 }
 }
 \description{
-Retrieves the most recent tickers for a coin
+Retrieves the most recent exchange tickers for a coin
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
+\donttest{
 r <- coin_tickers(coin_id = "cardano", exchange_id = "binance")
 print(r)
+}
 }

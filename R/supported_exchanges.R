@@ -1,4 +1,4 @@
-#' A list of supported exchanges
+#' CoinGecko exchanges
 #'
 #' Retrieves a list of exchanges supported by the CoinGecko API
 #'
@@ -9,15 +9,15 @@
 #' * `exchange_id` (character): exchange ID;
 #' * `name` (character): common name of the exchange;
 #' * `year_established` (integer): year when the exchange was established;
-#' * `exchange` (character): country where the exchange is registered and / or
-#' has headquarters;
+#' * `country` (character): country where the exchange is registered and / or
+#' has its headquarters;
 #' * `url` (character): web address of the exchange;
 #' * `trust_score` (integer): an indicator of how much an exchange can be
 #' trusted (ranges from 1 to 10; see
-#' [Methodology](https://www.coingecko.com/en/methodology) on the CoinGecko's
+#' [Methodology](https://www.coingecko.com/en/methodology) on the CoinGecko
 #' website);
-#' * `trading_volume_24h_btc` (double): trading volume on the exchange in the
-#' last 24 hours (expressed in Bitcoin).
+#' * `trading_volume_24h_btc` (double): trading volume in the last 24 h,
+#' expressed in Bitcoin.
 #'
 #' @export
 #'
@@ -25,9 +25,11 @@
 #' @importFrom rlang .data
 #'
 #' @examples
+#' \donttest{
 #' r <- supported_exchanges()
 #' print(r)
-supported_exchanges <- function(max_attempts = 3L) {
+#' }
+supported_exchanges <- function(max_attempts = 3) {
   validate_arguments(arg_max_attempts = max_attempts)
 
   data <- list()

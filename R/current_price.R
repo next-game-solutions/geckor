@@ -2,27 +2,23 @@
 #'
 #' Retrieves the current price of supported coins in any supported currencies
 #'
-#' @param coin_ids (character): a vector with IDs of the coins of
-#'     interest. An up-to-date list of supported coins and their
-#'     IDs can be retrieved with the [supported_coins()] function.
-#'
-#' @eval function_params(c("vs_currencies", "include_market_cap",
+#' @eval function_params(c("coin_ids", "vs_currencies", "include_market_cap",
 #'                         "include_24h_vol", "include_24h_change",
-#'                          "max_attempts", "api_note"))
+#'                         "max_attempts", "api_note"))
 #'
-#' @details If no data can be retrieved (e.g. because of the misspecified
-#'    query parameters), this function will return nothing (`NULL`).
+#' @details If no data can be retrieved (e.g. because of a misspecified
+#'    query parameter), nothing (`NULL`) will be returned.
 #'
 #' @return A tibble, which by the default will contain the following columns (use
 #'    arguments `include_market_cap`, `include_24h_vol` and `include_24h_change`
 #'    to control the inclusion of the corresponding columns):
 #' * `coin_id` (character): coin IDs, ordered alphabetically;
-#' * `vs_currency` (character): names of the base currencies to express the
-#' price in;
-#' * `last_updated_at` (POSIXct, UTC timezone): timestamp of the last price
+#' * `vs_currency` (character): base currency used to express the
+#' price of `coin_id` in;
+#' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last price
 #' update;
 #' * `market_cap` (double): current market capitalisation;
-#' * `vol_24h` (double): trading volume in the last 24 hours;
+#' * `vol_24h` (double): trading volume in the last 24 h;
 #' * `price_percent_change_24h` (double): percentage change of the price as
 #' compared to 24 hours ago.
 #'
@@ -32,17 +28,19 @@
 #' @importFrom rlang .data
 #'
 #' @examples
+#' \donttest{
 #' r <- current_price(
 #'   coin_ids = c("aave", "tron", "bitcoin"),
 #'   vs_currencies = c("usd", "eur", "gbp")
 #' )
 #' print(r)
+#' }
 current_price <- function(coin_ids,
                           vs_currencies = c("usd"),
                           include_market_cap = TRUE,
                           include_24h_vol = TRUE,
                           include_24h_change = TRUE,
-                          max_attempts = 3L) {
+                          max_attempts = 3) {
   validate_arguments(
     arg_coin_ids = coin_ids,
     arg_vs_currencies = vs_currencies,

@@ -1,5 +1,5 @@
 test_that("supported_exchanges returns correct results", {
-  r <- supported_exchanges(max_attempts = 2L)
+  r <- supported_exchanges(max_attempts = 1)
 
   Sys.sleep(1)
 
