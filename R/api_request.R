@@ -27,7 +27,7 @@ api_request <- function(url, max_attempts = 3) {
 
   ua <- httr::user_agent(
     sprintf(
-      "tronr/%s (R client for the CoinGecko API; https://github.com/next-game-solutions/geckor)",
+      "geckor/%s (R client for the CoinGecko API; https://github.com/next-game-solutions/geckor)",
       utils::packageVersion("geckor")
     )
   )

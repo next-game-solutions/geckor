@@ -27,7 +27,6 @@
 #' * `price_low` (double): lowest coin price observed within a time interval;
 #' * `price_close` (double): coin price in the end of a time interval.
 #'
-#' @importFrom magrittr %>%
 #' @export
 #'
 #' @examples
@@ -102,8 +101,7 @@ coin_history_ohlc <- function(coin_id,
       price_low = x[[4]],
       price_close = x[[5]]
     )
-  }) %>%
-    dplyr::bind_rows()
+  })
 
-  return(prices)
+  return(dplyr::bind_rows(prices))
 }

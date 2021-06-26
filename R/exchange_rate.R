@@ -19,6 +19,9 @@
 #' * `price_in_btc` (double): price in Bitcoin;
 #' * `type` (character): type of the currency (`"fiat"` or `"crypto"`).
 #'
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#'
 #' @export
 #'
 #' @examples

@@ -60,8 +60,6 @@
 #' website);
 #' * `trade_url` (character): URL to this trading pair's page.
 #'
-#' @importFrom magrittr %>%
-#'
 #' @export
 #'
 #' @examples
@@ -151,8 +149,7 @@ coin_tickers <- function(coin_id,
       trade_url = x$trade_url
     )
     return(result)
-  }) %>%
-    dplyr::bind_rows()
+  })
 
-  return(data_parsed)
+  return(dplyr::bind_rows(data_parsed))
 }
