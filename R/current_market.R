@@ -2,20 +2,11 @@
 #'
 #' Retrieves metrics describing the current market status of a set of coins
 #'
-#' @param coin_ids (character): a vector with IDs of the coins of interest.
-#'     An up-to-date list of supported coins and their IDs can be retrieved
-#'     with the [supported_coins()] function. Can be of length 1.
-#' @param vs_currency (character): a single character value specifying the
-#' name of the base currency to benchmark against, e.g. `"usd"`. An up-to-date
-#' list of supported currencies (both fiat and cryptocurrencies) can be
-#' retrieved with the [supported_currencies()] function. If `vs_currency`
-#' contains an unsupported currency, the call will fail with the respective
-#' error message.
+#' @eval function_params(c("coin_ids", "vs_currency", "max_attempts"))
 #'
-#' @eval function_params(c("max_attempts", "api_note"))
-#'
-#' @details If no data can be retrieved (e.g. because of the misspecified
+#' @details If no data can be retrieved (e.g., because of the misspecified
 #'    query parameters), this function will return nothing (`NULL`).
+#' @eval function_params("api_note")
 #'
 #' @return If the requested data exist, this function will return a tibble with
 #'    with as many rows as the length of `coin_ids` and the following columns:

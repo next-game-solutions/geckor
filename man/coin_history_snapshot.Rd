@@ -7,9 +7,9 @@
 coin_history_snapshot(coin_id, date, vs_currencies, max_attempts = 3L)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An up-to-date list of
-supported coins and their IDs can be retrieved with the
-\code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest. An
+up-to-date list of supported coins and their IDs can be retrieved
+with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
 \item{date}{(Date): date of interest. If no data exist for the requested
 date, nothing (\code{NULL}) will be returned.}
@@ -54,6 +54,10 @@ keep this limit in mind when developing your applications.
 
 If no data can be retrieved (e.g. because of the misspecified
 query parameters), this function will return nothing (\code{NULL}).
+
+This function is based on the public
+CoinGecko API, which has a limit of 100 calls per minute. Please
+keep this limit in mind when developing your applications.
 }
 \examples{
 r <- coin_history_snapshot(

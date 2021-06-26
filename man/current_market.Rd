@@ -7,16 +7,15 @@
 current_market(coin_ids, vs_currency, max_attempts = 3L)
 }
 \arguments{
-\item{coin_ids}{(character): a vector with IDs of the coins of interest.
-An up-to-date list of supported coins and their IDs can be retrieved
-with the \code{\link[=supported_coins]{supported_coins()}} function. Can be of length 1.}
+\item{coin_ids}{(character): a vector with IDs of the coins of
+interest. An up-to-date list of supported coins and their
+IDs can be retrieved with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
-\item{vs_currency}{(character): a single character value specifying the
-name of the base currency to benchmark against, e.g. \code{"usd"}. An up-to-date
-list of supported currencies (both fiat and cryptocurrencies) can be
-retrieved with the \code{\link[=supported_currencies]{supported_currencies()}} function. If \code{vs_currency}
-contains an unsupported currency, the call will fail with the respective
-error message.}
+\item{vs_currency}{(character): name of the base currency to
+benchmark against. An up-to-date list of supported currencies (both fiat
+and cryptocurrencies) can be retrieved with the \code{\link[=supported_currencies]{supported_currencies()}}
+function. If an unsupported \code{vs_currency} is requested, the call will
+fail with the respective error message.}
 
 \item{max_attempts}{(integer, positive): specifies the
 maximum number of additional attempts to call a URL if the
@@ -68,12 +67,12 @@ and 1 year).
 Retrieves metrics describing the current market status of a set of coins
 }
 \details{
+If no data can be retrieved (e.g., because of the misspecified
+query parameters), this function will return nothing (\code{NULL}).
+
 This function is based on the public
 CoinGecko API, which has a limit of 100 calls per minute. Please
 keep this limit in mind when developing your applications.
-
-If no data can be retrieved (e.g. because of the misspecified
-query parameters), this function will return nothing (\code{NULL}).
 }
 \examples{
 r <- current_market(

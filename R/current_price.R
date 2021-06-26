@@ -2,13 +2,9 @@
 #'
 #' Retrieves the current price of supported coins in any supported currencies
 #'
-#' @param coin_ids (character): a vector with IDs of the coins of
-#'     interest. An up-to-date list of supported coins and their
-#'     IDs can be retrieved with the [supported_coins()] function.
-#'
-#' @eval function_params(c("vs_currencies", "include_market_cap",
+#' @eval function_params(c("coin_ids", "vs_currencies", "include_market_cap",
 #'                         "include_24h_vol", "include_24h_change",
-#'                          "max_attempts", "api_note"))
+#'                         "max_attempts", "api_note"))
 #'
 #' @details If no data can be retrieved (e.g. because of the misspecified
 #'    query parameters), this function will return nothing (`NULL`).

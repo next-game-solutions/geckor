@@ -2,18 +2,10 @@
 #'
 #' Retrieves open-high-low-close price data for the last `n` days
 #'
-#' @param coin_id (character): ID of the coin of interest. An up-to-date list of
-#'     supported coins and their IDs can be retrieved with the
-#'     [supported_coins()] function.
-#' @param vs_currency (character): name of the base currency to benchmark
-#'     against. An up-to-date list of supported currencies
-#'     (both fiat and cryptocurrencies) can be retrieved with the
-#'     [supported_currencies()] function. If an unsupported
-#'     `vs_currency` is requested, the call will fail with the respective error
-#'     message.
+#' @eval function_params(c("coin_id", "vs_currency"))
 #' @param days (numeric or `"max"`): number of days to look back. The only
 #'     acceptable values are 1, 7, 14, 30, 90, 180, 365 and `"max"`. Attempts to
-#'     assign any other values will fail with the corresponding console message.
+#'     assign any other values will fail with the corresponding error message.
 #'     If `days = "max"`, the entire available history will be retrieved.
 #'     Depending on the value of `days`, the time interval used to present the
 #'     data will differ - see "Details".

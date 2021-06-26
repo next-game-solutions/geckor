@@ -7,9 +7,9 @@
 coin_tickers(coin_id, exchange_id, max_attempts = 3L)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An up-to-date list of
-supported coins and their IDs can be retrieved with the
-\code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest. An
+up-to-date list of supported coins and their IDs can be retrieved
+with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
 \item{exchange_id}{(character): ID of the exchange to retrive the data from.
 An up-to-date list of supported exchanges and their IDs can be retrieved

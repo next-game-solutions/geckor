@@ -2,9 +2,7 @@
 #'
 #' Retrieves the most recent tickers for a coin
 #'
-#' @param coin_id (character): ID of the coin of interest. An up-to-date list of
-#'     supported coins and their IDs can be retrieved with the
-#'     [supported_coins()] function.
+#' @eval function_params("coin_id")
 #' @param exchange_id (character): ID of the exchange to retrive the data from.
 #'     An up-to-date list of supported exchanges and their IDs can be retrieved
 #'     with the [supported_exchanges()] function.

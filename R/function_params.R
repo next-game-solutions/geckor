@@ -11,6 +11,17 @@
 #'
 function_params <- function(arguments) {
   descriptions <- c(
+    coin_id = "@param coin_id (character): ID of the coin of interest. An
+       up-to-date list of supported coins and their IDs can be retrieved
+       with the [supported_coins()] function.",
+    coin_ids = "@param coin_ids (character): a vector with IDs of the coins of
+       interest. An up-to-date list of supported coins and their
+       IDs can be retrieved with the [supported_coins()] function.",
+    vs_currency = "@param vs_currency (character): name of the base currency to
+       benchmark against. An up-to-date list of supported currencies (both fiat
+       and cryptocurrencies) can be retrieved with the [supported_currencies()]
+       function. If an unsupported `vs_currency` is requested, the call will
+       fail with the respective error message.",
     vs_currencies = "@param vs_currencies (character): a vector with
        names of the base currencies to benchmark against, e.g.
        `c(\"usd\", \"eur\", \"btc\")`. An up-to-date list of supported

@@ -2,15 +2,14 @@
 #'
 #' Historical market data on a given date for a coin
 #'
-#' @param coin_id (character): ID of the coin of interest. An up-to-date list of
-#'     supported coins and their IDs can be retrieved with the
-#'     [supported_coins()] function.
+#' @eval function_params("coin_id")
 #' @param date (Date): date of interest. If no data exist for the requested
 #'     date, nothing (`NULL`) will be returned.
 #' @eval function_params(c("vs_currencies", "max_attempts", "api_note"))
 #'
 #' @details If no data can be retrieved (e.g. because of the misspecified
 #'    query parameters), this function will return nothing (`NULL`).
+#' @eval function_params("api_note")
 #'
 #' @return If the requested data exist, this function will return a tibble with
 #'    with as many rows as the length of `vs_currencies` and the following

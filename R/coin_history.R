@@ -2,28 +2,21 @@
 #'
 #' Retrieves market data for a coin for the last N days
 #'
-#' @param coin_id (character): ID of the coin of interest. An up-to-date list of
-#'     supported coins and their IDs can be retrieved with the
-#'     [supported_coins()] function.
-#' @param vs_currency (character): id of the base currency to benchmark
-#'     against. An up-to-date list of supported currencies
-#'     (both fiat and cryptocurrencies) can be retrieved with the
-#'     [supported_currencies()] function. If an unsupported
-#'     `vs_currency` is requested, the call will fail with the respective error
-#'     message.
+#' @eval function_params(c("coin_id", "vs_currency"))
 #' @param days (numeric or `"max"`): number of days to look back.
 #'     If `days = "max"`, the entire available history for `coin_id` will be
 #'     retrieved. Depending on the value of `days`, the time interval used to
 #'     present the data will differ - see "Details".
 #' @param interval (character or `NULL`): time interval to present the data.
 #'     The only currently supported interval is `daily`. Defaults to `NULL`.
-#' @eval function_params(c("max_attempts", "api_note"))
+#' @eval function_params("max_attempts")
 #'
 #' @details If `days = 1` and `interval = NULL`, the data will be returned for
 #'    every few minutes (typically 3-8 minutes). If `days` is between 2 and 90
 #'    (inclusive) and `interval = NULL`, an (approximately) hourly time step will
 #'    be used. Daily data are used for `days` above 90. If `interval = "daily"`,
 #'    daily data will be used irrespective of the value of `days`.
+#' @eval function_params("api_note")
 #'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
