@@ -30,7 +30,7 @@ A tibble with the following columns:
 }
 }
 \description{
-Retrieves current exchange rate for a crypto- of fiat currency in Bitcoin
+Retrieves the current exchange rate for a crypto- of fiat currency in Bitcoin
 }
 \details{
 This function is based on the public

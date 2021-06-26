@@ -1,6 +1,7 @@
 #' Exchange rates
 #'
-#' Retrieves current exchange rate for a crypto- of fiat currency in Bitcoin
+#' Retrieves the current exchange rate for a crypto- of fiat currency in Bitcoin
+#'
 #' @param currency (character or `NULL`): a vector with abbreviated names of the
 #'     currencies of interest. An up-to-date list of supported currencies (both
 #'     fiat and cryptocurrencies) can be retrieved with the [supported_currencies()]
