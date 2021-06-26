@@ -1,6 +1,6 @@
-#' Get historical TRX market data
+#' Get historical market data
 #'
-#' Retrieves TRX market data for a range of historical dates
+#' Retrieves coin-specific market data for a range of historical dates
 #'
 #' @eval function_params(c("coin_id", "vs_currency"))
 #' @param from (POSIXct): timestamp of the beginning of the period of interest

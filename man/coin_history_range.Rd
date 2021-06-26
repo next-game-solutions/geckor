@@ -2,7 +2,7 @@
 % Please edit documentation in R/coin_history_range.R
 \name{coin_history_range}
 \alias{coin_history_range}
-\title{Get historical TRX market data}
+\title{Get historical market data}
 \usage{
 coin_history_range(coin_id, vs_currency, from, to, max_attempts = 3)
 }
@@ -12,8 +12,8 @@ up-to-date list of supported coins and their IDs can be retrieved
 with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
 \item{vs_currency}{(character): name of the base currency to
-benchmark against. An up-to-date list of supported currencies (both fiat
-and cryptocurrencies) can be retrieved with the \code{\link[=supported_currencies]{supported_currencies()}}
+to express the price in. An up-to-date list of supported currencies (both
+fiat and cryptocurrencies) can be retrieved with the \code{\link[=supported_currencies]{supported_currencies()}}
 function. If an unsupported \code{vs_currency} is requested, the call will
 fail with the respective error message.}
 
@@ -41,7 +41,7 @@ of \code{timestampt};
 }
 }
 \description{
-Retrieves TRX market data for a range of historical dates
+Retrieves coin-specific market data for a range of historical dates
 }
 \details{
 This function returns hourly data for periods of up to 90 days

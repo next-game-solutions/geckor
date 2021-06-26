@@ -15,7 +15,7 @@ with the \code{\link[=supported_coins]{supported_coins()}} function.}
 date, nothing (\code{NULL}) will be returned.}
 
 \item{vs_currencies}{(character): a vector with
-names of the base currencies to benchmark against, e.g.
+names of the base currencies to express the price in, e.g.
 \code{c("usd", "eur", "btc")}. An up-to-date list of supported
 \code{vs_currencies} (both fiat and cryptocurrencies) can be retrieved with
 the \code{\link[=supported_currencies]{supported_currencies()}} function. If \code{vs_currencies}
