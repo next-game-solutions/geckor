@@ -15,19 +15,12 @@ validate_arguments(
   arg_date = NULL
 )
 }
-\arguments{
-\item{arg_max_attempts}{(integer): number of additional attempts to call
-the API if the first attempt fails.}
-
-\item{arg_vs_currencies}{(character): abbreviated names of the currencies
-to benchmark against.}
-}
 \value{
 This function is to be used for its side effects. If any of the
-checks is not passed, it returns the respective error. If all checks
+checks is not passed, the respective error is returned. If all checks
 are passed successfully, nothing is returned.
 }
 \description{
-Validates arguments that are commonly used in \code{geckor} functions
+Validates arguments that are frequently used in \code{geckor} functions
 }
 \keyword{internal}

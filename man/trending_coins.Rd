@@ -2,7 +2,7 @@
 % Please edit documentation in R/trending_coins.R
 \name{trending_coins}
 \alias{trending_coins}
-\title{Get trending coins}
+\title{Trending coins}
 \usage{
 trending_coins(max_attempts = 3)
 }
@@ -21,20 +21,20 @@ A tibble with the following columns:
 \item \code{name} (character): common name of the coin;
 \item \code{symbol} (character): symbol of the coin;
 \item \code{market_cap_rank} (integer): market capitalisation rank of the coin;
-\item \code{price_btc} (double): price of the coin, expressed in Bitcoin.
+\item \code{price_btc} (double): price of the coin expressed in Bitcoin.
 }
 }
 \description{
 Retrieves a list of top-7 coins on CoinGecko according to their search popularity
 }
 \details{
+Popularity of a coin is determined based on the search patterns at the
+CoinGecko website over the last 24 h.
+
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
 which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
-
-Popularity of a coin is determined based on the search patterns at the
-CoinGecko website over the last 24 hours.
 }
 \examples{
 r <- trending_coins()
