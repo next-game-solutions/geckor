@@ -29,7 +29,7 @@
 #' r2 <- exchange_rate(currency = c("usd", "eur", "gbp"))
 #' print(r2)
 exchange_rate <- function(currency = NULL,
-                          max_attempts = 3L) {
+                          max_attempts = 3) {
   validate_arguments(
     arg_vs_currencies = currency,
     arg_max_attempts = max_attempts

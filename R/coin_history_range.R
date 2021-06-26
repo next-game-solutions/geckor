@@ -38,7 +38,7 @@ coin_history_range <- function(coin_id,
                                vs_currency,
                                from,
                                to,
-                               max_attempts = 3L) {
+                               max_attempts = 3) {
   if (length(coin_id) > 1L) {
     rlang::abort("Only one `coin_id` is allowed")
   }

@@ -4,7 +4,7 @@
 \alias{coin_tickers}
 \title{Exchange tickers}
 \usage{
-coin_tickers(coin_id, exchange_id, max_attempts = 3L)
+coin_tickers(coin_id, exchange_id, max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An
@@ -15,11 +15,11 @@ with the \code{\link[=supported_coins]{supported_coins()}} function.}
 An up-to-date list of supported exchanges and their IDs can be retrieved
 with the \code{\link[=supported_exchanges]{supported_exchanges()}} function.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:

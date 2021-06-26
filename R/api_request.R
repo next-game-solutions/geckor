@@ -18,7 +18,7 @@
 #'
 #' @keywords internal
 #'
-api_request <- function(url, max_attempts = 3L) {
+api_request <- function(url, max_attempts = 3) {
   if (!is.character(url)) {
     rlang::abort("`url` must be a character value")
   }

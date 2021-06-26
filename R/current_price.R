@@ -38,7 +38,7 @@ current_price <- function(coin_ids,
                           include_market_cap = TRUE,
                           include_24h_vol = TRUE,
                           include_24h_change = TRUE,
-                          max_attempts = 3L) {
+                          max_attempts = 3) {
   validate_arguments(
     arg_coin_ids = coin_ids,
     arg_vs_currencies = vs_currencies,

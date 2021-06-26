@@ -4,7 +4,7 @@
 \alias{coin_history_snapshot}
 \title{History snapshot for a coin}
 \usage{
-coin_history_snapshot(coin_id, date, vs_currencies, max_attempts = 3L)
+coin_history_snapshot(coin_id, date, vs_currencies, max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An
@@ -22,11 +22,11 @@ the \code{\link[=supported_currencies]{supported_currencies()}} function. If \co
 contains at least one unsupported currency, the call will fail with the
 respective error message.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 If the requested data exist, this function will return a tibble with

@@ -4,7 +4,7 @@
 \alias{coin_history}
 \title{Get historical market data}
 \usage{
-coin_history(coin_id, vs_currency, days, interval = NULL, max_attempts = 3L)
+coin_history(coin_id, vs_currency, days, interval = NULL, max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An
@@ -25,11 +25,11 @@ present the data will differ - see "Details".}
 \item{interval}{(character or \code{NULL}): time interval to present the data.
 The only currently supported interval is \code{daily}. Defaults to \code{NULL}.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:

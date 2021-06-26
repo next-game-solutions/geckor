@@ -18,7 +18,7 @@
 #' r <- supported_coins()
 #' head(r, 10)
 #' }
-supported_coins <- function(max_attempts = 3L) {
+supported_coins <- function(max_attempts = 3) {
   validate_arguments(arg_max_attempts = max_attempts)
 
   url <- build_get_request(

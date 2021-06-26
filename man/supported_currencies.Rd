@@ -4,14 +4,14 @@
 \alias{supported_currencies}
 \title{Get CoinGecko currencies}
 \usage{
-supported_currencies(max_attempts = 3L)
+supported_currencies(max_attempts = 3)
 }
 \arguments{
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 Character vector with abbreviated names of the currencies.

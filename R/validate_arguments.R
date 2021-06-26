@@ -22,8 +22,8 @@ validate_arguments <- function(arg_max_attempts = NULL,
                                arg_include_24h_change = NULL,
                                arg_date = NULL) {
   if (!is.null(arg_max_attempts)) {
-    if (!(is.integer(arg_max_attempts) & arg_max_attempts > 0)) {
-      rlang::abort("`max_attempts` must be a positive integer")
+    if (!(is.numeric(arg_max_attempts) & arg_max_attempts > 0)) {
+      rlang::abort("`max_attempts` must be a positive number")
     }
   }
 

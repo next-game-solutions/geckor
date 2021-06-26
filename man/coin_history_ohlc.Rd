@@ -4,7 +4,7 @@
 \alias{coin_history_ohlc}
 \title{Historical OHLC price data}
 \usage{
-coin_history_ohlc(coin_id, vs_currency, days, max_attempts = 3L)
+coin_history_ohlc(coin_id, vs_currency, days, max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An
@@ -24,11 +24,11 @@ If \code{days = "max"}, the entire available history will be retrieved.
 Depending on the value of \code{days}, the time interval used to present the
 data will differ - see "Details".}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:

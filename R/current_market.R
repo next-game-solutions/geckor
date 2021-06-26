@@ -58,7 +58,7 @@
 #' print(r)
 current_market <- function(coin_ids,
                            vs_currency,
-                           max_attempts = 3L) {
+                           max_attempts = 3) {
   validate_arguments(
     arg_coin_ids = coin_ids,
     arg_vs_currencies = vs_currency,

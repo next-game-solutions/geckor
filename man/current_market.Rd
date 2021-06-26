@@ -4,7 +4,7 @@
 \alias{current_market}
 \title{Current market status}
 \usage{
-current_market(coin_ids, vs_currency, max_attempts = 3L)
+current_market(coin_ids, vs_currency, max_attempts = 3)
 }
 \arguments{
 \item{coin_ids}{(character): a vector with IDs of the coins of
@@ -17,11 +17,11 @@ and cryptocurrencies) can be retrieved with the \code{\link[=supported_currencie
 function. If an unsupported \code{vs_currency} is requested, the call will
 fail with the respective error message.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 If the requested data exist, this function will return a tibble with

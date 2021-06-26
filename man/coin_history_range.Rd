@@ -4,7 +4,7 @@
 \alias{coin_history_range}
 \title{Get historical TRX market data}
 \usage{
-coin_history_range(coin_id, vs_currency, from, to, max_attempts = 3L)
+coin_history_range(coin_id, vs_currency, from, to, max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An
@@ -23,11 +23,11 @@ fail with the respective error message.}
 \item{to}{(POSIXct): timestamp of the end of the period of interest
 (\verb{YYYY-MM-DD HH:MM:SS}).}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:

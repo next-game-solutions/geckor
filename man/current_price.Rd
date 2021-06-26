@@ -10,7 +10,7 @@ current_price(
   include_market_cap = TRUE,
   include_24h_vol = TRUE,
   include_24h_change = TRUE,
-  max_attempts = 3L
+  max_attempts = 3
 )
 }
 \arguments{
@@ -36,11 +36,11 @@ whether to return the trading volume for the last 24 hours.}
 \code{TRUE}): whether to return the price percentage change compared to 24
 hours ago.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 A tibble, which by the default will contain the following columns (use

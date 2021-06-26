@@ -4,7 +4,7 @@
 \alias{exchange_rate}
 \title{Exchange rates}
 \usage{
-exchange_rate(currency = NULL, max_attempts = 3L)
+exchange_rate(currency = NULL, max_attempts = 3)
 }
 \arguments{
 \item{currency}{(character or \code{NULL}): a vector with abbreviated names of the
@@ -14,11 +14,11 @@ function. If an unsupported \code{currency} is requested, the call will fail
 with the respective error message. If \code{currency = NULL} (default), the
 function will return exchange rates for all supported currencies.}
 
-\item{max_attempts}{(integer, positive): specifies the
-maximum number of additional attempts to call a URL if the
-first attempt fails (i.e. its call status is different from
+\item{max_attempts}{(double, positive): specifies the
+maximum number of additional attempts to call the CoinGecko API
+if the first attempt fails (i.e. its call status is different from
 \code{200}). Additional attempts are implemented with an exponential
-backoff. Defaults to \code{3}.}
+backoff. Defaults to 3.}
 }
 \value{
 A tibble with the following columns:

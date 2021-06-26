@@ -69,7 +69,7 @@
 #' print(r)
 coin_tickers <- function(coin_id,
                          exchange_id,
-                         max_attempts = 3L) {
+                         max_attempts = 3) {
   if (length(coin_id) > 1L) {
     rlang::abort("Only one `coin_id` is allowed")
   }
