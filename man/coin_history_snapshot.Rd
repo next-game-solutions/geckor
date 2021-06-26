@@ -35,7 +35,7 @@ columns:
 \item \code{coin_id} (character): coin ID;
 \item \code{symbol} (character): symbol of the coin;
 \item \code{name} (character): common name of the coin;
-\item \code{date} (Date): the same as the argument \code{date};
+\item \code{date} (Date): same as the argument \code{date};
 \item \code{vs_currency} (character): currency, in which the coin's \code{price} is
 expressed (ordered alphabetically);
 \item \code{price} (double): price of the coin;

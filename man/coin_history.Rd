@@ -22,7 +22,7 @@ If \code{days = "max"}, the entire available history for \code{coin_id} will be
 retrieved. Depending on the value of \code{days}, the time interval used to
 present the data will differ - see "Details".}
 
-\item{interval}{(character or \code{NULL}): time interval to present the data.
+\item{interval}{(character or \code{NULL}): time interval used to present the data.
 The only currently supported interval is \code{daily}. Defaults to \code{NULL}.}
 
 \item{max_attempts}{(double, positive): specifies the
@@ -36,7 +36,7 @@ A tibble with the following columns:
 \item \code{timestamp} (POSIXct);
 \item \code{coin_id} (character): coin ID;
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
-\item \code{price} (double): coin price, as of \code{datetime};
+\item \code{price} (double): coin price, as of \code{timestamp};
 \item \code{total_volume} (double): a 24 h rolling-window trading volume, as
 of \code{timestamp};
 \item \code{market_cap} (double): market capitalisation, as of \code{timestamp}.

@@ -7,7 +7,7 @@
 #'     If `days = "max"`, the entire available history for `coin_id` will be
 #'     retrieved. Depending on the value of `days`, the time interval used to
 #'     present the data will differ - see "Details".
-#' @param interval (character or `NULL`): time interval to present the data.
+#' @param interval (character or `NULL`): time interval used to present the data.
 #'     The only currently supported interval is `daily`. Defaults to `NULL`.
 #' @eval function_params("max_attempts")
 #'
@@ -22,7 +22,7 @@
 #' * `timestamp` (POSIXct);
 #' * `coin_id` (character): coin ID;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
-#' * `price` (double): coin price, as of `datetime`;
+#' * `price` (double): coin price, as of `timestamp`;
 #' * `total_volume` (double): a 24 h rolling-window trading volume, as
 #' of `timestamp`;
 #' * `market_cap` (double): market capitalisation, as of `timestamp`.

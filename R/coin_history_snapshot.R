@@ -15,7 +15,7 @@
 #' * `coin_id` (character): coin ID;
 #' * `symbol` (character): symbol of the coin;
 #' * `name` (character): common name of the coin;
-#' * `date` (Date): the same as the argument `date`;
+#' * `date` (Date): same as the argument `date`;
 #' * `vs_currency` (character): currency, in which the coin's `price` is
 #' expressed (ordered alphabetically);
 #' * `price` (double): price of the coin;
