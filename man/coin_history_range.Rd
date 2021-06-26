@@ -47,7 +47,8 @@ This function returns hourly data for periods of up to 90 days
 and daily data for periods longer than 90 days.
 
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{

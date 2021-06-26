@@ -29,7 +29,8 @@ Retrieves a list of top-7 coins on CoinGecko according to their search popularit
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 
 Popularity of a coin is determined based on the search patterns at the

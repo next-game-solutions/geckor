@@ -19,7 +19,7 @@
 #' * above 30: 4 days.
 #'
 #' @return A tibble with the following columns:
-#' * `timestamp` (POSIXct): timestamp;
+#' * `timestamp` (POSIXct);
 #' * `coin_id` (character): coin ID;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price_open` (double): coin price in the beginning of a time interval;

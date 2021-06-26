@@ -32,7 +32,7 @@ implemented with an exponential backoff. Defaults to 3.}
 \value{
 A tibble with the following columns:
 \itemize{
-\item \code{timestamp} (POSIXct): timestamp;
+\item \code{timestamp} (POSIXct);
 \item \code{coin_id} (character): coin ID;
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price_open} (double): coin price in the beginning of a time interval;
@@ -46,7 +46,8 @@ Retrieves open-high-low-close price data for the last \emph{n} days
 }
 \details{
 This function is based on the public
-CoinGecko API, which has a limit of 100 calls per minute. Please
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 
 Granularity of the retrieved data

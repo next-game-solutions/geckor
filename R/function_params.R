@@ -37,7 +37,8 @@ function_params <- function(arguments) {
        `TRUE`): whether to return the price percentage change compared to 24
        hours ago.",
     api_note = "@details This function is based on the public
-               CoinGecko API, which has a limit of 100 calls per minute. Please
+               [CoinGecko API](https://www.coingecko.com/api/documentations/v3),
+               which has a limit of 50 calls per minute. Please
                keep this limit in mind when developing your applications.",
     max_attempts = "@param max_attempts (double, positive): specifies the
                maximum number of attempts to call the CoinGecko API (e.g., if
