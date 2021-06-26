@@ -23,13 +23,14 @@ example, if the path is \code{api/v3/ping}, then this vector must be
 Can be a \code{NULL} value.}
 }
 \value{
-A URL that can be used in a \code{GET} request.
+A URL that is ready to be used in a \code{GET} request.
 }
 \description{
 Returns a URL properly formatted for a \code{GET} request
 }
 \details{
 No validation of the base URL is performed by this function,
-so users are advised to ensure the URL is correctly formatted and encoded.
+so users are advised to ensure that the base URL is correctly
+formatted and encoded.
 }
 \keyword{internal}
