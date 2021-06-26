@@ -2,7 +2,7 @@
 % Please edit documentation in R/supported_coins.R
 \name{supported_coins}
 \alias{supported_coins}
-\title{Get CoinGecko coins}
+\title{CoinGecko coins}
 \usage{
 supported_coins(max_attempts = 3)
 }
@@ -15,9 +15,9 @@ implemented with an exponential backoff. Defaults to 3.}
 \value{
 A tibble with three columns:
 \itemize{
-\item \code{coin_id}(character): coin IDs, ordered alphabetically;
-\item \code{symbol} (character): coin symbol;
-\item \code{name} (character): coin common name.
+\item \code{coin_id} (character): coin IDs, ordered alphabetically;
+\item \code{symbol} (character): coin symbols;
+\item \code{name} (character): common names of the coins.
 }
 }
 \description{
