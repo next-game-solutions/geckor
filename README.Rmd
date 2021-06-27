@@ -32,7 +32,7 @@ At the moment, `geckor` is only available on GitHub and can be installed with:
 devtools::install_github("next-game-solutions/geckor")
 ```
 
-## Example
+## Examples
 
 Detailed examples of how to use `geckor` can be found in its [online documentation](https://next-game-solutions.github.io/geckor/). Provided below are just a few common queries:
 
