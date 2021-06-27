@@ -55,3 +55,16 @@ dplyr::glimpse(cm)
 ```
 
 See `?current_market` for definitions of columns in the resultant tibble.
+
+The `coin_tickers()` function allows one to query the current data on all trading pairs of a cryptocurrency from a given exchange. In the example below, we collect such data for Cardano traded at Binance:
+
+```{r coin-tickers}
+cardano_tickers <- coin_tickers(
+  coin_id = "cardano",
+  exchange_id = "binance"
+)
+
+dplyr::glimpse(cardano_tickers)
+```
+
+See `?coin_tickers` for definitions of columns in the resultant tibble.
