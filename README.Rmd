@@ -19,32 +19,62 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg)](https://codecov.io/gh/next-game-solutions/geckor?branch=main)
 <!-- badges: end -->
 
-The goal of geckor is to ...
+`geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements a
+number of major endpoints offered by that API and allows one to collect the
+current and historical market data on over 7000 cryptocurrencies from more than 400 exchanges. Results are typically returned in a tabular form as tibbles, ready for any downstream analyses.
 
 ## Installation
 
-You can install the released version of geckor from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-#install.packages("geckor")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+At the moment, `geckor` is only available on GitHub and can be installed with:
 
 ``` r
 # install.packages("devtools")
-#devtools::install_github("next-game-solutions/geckor")
+devtools::install_github("next-game-solutions/geckor")
 ```
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Detailed examples of how to use `geckor` can be found in its [online documentation](https://next-game-solutions.github.io/geckor/). Provided below are just a few common queries:
 
-```{r example}
-#library(geckor)
-## basic example code
+
+```{r example, message=FALSE, fig.align='center', fig.width=10, fig.height=4.5}
+library(geckor)
+library(dplyr)
+library(ggplot2)
+
+# Get the current price of Cardano, Tron, and Polkadot,
+# expressed in USD, EUR, and GBP:
+current_price(coin_ids = c("cardano", "tron", "plokadot"),
+              vs_currencies = c("usd", "eur", "gbp"))
+
+# Get a more comprehensive view of the current Cardano, Tron, and 
+# Polkadot markets:
+current_market(coin_ids = c("cardano", "tron", "polkadot"), 
+               vs_currency = "usd") %>% 
+  glimpse()
+
+# Collect all historical data on the price of Cardano (expressed in EUR),
+# and plot the result:
+cardano_history <- coin_history(coin_id = "cardano", 
+                                vs_currency = "eur", 
+                                days = "max")
+
+cardano_history %>% 
+  ggplot(aes(timestamp, price)) +
+  geom_line() + theme_minimal()
 ```
 
+## Getting help
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
+If you encounter a clear bug, please file an issue with a minimal reproducible example on [GitHub](https://github.com/next-game-solutions/geckor/issues).
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+
+## License
+
+This package is licensed to you under the terms of the MIT License.
+
+Copyright (c) `r substr(as.Date(Sys.Date()), 1, 4)` [Next Game Solutions OÜ](http://nextgamesolutions.com)
+
+---
+
+Please note that this project is released with a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/1/0/0/code-of-conduct/). By participating in this project you agree to abide by its terms.
