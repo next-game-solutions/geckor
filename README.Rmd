@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 `geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements a
 number of major endpoints offered by that API and allows one to collect the
-current and historical market data on over 7000 cryptocurrencies from more than 400 exchanges. Results are typically returned in a tabular form as tibbles, ready for any downstream analyses.
+current and historical market data on over 8000 cryptocurrencies from more than 300 exchanges. Results are typically returned in a tabular form as tibbles, ready for any downstream analyses.
 
 ## Installation
 

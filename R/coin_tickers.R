@@ -17,7 +17,7 @@
 #' * `base` (character): symbol of the base currency in a trading pair;
 #' * `target` (character): symbol of the target currency in a trading pair;
 #' * `trust_score` (character): trust score of a trading pair at a given exchange
-#' (`"green"`, `"orange"`, `"red"`; see
+#' (`"green"`, `"yellow"`, `"red"`; see
 #' [this](https://blog.coingecko.com/trust-score/) and
 #' [this](https://blog.coingecko.com/trust-score-2/) articles on the CoinGecko
 #' website for details);
