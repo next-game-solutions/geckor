@@ -1,0 +1,57 @@
+---
+title: "Current market data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Current market data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(geckor)
+```
+
+The CoinGecko API allows one to query market data on cryptocurrencies in real time. There are several functions in `geckor` that can be used to collect such data.
+
+The current prices for a set of cryptocurrencies of interest can be queried with the `current_price()` function. The two most important arguments expected by this function are `coin_ids` (a character vector with coin IDs; see `?supported_coins` for details) and `vs_currencies` (a character vector with abbreviated names of the "base currencies", i.e. currencies used to express the price in; see `?supported_currencies` for details). In the example below, we are requesting the current prices for Cardano, Tron, and Polkadot, expressed in USD, EUR, and GBP:
+
+```{r current-price}
+prices <- current_price(
+  coin_ids = c("cardano", "tron", "polkadot"),
+  vs_currencies = c("usd", "eur", "gbp")
+)
+
+prices
+```
+
+See `?current_price` for definitions of columns in the resultant tibble.
+
+The `exchange_rate()` function can be used to obtain the current exchange rates for any supported base currency, expressed in Bitcoin. The `currency` argument of this function specifies the list of currencies of interest. If `currency = NULL`, data for all supported currencies will be returned:
+
+```{r exchange-rates}
+all_rates <- exchange_rate(currency = NULL)
+head(all_rates, 10)
+
+some_rates <- exchange_rate(currency = c("btc", "usd", "rub"))
+some_rates
+```
+
+The `current_market()` function retrieves a rich set of data points describing the current market status of the cryptocurrencies of interest. Let's collect such data for Cardano, Tron, and Polkadot:
+
+```{r current-market}
+cm <- current_market(
+  coin_ids = c("cardano", "tron", "polkadot"),
+  vs_currency = "usd"
+)
+
+dplyr::glimpse(cm)
+```
+
+See `?current_market` for definitions of columns in the resultant tibble.

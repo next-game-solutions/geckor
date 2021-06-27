@@ -4,7 +4,7 @@
 \alias{current_market}
 \title{Current market data}
 \usage{
-current_market(coin_ids, vs_currency, max_attempts = 3)
+current_market(coin_ids, vs_currency = "usd", max_attempts = 3)
 }
 \arguments{
 \item{coin_ids}{(character): a vector with IDs of the coins of

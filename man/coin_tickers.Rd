@@ -30,7 +30,7 @@ A tibble with the following columns:
 \item \code{base} (character): symbol of the base currency in a trading pair;
 \item \code{target} (character): symbol of the target currency in a trading pair;
 \item \code{trust_score} (character): trust score of a trading pair at a given exchange
-(\code{"green"}, \code{"orange"}, \code{"red"}; see
+(\code{"green"}, \code{"yellow"}, \code{"red"}; see
 \href{https://blog.coingecko.com/trust-score/}{this} and
 \href{https://blog.coingecko.com/trust-score-2/}{this} articles on the CoinGecko
 website for details);
