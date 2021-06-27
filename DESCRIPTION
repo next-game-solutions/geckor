@@ -21,7 +21,8 @@ Suggests:
     covr,
     testthat (>= 3.0.0),
     readr,
-    spelling
+    spelling,
+    rmarkdown
 Config/testthat/edition: 3
 Language: en-US
 Imports: 
