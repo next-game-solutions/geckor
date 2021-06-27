@@ -1,6 +1,6 @@
 Package: geckor
 Title: R Client for the CoinGecko API
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person("Sergey", "Mastitsky",
            role = c("aut", "cre"),
@@ -8,7 +8,7 @@ Authors@R: c(
     person("Next Game Solutions", role = c("cph"))
   )
 Description: Collect the current and historical cryptocurrency market data using 
-    the CoinGecko public API.
+    the public CoinGecko API.
 License: MIT + file LICENSE
 URL: https://github.com/next-game-solutions/geckor
 BugReports: https://github.com/next-game-solutions/geckor/issues
