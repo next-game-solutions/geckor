@@ -1,6 +1,6 @@
 #' Get historical market data
 #'
-#' Retrieves market data for a coin for the last N days
+#' Retrieves market data for a coin for the last _n_ days
 #'
 #' @eval function_params(c("coin_id", "vs_currency"))
 #' @param days (numeric or `"max"`): number of days to look back.
@@ -89,6 +89,8 @@ coin_history <- function(coin_id,
   }
 
   prices <- lapply(r$prices, function(x) {
+    if (is.null(x[[1]])) {x[[1]] <- NA}
+    if (is.null(x[[2]])) {x[[2]] <- NA}
     tibble::tibble(
       timestamp = as.POSIXct(x[[1]] / 1000,
         origin = as.Date("1970-01-01"),
@@ -102,20 +104,33 @@ coin_history <- function(coin_id,
     dplyr::bind_rows()
 
   market_caps <- lapply(r$market_caps, function(x) {
+    if (is.null(x[[1]])) {x[[1]] <- NA}
+    if (is.null(x[[2]])) {x[[2]] <- NA}
     tibble::tibble(
+      timestamp = as.POSIXct(x[[1]] / 1000,
+                             origin = as.Date("1970-01-01"),
+                             tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
+      ),
       market_cap = x[[2]]
     )
   }) %>%
     dplyr::bind_rows()
 
   total_volumes <- lapply(r$total_volumes, function(x) {
+    if (is.null(x[[1]])) {x[[1]] <- NA}
+    if (is.null(x[[2]])) {x[[2]] <- NA}
     tibble::tibble(
+      timestamp = as.POSIXct(x[[1]] / 1000,
+                             origin = as.Date("1970-01-01"),
+                             tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
+      ),
       total_volume = x[[2]]
     )
   }) %>%
     dplyr::bind_rows()
 
-  result <- dplyr::bind_cols(prices, total_volumes, market_caps) %>%
+  result <- dplyr::full_join(prices, total_volumes, by = "timestamp")
+  result <- dplyr::full_join(result, market_caps, by = "timestamp") %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
 
   return(result)
