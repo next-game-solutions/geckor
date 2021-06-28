@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# geckor <img src='man/figures/logo.png' align="right" height="180" />
+# geckor <img src='man/figures/logo.png' align="right" height="169" />
 
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg)](https://codecov.io/gh/next-game-solutions/geckor?branch=main)
@@ -21,9 +21,8 @@ knitr::opts_chunk$set(
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
-`geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements a
-number of major endpoints offered by that API and allows one to collect the
-current and historical market data on over 8000 cryptocurrencies from more than 300 exchanges. Results are typically returned in a tabular form as [tibbles](https://tibble.tidyverse.org/), ready for any downstream analyses.
+`geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements several endpoints offered by that API, allowing users to collect the
+current and historical market data on over 8000 cryptocurrencies from more than 300 exchanges. Results are returned in a tabular form (as [tibbles](https://tibble.tidyverse.org/)), ready for any downstream analyses.
 
 ## Installation
 
@@ -77,7 +76,7 @@ cardano_history %>%
 
 ## API rate limit
 
-The public [CoinGecko API](https://www.coingecko.com/api/documentations/v3), has a limit of 50 calls per minute. Please keep this limit in mind when developing your applications using the `geckor` package.
+The public [CoinGecko API](https://www.coingecko.com/api/documentations/v3) offers a rate limit of 50 calls per minute. Please keep this limit in mind when developing your applications using the `geckor` package.
 
 
 ## Getting help
@@ -89,7 +88,7 @@ If you encounter a clear bug, please file an issue with a minimal reproducible e
 
 This package is licensed to you under the terms of the MIT License.
 
-The gecko silhouette image used in the package's hexagon logo has been downloaded from [Clipartkey.com](https://www.clipartkey.com/view/hmTimm_geckos-png-transparent-gecko-icon-transparent/) and is believed to be in the public domain. The logo has been created using the [hexmake app](https://connect.thinkr.fr/hexmake/).
+The gecko silhouette image used in the hexagon logo of this package has been downloaded from [Clipartkey.com](https://www.clipartkey.com/view/hmTimm_geckos-png-transparent-gecko-icon-transparent/) and is believed to be in the public domain. The logo has been created using the [hexmake app](https://connect.thinkr.fr/hexmake/).
 
 Copyright (c) `r substr(as.Date(Sys.Date()), 1, 4)` [Next Game Solutions OÜ](http://nextgamesolutions.com)
 
