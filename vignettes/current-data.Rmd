@@ -20,7 +20,7 @@ library(geckor)
 
 The CoinGecko API allows one to query market data on cryptocurrencies in real time. There are several functions in `geckor` that can be used to collect such data.
 
-The current prices for a set of cryptocurrencies of interest can be queried with the `current_price()` function. The two most important arguments expected by this function are `coin_ids` (a character vector with coin IDs; see `?supported_coins` for details) and `vs_currencies` (a character vector with abbreviated names of the "base currencies", i.e. currencies used to express the price in; see `?supported_currencies` for details). In the example below, we are requesting the current prices for Cardano, Tron, and Polkadot, expressed in USD, EUR, and GBP:
+The current prices for a set of cryptocurrencies of interest can be queried with the `current_price()` function. The two important arguments expected by this function are `coin_ids` (a character vector with coin IDs; see `?supported_coins` for details) and `vs_currencies` (a character vector with abbreviated names of the "base currencies", i.e. currencies used to express the price in; see `?supported_currencies` for details). In the example below, we are requesting the current prices for Cardano, Tron, and Polkadot, expressed in USD, EUR, and GBP:
 
 ```{r current-price}
 prices <- current_price(
@@ -68,3 +68,9 @@ dplyr::glimpse(cardano_tickers)
 ```
 
 See `?coin_tickers` for definitions of columns in the resultant tibble.
+
+Finally, one can use the `trending_coins()` function to obtain a list of top-7 trending coins in terms of their search popularity on CoinGecko:
+
+```{r trending-coins}
+trending_coins()
+```
