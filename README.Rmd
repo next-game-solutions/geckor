@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r, include = FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -18,12 +18,12 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg)](https://codecov.io/gh/next-game-solutions/geckor?branch=main)
 [![R-CMD-check](https://github.com/next-game-solutions/geckor/workflows/R-CMD-check/badge.svg)](https://github.com/next-game-solutions/geckor/actions)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 `geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements a
 number of major endpoints offered by that API and allows one to collect the
-current and historical market data on over 8000 cryptocurrencies from more than 300 exchanges. Results are typically returned in a tabular form as tibbles, ready for any downstream analyses.
+current and historical market data on over 8000 cryptocurrencies from more than 300 exchanges. Results are typically returned in a tabular form as [tibbles](https://tibble.tidyverse.org/), ready for any downstream analyses.
 
 ## Installation
 
@@ -32,15 +32,23 @@ At the moment, `geckor` is only available on GitHub and can be installed with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("next-game-solutions/geckor")
+
+library(geckor)
 ```
 
 ## Examples
 
 Detailed examples of how to use `geckor` can be found in its [online documentation](https://next-game-solutions.github.io/geckor/). Provided below are just a few common queries:
 
+```{r load-geckor}
+library(geckor)
+
+# check if the CoinGecko service is available:
+ping()
+```
+
 
 ```{r example, message=FALSE, fig.align='center', fig.width=10, fig.height=4.5}
-library(geckor)
 library(dplyr)
 library(ggplot2)
 
@@ -65,6 +73,12 @@ cardano_history %>%
   ggplot(aes(timestamp, price)) +
   geom_line() + theme_minimal()
 ```
+
+
+## API rate limit
+
+The public [CoinGecko API](https://www.coingecko.com/api/documentations/v3), has a limit of 50 calls per minute. Please keep this limit in mind when developing your applications using the `geckor` package.
+
 
 ## Getting help
 
