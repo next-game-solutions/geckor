@@ -115,7 +115,7 @@
 
 <span class="co"># number of supported coins:</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">coins</span><span class="op">)</span>
-<span class="co">#&gt; [1] 8279</span>
+<span class="co">#&gt; [1] 8280</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coins</span>, <span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 3</span>
@@ -144,16 +144,16 @@
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    exchange_id name  year_established country url   trust_score trading_volume_…</span>
 <span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;int&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 binance     Bina…             2017 Cayman… http…          10          502429.</span>
-<span class="co">#&gt;  2 gdax        Coin…             2012 United… http…          10           67782.</span>
-<span class="co">#&gt;  3 kraken      Krak…             2011 United… http…          10           28406.</span>
-<span class="co">#&gt;  4 bitfinex    Bitf…             2014 Britis… http…          10           17872.</span>
-<span class="co">#&gt;  5 binance_us  Bina…             2019 United… http…          10           13906.</span>
-<span class="co">#&gt;  6 crypto_com  Cryp…             2019 Cayman… http…          10            9193.</span>
-<span class="co">#&gt;  7 gemini      Gemi…             2014 United… http…          10            5709.</span>
-<span class="co">#&gt;  8 huobi       Huob…             2013 Seyche… http…           9          144465.</span>
-<span class="co">#&gt;  9 okex        OKEx              2013 Belize  http…           9          114281.</span>
-<span class="co">#&gt; 10 p2pb2b      P2PB…             2018 Estonia http…           9           44876.</span></code></pre></div>
+<span class="co">#&gt;  1 binance     Bina…             2017 Cayman… http…          10          507889.</span>
+<span class="co">#&gt;  2 gdax        Coin…             2012 United… http…          10           69013.</span>
+<span class="co">#&gt;  3 kraken      Krak…             2011 United… http…          10           28589.</span>
+<span class="co">#&gt;  4 bitfinex    Bitf…             2014 Britis… http…          10           18232.</span>
+<span class="co">#&gt;  5 binance_us  Bina…             2019 United… http…          10           13931.</span>
+<span class="co">#&gt;  6 crypto_com  Cryp…             2019 Cayman… http…          10            8823.</span>
+<span class="co">#&gt;  7 gemini      Gemi…             2014 United… http…          10            5802.</span>
+<span class="co">#&gt;  8 huobi       Huob…             2013 Seyche… http…           9          146329.</span>
+<span class="co">#&gt;  9 okex        OKEx              2013 Belize  http…           9          115409.</span>
+<span class="co">#&gt; 10 hoo         Hoo.…             2019 Cayman… http…           9           45734.</span></code></pre></div>
 <p>Of the important columns in the resultant tibble is <code>trust_score</code>. This score ranges from 1 to 10 and combines several metrics indicative of how much one can trust the data originating from a given exchange (see <a href="https://blog.coingecko.com/trust-score/" title="Trust Score v1">this</a> and <a href="https://blog.coingecko.com/trust-score-2/" title="Trust Score v2">this</a> articles on the CoinGecko website for details).</p>
 <p>When querying the market data for a cryptocurrency, users are always expected to supply one or several “base currencies” to express the price in. The list of such base currencies can be obtained with the <code><a href="../reference/supported_currencies.html">supported_currencies()</a></code> function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
