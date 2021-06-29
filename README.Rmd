@@ -53,7 +53,7 @@ library(ggplot2)
 
 # Get the current price of Cardano, Tron, and Polkadot,
 # expressed in USD, EUR, and GBP:
-current_price(coin_ids = c("cardano", "tron", "plokadot"),
+current_price(coin_ids = c("cardano", "tron", "polkadot"),
               vs_currencies = c("usd", "eur", "gbp"))
 
 # Get a more comprehensive view of the current Cardano, Tron, and 
