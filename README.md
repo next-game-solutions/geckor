@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# geckor
+# geckor <img src='man/figures/logo.png' align="right" height="169" />
 
 <!-- badges: start -->
 
@@ -9,16 +9,16 @@
 coverage](https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg)](https://codecov.io/gh/next-game-solutions/geckor?branch=main)
 [![R-CMD-check](https://github.com/next-game-solutions/geckor/workflows/R-CMD-check/badge.svg)](https://github.com/next-game-solutions/geckor/actions)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 `geckor` is an R client for the public [CoinGecko
 API](https://www.coingecko.com/en/api#explore-api). This package
-implements a number of major endpoints offered by that API and allows
-one to collect the current and historical market data on over 8000
-cryptocurrencies from more than 300 exchanges. Results are typically
-returned in a tabular form as tibbles, ready for any downstream
-analyses.
+implements several endpoints offered by that API, allowing users to
+collect the current and historical market data on over 8000
+cryptocurrencies from more than 300 exchanges. Results are returned in a
+tabular form (as [tibbles](https://tibble.tidyverse.org/)), ready for
+any downstream analyses.
 
 ## Installation
 
@@ -28,6 +28,8 @@ with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("next-game-solutions/geckor")
+
+library(geckor)
 ```
 
 ## Examples
@@ -38,6 +40,15 @@ below are just a few common queries:
 
 ``` r
 library(geckor)
+#> R client for the CoinGecko API
+#> Developed by Next Game Solutions (http://nextgamesolutions.com)
+
+# check if the CoinGecko service is available:
+ping()
+#> [1] TRUE
+```
+
+``` r
 library(dplyr)
 library(ggplot2)
 
@@ -48,12 +59,12 @@ current_price(coin_ids = c("cardano", "tron", "plokadot"),
 #> # A tibble: 6 x 7
 #>   coin_id  price vs_currency   market_cap     vol_24h price_percent_change_24h
 #>   <chr>    <dbl> <chr>              <dbl>       <dbl>                    <dbl>
-#> 1 cardano 1.27   usd         40596536977. 3302980962.                    0.869
-#> 2 cardano 1.06   eur         34013646120. 2767389387.                    0.875
-#> 3 cardano 0.914  gbp         29251388157. 2379926600.                    0.916
-#> 4 tron    0.0625 usd          4470794105. 1151300232.                    0.881
-#> 5 tron    0.0524 eur          3745836957.  964612294.                    0.887
-#> 6 tron    0.0450 gbp          3221381513.  829556718.                    0.928
+#> 1 cardano 1.34   usd         42603376273. 3404352588.                     5.74
+#> 2 cardano 1.12   eur         35726850515. 2854862845.                     5.83
+#> 3 cardano 0.962  gbp         30698416617. 2453050514.                     5.75
+#> 4 tron    0.0660 usd          4713849525. 1143880379.                     7.05
+#> 5 tron    0.0553 eur          3952996501.  959248935.                     7.15
+#> 6 tron    0.0475 gbp          3396625555.  824237878.                     7.06
 #> # ... with 1 more variable: last_updated_at <dttm>
 
 # Get a more comprehensive view of the current Cardano, Tron, and 
@@ -67,34 +78,34 @@ current_market(coin_ids = c("cardano", "tron", "polkadot"),
 #> $ symbol                                   <chr> "ada", "dot", "trx"
 #> $ name                                     <chr> "Cardano", "Polkadot", "TRON"
 #> $ vs_currency                              <chr> "usd", "usd", "usd"
-#> $ last_updated_at                          <dttm> 2021-06-27 12:34:37, 2021-06-~
-#> $ current_price                            <dbl> 1.270000, 14.490000, 0.062487
-#> $ market_cap                               <dbl> 40596536977, 14560978113, 447~
+#> $ last_updated_at                          <dttm> 2021-06-28 19:35:22, 2021-06-~
+#> $ current_price                            <dbl> 1.340000, 15.480000, 0.065951
+#> $ market_cap                               <dbl> 42603376273, 15425308159, 471~
 #> $ market_cap_rank                          <int> 5, 9, 24
-#> $ fully_diluted_valuation                  <dbl> 56970682571, NA, NA
-#> $ total_volume                             <dbl> 3302980962, 668989702, 115130~
-#> $ high_24h                                 <dbl> 1.310000, 14.900000, 0.063764
-#> $ low_24h                                  <dbl> 1.220000, 13.820000, 0.060592
-#> $ price_change_24h                         <dbl> 0.01092106, -0.04060287, 0.00~
-#> $ price_change_percentage_24h              <dbl> 0.86872, -0.27940, 0.88113
-#> $ market_cap_change_24h                    <int> 344463275, 30822234, 37955182
-#> $ market_cap_change_percentage_24h         <dbl> 0.85577, 0.21213, 0.85623
-#> $ circulating_supply                       <dbl> 32066390668, 1005141640, 716~
-#> $ total_supply                             <dbl> 45000000000, 1086090772, 1008~
+#> $ fully_diluted_valuation                  <dbl> 59786957381, NA, NA
+#> $ total_volume                             <dbl> 3404352588, 743269807, 114388~
+#> $ high_24h                                 <dbl> 1.360000, 15.910000, 0.067296
+#> $ low_24h                                  <dbl> 1.250000, 14.190000, 0.061434
+#> $ price_change_24h                         <dbl> 0.07251500, 1.27000000, 0.004~
+#> $ price_change_percentage_24h              <dbl> 5.74358, 8.91461, 7.05259
+#> $ market_cap_change_24h                    <int> 2018775387, 1120761134, 3018~
+#> $ market_cap_change_percentage_24h         <dbl> 4.97424, 7.83500, 6.84101
+#> $ circulating_supply                       <dbl> 32066390668, 1005617291, 7166~
+#> $ total_supply                             <dbl> 45000000000, 1086567782, 1008~
 #> $ max_supply                               <dbl> 4.5e+10, NA, NA
 #> $ ath                                      <dbl> 2.450000, 49.350000, 0.231673
-#> $ ath_change_percentage                    <dbl> -48.27778, -70.71820, -73.165~
+#> $ ath_change_percentage                    <dbl> -45.68448, -68.90076, -71.588~
 #> $ ath_date                                 <dttm> 2021-05-16 07:44:28, 2021-05-~
 #> $ atl                                      <dbl> 0.01925275, 2.70000000, 0.001~
-#> $ atl_change_percentage                    <dbl> 6469.744, 435.700, 3345.467
+#> $ atl_change_percentage                    <dbl> 6799.1444, 468.9495, 3547.9437
 #> $ atl_date                                 <dttm> 2020-03-13 02:22:55, 2020-08-~
-#> $ price_change_percentage_1h_in_currency   <dbl> -0.1110681, -0.8749760, 0.266~
-#> $ price_change_percentage_24h_in_currency  <dbl> 0.8687166, -0.2794001, 0.8811~
-#> $ price_change_percentage_7d_in_currency   <dbl> -8.786840, -28.901347, -9.080~
-#> $ price_change_percentage_14d_in_currency  <dbl> -14.490698, -30.486918, -8.48~
-#> $ price_change_percentage_30d_in_currency  <dbl> -23.17154, -39.60348, -21.394~
-#> $ price_change_percentage_200d_in_currency <dbl> 797.1271, 205.7655, 124.2103
-#> $ price_change_percentage_1y_in_currency   <dbl> 1472.6459, NA, 294.2361
+#> $ price_change_percentage_1h_in_currency   <dbl> 0.9058240, 1.2867787, 0.74332~
+#> $ price_change_percentage_24h_in_currency  <dbl> 5.743583, 8.914610, 7.052595
+#> $ price_change_percentage_7d_in_currency   <dbl> -6.943390, -25.377910, -3.043~
+#> $ price_change_percentage_14d_in_currency  <dbl> -14.792300, -29.918767, -7.71~
+#> $ price_change_percentage_30d_in_currency  <dbl> -11.89987, -27.87901, -8.89946
+#> $ price_change_percentage_200d_in_currency <dbl> 800.5472, 218.2963, 129.3543
+#> $ price_change_percentage_1y_in_currency   <dbl> 1623.6568, NA, 326.7531
 
 # Collect all historical data on the price of Cardano (expressed in EUR),
 # and plot the result:
@@ -109,15 +120,28 @@ cardano_history %>%
 
 <img src="man/figures/README-example-1.png" width="100%" style="display: block; margin: auto;" />
 
+## API rate limit
+
+The public [CoinGecko
+API](https://www.coingecko.com/api/documentations/v3) offers a rate
+limit of 50 calls per minute. Please keep this limit in mind when
+developing your applications using the `geckor` package.
+
 ## Getting help
 
 If you encounter a clear bug, please file an issue with a minimal
 reproducible example on
 [GitHub](https://github.com/next-game-solutions/geckor/issues).
 
-## License
+## Licensing
 
 This package is licensed to you under the terms of the MIT License.
+
+The gecko silhouette image used in the hexagon logo of this package has
+been downloaded from
+[Clipartkey.com](https://www.clipartkey.com/view/hmTimm_geckos-png-transparent-gecko-icon-transparent/)
+and is believed to be in the public domain. The logo has been created
+using the [hexmake app](https://connect.thinkr.fr/hexmake/).
 
 Copyright (c) 2021 [Next Game Solutions
 OÜ](http://nextgamesolutions.com)

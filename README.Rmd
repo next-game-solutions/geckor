@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r, include = FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -13,17 +13,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-# geckor
+# geckor <img src='man/figures/logo.png' align="right" height="169" />
 
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg)](https://codecov.io/gh/next-game-solutions/geckor?branch=main)
 [![R-CMD-check](https://github.com/next-game-solutions/geckor/workflows/R-CMD-check/badge.svg)](https://github.com/next-game-solutions/geckor/actions)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
-`geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements a
-number of major endpoints offered by that API and allows one to collect the
-current and historical market data on over 8000 cryptocurrencies from more than 300 exchanges. Results are typically returned in a tabular form as tibbles, ready for any downstream analyses.
+`geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements several endpoints offered by that API, allowing users to collect the
+current and historical market data on over 8000 cryptocurrencies from more than 300 exchanges. Results are returned in a tabular form (as [tibbles](https://tibble.tidyverse.org/)), ready for any downstream analyses.
 
 ## Installation
 
@@ -32,15 +31,23 @@ At the moment, `geckor` is only available on GitHub and can be installed with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("next-game-solutions/geckor")
+
+library(geckor)
 ```
 
 ## Examples
 
 Detailed examples of how to use `geckor` can be found in its [online documentation](https://next-game-solutions.github.io/geckor/). Provided below are just a few common queries:
 
+```{r load-geckor}
+library(geckor)
+
+# check if the CoinGecko service is available:
+ping()
+```
+
 
 ```{r example, message=FALSE, fig.align='center', fig.width=10, fig.height=4.5}
-library(geckor)
 library(dplyr)
 library(ggplot2)
 
@@ -66,14 +73,22 @@ cardano_history %>%
   geom_line() + theme_minimal()
 ```
 
+
+## API rate limit
+
+The public [CoinGecko API](https://www.coingecko.com/api/documentations/v3) offers a rate limit of 50 calls per minute. Please keep this limit in mind when developing your applications using the `geckor` package.
+
+
 ## Getting help
 
 If you encounter a clear bug, please file an issue with a minimal reproducible example on [GitHub](https://github.com/next-game-solutions/geckor/issues).
 
 
-## License
+## Licensing
 
 This package is licensed to you under the terms of the MIT License.
+
+The gecko silhouette image used in the hexagon logo of this package has been downloaded from [Clipartkey.com](https://www.clipartkey.com/view/hmTimm_geckos-png-transparent-gecko-icon-transparent/) and is believed to be in the public domain. The logo has been created using the [hexmake app](https://connect.thinkr.fr/hexmake/).
 
 Copyright (c) `r substr(as.Date(Sys.Date()), 1, 4)` [Next Game Solutions OÜ](http://nextgamesolutions.com)
 

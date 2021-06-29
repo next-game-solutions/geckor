@@ -43,7 +43,7 @@ of \code{timestamp};
 }
 }
 \description{
-Retrieves market data for a coin for the last N days
+Retrieves market data for a coin for the last \emph{n} days
 }
 \details{
 If \code{days = 1} and \code{interval = NULL}, the data will be returned for
