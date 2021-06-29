@@ -1,0 +1,26 @@
+template:
+  params:
+    bootswatch: yeti
+
+reference:
+- title: "Current market data"
+- contents:
+  - current_price
+  - current_market
+  - coin_tickers
+  - exchange_rate
+  - trending_coins
+- title: "Historical market data"
+- contents:
+  - coin_history_snapshot
+  - coin_history_range
+  - coin_history
+  - coin_history_ohlc
+- title: "Supported entities"
+- contents:
+  - supported_coins
+  - supported_currencies
+  - supported_exchanges
+- title: "Utility functions"
+- contents:
+  - ping
