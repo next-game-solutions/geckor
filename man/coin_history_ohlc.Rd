@@ -33,7 +33,7 @@ implemented with an exponential backoff. Defaults to 3.}
 A tibble with the following columns:
 \itemize{
 \item \code{timestamp} (POSIXct);
-\item \code{coin_id} (character): coin ID;
+\item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price_open} (double): coin price in the beginning of a time interval;
 \item \code{price_high} (double): highest coin price observed within a time interval;
@@ -45,11 +45,6 @@ A tibble with the following columns:
 Retrieves open-high-low-close price data for the last \emph{n} days
 }
 \details{
-This function is based on the public
-\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
-which has a limit of 50 calls per minute. Please
-keep this limit in mind when developing your applications.
-
 Granularity of the retrieved data
 (i.e. \href{https://en.wikipedia.org/wiki/Open-high-low-close_chart}{candle}'s
 body) depends on the value of \code{days} as follows:
@@ -58,6 +53,11 @@ body) depends on the value of \code{days} as follows:
 \item 7 - 30 days: 4 hours;
 \item above 30: 4 days.
 }
+
+This function is based on the public
+\href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
+which has a limit of 50 calls per minute. Please
+keep this limit in mind when developing your applications.
 }
 \examples{
 \donttest{

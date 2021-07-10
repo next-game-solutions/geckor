@@ -9,7 +9,7 @@
 #'     If `days = "max"`, the entire available history will be retrieved.
 #'     Depending on the value of `days`, the time interval used to present the
 #'     data will differ - see "Details".
-#' @eval function_params(c("max_attempts", "api_note"))
+#' @eval function_params(c("max_attempts"))
 #'
 #' @details Granularity of the retrieved data
 #'     (i.e. [candle](https://en.wikipedia.org/wiki/Open-high-low-close_chart)'s
@@ -18,9 +18,11 @@
 #' * 7 - 30 days: 4 hours;
 #' * above 30: 4 days.
 #'
+#' @eval function_params(c("api_note"))
+#'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
-#' * `coin_id` (character): coin ID;
+#' * `coin_id` (character): same as the argument `coin_id`;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price_open` (double): coin price in the beginning of a time interval;
 #' * `price_high` (double): highest coin price observed within a time interval;
