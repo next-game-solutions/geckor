@@ -4,7 +4,7 @@
 \alias{coin_history_ohlc}
 \title{Historical OHLC price data}
 \usage{
-coin_history_ohlc(coin_id, vs_currency, days, max_attempts = 3)
+coin_history_ohlc(coin_id, vs_currency = "usd", days, max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An

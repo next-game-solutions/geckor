@@ -10,14 +10,14 @@
 #' @eval function_params(c("max_attempts"))
 #'
 #' @details This function returns hourly data for periods of up to 90 days
-#'     and daily data for periods longer than 90 days.
+#'     and daily data for periods that are longer than 90 days.
 #' @eval function_params("api_note")
 #'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price` (double): coin price as of `timestamp`;
-#' * `total_trading_vol` (double): a 24 h rolling-window trading volume, as
+#' * `total_trading_vol` (double): a 24 hours rolling-window trading volume, as
 #' of `timestampt`;
 #' * `market_cap` (double): market capitalisation, as of `timestamp`.
 #'
@@ -37,7 +37,7 @@
 #' print(r)
 #' }
 coin_history_range <- function(coin_id,
-                               vs_currency,
+                               vs_currency = "usd",
                                from,
                                to,
                                max_attempts = 3) {

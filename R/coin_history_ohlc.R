@@ -41,7 +41,7 @@
 #' print(r)
 #' }
 coin_history_ohlc <- function(coin_id,
-                              vs_currency,
+                              vs_currency = "usd",
                               days,
                               max_attempts = 3) {
   if (length(coin_id) > 1L) {
