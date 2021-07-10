@@ -4,7 +4,13 @@
 \alias{coin_history}
 \title{Get historical market data}
 \usage{
-coin_history(coin_id, vs_currency, days, interval = NULL, max_attempts = 3)
+coin_history(
+  coin_id,
+  vs_currency = "usd",
+  days,
+  interval = NULL,
+  max_attempts = 3
+)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An
@@ -23,7 +29,7 @@ retrieved. Depending on the value of \code{days}, the time interval used to
 present the data will differ - see "Details".}
 
 \item{interval}{(character or \code{NULL}): time interval used to present the data.
-The only currently supported interval is \code{daily}. Defaults to \code{NULL}.}
+The only currently supported value is \code{daily}. Defaults to \code{NULL}.}
 
 \item{max_attempts}{(double, positive): specifies the
 maximum number of attempts to call the CoinGecko API (e.g., if
@@ -34,10 +40,10 @@ implemented with an exponential backoff. Defaults to 3.}
 A tibble with the following columns:
 \itemize{
 \item \code{timestamp} (POSIXct);
-\item \code{coin_id} (character): coin ID;
+\item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price} (double): coin price, as of \code{timestamp};
-\item \code{total_volume} (double): a 24 h rolling-window trading volume, as
+\item \code{total_volume} (double): a 24 hours rolling-window trading volume, as
 of \code{timestamp};
 \item \code{market_cap} (double): market capitalisation, as of \code{timestamp}.
 }

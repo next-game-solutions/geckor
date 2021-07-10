@@ -8,7 +8,7 @@
 #'     retrieved. Depending on the value of `days`, the time interval used to
 #'     present the data will differ - see "Details".
 #' @param interval (character or `NULL`): time interval used to present the data.
-#'     The only currently supported interval is `daily`. Defaults to `NULL`.
+#'     The only currently supported value is `daily`. Defaults to `NULL`.
 #' @eval function_params("max_attempts")
 #'
 #' @details If `days = 1` and `interval = NULL`, the data will be returned for
@@ -20,10 +20,10 @@
 #'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
-#' * `coin_id` (character): coin ID;
+#' * `coin_id` (character): same as the argument `coin_id`;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price` (double): coin price, as of `timestamp`;
-#' * `total_volume` (double): a 24 h rolling-window trading volume, as
+#' * `total_volume` (double): a 24 hours rolling-window trading volume, as
 #' of `timestamp`;
 #' * `market_cap` (double): market capitalisation, as of `timestamp`.
 #'
@@ -38,7 +38,7 @@
 #' print(r)
 #' }
 coin_history <- function(coin_id,
-                         vs_currency,
+                         vs_currency = "usd",
                          days,
                          interval = NULL,
                          max_attempts = 3) {
