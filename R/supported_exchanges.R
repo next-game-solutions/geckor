@@ -16,7 +16,7 @@
 #' trusted (ranges from 1 to 10; see
 #' [Methodology](https://www.coingecko.com/en/methodology) on the CoinGecko
 #' website);
-#' * `trading_volume_24h_btc` (double): trading volume in the last 24 h,
+#' * `trading_volume_24h_btc` (double): trading volume in the last 24 hours,
 #' expressed in Bitcoin.
 #'
 #' @export
