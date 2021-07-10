@@ -20,16 +20,16 @@ A tibble with the following columns:
 \item \code{coin_id} (character): coin ID;
 \item \code{name} (character): common name of the coin;
 \item \code{symbol} (character): symbol of the coin;
-\item \code{market_cap_rank} (integer): market capitalisation rank of the coin;
-\item \code{price_btc} (double): price of the coin expressed in Bitcoin.
+\item \code{market_cap_rank} (integer): market capitalisation rank;
+\item \code{price_btc} (double): price expressed in Bitcoin.
 }
 }
 \description{
 Retrieves a list of top-7 coins on CoinGecko according to their search popularity
 }
 \details{
-Popularity of a coin is determined based on the search patterns at the
-CoinGecko website over the last 24 h.
+Popularity of a coin is determined from search patterns at the
+CoinGecko website over the last 24 hours.
 
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
