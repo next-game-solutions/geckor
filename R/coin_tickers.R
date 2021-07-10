@@ -10,16 +10,15 @@
 #'
 #' @return A tibble with the following columns:
 #'
-#' * `exchange_id` (character);
+#' * `exchange_id` (character): same as the argument `exchange_id`;
 #' * `exchange_name` (character): common name of the exchange;
-#' * `coin_id` (character): coin ID;
+#' * `coin_id` (character): same as the argument `coin_id`;
 #' * `name` (character): common name of the coin;
 #' * `base` (character): symbol of the base currency in a trading pair;
 #' * `target` (character): symbol of the target currency in a trading pair;
-#' * `trust_score` (character): trust score of a trading pair at a given exchange
-#' (`"green"`, `"yellow"`, `"red"`; see
-#' [this](https://blog.coingecko.com/trust-score/) and
-#' [this](https://blog.coingecko.com/trust-score-2/) articles on the CoinGecko
+#' * `trust_score` (character): trust score of the trading pair (`"green"`,
+#' `"yellow"`, `"red"`; see [this](https://blog.coingecko.com/trust-score/) and
+#' [this](https://blog.coingecko.com/trust-score-2/) article on the CoinGecko
 #' website for details);
 #' * `last_price` (double): last price reported by this exchange for this
 #' trading pair;
@@ -28,23 +27,23 @@
 #' * `last_traded_at` (POSIXct, UTC time zone): timestamp of the most recent
 #' trade;
 #' * `bid_ask_spread_percentage` (double): percentage difference between
-#' the ask price (lowest price a seller is willing to sell) and the bid price
-#' (highest price a buyer is willing to buy; see
+#' the ask price (lowest price a seller is willing to sell for) and the bid price
+#' (highest price a buyer is willing to buy for; see
 #' [Investopedia](https://www.investopedia.com/terms/b/bid-askspread.asp) for
 #' details);
 #' * `trading_volume_24h` (double): trading volume (in `target` currency)
 #' recorded in the last 24 h (as of `last_traded_at`);
-#' * `last_price_btc` (double): last price reported by a given exchange for a
+#' * `last_price_btc` (double): last price reported by this exchange for this
 #' coin, expressed in Bitcoin;
-#' * `last_price_eth` (double): last price reported by a given exchange for a
+#' * `last_price_eth` (double): last price reported by this exchange for this
 #' coin, expressed in Ethereum;
-#' * `last_price_usd` (double): last price reported by a given exchange for a
+#' * `last_price_usd` (double): last price reported by this exchange for this
 #' coin, expressed in US dollar;
-#' * `trading_volume_24h_btc` (double): 24-h trading volume expressed in
+#' * `trading_volume_24h_btc` (double): 24 hours trading volume expressed in
 #' Bitcoin (as of `last_traded_at`);
-#' * `trading_volume_24h_eth` (double): 24-h trading volume expressed in
+#' * `trading_volume_24h_eth` (double): 24 hours trading volume expressed in
 #' Ethereum;
-#' * `trading_volume_24h_usd` (double): 24-h trading volume expressed in
+#' * `trading_volume_24h_usd` (double): 24 hours trading volume expressed in
 #' US dollars;
 #' * `cost_to_move_up_2percent_usd` and `cost_to_move_down_2percent_usd`
 #' (double): 2% market depth (see

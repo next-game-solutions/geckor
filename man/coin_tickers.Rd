@@ -23,16 +23,15 @@ implemented with an exponential backoff. Defaults to 3.}
 \value{
 A tibble with the following columns:
 \itemize{
-\item \code{exchange_id} (character);
+\item \code{exchange_id} (character): same as the argument \code{exchange_id};
 \item \code{exchange_name} (character): common name of the exchange;
-\item \code{coin_id} (character): coin ID;
+\item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{name} (character): common name of the coin;
 \item \code{base} (character): symbol of the base currency in a trading pair;
 \item \code{target} (character): symbol of the target currency in a trading pair;
-\item \code{trust_score} (character): trust score of a trading pair at a given exchange
-(\code{"green"}, \code{"yellow"}, \code{"red"}; see
-\href{https://blog.coingecko.com/trust-score/}{this} and
-\href{https://blog.coingecko.com/trust-score-2/}{this} articles on the CoinGecko
+\item \code{trust_score} (character): trust score of the trading pair (\code{"green"},
+\code{"yellow"}, \code{"red"}; see \href{https://blog.coingecko.com/trust-score/}{this} and
+\href{https://blog.coingecko.com/trust-score-2/}{this} article on the CoinGecko
 website for details);
 \item \code{last_price} (double): last price reported by this exchange for this
 trading pair;
@@ -41,23 +40,23 @@ was recorded;
 \item \code{last_traded_at} (POSIXct, UTC time zone): timestamp of the most recent
 trade;
 \item \code{bid_ask_spread_percentage} (double): percentage difference between
-the ask price (lowest price a seller is willing to sell) and the bid price
-(highest price a buyer is willing to buy; see
+the ask price (lowest price a seller is willing to sell for) and the bid price
+(highest price a buyer is willing to buy for; see
 \href{https://www.investopedia.com/terms/b/bid-askspread.asp}{Investopedia} for
 details);
 \item \code{trading_volume_24h} (double): trading volume (in \code{target} currency)
 recorded in the last 24 h (as of \code{last_traded_at});
-\item \code{last_price_btc} (double): last price reported by a given exchange for a
+\item \code{last_price_btc} (double): last price reported by this exchange for this
 coin, expressed in Bitcoin;
-\item \code{last_price_eth} (double): last price reported by a given exchange for a
+\item \code{last_price_eth} (double): last price reported by this exchange for this
 coin, expressed in Ethereum;
-\item \code{last_price_usd} (double): last price reported by a given exchange for a
+\item \code{last_price_usd} (double): last price reported by this exchange for this
 coin, expressed in US dollar;
-\item \code{trading_volume_24h_btc} (double): 24-h trading volume expressed in
+\item \code{trading_volume_24h_btc} (double): 24 hours trading volume expressed in
 Bitcoin (as of \code{last_traded_at});
-\item \code{trading_volume_24h_eth} (double): 24-h trading volume expressed in
+\item \code{trading_volume_24h_eth} (double): 24 hours trading volume expressed in
 Ethereum;
-\item \code{trading_volume_24h_usd} (double): 24-h trading volume expressed in
+\item \code{trading_volume_24h_usd} (double): 24 hours trading volume expressed in
 US dollars;
 \item \code{cost_to_move_up_2percent_usd} and \code{cost_to_move_down_2percent_usd}
 (double): 2\% market depth (see
