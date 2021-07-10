@@ -4,7 +4,7 @@
 \alias{coin_history_snapshot}
 \title{History snapshot for a coin}
 \usage{
-coin_history_snapshot(coin_id, date, vs_currencies, max_attempts = 3)
+coin_history_snapshot(coin_id, date, vs_currencies = "usd", max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An
@@ -32,14 +32,14 @@ If the requested data exist, this function will return a tibble with
 with as many rows as the length of \code{vs_currencies} and the following
 columns:
 \itemize{
-\item \code{coin_id} (character): coin ID;
+\item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{symbol} (character): symbol of the coin;
 \item \code{name} (character): common name of the coin;
 \item \code{date} (Date): same as the argument \code{date};
-\item \code{vs_currency} (character): currency, in which the coin's \code{price} is
-expressed (ordered alphabetically);
+\item \code{vs_currency} (character): reference currency, in which the \code{price}
+is expressed (ordered alphabetically);
 \item \code{price} (double): price of the coin;
-\item \code{market_cap} (double): market capitalisation;
+\item \code{market_cap} (double): market capitalisation of the coin;
 \item \code{total_volume} (double): total trading volume recorded on that \code{date}.
 }
 }

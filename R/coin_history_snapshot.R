@@ -12,14 +12,14 @@
 #' @return If the requested data exist, this function will return a tibble with
 #'    with as many rows as the length of `vs_currencies` and the following
 #'    columns:
-#' * `coin_id` (character): coin ID;
+#' * `coin_id` (character): same as the argument `coin_id`;
 #' * `symbol` (character): symbol of the coin;
 #' * `name` (character): common name of the coin;
 #' * `date` (Date): same as the argument `date`;
-#' * `vs_currency` (character): currency, in which the coin's `price` is
-#' expressed (ordered alphabetically);
+#' * `vs_currency` (character): reference currency, in which the `price`
+#' is expressed (ordered alphabetically);
 #' * `price` (double): price of the coin;
-#' * `market_cap` (double): market capitalisation;
+#' * `market_cap` (double): market capitalisation of the coin;
 #' * `total_volume` (double): total trading volume recorded on that `date`.
 #'
 #' @export
@@ -38,7 +38,7 @@
 #' }
 coin_history_snapshot <- function(coin_id,
                                   date,
-                                  vs_currencies,
+                                  vs_currencies = "usd",
                                   max_attempts = 3) {
   if (length(coin_id) > 1L) {
     rlang::abort("Only one `coin_id` is allowed")
