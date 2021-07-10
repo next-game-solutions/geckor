@@ -14,7 +14,7 @@
 #' * `symbol` (character): symbol of the coin;
 #' * `name` (character): common name of the coin;
 #' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last update;
-#' * `current_price` (double): current price (as of `last_updated_at`),
+#' * `current_price` (double): current price (as of `last_updated_at`)
 #' expressed in `vs_currency`;
 #' * `market_cap` (double): current market capitalisation;
 #' * `market_cap_rank` (integer): current rank of the coin in terms of its
@@ -22,10 +22,10 @@
 #' * `fully_diluted_valuation` (double):
 #' [fully diluted valuation](https://handbook.clerky.com/fundraising/fully-diluted-capitalization)
 #' of the coin's project;
-#' * `total_volume` (double): total trading volume in the last 24 h;
-#' * `high_24h` (double): max price recorded in the last 24 h;
-#' * `low_24h` (double): min price recorded in the last 24 h;
-#' * `price_change_24h` (double): price change as compared to 24 h ago;
+#' * `total_volume` (double): total trading volume in the last 24 hours;
+#' * `high_24h` (double): max price recorded in the last 24 hours;
+#' * `low_24h` (double): min price recorded in the last 24 hours;
+#' * `price_change_24h` (double): price change as compared to 24 hours ago;
 #' * `price_change_percentage_24h` (double): percentage change of the price as
 #' compared to 24 hours ago;
 #' * `circulating_supply` (double): coin supply currently in circulation;

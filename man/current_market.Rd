@@ -30,7 +30,7 @@ as many rows as the length of \code{coin_ids} and the following columns:
 \item \code{symbol} (character): symbol of the coin;
 \item \code{name} (character): common name of the coin;
 \item \code{last_updated_at} (POSIXct, UTC time zone): timestamp of the last update;
-\item \code{current_price} (double): current price (as of \code{last_updated_at}),
+\item \code{current_price} (double): current price (as of \code{last_updated_at})
 expressed in \code{vs_currency};
 \item \code{market_cap} (double): current market capitalisation;
 \item \code{market_cap_rank} (integer): current rank of the coin in terms of its
@@ -38,10 +38,10 @@ market capitalisation;
 \item \code{fully_diluted_valuation} (double):
 \href{https://handbook.clerky.com/fundraising/fully-diluted-capitalization}{fully diluted valuation}
 of the coin's project;
-\item \code{total_volume} (double): total trading volume in the last 24 h;
-\item \code{high_24h} (double): max price recorded in the last 24 h;
-\item \code{low_24h} (double): min price recorded in the last 24 h;
-\item \code{price_change_24h} (double): price change as compared to 24 h ago;
+\item \code{total_volume} (double): total trading volume in the last 24 hours;
+\item \code{high_24h} (double): max price recorded in the last 24 hours;
+\item \code{low_24h} (double): min price recorded in the last 24 hours;
+\item \code{price_change_24h} (double): price change as compared to 24 hours ago;
 \item \code{price_change_percentage_24h} (double): percentage change of the price as
 compared to 24 hours ago;
 \item \code{circulating_supply} (double): coin supply currently in circulation;
