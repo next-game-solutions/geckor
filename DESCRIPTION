@@ -19,19 +19,19 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     covr,
-    testthat (>= 3.0.0),
     readr,
+    rmarkdown,
     spelling,
-    rmarkdown
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Language: en-US
 Imports: 
-    httr,
     dplyr,
-    magrittr,
+    jsonlite,
+    httr,
     knitr,
     lifecycle,
-    jsonlite,
+    magrittr,
     rlang,
     tibble,
     tidyr,
