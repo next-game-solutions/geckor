@@ -90,7 +90,7 @@ This package is licensed to you under the terms of the MIT License.
 
 The gecko silhouette image used in the hexagon logo of this package has been downloaded from [Clipartkey.com](https://www.clipartkey.com/view/hmTimm_geckos-png-transparent-gecko-icon-transparent/) and is believed to be in the public domain. The logo has been created using the [hexmake app](https://connect.thinkr.fr/hexmake/).
 
-Copyright (c) `r substr(as.Date(Sys.Date()), 1, 4)` [Next Game Solutions OÜ](http://nextgamesolutions.com)
+Copyright © `r substr(as.Date(Sys.Date()), 1, 4)` [Next Game Solutions OÜ](http://nextgamesolutions.com)
 
 ---
 
