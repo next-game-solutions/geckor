@@ -14,19 +14,19 @@ build_get_request(
 \item{base_url}{(character): API's base URL (host). Defaults to
 \code{"https://api.coingecko.com"}.}
 
-\item{path}{(character): vector, whose elements form the path of the
+\item{path}{(character or \code{NULL}): vector, whose elements form the path of the
 respective API endpoint. The order of these elements is important. For
 example, if the path is \code{api/v3/ping}, then this vector must be
-\code{path = c("api", "v3", "ping")}. Can be a \code{NULL} value.}
+\code{path = c("api", "v3", "ping")}.}
 
-\item{query_parameters}{(named list): contains parameters of the request.
-Can be a \code{NULL} value.}
+\item{query_parameters}{(named list or \code{NULL}): contains parameters of the
+request.}
 }
 \value{
 A URL that is ready to be used in a \code{GET} request.
 }
 \description{
-Returns a URL properly formatted for a \code{GET} request
+Returns URLs properly formatted for \code{GET} requests
 }
 \details{
 No validation of the base URL is performed by this function,

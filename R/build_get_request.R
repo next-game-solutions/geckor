@@ -1,15 +1,15 @@
 #' Build URLs for `GET` requests
 #'
-#' Returns a URL properly formatted for a `GET` request
+#' Returns URLs properly formatted for `GET` requests
 #'
 #' @param base_url (character): API's base URL (host). Defaults to
 #'     `"https://api.coingecko.com"`.
-#' @param path (character): vector, whose elements form the path of the
+#' @param path (character or `NULL`): vector, whose elements form the path of the
 #'     respective API endpoint. The order of these elements is important. For
 #'     example, if the path is `api/v3/ping`, then this vector must be
-#'     `path = c("api", "v3", "ping")`. Can be a `NULL` value.
-#' @param query_parameters (named list): contains parameters of the request.
-#'     Can be a `NULL` value.
+#'     `path = c("api", "v3", "ping")`.
+#' @param query_parameters (named list or `NULL`): contains parameters of the
+#'     request.
 #'
 #' @details No validation of the base URL is performed by this function,
 #'     so users are advised to ensure that the base URL is correctly
