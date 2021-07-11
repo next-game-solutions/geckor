@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="Build URLs for GET requests — build_get_request" />
-<meta property="og:description" content="Returns a URL properly formatted for a GET request" />
+<meta property="og:description" content="Returns URLs properly formatted for GET requests" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Returns a URL properly formatted for a <code>GET</code> request</p>
+    <p>Returns URLs properly formatted for <code>GET</code> requests</p>
     </div>
 
     <pre class="usage"><span class='fu'>build_get_request</span><span class='op'>(</span>
@@ -162,15 +162,15 @@
     </tr>
     <tr>
       <th>path</th>
-      <td><p>(character): vector, whose elements form the path of the
+      <td><p>(character or <code>NULL</code>): vector, whose elements form the path of the
 respective API endpoint. The order of these elements is important. For
 example, if the path is <code>api/v3/ping</code>, then this vector must be
-<code>path = c("api", "v3", "ping")</code>. Can be a <code>NULL</code> value.</p></td>
+<code>path = c("api", "v3", "ping")</code>.</p></td>
     </tr>
     <tr>
       <th>query_parameters</th>
-      <td><p>(named list): contains parameters of the request.
-Can be a <code>NULL</code> value.</p></td>
+      <td><p>(named list or <code>NULL</code>): contains parameters of the
+request.</p></td>
     </tr>
     </table>
 

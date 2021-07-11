@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -159,8 +159,8 @@ IDs can be obtained with the <code><a href='supported_coins.html'>supported_coin
     </tr>
     <tr>
       <th>vs_currency</th>
-      <td><p>(character): name of the base currency to
-express the price in. An up-to-date list of supported currencies (both
+      <td><p>(character): name of the reference currency to
+express the price in. An up-to-date list of supported reference currencies (both
 fiat and cryptocurrencies) can be obtained with the <code><a href='supported_currencies.html'>supported_currencies()</a></code>
 function. If an unsupported <code>vs_currency</code> is requested, the call will
 fail with the respective error message.</p></td>
@@ -182,7 +182,7 @@ as many rows as the length of <code>coin_ids</code> and the following columns:</
 <li><p><code>symbol</code> (character): symbol of the coin;</p></li>
 <li><p><code>name</code> (character): common name of the coin;</p></li>
 <li><p><code>last_updated_at</code> (POSIXct, UTC time zone): timestamp of the last update;</p></li>
-<li><p><code>current_price</code> (double): current price (as of <code>last_updated_at</code>),
+<li><p><code>current_price</code> (double): current price (as of <code>last_updated_at</code>)
 expressed in <code>vs_currency</code>;</p></li>
 <li><p><code>market_cap</code> (double): current market capitalisation;</p></li>
 <li><p><code>market_cap_rank</code> (integer): current rank of the coin in terms of its
@@ -190,10 +190,10 @@ market capitalisation;</p></li>
 <li><p><code>fully_diluted_valuation</code> (double):
 <a href='https://handbook.clerky.com/fundraising/fully-diluted-capitalization'>fully diluted valuation</a>
 of the coin's project;</p></li>
-<li><p><code>total_volume</code> (double): total trading volume in the last 24 h;</p></li>
-<li><p><code>high_24h</code> (double): max price recorded in the last 24 h;</p></li>
-<li><p><code>low_24h</code> (double): min price recorded in the last 24 h;</p></li>
-<li><p><code>price_change_24h</code> (double): price change as compared to 24 h ago;</p></li>
+<li><p><code>total_volume</code> (double): total trading volume in the last 24 hours;</p></li>
+<li><p><code>high_24h</code> (double): max price recorded in the last 24 hours;</p></li>
+<li><p><code>low_24h</code> (double): min price recorded in the last 24 hours;</p></li>
+<li><p><code>price_change_24h</code> (double): price change as compared to 24 hours ago;</p></li>
 <li><p><code>price_change_percentage_24h</code> (double): percentage change of the price as
 compared to 24 hours ago;</p></li>
 <li><p><code>circulating_supply</code> (double): coin supply currently in circulation;</p></li>
@@ -234,9 +234,9 @@ keep this limit in mind when developing your applications.</p>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 32</span>
 #&gt;   coin_id  symbol name  vs_currency last_updated_at     current_price market_cap
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>                      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> bitcoin  btc    Bitc… usd         2021-06-29 <span style='color: #949494;'>12:48:11</span>      <span style='text-decoration: underline;'>36</span>043       6.74<span style='color: #949494;'>e</span>11
-#&gt; <span style='color: #BCBCBC;'>2</span> ethereum eth    Ethe… usd         2021-06-29 <span style='color: #949494;'>12:48:10</span>       <span style='text-decoration: underline;'>2</span>193.      2.55<span style='color: #949494;'>e</span>11
-#&gt; <span style='color: #BCBCBC;'>3</span> cardano  ada    Card… usd         2021-06-29 <span style='color: #949494;'>12:48:07</span>          1.41    4.50<span style='color: #949494;'>e</span>10
+#&gt; <span style='color: #BCBCBC;'>1</span> bitcoin  btc    Bitc… usd         2021-07-11 <span style='color: #949494;'>20:14:01</span>      <span style='text-decoration: underline;'>34</span>024       6.37<span style='color: #949494;'>e</span>11
+#&gt; <span style='color: #BCBCBC;'>2</span> ethereum eth    Ethe… usd         2021-07-11 <span style='color: #949494;'>20:13:47</span>       <span style='text-decoration: underline;'>2</span>144.      2.50<span style='color: #949494;'>e</span>11
+#&gt; <span style='color: #BCBCBC;'>3</span> cardano  ada    Card… usd         2021-07-11 <span style='color: #949494;'>20:13:50</span>          1.34    4.30<span style='color: #949494;'>e</span>10
 #&gt; <span style='color: #949494;'># … with 25 more variables: market_cap_rank &lt;int&gt;,</span>
 #&gt; <span style='color: #949494;'>#   fully_diluted_valuation &lt;dbl&gt;, total_volume &lt;dbl&gt;, high_24h &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   low_24h &lt;dbl&gt;, price_change_24h &lt;dbl&gt;, price_change_percentage_24h &lt;dbl&gt;,</span>

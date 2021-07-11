@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -123,7 +123,7 @@
 <span class="co">#&gt; 1 bitcoin btc    Bitcoin 2021-01-01 eur         23759.      4.42e11 35613370771.</span>
 <span class="co">#&gt; 2 bitcoin btc    Bitcoin 2021-01-01 gbp         21228.      3.95e11 31819429092.</span>
 <span class="co">#&gt; 3 bitcoin btc    Bitcoin 2021-01-01 usd         29022.      5.39e11 43503516563.</span></code></pre></div>
-<p>The <code><a href="../reference/coin_history_range.html">coin_history_range()</a></code> function can be used to query a range of historical dates (specified by the <code>from</code> and <code>to</code> arguments, which expect POSIXct timestamps). Granularity of the returned data depends on the requested range. Hourly data will be retrieved for periods of up to 90 days, and daily data for periods longer than 90 days:</p>
+<p>The <code><a href="../reference/coin_history_range.html">coin_history_range()</a></code> function can be used to query a range of historical dates (specified by the <code>from</code> and <code>to</code> arguments, which expect POSIXct timestamps). The granularity of the returned data depends on the requested range. Hourly data will be retrieved for periods of up to 90 days, and daily data for periods that are longer than 90 days:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Range of less than 1 day:</span>
 <span class="fu"><a href="../reference/coin_history_range.html">coin_history_range</a></span><span class="op">(</span>
@@ -175,20 +175,20 @@
   vs_currency <span class="op">=</span> <span class="st">"usd"</span>,
   days <span class="op">=</span> <span class="fl">7</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 169 x 6</span>
+<span class="co">#&gt; # A tibble: 170 x 6</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency  price total_volume    market_cap</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-06-29 12:39:05 bitcoin usd         35932. 33861585323. 670603359805.</span>
-<span class="co">#&gt;  2 2021-06-29 12:02:35 bitcoin usd         35669. 33095224117. 668603462428.</span>
-<span class="co">#&gt;  3 2021-06-29 11:03:04 bitcoin usd         35750. 32573828247. 670116373487.</span>
-<span class="co">#&gt;  4 2021-06-29 10:01:18 bitcoin usd         35305. 31819761493. 661780725343.</span>
-<span class="co">#&gt;  5 2021-06-29 09:01:30 bitcoin usd         35174. 32446664092. 659294360610.</span>
-<span class="co">#&gt;  6 2021-06-29 08:00:28 bitcoin usd         34980. 32488822315. 655682920427.</span>
-<span class="co">#&gt;  7 2021-06-29 07:01:32 bitcoin usd         35270. 32907363767. 660693065036.</span>
-<span class="co">#&gt;  8 2021-06-29 06:02:13 bitcoin usd         34776. 32237919728. 651457474451.</span>
-<span class="co">#&gt;  9 2021-06-29 05:01:05 bitcoin usd         34981. 32393707236. 655702350600.</span>
-<span class="co">#&gt; 10 2021-06-29 04:02:59 bitcoin usd         34647. 31922071332. 649433960604.</span>
-<span class="co">#&gt; # … with 159 more rows</span></code></pre></div>
+<span class="co">#&gt;  1 2021-07-11 19:59:33 bitcoin usd         33951. 16770161469. 637251106087.</span>
+<span class="co">#&gt;  2 2021-07-11 19:01:12 bitcoin usd         34055. 16951130905. 638765672362.</span>
+<span class="co">#&gt;  3 2021-07-11 18:00:21 bitcoin usd         34011. 17063811588. 637343346856.</span>
+<span class="co">#&gt;  4 2021-07-11 17:01:02 bitcoin usd         34094. 17657223064. 639386761137.</span>
+<span class="co">#&gt;  5 2021-07-11 16:01:42 bitcoin usd         34017. 17634957337. 636578213105.</span>
+<span class="co">#&gt;  6 2021-07-11 15:00:16 bitcoin usd         34050. 17900878832. 634891176041.</span>
+<span class="co">#&gt;  7 2021-07-11 14:00:41 bitcoin usd         33893. 17851009260. 635642410309.</span>
+<span class="co">#&gt;  8 2021-07-11 13:01:07 bitcoin usd         33819. 17993284907. 634236120903.</span>
+<span class="co">#&gt;  9 2021-07-11 12:01:19 bitcoin usd         33830. 18106223820. 634432334824.</span>
+<span class="co">#&gt; 10 2021-07-11 11:01:03 bitcoin usd         33802. 18305798503. 632826562876.</span>
+<span class="co">#&gt; # … with 160 more rows</span></code></pre></div>
 <p>In addition to numeric values, the <code>days</code> argument also accepts a character value <code>"max"</code>, which results in retrieving the entire existing history of market data for a coin (<em>please note:</em> querying the entire history can take some time):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/coin_history.html">coin_history</a></span><span class="op">(</span>
@@ -196,20 +196,20 @@
   vs_currency <span class="op">=</span> <span class="st">"usd"</span>,
   days <span class="op">=</span> <span class="st">"max"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2,983 x 6</span>
+<span class="co">#&gt; # A tibble: 2,995 x 6</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency  price total_volume    market_cap</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-06-29 05:14:50 bitcoin usd         34797. 32252435910. 655702350600.</span>
-<span class="co">#&gt;  2 2021-06-28 00:00:00 bitcoin usd         34607. 34335452117. 649262127990.</span>
-<span class="co">#&gt;  3 2021-06-27 00:00:00 bitcoin usd         32024. 36873109420. 600235334321.</span>
-<span class="co">#&gt;  4 2021-06-26 00:00:00 bitcoin usd         31943. 38635245431. 598703019611.</span>
-<span class="co">#&gt;  5 2021-06-25 00:00:00 bitcoin usd         34675. 31862051544. 650340461976.</span>
-<span class="co">#&gt;  6 2021-06-24 00:00:00 bitcoin usd         33703. 39798236962. 631634847766.</span>
-<span class="co">#&gt;  7 2021-06-23 00:00:00 bitcoin usd         32508. 57443014758. 606580031923.</span>
-<span class="co">#&gt;  8 2021-06-22 00:00:00 bitcoin usd         31712. 51873870277. 598335733136.</span>
-<span class="co">#&gt;  9 2021-06-21 00:00:00 bitcoin usd         35787. 35609127164. 670634370557.</span>
-<span class="co">#&gt; 10 2021-06-20 00:00:00 bitcoin usd         35582. 28858979692. 666901325910.</span>
-<span class="co">#&gt; # … with 2,973 more rows</span></code></pre></div>
+<span class="co">#&gt;  1 2021-07-11 17:16:27 bitcoin usd         34051. 17500046892. 639071760282.</span>
+<span class="co">#&gt;  2 2021-07-10 00:00:00 bitcoin usd         33971. 24282108111. 637000370375.</span>
+<span class="co">#&gt;  3 2021-07-09 00:00:00 bitcoin usd         32934. 29065577052. 617861633772.</span>
+<span class="co">#&gt;  4 2021-07-08 00:00:00 bitcoin usd         33932. 23692220470. 636246944189.</span>
+<span class="co">#&gt;  5 2021-07-07 00:00:00 bitcoin usd         34150. 26106856612. 640405812762.</span>
+<span class="co">#&gt;  6 2021-07-06 00:00:00 bitcoin usd         33928. 25894820185. 636061920915.</span>
+<span class="co">#&gt;  7 2021-07-05 00:00:00 bitcoin usd         35394. 22727930418. 663571591568.</span>
+<span class="co">#&gt;  8 2021-07-04 00:00:00 bitcoin usd         34730. 22986053605. 650382046625.</span>
+<span class="co">#&gt;  9 2021-07-03 00:00:00 bitcoin usd         33951. 25084046353. 633684390026.</span>
+<span class="co">#&gt; 10 2021-07-02 00:00:00 bitcoin usd         33678. 29129630236. 629863895572.</span>
+<span class="co">#&gt; # … with 2,985 more rows</span></code></pre></div>
 <p>Notice the different data granularity in the last two examples. Generally, if <code>days = 1</code> the data will be presented for approximately every 3-8 minutes. If <code>days</code> is between 2 and 90 (inclusive), an hourly time step will be used. Daily data are used for <code>days</code> above 90. One can use the <code>interval</code> argument to control this granularity (by default, <code>interval = NULL</code>). However, at the moment the only value it accepts is <code>"daily"</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Within-day data, with `interval = "daily"`:</span>
@@ -222,8 +222,8 @@
 <span class="co">#&gt; # A tibble: 2 x 6</span>
 <span class="co">#&gt;   timestamp           coin_id vs_currency  price total_volume    market_cap</span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 2021-06-29 12:48:58 bitcoin usd         36041. 34103559171. 673516155648.</span>
-<span class="co">#&gt; 2 2021-06-29 00:00:00 bitcoin usd         34557. 32453802891. 647741224117.</span>
+<span class="co">#&gt; 1 2021-07-11 20:16:19 bitcoin usd         34026. 16764927826. 636688661669.</span>
+<span class="co">#&gt; 2 2021-07-11 00:00:00 bitcoin usd         33705. 20558304484. 632185737683.</span>
 
 <span class="co"># Less than 90 days, with `interval = "daily"`:</span>
 <span class="fu"><a href="../reference/coin_history.html">coin_history</a></span><span class="op">(</span>
@@ -235,17 +235,17 @@
 <span class="co">#&gt; # A tibble: 11 x 6</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency  price total_volume    market_cap</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-06-29 12:48:58 bitcoin usd         36041. 34103559171. 673516155648.</span>
-<span class="co">#&gt;  2 2021-06-29 00:00:00 bitcoin usd         34557. 32453802891. 647741224117.</span>
-<span class="co">#&gt;  3 2021-06-28 00:00:00 bitcoin usd         34607. 34335452117. 649262127990.</span>
-<span class="co">#&gt;  4 2021-06-27 00:00:00 bitcoin usd         32024. 36873109420. 600235334321.</span>
-<span class="co">#&gt;  5 2021-06-26 00:00:00 bitcoin usd         31943. 38635245431. 598703019611.</span>
-<span class="co">#&gt;  6 2021-06-25 00:00:00 bitcoin usd         34675. 31862051544. 650340461976.</span>
-<span class="co">#&gt;  7 2021-06-24 00:00:00 bitcoin usd         33703. 39798236962. 631634847766.</span>
-<span class="co">#&gt;  8 2021-06-23 00:00:00 bitcoin usd         32508. 57443014758. 606580031923.</span>
-<span class="co">#&gt;  9 2021-06-22 00:00:00 bitcoin usd         31712. 51873870277. 598335733136.</span>
-<span class="co">#&gt; 10 2021-06-21 00:00:00 bitcoin usd         35787. 35609127164. 670634370557.</span>
-<span class="co">#&gt; 11 2021-06-20 00:00:00 bitcoin usd         35582. 28858979692. 666901325910.</span>
+<span class="co">#&gt;  1 2021-07-11 20:09:04 bitcoin usd         33970. 16787027562. 636688661669.</span>
+<span class="co">#&gt;  2 2021-07-11 00:00:00 bitcoin usd         33705. 20558304484. 632185737683.</span>
+<span class="co">#&gt;  3 2021-07-10 00:00:00 bitcoin usd         33971. 24282108111. 637000370375.</span>
+<span class="co">#&gt;  4 2021-07-09 00:00:00 bitcoin usd         32934. 29065577052. 617861633772.</span>
+<span class="co">#&gt;  5 2021-07-08 00:00:00 bitcoin usd         33932. 23692220470. 636246944189.</span>
+<span class="co">#&gt;  6 2021-07-07 00:00:00 bitcoin usd         34150. 26106856612. 640405812762.</span>
+<span class="co">#&gt;  7 2021-07-06 00:00:00 bitcoin usd         33928. 25894820185. 636061920915.</span>
+<span class="co">#&gt;  8 2021-07-05 00:00:00 bitcoin usd         35394. 22727930418. 663571591568.</span>
+<span class="co">#&gt;  9 2021-07-04 00:00:00 bitcoin usd         34730. 22986053605. 650382046625.</span>
+<span class="co">#&gt; 10 2021-07-03 00:00:00 bitcoin usd         33951. 25084046353. 633684390026.</span>
+<span class="co">#&gt; 11 2021-07-02 00:00:00 bitcoin usd         33678. 29129630236. 629863895572.</span>
 
 <span class="co"># More than 90 days, with `interval = "daily"`:</span>
 <span class="fu"><a href="../reference/coin_history.html">coin_history</a></span><span class="op">(</span>
@@ -257,18 +257,18 @@
 <span class="co">#&gt; # A tibble: 101 x 6</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency  price total_volume    market_cap</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-06-29 10:45:52 bitcoin usd         35590. 32172176394. 667108708990.</span>
-<span class="co">#&gt;  2 2021-06-29 00:00:00 bitcoin usd         34557. 32453802891. 647741224117.</span>
-<span class="co">#&gt;  3 2021-06-28 00:00:00 bitcoin usd         34607. 34335452117. 649262127990.</span>
-<span class="co">#&gt;  4 2021-06-27 00:00:00 bitcoin usd         32024. 36873109420. 600235334321.</span>
-<span class="co">#&gt;  5 2021-06-26 00:00:00 bitcoin usd         31943. 38635245431. 598703019611.</span>
-<span class="co">#&gt;  6 2021-06-25 00:00:00 bitcoin usd         34675. 31862051544. 650340461976.</span>
-<span class="co">#&gt;  7 2021-06-24 00:00:00 bitcoin usd         33703. 39798236962. 631634847766.</span>
-<span class="co">#&gt;  8 2021-06-23 00:00:00 bitcoin usd         32508. 57443014758. 606580031923.</span>
-<span class="co">#&gt;  9 2021-06-22 00:00:00 bitcoin usd         31712. 51873870277. 598335733136.</span>
-<span class="co">#&gt; 10 2021-06-21 00:00:00 bitcoin usd         35787. 35609127164. 670634370557.</span>
+<span class="co">#&gt;  1 2021-07-11 15:59:30 bitcoin usd         33944. 17596720290. 636970374009.</span>
+<span class="co">#&gt;  2 2021-07-11 00:00:00 bitcoin usd         33705. 20558304484. 632185737683.</span>
+<span class="co">#&gt;  3 2021-07-10 00:00:00 bitcoin usd         33971. 24282108111. 637000370375.</span>
+<span class="co">#&gt;  4 2021-07-09 00:00:00 bitcoin usd         32934. 29065577052. 617861633772.</span>
+<span class="co">#&gt;  5 2021-07-08 00:00:00 bitcoin usd         33932. 23692220470. 636246944189.</span>
+<span class="co">#&gt;  6 2021-07-07 00:00:00 bitcoin usd         34150. 26106856612. 640405812762.</span>
+<span class="co">#&gt;  7 2021-07-06 00:00:00 bitcoin usd         33928. 25894820185. 636061920915.</span>
+<span class="co">#&gt;  8 2021-07-05 00:00:00 bitcoin usd         35394. 22727930418. 663571591568.</span>
+<span class="co">#&gt;  9 2021-07-04 00:00:00 bitcoin usd         34730. 22986053605. 650382046625.</span>
+<span class="co">#&gt; 10 2021-07-03 00:00:00 bitcoin usd         33951. 25084046353. 633684390026.</span>
 <span class="co">#&gt; # … with 91 more rows</span></code></pre></div>
-<p>The open-high-low-close (<a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">OHLC</a>) data characterise within-date and between-date price movements of a financial asset. In <code>geckor</code>, this type of data can be retrieved using the <code><a href="../reference/coin_history_ohlc.html">coin_history_ohlc()</a></code> function, which has the same arguments as <code><a href="../reference/coin_history.html">coin_history()</a></code>, except for not having the <code>interval</code> argument. Granularity of the retrieved data (i.e. candle’s body) depends on the value of <code>days</code> as follows:</p>
+<p>The open-high-low-close (<a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">OHLC</a>) data characterise within-date and between-date price movements of a financial asset. In <code>geckor</code>, this type of data can be retrieved using the <code><a href="../reference/coin_history_ohlc.html">coin_history_ohlc()</a></code> function, which has the same arguments as <code><a href="../reference/coin_history.html">coin_history()</a></code>, except for not having the <code>interval</code> argument. The granularity of the retrieved data (i.e. candle’s body) depends on the value of <code>days</code> as follows:</p>
 <ul>
 <li><p>1 day: 30 minutes</p></li>
 <li><p>7 - 30 days: 4 hours</p></li>
@@ -285,16 +285,16 @@
 <span class="co">#&gt; # A tibble: 49 x 7</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency price_open price_high price_low</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-06-28 13:00:00 bitcoin usd             34254.     34371.    34254.</span>
-<span class="co">#&gt;  2 2021-06-28 13:30:00 bitcoin usd             34538.     34554.    34450.</span>
-<span class="co">#&gt;  3 2021-06-28 14:00:00 bitcoin usd             34582.     34582.    34194.</span>
-<span class="co">#&gt;  4 2021-06-28 14:30:00 bitcoin usd             34262.     34548.    34262.</span>
-<span class="co">#&gt;  5 2021-06-28 15:00:00 bitcoin usd             34537.     34537.    34389.</span>
-<span class="co">#&gt;  6 2021-06-28 15:30:00 bitcoin usd             34386.     34546.    34386.</span>
-<span class="co">#&gt;  7 2021-06-28 16:00:00 bitcoin usd             34540.     34540.    34540.</span>
-<span class="co">#&gt;  8 2021-06-28 16:30:00 bitcoin usd             35023.     35273.    34930.</span>
-<span class="co">#&gt;  9 2021-06-28 17:00:00 bitcoin usd             34941.     34941.    34720.</span>
-<span class="co">#&gt; 10 2021-06-28 17:30:00 bitcoin usd             34702.     34727.    34554.</span>
+<span class="co">#&gt;  1 2021-07-10 20:30:00 bitcoin usd             33212.     33212.    33185.</span>
+<span class="co">#&gt;  2 2021-07-10 21:00:00 bitcoin usd             33339.     33418.    33339.</span>
+<span class="co">#&gt;  3 2021-07-10 21:30:00 bitcoin usd             33407.     33497.    33312.</span>
+<span class="co">#&gt;  4 2021-07-10 22:00:00 bitcoin usd             33538.     33538.    33476.</span>
+<span class="co">#&gt;  5 2021-07-10 22:30:00 bitcoin usd             33530.     33645.    33530.</span>
+<span class="co">#&gt;  6 2021-07-10 23:00:00 bitcoin usd             33587.     33635.    33512.</span>
+<span class="co">#&gt;  7 2021-07-10 23:30:00 bitcoin usd             33686.     33745     33686.</span>
+<span class="co">#&gt;  8 2021-07-11 00:00:00 bitcoin usd             33710.     33711.    33704.</span>
+<span class="co">#&gt;  9 2021-07-11 00:30:00 bitcoin usd             33667.     33831.    33528.</span>
+<span class="co">#&gt; 10 2021-07-11 01:00:00 bitcoin usd             33703.     33819.    33677.</span>
 <span class="co">#&gt; # … with 39 more rows, and 1 more variable: price_close &lt;dbl&gt;</span>
 
 <span class="co"># 4-hours granularity:</span>
@@ -306,16 +306,16 @@
 <span class="co">#&gt; # A tibble: 43 x 7</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency price_open price_high price_low</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-06-22 16:00:00 bitcoin usd             29720.     30644.    29155.</span>
-<span class="co">#&gt;  2 2021-06-22 20:00:00 bitcoin usd             31914.     33028.    31914.</span>
-<span class="co">#&gt;  3 2021-06-23 00:00:00 bitcoin usd             32708.     32956.    32241.</span>
-<span class="co">#&gt;  4 2021-06-23 04:00:00 bitcoin usd             32495.     34702.    32495.</span>
-<span class="co">#&gt;  5 2021-06-23 08:00:00 bitcoin usd             33934.     34452.    33897.</span>
-<span class="co">#&gt;  6 2021-06-23 12:00:00 bitcoin usd             34106.     34339.    33861.</span>
-<span class="co">#&gt;  7 2021-06-23 16:00:00 bitcoin usd             33963.     34210.    33963.</span>
-<span class="co">#&gt;  8 2021-06-23 20:00:00 bitcoin usd             33584.     33708.    33446.</span>
-<span class="co">#&gt;  9 2021-06-24 00:00:00 bitcoin usd             33044.     33539.    33044.</span>
-<span class="co">#&gt; 10 2021-06-24 04:00:00 bitcoin usd             33703.     33703.    32572.</span>
+<span class="co">#&gt;  1 2021-07-05 00:00:00 bitcoin usd             35600.     36000.    35440.</span>
+<span class="co">#&gt;  2 2021-07-05 04:00:00 bitcoin usd             35394.     35394.    34503.</span>
+<span class="co">#&gt;  3 2021-07-05 08:00:00 bitcoin usd             34449.     34458.    34277.</span>
+<span class="co">#&gt;  4 2021-07-05 12:00:00 bitcoin usd             34354.     34627.    34285.</span>
+<span class="co">#&gt;  5 2021-07-05 16:00:00 bitcoin usd             33593.     33813.    33591.</span>
+<span class="co">#&gt;  6 2021-07-05 20:00:00 bitcoin usd             33740.     34067.    33478.</span>
+<span class="co">#&gt;  7 2021-07-06 00:00:00 bitcoin usd             34207.     34261.    33919.</span>
+<span class="co">#&gt;  8 2021-07-06 04:00:00 bitcoin usd             33907.     34174.    33894.</span>
+<span class="co">#&gt;  9 2021-07-06 08:00:00 bitcoin usd             33977.     34787.    33977.</span>
+<span class="co">#&gt; 10 2021-07-06 12:00:00 bitcoin usd             34901.     34982.    33905.</span>
 <span class="co">#&gt; # … with 33 more rows, and 1 more variable: price_close &lt;dbl&gt;</span>
 
 <span class="co"># 4-days granularity:</span>
@@ -327,16 +327,16 @@
 <span class="co">#&gt; # A tibble: 24 x 7</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency price_open price_high price_low</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-04-03 00:00:00 bitcoin usd             58817.     59060.    58801.</span>
-<span class="co">#&gt;  2 2021-04-07 00:00:00 bitcoin usd             57060.     58707.    57060.</span>
-<span class="co">#&gt;  3 2021-04-11 00:00:00 bitcoin usd             56134.     59979.    56134.</span>
-<span class="co">#&gt;  4 2021-04-15 00:00:00 bitcoin usd             59988.     63577.    59911.</span>
-<span class="co">#&gt;  5 2021-04-19 00:00:00 bitcoin usd             63180.     63180.    56289.</span>
-<span class="co">#&gt;  6 2021-04-23 00:00:00 bitcoin usd             55721.     56295.    51966.</span>
-<span class="co">#&gt;  7 2021-04-27 00:00:00 bitcoin usd             51191.     53979.    48981.</span>
-<span class="co">#&gt;  8 2021-04-30 00:00:00 bitcoin usd             54992.     54992.    53597.</span>
-<span class="co">#&gt;  9 2021-05-03 00:00:00 bitcoin usd             57829.     57829.    56601.</span>
-<span class="co">#&gt; 10 2021-05-07 00:00:00 bitcoin usd             57200.     57432.    53464.</span>
+<span class="co">#&gt;  1 2021-04-15 00:00:00 bitcoin usd             59911.     63577.    59911.</span>
+<span class="co">#&gt;  2 2021-04-19 00:00:00 bitcoin usd             63180.     63180.    56289.</span>
+<span class="co">#&gt;  3 2021-04-23 00:00:00 bitcoin usd             55721.     56295.    51966.</span>
+<span class="co">#&gt;  4 2021-04-27 00:00:00 bitcoin usd             51191.     53979.    48981.</span>
+<span class="co">#&gt;  5 2021-04-30 00:00:00 bitcoin usd             54992.     54992.    53597.</span>
+<span class="co">#&gt;  6 2021-05-03 00:00:00 bitcoin usd             57829.     57829.    56601.</span>
+<span class="co">#&gt;  7 2021-05-07 00:00:00 bitcoin usd             57200.     57432.    53464.</span>
+<span class="co">#&gt;  8 2021-05-11 00:00:00 bitcoin usd             57362.     58772.    55902.</span>
+<span class="co">#&gt;  9 2021-05-15 00:00:00 bitcoin usd             56929.     56929.    49913.</span>
+<span class="co">#&gt; 10 2021-05-19 00:00:00 bitcoin usd             46781.     46781.    43091.</span>
 <span class="co">#&gt; # … with 14 more rows, and 1 more variable: price_close &lt;dbl&gt;</span>
 
 <span class="co"># 4-days granularity:</span>
@@ -345,7 +345,7 @@
   vs_currency <span class="op">=</span> <span class="st">"usd"</span>,
   days <span class="op">=</span> <span class="st">"max"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 779 x 7</span>
+<span class="co">#&gt; # A tibble: 782 x 7</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency price_open price_high price_low</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 2013-04-30 00:00:00 bitcoin usd               135.       142.     135. </span>
@@ -358,7 +358,7 @@
 <span class="co">#&gt;  8 2013-05-27 00:00:00 bitcoin usd               132.       135.     129. </span>
 <span class="co">#&gt;  9 2013-05-31 00:00:00 bitcoin usd               129.       132.     127. </span>
 <span class="co">#&gt; 10 2013-06-03 00:00:00 bitcoin usd               129.       129.     121. </span>
-<span class="co">#&gt; # … with 769 more rows, and 1 more variable: price_close &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt; # … with 772 more rows, and 1 more variable: price_close &lt;dbl&gt;</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

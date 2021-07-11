@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -146,7 +146,7 @@
     <p>Retrieves open-high-low-close price data for the last <em>n</em> days</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coin_history_ohlc</span><span class='op'>(</span><span class='va'>coin_id</span>, <span class='va'>vs_currency</span>, <span class='va'>days</span>, max_attempts <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>coin_history_ohlc</span><span class='op'>(</span><span class='va'>coin_id</span>, vs_currency <span class='op'>=</span> <span class='st'>"usd"</span>, <span class='va'>days</span>, max_attempts <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,8 +159,8 @@ with the <code><a href='supported_coins.html'>supported_coins()</a></code> funct
     </tr>
     <tr>
       <th>vs_currency</th>
-      <td><p>(character): name of the base currency to
-express the price in. An up-to-date list of supported currencies (both
+      <td><p>(character): name of the reference currency to
+express the price in. An up-to-date list of supported reference currencies (both
 fiat and cryptocurrencies) can be obtained with the <code><a href='supported_currencies.html'>supported_currencies()</a></code>
 function. If an unsupported <code>vs_currency</code> is requested, the call will
 fail with the respective error message.</p></td>
@@ -187,7 +187,7 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
 
     <p>A tibble with the following columns:</p><ul>
 <li><p><code>timestamp</code> (POSIXct);</p></li>
-<li><p><code>coin_id</code> (character): coin ID;</p></li>
+<li><p><code>coin_id</code> (character): same as the argument <code>coin_id</code>;</p></li>
 <li><p><code>vs_currency</code> (character): same as the argument <code>vs_currency</code>;</p></li>
 <li><p><code>price_open</code> (double): coin price in the beginning of a time interval;</p></li>
 <li><p><code>price_high</code> (double): highest coin price observed within a time interval;</p></li>
@@ -197,11 +197,7 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is based on the public
-<a href='https://www.coingecko.com/api/documentations/v3'>CoinGecko API</a>,
-which has a limit of 50 calls per minute. Please
-keep this limit in mind when developing your applications.</p>
-<p>Granularity of the retrieved data
+    <p>Granularity of the retrieved data
 (i.e. <a href='https://en.wikipedia.org/wiki/Open-high-low-close_chart'>candle</a>'s
 body) depends on the value of <code>days</code> as follows:</p><ul>
 <li><p>1 day: 30 minutes;</p></li>
@@ -209,6 +205,10 @@ body) depends on the value of <code>days</code> as follows:</p><ul>
 <li><p>above 30: 4 days.</p></li>
 </ul>
 
+<p>This function is based on the public
+<a href='https://www.coingecko.com/api/documentations/v3'>CoinGecko API</a>,
+which has a limit of 50 calls per minute. Please
+keep this limit in mind when developing your applications.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -218,20 +218,20 @@ body) depends on the value of <code>days</code> as follows:</p><ul>
   days <span class='op'>=</span> <span class='fl'>7</span>
 <span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 43 x 7</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 42 x 7</span>
 #&gt;    timestamp           coin_id vs_currency price_open price_high price_low
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-06-22 <span style='color: #949494;'>16:00:00</span> cardano usd               1.04       1.12      1.01
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-06-22 <span style='color: #949494;'>20:00:00</span> cardano usd               1.19       1.22      1.19
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-06-23 <span style='color: #949494;'>00:00:00</span> cardano usd               1.18       1.19      1.14
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-06-23 <span style='color: #949494;'>04:00:00</span> cardano usd               1.15       1.25      1.15
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-06-23 <span style='color: #949494;'>08:00:00</span> cardano usd               1.25       1.27      1.25
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-06-23 <span style='color: #949494;'>12:00:00</span> cardano usd               1.28       1.28      1.26
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-06-23 <span style='color: #949494;'>16:00:00</span> cardano usd               1.26       1.29      1.26
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-06-23 <span style='color: #949494;'>20:00:00</span> cardano usd               1.24       1.25      1.23
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-06-24 <span style='color: #949494;'>00:00:00</span> cardano usd               1.21       1.24      1.21
-#&gt; <span style='color: #BCBCBC;'>10</span> 2021-06-24 <span style='color: #949494;'>04:00:00</span> cardano usd               1.25       1.25      1.21
-#&gt; <span style='color: #949494;'># … with 33 more rows, and 1 more variable: price_close &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-07-05 <span style='color: #949494;'>00:00:00</span> cardano usd               1.47       1.5       1.46
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-07-05 <span style='color: #949494;'>04:00:00</span> cardano usd               1.46       1.46      1.42
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-07-05 <span style='color: #949494;'>08:00:00</span> cardano usd               1.42       1.44      1.42
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-07-05 <span style='color: #949494;'>12:00:00</span> cardano usd               1.43       1.44      1.42
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-07-05 <span style='color: #949494;'>16:00:00</span> cardano usd               1.39       1.42      1.39
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-07-05 <span style='color: #949494;'>20:00:00</span> cardano usd               1.4        1.42      1.39
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-07-06 <span style='color: #949494;'>00:00:00</span> cardano usd               1.43       1.43      1.41
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-07-06 <span style='color: #949494;'>04:00:00</span> cardano usd               1.41       1.43      1.41
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-07-06 <span style='color: #949494;'>08:00:00</span> cardano usd               1.42       1.46      1.42
+#&gt; <span style='color: #BCBCBC;'>10</span> 2021-07-06 <span style='color: #949494;'>12:00:00</span> cardano usd               1.45       1.45      1.41
+#&gt; <span style='color: #949494;'># … with 32 more rows, and 1 more variable: price_close &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

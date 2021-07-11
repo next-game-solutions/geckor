@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -146,7 +146,7 @@
     <p>Retrieves coin-specific market data for a range of historical dates</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coin_history_range</span><span class='op'>(</span><span class='va'>coin_id</span>, <span class='va'>vs_currency</span>, <span class='va'>from</span>, <span class='va'>to</span>, max_attempts <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>coin_history_range</span><span class='op'>(</span><span class='va'>coin_id</span>, vs_currency <span class='op'>=</span> <span class='st'>"usd"</span>, <span class='va'>from</span>, <span class='va'>to</span>, max_attempts <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,8 +159,8 @@ with the <code><a href='supported_coins.html'>supported_coins()</a></code> funct
     </tr>
     <tr>
       <th>vs_currency</th>
-      <td><p>(character): name of the base currency to
-express the price in. An up-to-date list of supported currencies (both
+      <td><p>(character): name of the reference currency to
+express the price in. An up-to-date list of supported reference currencies (both
 fiat and cryptocurrencies) can be obtained with the <code><a href='supported_currencies.html'>supported_currencies()</a></code>
 function. If an unsupported <code>vs_currency</code> is requested, the call will
 fail with the respective error message.</p></td>
@@ -190,7 +190,7 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
 <li><p><code>timestamp</code> (POSIXct);</p></li>
 <li><p><code>vs_currency</code> (character): same as the argument <code>vs_currency</code>;</p></li>
 <li><p><code>price</code> (double): coin price as of <code>timestamp</code>;</p></li>
-<li><p><code>total_trading_vol</code> (double): a 24 h rolling-window trading volume, as
+<li><p><code>total_trading_vol</code> (double): a 24 hours rolling-window trading volume, as
 of <code>timestampt</code>;</p></li>
 <li><p><code>market_cap</code> (double): market capitalisation, as of <code>timestamp</code>.</p></li>
 </ul>
@@ -198,7 +198,7 @@ of <code>timestampt</code>;</p></li>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function returns hourly data for periods of up to 90 days
-and daily data for periods longer than 90 days.</p>
+and daily data for periods that are longer than 90 days.</p>
 <p>This function is based on the public
 <a href='https://www.coingecko.com/api/documentations/v3'>CoinGecko API</a>,
 which has a limit of 50 calls per minute. Please

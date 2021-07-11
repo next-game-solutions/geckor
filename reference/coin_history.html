@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -146,7 +146,13 @@
     <p>Retrieves market data for a coin for the last <em>n</em> days</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coin_history</span><span class='op'>(</span><span class='va'>coin_id</span>, <span class='va'>vs_currency</span>, <span class='va'>days</span>, interval <span class='op'>=</span> <span class='cn'>NULL</span>, max_attempts <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>coin_history</span><span class='op'>(</span>
+  <span class='va'>coin_id</span>,
+  vs_currency <span class='op'>=</span> <span class='st'>"usd"</span>,
+  <span class='va'>days</span>,
+  interval <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max_attempts <span class='op'>=</span> <span class='fl'>3</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,8 +165,8 @@ with the <code><a href='supported_coins.html'>supported_coins()</a></code> funct
     </tr>
     <tr>
       <th>vs_currency</th>
-      <td><p>(character): name of the base currency to
-express the price in. An up-to-date list of supported currencies (both
+      <td><p>(character): name of the reference currency to
+express the price in. An up-to-date list of supported reference currencies (both
 fiat and cryptocurrencies) can be obtained with the <code><a href='supported_currencies.html'>supported_currencies()</a></code>
 function. If an unsupported <code>vs_currency</code> is requested, the call will
 fail with the respective error message.</p></td>
@@ -175,7 +181,7 @@ present the data will differ - see "Details".</p></td>
     <tr>
       <th>interval</th>
       <td><p>(character or <code>NULL</code>): time interval used to present the data.
-The only currently supported interval is <code>daily</code>. Defaults to <code>NULL</code>.</p></td>
+The only currently supported value is <code>daily</code>. Defaults to <code>NULL</code>.</p></td>
     </tr>
     <tr>
       <th>max_attempts</th>
@@ -190,10 +196,10 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
 
     <p>A tibble with the following columns:</p><ul>
 <li><p><code>timestamp</code> (POSIXct);</p></li>
-<li><p><code>coin_id</code> (character): coin ID;</p></li>
+<li><p><code>coin_id</code> (character): same as the argument <code>coin_id</code>;</p></li>
 <li><p><code>vs_currency</code> (character): same as the argument <code>vs_currency</code>;</p></li>
 <li><p><code>price</code> (double): coin price, as of <code>timestamp</code>;</p></li>
-<li><p><code>total_volume</code> (double): a 24 h rolling-window trading volume, as
+<li><p><code>total_volume</code> (double): a 24 hours rolling-window trading volume, as
 of <code>timestamp</code>;</p></li>
 <li><p><code>market_cap</code> (double): market capitalisation, as of <code>timestamp</code>.</p></li>
 </ul>
@@ -217,16 +223,16 @@ keep this limit in mind when developing your applications.</p>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 721 x 6</span>
 #&gt;    timestamp           coin_id vs_currency  price total_volume    market_cap
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-06-29 <span style='color: #949494;'>12:23:38</span> bitcoin usd         <span style='text-decoration: underline;'>35</span>729. <span style='text-decoration: underline;'>33</span>384<span style='text-decoration: underline;'>839</span>884. <span style='text-decoration: underline;'>669</span>156<span style='text-decoration: underline;'>220</span>940.
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-06-29 <span style='color: #949494;'>12:02:35</span> bitcoin usd         <span style='text-decoration: underline;'>35</span>669. <span style='text-decoration: underline;'>33</span>095<span style='text-decoration: underline;'>224</span>117. <span style='text-decoration: underline;'>668</span>603<span style='text-decoration: underline;'>462</span>428.
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-06-29 <span style='color: #949494;'>11:03:04</span> bitcoin usd         <span style='text-decoration: underline;'>35</span>750. <span style='text-decoration: underline;'>32</span>573<span style='text-decoration: underline;'>828</span>247. <span style='text-decoration: underline;'>670</span>116<span style='text-decoration: underline;'>373</span>487.
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-06-29 <span style='color: #949494;'>10:01:18</span> bitcoin usd         <span style='text-decoration: underline;'>35</span>305. <span style='text-decoration: underline;'>31</span>819<span style='text-decoration: underline;'>761</span>493. <span style='text-decoration: underline;'>661</span>780<span style='text-decoration: underline;'>725</span>343.
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-06-29 <span style='color: #949494;'>09:01:30</span> bitcoin usd         <span style='text-decoration: underline;'>35</span>174. <span style='text-decoration: underline;'>32</span>446<span style='text-decoration: underline;'>664</span>092. <span style='text-decoration: underline;'>659</span>294<span style='text-decoration: underline;'>360</span>610.
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-06-29 <span style='color: #949494;'>08:00:28</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>980. <span style='text-decoration: underline;'>32</span>488<span style='text-decoration: underline;'>822</span>315. <span style='text-decoration: underline;'>655</span>682<span style='text-decoration: underline;'>920</span>427.
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-06-29 <span style='color: #949494;'>07:01:32</span> bitcoin usd         <span style='text-decoration: underline;'>35</span>270. <span style='text-decoration: underline;'>32</span>907<span style='text-decoration: underline;'>363</span>767. <span style='text-decoration: underline;'>660</span>693<span style='text-decoration: underline;'>065</span>036.
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-06-29 <span style='color: #949494;'>06:02:13</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>776. <span style='text-decoration: underline;'>32</span>237<span style='text-decoration: underline;'>919</span>728. <span style='text-decoration: underline;'>651</span>457<span style='text-decoration: underline;'>474</span>451.
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-06-29 <span style='color: #949494;'>05:01:05</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>981. <span style='text-decoration: underline;'>32</span>393<span style='text-decoration: underline;'>707</span>236. <span style='text-decoration: underline;'>655</span>702<span style='text-decoration: underline;'>350</span>600.
-#&gt; <span style='color: #BCBCBC;'>10</span> 2021-06-29 <span style='color: #949494;'>04:02:59</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>647. <span style='text-decoration: underline;'>31</span>922<span style='text-decoration: underline;'>071</span>332. <span style='text-decoration: underline;'>649</span>433<span style='text-decoration: underline;'>960</span>604.
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-07-11 <span style='color: #949494;'>19:57:00</span> bitcoin usd         <span style='text-decoration: underline;'>33</span>956. <span style='text-decoration: underline;'>16</span>764<span style='text-decoration: underline;'>619</span>148. <span style='text-decoration: underline;'>637</span>251<span style='text-decoration: underline;'>106</span>087.
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-07-11 <span style='color: #949494;'>19:01:12</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>055. <span style='text-decoration: underline;'>16</span>951<span style='text-decoration: underline;'>130</span>905. <span style='text-decoration: underline;'>638</span>765<span style='text-decoration: underline;'>672</span>362.
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-07-11 <span style='color: #949494;'>18:00:21</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>011. <span style='text-decoration: underline;'>17</span>063<span style='text-decoration: underline;'>811</span>588. <span style='text-decoration: underline;'>637</span>343<span style='text-decoration: underline;'>346</span>856.
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-07-11 <span style='color: #949494;'>17:01:02</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>094. <span style='text-decoration: underline;'>17</span>657<span style='text-decoration: underline;'>223</span>064. <span style='text-decoration: underline;'>639</span>386<span style='text-decoration: underline;'>761</span>137.
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-07-11 <span style='color: #949494;'>16:01:42</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>017. <span style='text-decoration: underline;'>17</span>634<span style='text-decoration: underline;'>957</span>337. <span style='text-decoration: underline;'>636</span>578<span style='text-decoration: underline;'>213</span>105.
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-07-11 <span style='color: #949494;'>15:00:16</span> bitcoin usd         <span style='text-decoration: underline;'>34</span>050. <span style='text-decoration: underline;'>17</span>900<span style='text-decoration: underline;'>878</span>832. <span style='text-decoration: underline;'>634</span>891<span style='text-decoration: underline;'>176</span>041.
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-07-11 <span style='color: #949494;'>14:00:41</span> bitcoin usd         <span style='text-decoration: underline;'>33</span>893. <span style='text-decoration: underline;'>17</span>851<span style='text-decoration: underline;'>009</span>260. <span style='text-decoration: underline;'>635</span>642<span style='text-decoration: underline;'>410</span>309.
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-07-11 <span style='color: #949494;'>13:01:07</span> bitcoin usd         <span style='text-decoration: underline;'>33</span>819. <span style='text-decoration: underline;'>17</span>993<span style='text-decoration: underline;'>284</span>907. <span style='text-decoration: underline;'>634</span>236<span style='text-decoration: underline;'>120</span>903.
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-07-11 <span style='color: #949494;'>12:01:19</span> bitcoin usd         <span style='text-decoration: underline;'>33</span>830. <span style='text-decoration: underline;'>18</span>106<span style='text-decoration: underline;'>223</span>820. <span style='text-decoration: underline;'>634</span>432<span style='text-decoration: underline;'>334</span>824.
+#&gt; <span style='color: #BCBCBC;'>10</span> 2021-07-11 <span style='color: #949494;'>11:01:03</span> bitcoin usd         <span style='text-decoration: underline;'>33</span>802. <span style='text-decoration: underline;'>18</span>305<span style='text-decoration: underline;'>798</span>503. <span style='text-decoration: underline;'>632</span>826<span style='text-decoration: underline;'>562</span>876.
 #&gt; <span style='color: #949494;'># … with 711 more rows</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>

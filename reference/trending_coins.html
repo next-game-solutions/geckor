@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -168,14 +168,14 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
 <li><p><code>coin_id</code> (character): coin ID;</p></li>
 <li><p><code>name</code> (character): common name of the coin;</p></li>
 <li><p><code>symbol</code> (character): symbol of the coin;</p></li>
-<li><p><code>market_cap_rank</code> (integer): market capitalisation rank of the coin;</p></li>
-<li><p><code>price_btc</code> (double): price of the coin expressed in Bitcoin.</p></li>
+<li><p><code>market_cap_rank</code> (integer): market capitalisation rank;</p></li>
+<li><p><code>price_btc</code> (double): price expressed in Bitcoin.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Popularity of a coin is determined based on the search patterns at the
-CoinGecko website over the last 24 h.</p>
+    <p>Popularity of a coin is determined from search patterns at the
+CoinGecko website over the last 24 hours.</p>
 <p>This function is based on the public
 <a href='https://www.coingecko.com/api/documentations/v3'>CoinGecko API</a>,
 which has a limit of 50 calls per minute. Please
@@ -188,13 +188,13 @@ keep this limit in mind when developing your applications.</p>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 x 7</span>
 #&gt;   timestamp           popularity_rank_… coin_id   name    symbol market_cap_rank
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>                          <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 2021-06-29 <span style='color: #949494;'>12:48:33</span>                 1 shiba-inu Shiba … SHIB                26
-#&gt; <span style='color: #BCBCBC;'>2</span> 2021-06-29 <span style='color: #949494;'>12:48:33</span>                 2 feg-token FEG To… FEG                128
-#&gt; <span style='color: #BCBCBC;'>3</span> 2021-06-29 <span style='color: #949494;'>12:48:33</span>                 3 matic-ne… Polygon MATIC               16
-#&gt; <span style='color: #BCBCBC;'>4</span> 2021-06-29 <span style='color: #949494;'>12:48:33</span>                 4 internet… Intern… ICP                 20
-#&gt; <span style='color: #BCBCBC;'>5</span> 2021-06-29 <span style='color: #949494;'>12:48:33</span>                 5 safemoon  SafeMo… SAFEM…              51
-#&gt; <span style='color: #BCBCBC;'>6</span> 2021-06-29 <span style='color: #949494;'>12:48:33</span>                 6 ethereum  Ethere… ETH                  2
-#&gt; <span style='color: #BCBCBC;'>7</span> 2021-06-29 <span style='color: #949494;'>12:48:33</span>                 7 smooth-l… Smooth… SLP                332
+#&gt; <span style='color: #BCBCBC;'>1</span> 2021-07-11 <span style='color: #949494;'>20:14:21</span>                 1 axie-inf… Axie I… AXS                 80
+#&gt; <span style='color: #BCBCBC;'>2</span> 2021-07-11 <span style='color: #949494;'>20:14:21</span>                 2 my-defi-… My DeF… DPET               627
+#&gt; <span style='color: #BCBCBC;'>3</span> 2021-07-11 <span style='color: #949494;'>20:14:21</span>                 3 smooth-l… Smooth… SLP                244
+#&gt; <span style='color: #BCBCBC;'>4</span> 2021-07-11 <span style='color: #949494;'>20:14:21</span>                 4 hathor    Hathor  HTR                273
+#&gt; <span style='color: #BCBCBC;'>5</span> 2021-07-11 <span style='color: #949494;'>20:14:21</span>                 5 poa-netw… POA Ne… POA                826
+#&gt; <span style='color: #BCBCBC;'>6</span> 2021-07-11 <span style='color: #949494;'>20:14:21</span>                 6 shiba-inu Shiba … SHIB                30
+#&gt; <span style='color: #BCBCBC;'>7</span> 2021-07-11 <span style='color: #949494;'>20:14:21</span>                 7 constell… Conste… DAG                121
 #&gt; <span style='color: #949494;'># … with 1 more variable: price_btc &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>

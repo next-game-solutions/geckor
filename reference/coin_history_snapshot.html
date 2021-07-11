@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -146,7 +146,7 @@
     <p>Coin-specific market data for a given historical date</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coin_history_snapshot</span><span class='op'>(</span><span class='va'>coin_id</span>, <span class='va'>date</span>, <span class='va'>vs_currencies</span>, max_attempts <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>coin_history_snapshot</span><span class='op'>(</span><span class='va'>coin_id</span>, <span class='va'>date</span>, vs_currencies <span class='op'>=</span> <span class='st'>"usd"</span>, max_attempts <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,7 +165,7 @@ date, nothing (<code>NULL</code>) will be returned.</p></td>
     <tr>
       <th>vs_currencies</th>
       <td><p>(character): a vector with
-names of the base currencies to express the price in, e.g.
+names of the reference currencies to express the price in, e.g.
 <code><a href='https://rdrr.io/r/base/c.html'>c("usd", "eur", "btc")</a></code>. An up-to-date list of supported
 <code>vs_currencies</code> (both fiat and cryptocurrencies) can be obtained with
 the <code><a href='supported_currencies.html'>supported_currencies()</a></code> function. If <code>vs_currencies</code>
@@ -186,14 +186,14 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
     <p>If the requested data exist, this function will return a tibble with
 with as many rows as the length of <code>vs_currencies</code> and the following
 columns:</p><ul>
-<li><p><code>coin_id</code> (character): coin ID;</p></li>
+<li><p><code>coin_id</code> (character): same as the argument <code>coin_id</code>;</p></li>
 <li><p><code>symbol</code> (character): symbol of the coin;</p></li>
 <li><p><code>name</code> (character): common name of the coin;</p></li>
 <li><p><code>date</code> (Date): same as the argument <code>date</code>;</p></li>
-<li><p><code>vs_currency</code> (character): currency, in which the coin's <code>price</code> is
-expressed (ordered alphabetically);</p></li>
+<li><p><code>vs_currency</code> (character): reference currency, in which the <code>price</code>
+is expressed (ordered alphabetically);</p></li>
 <li><p><code>price</code> (double): price of the coin;</p></li>
-<li><p><code>market_cap</code> (double): market capitalisation;</p></li>
+<li><p><code>market_cap</code> (double): market capitalisation of the coin;</p></li>
 <li><p><code>total_volume</code> (double): total trading volume recorded on that <code>date</code>.</p></li>
 </ul>
 

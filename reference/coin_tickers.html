@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -175,16 +175,15 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble with the following columns:</p><ul>
-<li><p><code>exchange_id</code> (character);</p></li>
+<li><p><code>exchange_id</code> (character): same as the argument <code>exchange_id</code>;</p></li>
 <li><p><code>exchange_name</code> (character): common name of the exchange;</p></li>
-<li><p><code>coin_id</code> (character): coin ID;</p></li>
+<li><p><code>coin_id</code> (character): same as the argument <code>coin_id</code>;</p></li>
 <li><p><code>name</code> (character): common name of the coin;</p></li>
 <li><p><code>base</code> (character): symbol of the base currency in a trading pair;</p></li>
 <li><p><code>target</code> (character): symbol of the target currency in a trading pair;</p></li>
-<li><p><code>trust_score</code> (character): trust score of a trading pair at a given exchange
-(<code>"green"</code>, <code>"yellow"</code>, <code>"red"</code>; see
-<a href='https://blog.coingecko.com/trust-score/'>this</a> and
-<a href='https://blog.coingecko.com/trust-score-2/'>this</a> articles on the CoinGecko
+<li><p><code>trust_score</code> (character): trust score of the trading pair (<code>"green"</code>,
+<code>"yellow"</code>, <code>"red"</code>; see <a href='https://blog.coingecko.com/trust-score/'>this</a> and
+<a href='https://blog.coingecko.com/trust-score-2/'>this</a> article on the CoinGecko
 website for details);</p></li>
 <li><p><code>last_price</code> (double): last price reported by this exchange for this
 trading pair;</p></li>
@@ -193,23 +192,23 @@ was recorded;</p></li>
 <li><p><code>last_traded_at</code> (POSIXct, UTC time zone): timestamp of the most recent
 trade;</p></li>
 <li><p><code>bid_ask_spread_percentage</code> (double): percentage difference between
-the ask price (lowest price a seller is willing to sell) and the bid price
-(highest price a buyer is willing to buy; see
+the ask price (lowest price a seller is willing to sell for) and the bid price
+(highest price a buyer is willing to buy for; see
 <a href='https://www.investopedia.com/terms/b/bid-askspread.asp'>Investopedia</a> for
 details);</p></li>
 <li><p><code>trading_volume_24h</code> (double): trading volume (in <code>target</code> currency)
 recorded in the last 24 h (as of <code>last_traded_at</code>);</p></li>
-<li><p><code>last_price_btc</code> (double): last price reported by a given exchange for a
+<li><p><code>last_price_btc</code> (double): last price reported by this exchange for this
 coin, expressed in Bitcoin;</p></li>
-<li><p><code>last_price_eth</code> (double): last price reported by a given exchange for a
+<li><p><code>last_price_eth</code> (double): last price reported by this exchange for this
 coin, expressed in Ethereum;</p></li>
-<li><p><code>last_price_usd</code> (double): last price reported by a given exchange for a
+<li><p><code>last_price_usd</code> (double): last price reported by this exchange for this
 coin, expressed in US dollar;</p></li>
-<li><p><code>trading_volume_24h_btc</code> (double): 24-h trading volume expressed in
+<li><p><code>trading_volume_24h_btc</code> (double): 24 hours trading volume expressed in
 Bitcoin (as of <code>last_traded_at</code>);</p></li>
-<li><p><code>trading_volume_24h_eth</code> (double): 24-h trading volume expressed in
+<li><p><code>trading_volume_24h_eth</code> (double): 24 hours trading volume expressed in
 Ethereum;</p></li>
-<li><p><code>trading_volume_24h_usd</code> (double): 24-h trading volume expressed in
+<li><p><code>trading_volume_24h_usd</code> (double): 24 hours trading volume expressed in
 US dollars;</p></li>
 <li><p><code>cost_to_move_up_2percent_usd</code> and <code>cost_to_move_down_2percent_usd</code>
 (double): 2% market depth (see
@@ -240,20 +239,20 @@ keep this limit in mind when developing your applications.</p>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 14 x 23</span>
 #&gt;    exchange_id exchange_name coin_id name   base  target trust_score  last_price
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> binance     Binance       cardano Carda… ADA   USDT   green           1.40<span style='color: #949494;'>e</span>+0
-#&gt; <span style='color: #BCBCBC;'> 2</span> binance     Binance       cardano Carda… ADA   BTC    green           3.90<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-5</span>
-#&gt; <span style='color: #BCBCBC;'> 3</span> binance     Binance       cardano Carda… ADA   BUSD   green           1.4 <span style='color: #949494;'>e</span>+0
-#&gt; <span style='color: #BCBCBC;'> 4</span> binance     Binance       cardano Carda… ADA   EUR    green           1.18<span style='color: #949494;'>e</span>+0
-#&gt; <span style='color: #BCBCBC;'> 5</span> binance     Binance       cardano Carda… ADA   BNB    green           4.52<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-3</span>
-#&gt; <span style='color: #BCBCBC;'> 6</span> binance     Binance       cardano Carda… ADA   ETH    green           6.40<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-4</span>
-#&gt; <span style='color: #BCBCBC;'> 7</span> binance     Binance       cardano Carda… ADA   GBP    green           1.01<span style='color: #949494;'>e</span>+0
-#&gt; <span style='color: #BCBCBC;'> 8</span> binance     Binance       cardano Carda… ADA   TRY    green           1.21<span style='color: #949494;'>e</span>+1
-#&gt; <span style='color: #BCBCBC;'> 9</span> binance     Binance       cardano Carda… ADA   USDC   green           1.40<span style='color: #949494;'>e</span>+0
-#&gt; <span style='color: #BCBCBC;'>10</span> binance     Binance       cardano Carda… ADA   AUD    green           1.85<span style='color: #949494;'>e</span>+0
-#&gt; <span style='color: #BCBCBC;'>11</span> binance     Binance       cardano Carda… ADA   BRL    green           6.94<span style='color: #949494;'>e</span>+0
-#&gt; <span style='color: #BCBCBC;'>12</span> binance     Binance       cardano Carda… ADA   RUB    green           1.02<span style='color: #949494;'>e</span>+2
-#&gt; <span style='color: #BCBCBC;'>13</span> binance     Binance       cardano Carda… ADA   BIDR   green           2.03<span style='color: #949494;'>e</span>+4
-#&gt; <span style='color: #BCBCBC;'>14</span> binance     Binance       cardano Carda… ADA   TUSD   green           1.40<span style='color: #949494;'>e</span>+0
+#&gt; <span style='color: #BCBCBC;'> 1</span> binance     Binance       cardano Carda… ADA   USDT   green           1.34<span style='color: #949494;'>e</span>+0
+#&gt; <span style='color: #BCBCBC;'> 2</span> binance     Binance       cardano Carda… ADA   BTC    green           3.95<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-5</span>
+#&gt; <span style='color: #BCBCBC;'> 3</span> binance     Binance       cardano Carda… ADA   BUSD   green           1.34<span style='color: #949494;'>e</span>+0
+#&gt; <span style='color: #BCBCBC;'> 4</span> binance     Binance       cardano Carda… ADA   EUR    green           1.13<span style='color: #949494;'>e</span>+0
+#&gt; <span style='color: #BCBCBC;'> 5</span> binance     Binance       cardano Carda… ADA   ETH    green           6.26<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-4</span>
+#&gt; <span style='color: #BCBCBC;'> 6</span> binance     Binance       cardano Carda… ADA   BNB    green           4.15<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-3</span>
+#&gt; <span style='color: #BCBCBC;'> 7</span> binance     Binance       cardano Carda… ADA   USDC   green           1.34<span style='color: #949494;'>e</span>+0
+#&gt; <span style='color: #BCBCBC;'> 8</span> binance     Binance       cardano Carda… ADA   TRY    green           1.16<span style='color: #949494;'>e</span>+1
+#&gt; <span style='color: #BCBCBC;'> 9</span> binance     Binance       cardano Carda… ADA   AUD    green           1.79<span style='color: #949494;'>e</span>+0
+#&gt; <span style='color: #BCBCBC;'>10</span> binance     Binance       cardano Carda… ADA   RUB    green           9.94<span style='color: #949494;'>e</span>+1
+#&gt; <span style='color: #BCBCBC;'>11</span> binance     Binance       cardano Carda… ADA   BIDR   green           1.95<span style='color: #949494;'>e</span>+4
+#&gt; <span style='color: #BCBCBC;'>12</span> binance     Binance       cardano Carda… ADA   TUSD   green           1.34<span style='color: #949494;'>e</span>+0
+#&gt; <span style='color: #BCBCBC;'>13</span> binance     Binance       cardano Carda… ADA   BRL    <span style='color: #BB0000;'>NA</span>              7.10<span style='color: #949494;'>e</span>+0
+#&gt; <span style='color: #BCBCBC;'>14</span> binance     Binance       cardano Carda… ADA   GBP    <span style='color: #BB0000;'>NA</span>              9.10<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-1</span>
 #&gt; <span style='color: #949494;'># … with 15 more variables: last_fetch_at &lt;dttm&gt;, last_traded_at &lt;dttm&gt;,</span>
 #&gt; <span style='color: #949494;'>#   bid_ask_spread_percentage &lt;dbl&gt;, trading_volume_24h &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   last_price_btc &lt;dbl&gt;, last_price_eth &lt;dbl&gt;, last_price_usd &lt;dbl&gt;,</span>
