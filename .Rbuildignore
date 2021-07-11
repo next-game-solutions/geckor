@@ -3,7 +3,6 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^README\.md$
-^NEWS\.md$
 ^codecov\.yml$
 ^_pkgdown\.yml$
 ^docs$
