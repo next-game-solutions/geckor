@@ -25,7 +25,7 @@ has its headquarters;
 trusted (ranges from 1 to 10; see
 \href{https://www.coingecko.com/en/methodology}{Methodology} on the CoinGecko
 website);
-\item \code{trading_volume_24h_btc} (double): trading volume in the last 24 h,
+\item \code{trading_volume_24h_btc} (double): trading volume in the last 24 hours,
 expressed in Bitcoin.
 }
 }

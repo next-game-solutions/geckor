@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+Sys.sleep(60)
 ```
 
 ```{r setup}
@@ -27,7 +29,6 @@ coins <- supported_coins()
 nrow(coins)
 
 head(coins, 10)
-
 ```
 
 The first column in the resultant tibble contains coin IDs in the format expected by other `geckor` functions.
@@ -43,9 +44,9 @@ nrow(exchanges)
 head(exchanges, 10)
 ```
 
-Of the important columns in the resultant tibble is `trust_score`. This score ranges from 1 to 10 and combines several metrics indicative of how much one can trust the data originating from a given exchange (see [this](https://blog.coingecko.com/trust-score/ "Trust Score v1") and [this](https://blog.coingecko.com/trust-score-2/ "Trust Score v2") articles on the CoinGecko website for details).
+One of the important columns in the obtained tibble is `trust_score`. This score ranges from 1 to 10 and combines several metrics indicative of how much one can trust the data originating from a given exchange (see [this](https://blog.coingecko.com/trust-score/ "Trust Score v1") and [this](https://blog.coingecko.com/trust-score-2/ "Trust Score v2") articles on the CoinGecko website for details).
 
-When querying the market data for a cryptocurrency, users are always expected to supply one or several "base currencies" to express the price in. The list of such base currencies can be obtained with the `supported_currencies()` function:
+When querying the market data for a cryptocurrency, users are always expected to supply one or several reference to express the price in. The list of such reference currencies can be retrieved with the `supported_currencies()` function:
 
 ```{r supported-currencies}
 currencies <- supported_currencies()

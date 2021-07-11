@@ -2,8 +2,8 @@
 #'
 #' Validates arguments that are frequently used in `geckor` functions
 #'
-#' @return This function is to be used for its side effects. If any of the
-#'     checks is not passed, the respective error is returned. If all checks
+#' @return This internal function is to be used for its side effects. If any of
+#'     the checks is not passed, the respective error is returned. If all checks
 #'     are passed successfully, nothing is returned.
 #'
 #' @keywords internal

@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+Sys.sleep(60)
 ```
 
 ```{r setup}
@@ -20,7 +22,7 @@ library(geckor)
 
 The CoinGecko API allows one to query market data on cryptocurrencies in real time. There are several functions in `geckor` that can be used to collect such data.
 
-The current prices for a set of cryptocurrencies of interest can be queried with the `current_price()` function. The two important arguments expected by this function are `coin_ids` (a character vector with coin IDs; see `?supported_coins` for details) and `vs_currencies` (a character vector with abbreviated names of the "base currencies", i.e. currencies used to express the price in; see `?supported_currencies` for details). In the example below, we are requesting the current prices for Cardano, Tron, and Polkadot, expressed in USD, EUR, and GBP:
+The current prices for a set of cryptocurrencies of interest can be queried with the `current_price()` function. The two important arguments expected by this function are `coin_ids` (a character vector with coin IDs; see `?supported_coins` for details) and `vs_currencies` (a character vector with abbreviated names of reference currencies, which are used to express the price in; see `?supported_currencies` for details). In the example below, we are requesting the current prices for Cardano, Tron, and Polkadot, expressed in USD, EUR, and GBP:
 
 ```{r current-price}
 prices <- current_price(
@@ -33,7 +35,7 @@ prices
 
 See `?current_price` for definitions of columns in the resultant tibble.
 
-The `exchange_rate()` function can be used to obtain the current exchange rates for any supported base currency, expressed in Bitcoin. The `currency` argument of this function specifies the list of currencies of interest. If `currency = NULL`, data for all supported currencies will be returned:
+The `exchange_rate()` function can be used to obtain the current exchange rates for any supported reference currency, expressed in Bitcoin. The `currency` argument of this function specifies the list of currencies of interest. If `currency = NULL`, data for all supported currencies will be returned:
 
 ```{r exchange-rates}
 all_rates <- exchange_rate(currency = NULL)

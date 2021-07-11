@@ -4,15 +4,15 @@
 \alias{coin_history_range}
 \title{Get historical market data}
 \usage{
-coin_history_range(coin_id, vs_currency, from, to, max_attempts = 3)
+coin_history_range(coin_id, vs_currency = "usd", from, to, max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest. An
 up-to-date list of supported coins and their IDs can be retrieved
 with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
-\item{vs_currency}{(character): name of the base currency to
-express the price in. An up-to-date list of supported currencies (both
+\item{vs_currency}{(character): name of the reference currency to
+express the price in. An up-to-date list of supported reference currencies (both
 fiat and cryptocurrencies) can be obtained with the \code{\link[=supported_currencies]{supported_currencies()}}
 function. If an unsupported \code{vs_currency} is requested, the call will
 fail with the respective error message.}
@@ -34,7 +34,7 @@ A tibble with the following columns:
 \item \code{timestamp} (POSIXct);
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price} (double): coin price as of \code{timestamp};
-\item \code{total_trading_vol} (double): a 24 h rolling-window trading volume, as
+\item \code{total_trading_vol} (double): a 24 hours rolling-window trading volume, as
 of \code{timestampt};
 \item \code{market_cap} (double): market capitalisation, as of \code{timestamp}.
 }
@@ -44,7 +44,7 @@ Retrieves coin-specific market data for a range of historical dates
 }
 \details{
 This function returns hourly data for periods of up to 90 days
-and daily data for periods longer than 90 days.
+and daily data for periods that are longer than 90 days.
 
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},

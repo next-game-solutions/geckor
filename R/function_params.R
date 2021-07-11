@@ -17,13 +17,13 @@ function_params <- function(arguments) {
     coin_ids = "@param coin_ids (character): a vector with IDs of the coins of
        interest. An up-to-date list of supported coins and their
        IDs can be obtained with the [supported_coins()] function.",
-    vs_currency = "@param vs_currency (character): name of the base currency to
-       express the price in. An up-to-date list of supported currencies (both
+    vs_currency = "@param vs_currency (character): name of the reference currency to
+       express the price in. An up-to-date list of supported reference currencies (both
        fiat and cryptocurrencies) can be obtained with the [supported_currencies()]
        function. If an unsupported `vs_currency` is requested, the call will
        fail with the respective error message.",
     vs_currencies = "@param vs_currencies (character): a vector with
-       names of the base currencies to express the price in, e.g.
+       names of the reference currencies to express the price in, e.g.
        `c(\"usd\", \"eur\", \"btc\")`. An up-to-date list of supported
        `vs_currencies` (both fiat and cryptocurrencies) can be obtained with
        the [supported_currencies()] function. If `vs_currencies`
@@ -32,10 +32,10 @@ function_params <- function(arguments) {
     include_market_cap = "@param include_market_cap (boolean, defaults to
        `TRUE`): whether to return the market capitalisation information.",
     include_24h_vol = "@param include_24h_vol (boolean, defaults to `TRUE`):
-       whether to return the trading volume for the last 24 h.",
+       whether to return the trading volume for the last 24 hours.",
     include_24h_change = "@param include_24h_change (boolean, defaults to
        `TRUE`): whether to return the price percentage change compared to 24
-       h ago.",
+       hours ago.",
     api_note = "@details This function is based on the public
                [CoinGecko API](https://www.coingecko.com/api/documentations/v3),
                which has a limit of 50 calls per minute. Please

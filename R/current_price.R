@@ -1,6 +1,6 @@
 #' Current coin prices
 #'
-#' Retrieves the current price of supported coins in any supported currencies
+#' Retrieves current prices of supported coins in any supported reference currencies
 #'
 #' @eval function_params(c("coin_ids", "vs_currencies", "include_market_cap",
 #'                         "include_24h_vol", "include_24h_change",
@@ -13,12 +13,12 @@
 #'    arguments `include_market_cap`, `include_24h_vol` and `include_24h_change`
 #'    to control the inclusion of the corresponding columns):
 #' * `coin_id` (character): coin IDs, ordered alphabetically;
-#' * `vs_currency` (character): base currency used to express the
-#' price of `coin_id` in;
+#' * `vs_currency` (character): reference currency, in which the price of
+#' `coin_id` is expressed;
 #' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last price
 #' update;
 #' * `market_cap` (double): current market capitalisation;
-#' * `vol_24h` (double): trading volume in the last 24 h;
+#' * `vol_24h` (double): trading volume in the last 24 hours;
 #' * `price_percent_change_24h` (double): percentage change of the price as
 #' compared to 24 hours ago.
 #'
@@ -106,9 +106,9 @@ current_price <- function(coin_ids,
         vol_24h = vol_24h,
         price_percent_change_24h = change_24h,
         last_updated_at = as.POSIXct(x$last_updated_at,
-          origin = as.Date("1970-01-01"),
-          tz = "UTC",
-          format = "%Y-%m-%d %H:%M:%S"
+                                     origin = as.Date("1970-01-01"),
+                                     tz = "UTC",
+                                     format = "%Y-%m-%d %H:%M:%S"
         )
       )
   }) %>%

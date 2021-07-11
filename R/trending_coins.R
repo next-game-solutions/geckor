@@ -4,8 +4,8 @@
 #'
 #' @eval function_params("max_attempts")
 #'
-#' @details Popularity of a coin is determined based on the search patterns at the
-#' CoinGecko website over the last 24 h.
+#' @details Popularity of a coin is determined from search patterns at the
+#' CoinGecko website over the last 24 hours.
 #'
 #' @eval function_params("api_note")
 #'
@@ -15,8 +15,8 @@
 #' * `coin_id` (character): coin ID;
 #' * `name` (character): common name of the coin;
 #' * `symbol` (character): symbol of the coin;
-#' * `market_cap_rank` (integer): market capitalisation rank of the coin;
-#' * `price_btc` (double): price of the coin expressed in Bitcoin.
+#' * `market_cap_rank` (integer): market capitalisation rank;
+#' * `price_btc` (double): price expressed in Bitcoin.
 #'
 #' @export
 #'

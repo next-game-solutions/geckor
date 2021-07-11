@@ -19,7 +19,7 @@ interest. An up-to-date list of supported coins and their
 IDs can be obtained with the \code{\link[=supported_coins]{supported_coins()}} function.}
 
 \item{vs_currencies}{(character): a vector with
-names of the base currencies to express the price in, e.g.
+names of the reference currencies to express the price in, e.g.
 \code{c("usd", "eur", "btc")}. An up-to-date list of supported
 \code{vs_currencies} (both fiat and cryptocurrencies) can be obtained with
 the \code{\link[=supported_currencies]{supported_currencies()}} function. If \code{vs_currencies}
@@ -30,11 +30,11 @@ respective error message.}
 \code{TRUE}): whether to return the market capitalisation information.}
 
 \item{include_24h_vol}{(boolean, defaults to \code{TRUE}):
-whether to return the trading volume for the last 24 h.}
+whether to return the trading volume for the last 24 hours.}
 
 \item{include_24h_change}{(boolean, defaults to
 \code{TRUE}): whether to return the price percentage change compared to 24
-h ago.}
+hours ago.}
 
 \item{max_attempts}{(double, positive): specifies the
 maximum number of attempts to call the CoinGecko API (e.g., if
@@ -47,18 +47,18 @@ arguments \code{include_market_cap}, \code{include_24h_vol} and \code{include_24
 to control the inclusion of the corresponding columns):
 \itemize{
 \item \code{coin_id} (character): coin IDs, ordered alphabetically;
-\item \code{vs_currency} (character): base currency used to express the
-price of \code{coin_id} in;
+\item \code{vs_currency} (character): reference currency, in which the price of
+\code{coin_id} is expressed;
 \item \code{last_updated_at} (POSIXct, UTC time zone): timestamp of the last price
 update;
 \item \code{market_cap} (double): current market capitalisation;
-\item \code{vol_24h} (double): trading volume in the last 24 h;
+\item \code{vol_24h} (double): trading volume in the last 24 hours;
 \item \code{price_percent_change_24h} (double): percentage change of the price as
 compared to 24 hours ago.
 }
 }
 \description{
-Retrieves the current price of supported coins in any supported currencies
+Retrieves current prices of supported coins in any supported reference currencies
 }
 \details{
 This function is based on the public

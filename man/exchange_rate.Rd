@@ -2,7 +2,7 @@
 % Please edit documentation in R/exchange_rate.R
 \name{exchange_rate}
 \alias{exchange_rate}
-\title{Exchange rates}
+\title{Exchange rate}
 \usage{
 exchange_rate(currency = NULL, max_attempts = 3)
 }

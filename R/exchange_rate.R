@@ -1,4 +1,4 @@
-#' Exchange rates
+#' Exchange rate
 #'
 #' Retrieves the current exchange rate for a crypto- of fiat currency in Bitcoin
 #'
