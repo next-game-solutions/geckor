@@ -31,8 +31,6 @@ At the moment, `geckor` is only available on GitHub and can be installed with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("next-game-solutions/geckor")
-
-library(geckor)
 ```
 
 ## Examples
