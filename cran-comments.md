@@ -1,6 +1,6 @@
 # Release summary
 
-This is a re-submission.
+This is a re-submission of new package.
 
 ## Changes made in line with the reviewer's comments
 
