@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="R Client for the CoinGecko API">
 <meta property="og:description" content="Collect the current and historical cryptocurrency market data using 
-    the public CoinGecko API.">
+    the public CoinGecko API (&lt;https://www.coingecko.com/en/api&gt;).">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -108,9 +108,7 @@
 <p>At the moment, <code>geckor</code> is only available on GitHub and can be installed with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"next-game-solutions/geckor"</span><span class="op">)</span>
-
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/next-game-solutions/geckor">geckor</a></span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"next-game-solutions/geckor"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
@@ -133,17 +131,17 @@
 <span class="fu"><a href="reference/current_price.html">current_price</a></span><span class="op">(</span>coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,
               vs_currencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"usd"</span>, <span class="st">"eur"</span>, <span class="st">"gbp"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 9 x 7</span>
-<span class="co">#&gt;   coin_id    price vs_currency   market_cap     vol_24h price_percent_change_24h</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;                    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cardano   1.36   usd         43448664437. 1048797558.                 -0.574  </span>
-<span class="co">#&gt; 2 cardano   1.14   eur         36582211304.  883049787.                 -0.642  </span>
-<span class="co">#&gt; 3 cardano   0.975  gbp         31252407086.  754394839.                 -0.948  </span>
-<span class="co">#&gt; 4 polkadot 15.7    usd         15514260550.  497608662.                  0.0597 </span>
-<span class="co">#&gt; 5 polkadot 13.2    eur         13062448870.  418968580.                 -0.00896</span>
-<span class="co">#&gt; 6 polkadot 11.3    gbp         11159330043.  357927423.                 -0.316  </span>
-<span class="co">#&gt; 7 tron      0.0625 usd          4480180713.  761390993.                 -0.118  </span>
-<span class="co">#&gt; 8 tron      0.0527 eur          3772150874.  641063806.                 -0.186  </span>
-<span class="co">#&gt; 9 tron      0.0450 gbp          3222571586.  547664734.                 -0.493  </span>
+<span class="co">#&gt;   coin_id    price vs_currency   market_cap    vol_24h price_percent_change_24h</span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;                    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cardano   1.34   usd         42989716886. 771105827.                     1.50</span>
+<span class="co">#&gt; 2 cardano   1.13   eur         36201855538. 649363639.                     1.52</span>
+<span class="co">#&gt; 3 cardano   0.967  gbp         30930886351. 554951755.                     1.56</span>
+<span class="co">#&gt; 4 polkadot 15.5    usd         15653516672. 329847459.                     2.67</span>
+<span class="co">#&gt; 5 polkadot 13.1    eur         13181904657. 277766194.                     2.68</span>
+<span class="co">#&gt; 6 polkadot 11.2    gbp         11265569839. 237385609.                     2.72</span>
+<span class="co">#&gt; 7 tron      0.0620 usd          4436415762. 730312375.                     1.81</span>
+<span class="co">#&gt; 8 tron      0.0523 eur          3735927895. 615010657.                     1.82</span>
+<span class="co">#&gt; 9 tron      0.0447 gbp          3191978959. 525593401.                     1.86</span>
 <span class="co">#&gt; # ... with 1 more variable: last_updated_at &lt;dttm&gt;</span>
 
 <span class="co"># Get a more comprehensive view of the current Cardano, Tron, and </span>
@@ -157,34 +155,34 @@
 <span class="co">#&gt; $ symbol                                   &lt;chr&gt; "ada", "dot", "trx"</span>
 <span class="co">#&gt; $ name                                     &lt;chr&gt; "Cardano", "Polkadot", "TRON"</span>
 <span class="co">#&gt; $ vs_currency                              &lt;chr&gt; "usd", "usd", "usd"</span>
-<span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2021-07-10 16:41:35, 2021-07-~</span>
-<span class="co">#&gt; $ current_price                            &lt;dbl&gt; 1.360000, 15.680000, 0.062533</span>
-<span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 43448664437, 15514260550, 448~</span>
+<span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2021-07-11 20:16:16, 2021-07-~</span>
+<span class="co">#&gt; $ current_price                            &lt;dbl&gt; 1.340000, 15.520000, 0.062049</span>
+<span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 42989716886, 15653516672, 443~</span>
 <span class="co">#&gt; $ market_cap_rank                          &lt;int&gt; 5, 9, 25</span>
-<span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 60973182791, NA, NA</span>
-<span class="co">#&gt; $ total_volume                             &lt;int&gt; 1048797558, 497608662, 761390~</span>
-<span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 1.37000, 15.98000, 0.06317</span>
-<span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 1.320000, 15.260000, 0.061552</span>
-<span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; -7.825742e-03, 9.353460e-03, ~</span>
-<span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; -0.57416, 0.05968, -0.11791</span>
-<span class="co">#&gt; $ market_cap_change_24h                    &lt;dbl&gt; -259094375, -312087162, -410~</span>
-<span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; -0.59279, -1.97195, -0.09157</span>
-<span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 32066390668, 1009109392, 7166~</span>
-<span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1090075223, 1008~</span>
+<span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 60329124031, NA, NA</span>
+<span class="co">#&gt; $ total_volume                             &lt;int&gt; 771105827, 329847459, 7303123~</span>
+<span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 1.350000, 15.700000, 0.062388</span>
+<span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 1.320000, 15.090000, 0.060897</span>
+<span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; 0.01991248, 0.40289000, 0.001~</span>
+<span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; 1.50433, 2.66593, 1.80548</span>
+<span class="co">#&gt; $ market_cap_change_24h                    &lt;int&gt; 212993273, 290070712, 33790531</span>
+<span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; 0.49792, 1.88806, 0.76751</span>
+<span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 32066390668, 1009377617, 716~</span>
+<span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1090320501, 1008~</span>
 <span class="co">#&gt; $ max_supply                               &lt;dbl&gt; 4.5e+10, NA, NA</span>
 <span class="co">#&gt; $ ath                                      &lt;dbl&gt; 2.450000, 49.350000, 0.231673</span>
-<span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -45.35639, -68.81476, -73.234~</span>
+<span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -45.16077, -68.62412, -73.276~</span>
 <span class="co">#&gt; $ ath_date                                 &lt;dttm&gt; 2021-05-16 07:44:28, 2021-05-~</span>
 <span class="co">#&gt; $ atl                                      &lt;dbl&gt; 0.01925275, 2.70000000, 0.001~</span>
-<span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 6840.8178, 470.5228, 3336.5610</span>
+<span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 6865.6659, 474.0105, 3331.2470</span>
 <span class="co">#&gt; $ atl_date                                 &lt;dttm&gt; 2020-03-13 02:22:55, 2020-08-~</span>
-<span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; 1.4468335, 2.0290116, 0.90558~</span>
-<span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; -0.57416326, 0.05968179, -0.1~</span>
-<span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; -2.862573, 2.211478, -6.161329</span>
-<span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; 6.1267332, 6.3331038, 0.24371~</span>
-<span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -16.44703, -32.39698, -17.209~</span>
-<span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; 781.7385, 220.5128, 112.4202</span>
-<span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; 993.3799, NA, 238.5788</span>
+<span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; 0.06875506, -0.15974418, -0.0~</span>
+<span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; 1.504335, 2.665929, 1.805479</span>
+<span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; -4.68421811, 0.04893231, -7.2~</span>
+<span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; 7.6521848, 7.6021371, -0.8142~</span>
+<span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -12.29674, -31.58984, -14.659~</span>
+<span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; 755.3527, 201.0754, 114.2272</span>
+<span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; 1034.3943, NA, 242.0198</span>
 
 <span class="co"># Collect all historical data on the price of Cardano (expressed in EUR),</span>
 <span class="co"># and plot the result:</span>

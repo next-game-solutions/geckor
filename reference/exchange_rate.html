@@ -194,16 +194,16 @@ keep this limit in mind when developing your applications.</p>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 61 x 5</span>
 #&gt;    timestamp           currency name                        price_in_btc type  
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> aed      United Arab Emirates Dirham     <span style='text-decoration: underline;'>124</span>960.  fiat  
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> ars      Argentine Peso                 3<span style='text-decoration: underline;'>260</span>568.  fiat  
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> aud      Australian Dollar                <span style='text-decoration: underline;'>45</span>471.  fiat  
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> bch      Bitcoin Cash                        68.6 crypto
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> bdt      Bangladeshi Taka               2<span style='text-decoration: underline;'>878</span>607.  fiat  
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> bhd      Bahraini Dinar                   <span style='text-decoration: underline;'>12</span>804.  fiat  
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> bits     Bits                           1<span style='text-decoration: underline;'>000</span>000   crypto
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> bmd      Bermudian Dollar                 <span style='text-decoration: underline;'>34</span>021.  fiat  
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> bnb      Binance Coin                       105.  crypto
-#&gt; <span style='color: #BCBCBC;'>10</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> brl      Brazil Real                     <span style='text-decoration: underline;'>176</span>829.  fiat  
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> aed      United Arab Emirates Dirham     <span style='text-decoration: underline;'>123</span>588.  fiat  
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> ars      Argentine Peso                 3<span style='text-decoration: underline;'>227</span>029.  fiat  
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> aud      Australian Dollar                <span style='text-decoration: underline;'>45</span>103.  fiat  
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> bch      Bitcoin Cash                        68.8 crypto
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> bdt      Bangladeshi Taka               2<span style='text-decoration: underline;'>852</span>288.  fiat  
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> bhd      Bahraini Dinar                   <span style='text-decoration: underline;'>12</span>684.  fiat  
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> bits     Bits                           1<span style='text-decoration: underline;'>000</span>000   crypto
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> bmd      Bermudian Dollar                 <span style='text-decoration: underline;'>33</span>646.  fiat  
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> bnb      Binance Coin                       104.  crypto
+#&gt; <span style='color: #BCBCBC;'>10</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> brl      Brazil Real                     <span style='text-decoration: underline;'>177</span>123.  fiat  
 #&gt; <span style='color: #949494;'># … with 51 more rows</span></div><div class='input'>
 <span class='co'># get exchange rates for a set of currencies:</span>
 <span class='va'>r2</span> <span class='op'>&lt;-</span> <span class='fu'>exchange_rate</span><span class='op'>(</span>currency <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"usd"</span>, <span class='st'>"eur"</span>, <span class='st'>"gbp"</span><span class='op'>)</span><span class='op'>)</span>
@@ -211,9 +211,9 @@ keep this limit in mind when developing your applications.</p>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 5</span>
 #&gt;   timestamp           currency name                   price_in_btc type 
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> eur      Euro                         <span style='text-decoration: underline;'>28</span>649. fiat 
-#&gt; <span style='color: #BCBCBC;'>2</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> gbp      British Pound Sterling       <span style='text-decoration: underline;'>24</span>485. fiat 
-#&gt; <span style='color: #BCBCBC;'>3</span> 2021-07-11 <span style='color: #949494;'>20:14:06</span> usd      US Dollar                    <span style='text-decoration: underline;'>34</span>021. fiat </div><div class='input'><span class='co'># }</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> eur      Euro                         <span style='text-decoration: underline;'>28</span>389. fiat 
+#&gt; <span style='color: #BCBCBC;'>2</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> gbp      British Pound Sterling       <span style='text-decoration: underline;'>24</span>293. fiat 
+#&gt; <span style='color: #BCBCBC;'>3</span> 2021-07-12 <span style='color: #949494;'>12:20:44</span> usd      US Dollar                    <span style='text-decoration: underline;'>33</span>646. fiat </div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
