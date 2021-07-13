@@ -26,7 +26,13 @@ current and historical market data on over 8000 cryptocurrencies from more than 
 
 ## Installation
 
-At the moment, `geckor` is only available on GitHub and can be installed with:
+A stable version of this package can be installed from [CRAN](https://cran.r-project.org/web/packages/geckor/index.html) the usual way:
+
+``` r
+install.packages("geckor")
+```
+
+To install the development version from GitHub, use the following command(s):
 
 ``` r
 # install.packages("devtools")

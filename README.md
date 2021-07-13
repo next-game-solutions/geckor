@@ -22,8 +22,16 @@ any downstream analyses.
 
 ## Installation
 
-At the moment, `geckor` is only available on GitHub and can be installed
-with:
+A stable version of this package can be installed from
+[CRAN](https://cran.r-project.org/web/packages/geckor/index.html) the
+usual way:
+
+``` r
+install.packages("geckor")
+```
+
+To install the development version from GitHub, use the following
+command(s):
 
 ``` r
 # install.packages("devtools")
@@ -55,17 +63,17 @@ library(ggplot2)
 current_price(coin_ids = c("cardano", "tron", "polkadot"),
               vs_currencies = c("usd", "eur", "gbp"))
 #> # A tibble: 9 x 7
-#>   coin_id    price vs_currency   market_cap    vol_24h price_percent_change_24h
-#>   <chr>      <dbl> <chr>              <dbl>      <dbl>                    <dbl>
-#> 1 cardano   1.34   usd         42989716886. 771105827.                     1.50
-#> 2 cardano   1.13   eur         36201855538. 649363639.                     1.52
-#> 3 cardano   0.967  gbp         30930886351. 554951755.                     1.56
-#> 4 polkadot 15.5    usd         15653516672. 329847459.                     2.67
-#> 5 polkadot 13.1    eur         13181904657. 277766194.                     2.68
-#> 6 polkadot 11.2    gbp         11265569839. 237385609.                     2.72
-#> 7 tron      0.0620 usd          4436415762. 730312375.                     1.81
-#> 8 tron      0.0523 eur          3735927895. 615010657.                     1.82
-#> 9 tron      0.0447 gbp          3191978959. 525593401.                     1.86
+#>   coin_id    price vs_currency   market_cap     vol_24h price_percent_change_24h
+#>   <chr>      <dbl> <chr>              <dbl>       <dbl>                    <dbl>
+#> 1 cardano   1.27   usd         40566153610. 1050831768.                   -3.15 
+#> 2 cardano   1.08   eur         34439690827.  892261254.                   -2.45 
+#> 3 cardano   0.917  gbp         29365960297.  760749658.                   -2.63 
+#> 4 polkadot 14.2    usd         14305263792.  394711644.                   -3.59 
+#> 5 polkadot 12.0    eur         12144825633.  335149657.                   -2.90 
+#> 6 polkadot 10.3    gbp         10355623375.  285751495.                   -3.08 
+#> 7 tron      0.0596 usd          4268429142.  744148318.                   -1.02 
+#> 8 tron      0.0506 eur          3623793899.  631856337.                   -0.309
+#> 9 tron      0.0432 gbp          3089928661.  538726175.                   -0.492
 #> # ... with 1 more variable: last_updated_at <dttm>
 
 # Get a more comprehensive view of the current Cardano, Tron, and 
@@ -79,34 +87,34 @@ current_market(coin_ids = c("cardano", "tron", "polkadot"),
 #> $ symbol                                   <chr> "ada", "dot", "trx"
 #> $ name                                     <chr> "Cardano", "Polkadot", "TRON"
 #> $ vs_currency                              <chr> "usd", "usd", "usd"
-#> $ last_updated_at                          <dttm> 2021-07-11 20:16:16, 2021-07-~
-#> $ current_price                            <dbl> 1.340000, 15.520000, 0.062049
-#> $ market_cap                               <dbl> 42989716886, 15653516672, 443~
-#> $ market_cap_rank                          <int> 5, 9, 25
-#> $ fully_diluted_valuation                  <dbl> 60329124031, NA, NA
-#> $ total_volume                             <int> 771105827, 329847459, 7303123~
-#> $ high_24h                                 <dbl> 1.350000, 15.700000, 0.062388
-#> $ low_24h                                  <dbl> 1.320000, 15.090000, 0.060897
-#> $ price_change_24h                         <dbl> 0.01991248, 0.40289000, 0.001~
-#> $ price_change_percentage_24h              <dbl> 1.50433, 2.66593, 1.80548
-#> $ market_cap_change_24h                    <int> 212993273, 290070712, 33790531
-#> $ market_cap_change_percentage_24h         <dbl> 0.49792, 1.88806, 0.76751
-#> $ circulating_supply                       <dbl> 32066390668, 1009377617, 716~
-#> $ total_supply                             <dbl> 45000000000, 1090320501, 1008~
+#> $ last_updated_at                          <dttm> 2021-07-13 21:44:54, 2021-07-~
+#> $ current_price                            <dbl> 1.27000, 14.19000, 0.05962
+#> $ market_cap                               <dbl> 40566153610, 14305263792, 426~
+#> $ market_cap_rank                          <int> 5, 9, 26
+#> $ fully_diluted_valuation                  <dbl> 56928044422, NA, NA
+#> $ total_volume                             <int> 1050831768, 394711644, 744148~
+#> $ high_24h                                 <dbl> 1.320000, 15.090000, 0.060995
+#> $ low_24h                                  <dbl> 1.250000, 14.080000, 0.059096
+#> $ price_change_24h                         <dbl> -0.0411919069, -0.5285809229,~
+#> $ price_change_percentage_24h              <dbl> -3.15068, -3.59132, -1.02108
+#> $ market_cap_change_24h                    <dbl> -1335284910, -505165459, -35~
+#> $ market_cap_change_percentage_24h         <dbl> -3.18673, -3.41088, -0.83531
+#> $ circulating_supply                       <dbl> 32066390668, 1009861354, 7166~
+#> $ total_supply                             <dbl> 45000000000, 1090810486, 1008~
 #> $ max_supply                               <dbl> 4.5e+10, NA, NA
 #> $ ath                                      <dbl> 2.450000, 49.350000, 0.231673
-#> $ ath_change_percentage                    <dbl> -45.16077, -68.62412, -73.276~
+#> $ ath_change_percentage                    <dbl> -48.27021, -71.29259, -74.265~
 #> $ ath_date                                 <dttm> 2021-05-16 07:44:28, 2021-05-~
 #> $ atl                                      <dbl> 0.01925275, 2.70000000, 0.001~
-#> $ atl_change_percentage                    <dbl> 6865.6659, 474.0105, 3331.2470
+#> $ atl_change_percentage                    <dbl> 6470.7051, 425.1917, 3204.2278
 #> $ atl_date                                 <dttm> 2020-03-13 02:22:55, 2020-08-~
-#> $ price_change_percentage_1h_in_currency   <dbl> 0.06875506, -0.15974418, -0.0~
-#> $ price_change_percentage_24h_in_currency  <dbl> 1.504335, 2.665929, 1.805479
-#> $ price_change_percentage_7d_in_currency   <dbl> -4.68421811, 0.04893231, -7.2~
-#> $ price_change_percentage_14d_in_currency  <dbl> 7.6521848, 7.6021371, -0.8142~
-#> $ price_change_percentage_30d_in_currency  <dbl> -12.29674, -31.58984, -14.659~
-#> $ price_change_percentage_200d_in_currency <dbl> 755.3527, 201.0754, 114.2272
-#> $ price_change_percentage_1y_in_currency   <dbl> 1034.3943, NA, 242.0198
+#> $ price_change_percentage_1h_in_currency   <dbl> 0.4737232, 0.7816781, 0.59454~
+#> $ price_change_percentage_24h_in_currency  <dbl> -3.150684, -3.591319, -1.0210~
+#> $ price_change_percentage_7d_in_currency   <dbl> -10.508334, -7.370925, -8.131~
+#> $ price_change_percentage_14d_in_currency  <dbl> -4.929234, -10.054411, -8.932~
+#> $ price_change_percentage_30d_in_currency  <dbl> -14.61656, -31.93480, -12.688~
+#> $ price_change_percentage_200d_in_currency <dbl> 728.2967, 176.3093, 115.3589
+#> $ price_change_percentage_1y_in_currency   <dbl> 897.9664, NA, 228.2605
 
 # Collect all historical data on the price of Cardano (expressed in EUR),
 # and plot the result:
