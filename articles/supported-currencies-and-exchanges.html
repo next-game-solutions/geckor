@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -115,7 +115,7 @@
 
 <span class="co"># number of supported coins:</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">coins</span><span class="op">)</span>
-<span class="co">#&gt; [1] 8457</span>
+<span class="co">#&gt; [1] 8521</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coins</span>, <span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 3</span>
@@ -138,22 +138,22 @@
 
 <span class="co"># number of supported exchanges:</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">exchanges</span><span class="op">)</span>
-<span class="co">#&gt; [1] 313</span>
+<span class="co">#&gt; [1] 315</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">exchanges</span>, <span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    exchange_id name  year_established country url   trust_score trading_volume_…</span>
 <span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;int&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 binance     Bina…             2017 Cayman… http…          10          280344.</span>
-<span class="co">#&gt;  2 gdax        Coin…             2012 United… http…          10           29542.</span>
-<span class="co">#&gt;  3 ftx_spot    FTX               2019 Antigu… http…          10           29225.</span>
-<span class="co">#&gt;  4 bitmart     BitM…             2017 Cayman… http…          10           23801.</span>
-<span class="co">#&gt;  5 kraken      Krak…             2011 United… http…          10           11810.</span>
-<span class="co">#&gt;  6 hotbit      Hotb…               NA Estonia http…          10           10306.</span>
-<span class="co">#&gt;  7 binance_us  Bina…             2019 United… http…          10            6662.</span>
-<span class="co">#&gt;  8 bitfinex    Bitf…             2014 Britis… http…          10            6028.</span>
-<span class="co">#&gt;  9 crypto_com  Cryp…             2019 Cayman… http…          10            2845.</span>
-<span class="co">#&gt; 10 gemini      Gemi…             2014 United… http…          10            1848.</span></code></pre></div>
+<span class="co">#&gt;  1 binance     Bina…             2017 Cayman… http…          10          350899.</span>
+<span class="co">#&gt;  2 gdax        Coin…             2012 United… http…          10           44847.</span>
+<span class="co">#&gt;  3 ftx_spot    FTX               2019 Antigu… http…          10           30605.</span>
+<span class="co">#&gt;  4 bitmart     BitM…             2017 Cayman… http…          10           25081.</span>
+<span class="co">#&gt;  5 kraken      Krak…             2011 United… http…          10           19802.</span>
+<span class="co">#&gt;  6 bitfinex    Bitf…             2014 Britis… http…          10           12322.</span>
+<span class="co">#&gt;  7 binance_us  Bina…             2019 United… http…          10            8650.</span>
+<span class="co">#&gt;  8 hotbit      Hotb…               NA Estonia http…          10            7612.</span>
+<span class="co">#&gt;  9 crypto_com  Cryp…             2019 Cayman… http…          10            3989.</span>
+<span class="co">#&gt; 10 gemini      Gemi…             2014 United… http…          10            3574.</span></code></pre></div>
 <p>One of the important columns in the obtained tibble is <code>trust_score</code>. This score ranges from 1 to 10 and combines several metrics indicative of how much one can trust the data originating from a given exchange (see <a href="https://blog.coingecko.com/trust-score/" title="Trust Score v1">this</a> and <a href="https://blog.coingecko.com/trust-score-2/" title="Trust Score v2">this</a> articles on the CoinGecko website for details).</p>
 <p>When querying the market data for a cryptocurrency, users are always expected to supply one or several reference to express the price in. The list of such reference currencies can be retrieved with the <code><a href="../reference/supported_currencies.html">supported_currencies()</a></code> function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">

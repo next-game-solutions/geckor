@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -188,20 +188,20 @@ keep this limit in mind when developing your applications.</p>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>supported_exchanges</span><span class='op'>(</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 313 x 7</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 315 x 7</span>
 #&gt;    exchange_id name  year_established country url   trust_score trading_volume_…
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> binance     Bina…             <span style='text-decoration: underline;'>2</span>017 Cayman… http…          10          <span style='text-decoration: underline;'>277</span>368.
-#&gt; <span style='color: #BCBCBC;'> 2</span> gdax        Coin…             <span style='text-decoration: underline;'>2</span>012 United… http…          10           <span style='text-decoration: underline;'>29</span>297.
-#&gt; <span style='color: #BCBCBC;'> 3</span> ftx_spot    FTX               <span style='text-decoration: underline;'>2</span>019 Antigu… http…          10           <span style='text-decoration: underline;'>28</span>851.
-#&gt; <span style='color: #BCBCBC;'> 4</span> bitmart     BitM…             <span style='text-decoration: underline;'>2</span>017 Cayman… http…          10           <span style='text-decoration: underline;'>23</span>320.
-#&gt; <span style='color: #BCBCBC;'> 5</span> kraken      Krak…             <span style='text-decoration: underline;'>2</span>011 United… http…          10           <span style='text-decoration: underline;'>11</span>497.
-#&gt; <span style='color: #BCBCBC;'> 6</span> hotbit      Hotb…               <span style='color: #BB0000;'>NA</span> Estonia http…          10           <span style='text-decoration: underline;'>10</span>185.
-#&gt; <span style='color: #BCBCBC;'> 7</span> binance_us  Bina…             <span style='text-decoration: underline;'>2</span>019 United… http…          10            <span style='text-decoration: underline;'>6</span>545.
-#&gt; <span style='color: #BCBCBC;'> 8</span> bitfinex    Bitf…             <span style='text-decoration: underline;'>2</span>014 Britis… http…          10            <span style='text-decoration: underline;'>5</span>907.
-#&gt; <span style='color: #BCBCBC;'> 9</span> crypto_com  Cryp…             <span style='text-decoration: underline;'>2</span>019 Cayman… http…          10            <span style='text-decoration: underline;'>2</span>804.
-#&gt; <span style='color: #BCBCBC;'>10</span> gemini      Gemi…             <span style='text-decoration: underline;'>2</span>014 United… http…          10            <span style='text-decoration: underline;'>1</span>803.
-#&gt; <span style='color: #949494;'># … with 303 more rows</span></div><div class='input'><span class='co'># }</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> binance     Bina…             <span style='text-decoration: underline;'>2</span>017 Cayman… http…          10          <span style='text-decoration: underline;'>350</span>945.
+#&gt; <span style='color: #BCBCBC;'> 2</span> gdax        Coin…             <span style='text-decoration: underline;'>2</span>012 United… http…          10           <span style='text-decoration: underline;'>44</span>790.
+#&gt; <span style='color: #BCBCBC;'> 3</span> ftx_spot    FTX               <span style='text-decoration: underline;'>2</span>019 Antigu… http…          10           <span style='text-decoration: underline;'>30</span>605.
+#&gt; <span style='color: #BCBCBC;'> 4</span> bitmart     BitM…             <span style='text-decoration: underline;'>2</span>017 Cayman… http…          10           <span style='text-decoration: underline;'>25</span>080.
+#&gt; <span style='color: #BCBCBC;'> 5</span> kraken      Krak…             <span style='text-decoration: underline;'>2</span>011 United… http…          10           <span style='text-decoration: underline;'>19</span>802.
+#&gt; <span style='color: #BCBCBC;'> 6</span> bitfinex    Bitf…             <span style='text-decoration: underline;'>2</span>014 Britis… http…          10           <span style='text-decoration: underline;'>12</span>320.
+#&gt; <span style='color: #BCBCBC;'> 7</span> binance_us  Bina…             <span style='text-decoration: underline;'>2</span>019 United… http…          10            <span style='text-decoration: underline;'>8</span>650.
+#&gt; <span style='color: #BCBCBC;'> 8</span> hotbit      Hotb…               <span style='color: #BB0000;'>NA</span> Estonia http…          10            <span style='text-decoration: underline;'>7</span>612.
+#&gt; <span style='color: #BCBCBC;'> 9</span> crypto_com  Cryp…             <span style='text-decoration: underline;'>2</span>019 Cayman… http…          10            <span style='text-decoration: underline;'>3</span>990.
+#&gt; <span style='color: #BCBCBC;'>10</span> gemini      Gemi…             <span style='text-decoration: underline;'>2</span>014 United… http…          10            <span style='text-decoration: underline;'>3</span>574.
+#&gt; <span style='color: #949494;'># … with 305 more rows</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
