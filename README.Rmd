@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/next-game-solutions/geckor/workflows/R-CMD-check/badge.svg)](https://github.com/next-game-solutions/geckor/actions)
 [![Codecov test coverage](https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg)](https://codecov.io/gh/next-game-solutions/geckor?branch=main)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/geckor)](https://cran.r-project.org/package=geckor)
 <!-- badges: end -->
 
 `geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements several endpoints offered by that API, allowing users to collect the
