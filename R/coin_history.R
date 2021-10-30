@@ -1,8 +1,12 @@
 #' Get historical market data
 #'
-#' Retrieves market data for a coin for the last _n_ days
+#' Retrieves market data for the last _n_ days
 #'
-#' @eval function_params(c("coin_id", "vs_currency"))
+#' @param coin_id (character): ID of the coin of interest or a vector with
+#'     _several_ IDs. The maximum number of coins that can be queried
+#'     simultaneously is 30. An up-to-date list of supported coins and their
+#'     IDs can be retrieved with the `supported_coins()` function.
+#' @eval function_params(c("vs_currency"))
 #' @param days (numeric or `"max"`): number of days to look back.
 #'     If `days = "max"`, the entire available history for `coin_id` will be
 #'     retrieved. Depending on the value of `days`, the time interval used to
@@ -42,8 +46,8 @@ coin_history <- function(coin_id,
                          days,
                          interval = NULL,
                          max_attempts = 3) {
-  if (length(coin_id) > 1L) {
-    rlang::abort("Only one `coin_id` is allowed")
+  if (length(coin_id) > 30L) {
+    rlang::abort("The max allowed length of `coin_id` is 20")
   }
 
   if (length(vs_currency) > 1L) {
@@ -69,73 +73,83 @@ coin_history <- function(coin_id,
     rlang::abort("`interval` must be equal to NULL or \"daily\"")
   }
 
-  query_params <- list(
-    vs_currency = vs_currency,
-    days = days,
-    interval = interval
-  )
+  results <-
+    lapply(
+      coin_id,
+      function(coin) {
+        query_params <- list(
+          vs_currency = vs_currency,
+          days = days,
+          interval = interval
+        )
 
-  url <- build_get_request(
-    base_url = "https://api.coingecko.com",
-    path = c("api", "v3", "coins", coin_id, "market_chart"),
-    query_parameters = query_params
-  )
+        url <- build_get_request(
+          base_url = "https://api.coingecko.com",
+          path = c("api", "v3", "coins", coin, "market_chart"),
+          query_parameters = query_params
+        )
 
-  r <- api_request(url = url, max_attempts = max_attempts)
+        r <- api_request(url = url, max_attempts = max_attempts)
 
-  if (length(r$prices) == 0) {
-    message("No data found. Check if the query parameters are specified correctly")
-    return(NULL)
-  }
+        if (length(r$prices) == 0) {
+          message("No data found. Check if the query parameters are specified correctly")
+          return(NULL)
+        }
 
-  replace_nulls <- function(x) {
-    lapply(x, function(y) ifelse(is.null(y), NA, y))
-  }
+        replace_nulls <- function(x) {
+          lapply(x, function(y) ifelse(is.null(y), NA, y))
+        }
 
-  prices <- lapply(r$prices, replace_nulls)
-  market_caps <- lapply(r$market_caps, replace_nulls)
-  total_volumes <- lapply(r$total_volumes, replace_nulls)
+        prices <- lapply(r$prices, replace_nulls)
+        market_caps <- lapply(r$market_caps, replace_nulls)
+        total_volumes <- lapply(r$total_volumes, replace_nulls)
 
-  prices <- do.call(rbind, lapply(prices, rbind))
-  colnames(prices) <- c("timestamp", "price")
+        prices <- do.call(rbind, lapply(prices, rbind))
+        colnames(prices) <- c("timestamp", "price")
 
-  prices <- tibble::tibble(
-    timestamp = unlist(prices[, "timestamp"]),
-    coin_id = coin_id,
-    vs_currency = vs_currency,
-    price = unlist(prices[, "price"])
-  )
+        prices <- tibble::tibble(
+          timestamp = unlist(prices[, "timestamp"]),
+          coin_id = coin,
+          vs_currency = vs_currency,
+          price = unlist(prices[, "price"])
+        )
 
-  market_caps <- do.call(rbind, lapply(market_caps, rbind))
-  colnames(market_caps) <- c("timestamp", "market_cap")
+        market_caps <- do.call(rbind, lapply(market_caps, rbind))
+        colnames(market_caps) <- c("timestamp", "market_cap")
 
-  market_caps <- tibble::tibble(
-    timestamp = unlist(market_caps[, "timestamp"]),
-    market_cap = unlist(market_caps[, "market_cap"])
-  )
+        market_caps <- tibble::tibble(
+          timestamp = unlist(market_caps[, "timestamp"]),
+          market_cap = unlist(market_caps[, "market_cap"])
+        )
 
-  total_volumes <- do.call(rbind, lapply(total_volumes, rbind))
-  colnames(total_volumes) <- c("timestamp", "total_volume")
+        total_volumes <- do.call(rbind, lapply(total_volumes, rbind))
+        colnames(total_volumes) <- c("timestamp", "total_volume")
 
-  total_volumes <- tibble::tibble(
-    timestamp = unlist(total_volumes[, "timestamp"]),
-    total_volume = unlist(total_volumes[, "total_volume"])
-  )
+        total_volumes <- tibble::tibble(
+          timestamp = unlist(total_volumes[, "timestamp"]),
+          total_volume = unlist(total_volumes[, "total_volume"])
+        )
 
-  result <-
-    dplyr::full_join(
-      dplyr::full_join(
-        prices, total_volumes, by = "timestamp"
-      ),
-      market_caps, by = "timestamp"
-    ) %>%
-    dplyr::mutate(
-      timestamp = as.POSIXct(
-        .data$timestamp / 1000,
-        origin = as.Date("1970-01-01"),
-        tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
-      )
+        result <-
+          dplyr::full_join(
+            dplyr::full_join(
+              prices, total_volumes,
+              by = "timestamp"
+            ),
+            market_caps,
+            by = "timestamp"
+          ) %>%
+          dplyr::mutate(
+            timestamp = as.POSIXct(
+              .data$timestamp / 1000,
+              origin = as.Date("1970-01-01"),
+              tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
+            )
+          )
+
+        return(result)
+      }
     )
 
-  return(result)
+  dplyr::bind_rows(results)
 }

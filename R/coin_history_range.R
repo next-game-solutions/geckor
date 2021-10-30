@@ -88,7 +88,7 @@ coin_history_range <- function(coin_id,
     lapply(
       r$prices,
       tibble::as_tibble,
-      .name_repair = function(df){
+      .name_repair = function(df) {
         names(df) <- c("timestamp", "price")
       }
     )
@@ -105,7 +105,7 @@ coin_history_range <- function(coin_id,
     lapply(
       r$market_caps,
       tibble::as_tibble,
-      .name_repair = function(df){
+      .name_repair = function(df) {
         names(df) <- c("timestamp", "market_cap")
       }
     )
@@ -116,7 +116,7 @@ coin_history_range <- function(coin_id,
     lapply(
       r$total_volumes,
       tibble::as_tibble,
-      .name_repair = function(df){
+      .name_repair = function(df) {
         names(df) <- c("timestamp", "total_volume")
       }
     )
@@ -125,9 +125,11 @@ coin_history_range <- function(coin_id,
   result <-
     dplyr::full_join(
       dplyr::full_join(
-        prices, total_volumes, by = "timestamp"
+        prices, total_volumes,
+        by = "timestamp"
       ),
-      market_caps, by = "timestamp"
+      market_caps,
+      by = "timestamp"
     ) %>%
     dplyr::mutate(
       timestamp = as.POSIXct(
@@ -141,8 +143,10 @@ coin_history_range <- function(coin_id,
 
   if (any(is_na)) {
     rlang::warn(
-      message = c("Missing values found in column(s)",
-                  names(is_na)[is_na])
+      message = c(
+        "Missing values found in column(s)",
+        names(is_na)[is_na]
+      )
     )
   }
 

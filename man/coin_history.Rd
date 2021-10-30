@@ -13,9 +13,10 @@ coin_history(
 )
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An
-up-to-date list of supported coins and their IDs can be retrieved
-with the \code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest or a vector with
+\emph{several} IDs. The maximum number of coins that can be queried
+simultaneously is 20. An up-to-date list of supported coins and their
+IDs can be retrieved with the \code{supported_coins()} function.}
 
 \item{vs_currency}{(character): name of the reference currency to
 express the price in. An up-to-date list of supported reference currencies (both
@@ -49,7 +50,7 @@ of \code{timestamp};
 }
 }
 \description{
-Retrieves market data for a coin for the last \emph{n} days
+Retrieves market data for the last \emph{n} days
 }
 \details{
 If \code{days = 1} and \code{interval = NULL}, the data will be returned for
