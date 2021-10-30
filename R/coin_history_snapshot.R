@@ -116,6 +116,17 @@ coin_history_snapshot <- function(coin_id,
         ), result) %>%
           dplyr::arrange(.data$vs_currency)
 
+        is_na <- apply(result, 2, anyNA)
+
+        if (any(is_na)) {
+          rlang::warn(
+            message = c(
+              "Missing values found in column(s)",
+              names(is_na)[is_na]
+            )
+          )
+        }
+
         return(result)
       }
     )

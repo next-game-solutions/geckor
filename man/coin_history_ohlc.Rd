@@ -7,9 +7,10 @@
 coin_history_ohlc(coin_id, vs_currency = "usd", days, max_attempts = 3)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An
-up-to-date list of supported coins and their IDs can be retrieved
-with the \code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest or a vector with
+\emph{several} IDs. The maximum number of coins that can be queried
+simultaneously is 30. An up-to-date list of supported coins and their
+IDs can be retrieved with the \code{supported_coins()} function.}
 
 \item{vs_currency}{(character): name of the reference currency to
 express the price in. An up-to-date list of supported reference currencies (both

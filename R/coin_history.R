@@ -152,6 +152,8 @@ coin_history <- function(coin_id,
             )
           )
 
+        is_na <- apply(result, 2, anyNA)
+
         if (any(is_na)) {
           rlang::warn(
             message = c(
