@@ -1,4 +1,6 @@
 test_that("history_snapshot returns correct results", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- coin_history_snapshot(
     coin_id = "cardano",
     date = as.Date("2021-05-01"),

@@ -2,11 +2,7 @@
 #'
 #' Retrieves open-high-low-close price data for the last _n_ days
 #'
-#' @param coin_id (character): ID of the coin of interest or a vector with
-#'     _several_ IDs. The maximum number of coins that can be queried
-#'     simultaneously is 30. An up-to-date list of supported coins and their
-#'     IDs can be retrieved with the `supported_coins()` function.
-#' @eval function_params(c("vs_currency"))
+#' @eval function_params(c("coin_id", "vs_currency"))
 #' @param days (numeric or `"max"`): number of days to look back. The only
 #'     acceptable values are 1, 7, 14, 30, 90, 180, 365 and `"max"`. Attempts to
 #'     assign any other values will fail with the corresponding error message.

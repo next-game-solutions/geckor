@@ -1,6 +1,6 @@
 #' Current coin prices
 #'
-#' Retrieves current prices of supported coins in any supported reference currencies
+#' Retrieves current prices of supported coins
 #'
 #' @eval function_params(c("coin_ids", "vs_currencies", "include_market_cap",
 #'                         "include_24h_vol", "include_24h_change",

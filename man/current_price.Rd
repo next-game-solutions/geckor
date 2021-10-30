@@ -58,7 +58,7 @@ compared to 24 hours ago.
 }
 }
 \description{
-Retrieves current prices of supported coins in any supported reference currencies
+Retrieves current prices of supported coins
 }
 \details{
 This function is based on the public

@@ -1,4 +1,6 @@
 test_that("coin_history returns correct results", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- coin_history(
     coin_id = "bitcoin",
     vs_currency = "usd",

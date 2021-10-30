@@ -2,10 +2,7 @@
 #'
 #' Coin-specific market data for a given historical date
 #'
-#' @param coin_id (character): ID of the coin of interest or a vector with
-#'     _several_ IDs. The maximum number of coins that can be queried
-#'     simultaneously is 30. An up-to-date list of supported coins and their
-#'     IDs can be retrieved with the `supported_coins()` function.
+#' @eval function_params(c("coin_id"))
 #' @param date (Date): date of interest. If no data exist for the requested
 #'     date, nothing (`NULL`) will be returned.
 #' @eval function_params(c("vs_currencies", "max_attempts"))

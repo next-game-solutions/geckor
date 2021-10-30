@@ -25,7 +25,7 @@ A tibble with the following columns:
 }
 }
 \description{
-Retrieves a list of top-7 coins on CoinGecko according to their search popularity
+Retrieves top-7 coins on CoinGecko according to their search popularity
 }
 \details{
 Popularity of a coin is determined from search patterns at the

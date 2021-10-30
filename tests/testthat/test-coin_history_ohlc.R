@@ -1,4 +1,6 @@
 test_that("coin_history_ohlc returns correct results", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- coin_history_ohlc(
     coin_id = "cardano",
     vs_currency = "usd",
