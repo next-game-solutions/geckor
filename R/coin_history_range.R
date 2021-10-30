@@ -11,13 +11,18 @@
 #'
 #' @details This function returns hourly data for periods of up to 90 days
 #'     and daily data for periods that are longer than 90 days.
+#'
+#' Sometimes, the retrieved data will contain missing values. In such
+#'     cases, the function will issue a warning and show a list
+#'     of column with missing values.
+#'
 #' @eval function_params("api_note")
 #'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price` (double): coin price as of `timestamp`;
-#' * `total_trading_vol` (double): a 24 hours rolling-window trading volume, as
+#' * `total_volume` (double): a 24 hours rolling-window trading volume, as
 #' of `timestampt`;
 #' * `market_cap` (double): market capitalisation, as of `timestamp`.
 #'
@@ -78,34 +83,69 @@ coin_history_range <- function(coin_id,
     return(NULL)
   }
 
-  prices <- lapply(r$prices, function(x) {
-    tibble::tibble(
-      timestamp = as.POSIXct(x[[1]] / 1000,
+  prices <- do.call(
+    rbind.data.frame,
+    lapply(
+      r$prices,
+      tibble::as_tibble,
+      .name_repair = function(df){
+        names(df) <- c("timestamp", "price")
+      }
+    )
+  )
+
+  prices <- tibble::tibble(
+    timestamp = prices$timestamp,
+    vs_currency = vs_currency,
+    price = prices$price
+  )
+
+  market_caps <- do.call(
+    rbind.data.frame,
+    lapply(
+      r$market_caps,
+      tibble::as_tibble,
+      .name_repair = function(df){
+        names(df) <- c("timestamp", "market_cap")
+      }
+    )
+  )
+
+  total_volumes <- do.call(
+    rbind.data.frame,
+    lapply(
+      r$total_volumes,
+      tibble::as_tibble,
+      .name_repair = function(df){
+        names(df) <- c("timestamp", "total_volume")
+      }
+    )
+  )
+
+  result <-
+    dplyr::full_join(
+      dplyr::full_join(
+        prices, total_volumes, by = "timestamp"
+      ),
+      market_caps, by = "timestamp"
+    ) %>%
+    dplyr::mutate(
+      timestamp = as.POSIXct(
+        .data$timestamp / 1000,
         origin = as.Date("1970-01-01"),
         tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
-      ),
-      vs_currency = vs_currency,
-      price = x[[2]]
-    )
-  }) %>%
-    dplyr::bind_rows()
-
-  market_caps <- lapply(r$market_caps, function(x) {
-    tibble::tibble(
-      market_cap = x[[2]]
-    )
-  }) %>%
-    dplyr::bind_rows()
-
-  total_volumes <- lapply(r$total_volumes, function(x) {
-    tibble::tibble(
-      total_volume = x[[2]]
-    )
-  }) %>%
-    dplyr::bind_rows()
-
-  result <- dplyr::bind_cols(prices, total_volumes, market_caps) %>%
+      )
+    ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
+
+  is_na <- apply(result, 2, anyNA)
+
+  if (any(is_na)) {
+    rlang::warn(
+      message = c("Missing values found in column(s)",
+                  names(is_na)[is_na])
+    )
+  }
 
   return(result)
 }
