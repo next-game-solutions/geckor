@@ -5,6 +5,12 @@ test_that("coin_history returns correct results", {
     days = 7L
   )
 
+  r2 <- coin_history(
+    coin_id = c("bitcoin", "ethereum", "polkadot"),
+    vs_currency = "usd",
+    days = 7L
+  )
+
   expect_named(r, c(
     "timestamp", "coin_id", "vs_currency", "price",
     "total_volume", "market_cap"
@@ -16,4 +22,5 @@ test_that("coin_history returns correct results", {
   expect_type(r$price, "double")
   expect_type(r$total_volume, "double")
   expect_type(r$market_cap, "double")
+  expect_true(all(unique(r2$coin_id) %in% c("bitcoin", "ethereum", "polkadot")))
 })
