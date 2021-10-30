@@ -135,8 +135,7 @@ coin_history_range <- function(coin_id,
         origin = as.Date("1970-01-01"),
         tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
       )
-    ) %>%
-    dplyr::arrange(dplyr::desc(.data$timestamp))
+    )
 
   is_na <- apply(result, 2, anyNA)
 

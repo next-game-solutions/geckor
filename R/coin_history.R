@@ -88,50 +88,54 @@ coin_history <- function(coin_id,
     return(NULL)
   }
 
-  prices <- lapply(r$prices, function(x) {
-    if (is.null(x[[1]])) {x[[1]] <- NA}
-    if (is.null(x[[2]])) {x[[2]] <- NA}
-    tibble::tibble(
-      timestamp = as.POSIXct(x[[1]] / 1000,
+  replace_nulls <- function(x) {
+    lapply(x, function(y) ifelse(is.null(y), NA, y))
+  }
+
+  prices <- lapply(r$prices, replace_nulls)
+  market_caps <- lapply(r$market_caps, replace_nulls)
+  total_volumes <- lapply(r$total_volumes, replace_nulls)
+
+  prices <- do.call(rbind, lapply(prices, rbind))
+  colnames(prices) <- c("timestamp", "price")
+
+  prices <- tibble::tibble(
+    timestamp = unlist(prices[, "timestamp"]),
+    coin_id = coin_id,
+    vs_currency = vs_currency,
+    price = unlist(prices[, "price"])
+  )
+
+  market_caps <- do.call(rbind, lapply(market_caps, rbind))
+  colnames(market_caps) <- c("timestamp", "market_cap")
+
+  market_caps <- tibble::tibble(
+    timestamp = unlist(market_caps[, "timestamp"]),
+    market_cap = unlist(market_caps[, "market_cap"])
+  )
+
+  total_volumes <- do.call(rbind, lapply(total_volumes, rbind))
+  colnames(total_volumes) <- c("timestamp", "total_volume")
+
+  total_volumes <- tibble::tibble(
+    timestamp = unlist(total_volumes[, "timestamp"]),
+    total_volume = unlist(total_volumes[, "total_volume"])
+  )
+
+  result <-
+    dplyr::full_join(
+      dplyr::full_join(
+        prices, total_volumes, by = "timestamp"
+      ),
+      market_caps, by = "timestamp"
+    ) %>%
+    dplyr::mutate(
+      timestamp = as.POSIXct(
+        .data$timestamp / 1000,
         origin = as.Date("1970-01-01"),
         tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
-      ),
-      coin_id = coin_id,
-      vs_currency = vs_currency,
-      price = x[[2]]
+      )
     )
-  }) %>%
-    dplyr::bind_rows()
-
-  market_caps <- lapply(r$market_caps, function(x) {
-    if (is.null(x[[1]])) {x[[1]] <- NA}
-    if (is.null(x[[2]])) {x[[2]] <- NA}
-    tibble::tibble(
-      timestamp = as.POSIXct(x[[1]] / 1000,
-                             origin = as.Date("1970-01-01"),
-                             tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
-      ),
-      market_cap = x[[2]]
-    )
-  }) %>%
-    dplyr::bind_rows()
-
-  total_volumes <- lapply(r$total_volumes, function(x) {
-    if (is.null(x[[1]])) {x[[1]] <- NA}
-    if (is.null(x[[2]])) {x[[2]] <- NA}
-    tibble::tibble(
-      timestamp = as.POSIXct(x[[1]] / 1000,
-                             origin = as.Date("1970-01-01"),
-                             tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
-      ),
-      total_volume = x[[2]]
-    )
-  }) %>%
-    dplyr::bind_rows()
-
-  result <- dplyr::full_join(prices, total_volumes, by = "timestamp")
-  result <- dplyr::full_join(result, market_caps, by = "timestamp") %>%
-    dplyr::arrange(dplyr::desc(.data$timestamp))
 
   return(result)
 }
