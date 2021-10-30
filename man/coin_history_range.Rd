@@ -33,6 +33,7 @@ implemented with an exponential backoff. Defaults to 3.}
 A tibble with the following columns:
 \itemize{
 \item \code{timestamp} (POSIXct);
+\item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price} (double): coin price as of \code{timestamp};
 \item \code{total_volume} (double): a 24 hours rolling-window trading volume, as

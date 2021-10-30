@@ -24,6 +24,7 @@
 #'
 #' @return A tibble with the following columns:
 #' * `timestamp` (POSIXct);
+#' * `coin_id` (character): same as the argument `coin_id`;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price` (double): coin price as of `timestamp`;
 #' * `total_volume` (double): a 24 hours rolling-window trading volume, as
