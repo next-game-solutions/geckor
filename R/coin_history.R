@@ -1,6 +1,6 @@
 #' Get historical market data
 #'
-#' Retrieves market data for the last _n_ days
+#' Retrieves coin-specific market data for the last _n_ days
 #'
 #' @param coin_id (character): ID of the coin of interest or a vector with
 #'     _several_ IDs. The maximum number of coins that can be queried
@@ -20,6 +20,11 @@
 #'    (inclusive) and `interval = NULL`, an (approximately) hourly time step will
 #'    be used. Daily data are used for `days` above 90. If `interval = "daily"`,
 #'    daily data will be used irrespective of the value of `days`.
+#'
+#' Sometimes, the retrieved data will contain missing values. In such
+#'     cases, the function will issue a warning and show a list
+#'     of column with missing values.
+#'
 #' @eval function_params("api_note")
 #'
 #' @return A tibble with the following columns:
@@ -47,7 +52,7 @@ coin_history <- function(coin_id,
                          interval = NULL,
                          max_attempts = 3) {
   if (length(coin_id) > 30L) {
-    rlang::abort("The max allowed length of `coin_id` is 20")
+    rlang::abort("The max allowed length of `coin_id` is 30")
   }
 
   if (length(vs_currency) > 1L) {
@@ -146,6 +151,15 @@ coin_history <- function(coin_id,
               tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
             )
           )
+
+        if (any(is_na)) {
+          rlang::warn(
+            message = c(
+              "Missing values found in column(s)",
+              names(is_na)[is_na]
+            )
+          )
+        }
 
         return(result)
       }

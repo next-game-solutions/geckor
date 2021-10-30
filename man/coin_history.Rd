@@ -50,7 +50,7 @@ of \code{timestamp};
 }
 }
 \description{
-Retrieves market data for the last \emph{n} days
+Retrieves coin-specific market data for the last \emph{n} days
 }
 \details{
 If \code{days = 1} and \code{interval = NULL}, the data will be returned for
@@ -58,6 +58,10 @@ every few minutes (typically 3-8 minutes). If \code{days} is between 2 and 90
 (inclusive) and \code{interval = NULL}, an (approximately) hourly time step will
 be used. Daily data are used for \code{days} above 90. If \code{interval = "daily"},
 daily data will be used irrespective of the value of \code{days}.
+
+Sometimes, the retrieved data will contain missing values. In such
+cases, the function will issue a warning and show a list
+of column with missing values.
 
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
