@@ -1,6 +1,9 @@
 test_that("supported_coins returns correct objects", {
   skip_if_offline("api.coingecko.com")
   skip_on_cran()
+
+  Sys.sleep(30) # because this test often fails due to rate limit
+
   skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- supported_coins(max_attempts = 3L)
