@@ -16,6 +16,6 @@ ping <- function() {
       utils::packageVersion("geckor")
     )
   )
-  r <- httr::GET(url, ua)
+  r <- httr::GET(url, ua, httr::timeout(10))
   return(httr::status_code(r) == 200)
 }

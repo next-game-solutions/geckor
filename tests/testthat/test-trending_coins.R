@@ -1,7 +1,9 @@
 test_that("trending_coins returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- trending_coins(max_attempts = 1)
+  skip_if(is.null(r), "Data could not be retrieved")
 
   expect_s3_class(r, "tbl")
   expect_named(r, c(

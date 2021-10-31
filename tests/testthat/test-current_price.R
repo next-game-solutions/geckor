@@ -1,5 +1,6 @@
 test_that("current_price returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- current_price(
     coin_ids = c("aave", "tron", "bitcoin"),
@@ -9,6 +10,8 @@ test_that("current_price returns correct results", {
     include_24h_change = TRUE,
     max_attempts = 1L
   )
+
+  skip_if(is.null(r), "Data could not be retrieved")
 
   expect_s3_class(r, "tbl")
 

@@ -1,11 +1,15 @@
 test_that("exchange_rates returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r1 <- exchange_rate(currency = NULL, max_attempts = 1L)
   r2 <- exchange_rate(
     currency = c("usd", "eur", "gbp"),
     max_attempts = 1L
   )
+
+  skip_if(is.null(r1), "Data could not be retrieved")
+  skip_if(is.null(r2), "Data could not be retrieved")
 
   expect_s3_class(r1, "tbl")
   expect_s3_class(r2, "tbl")

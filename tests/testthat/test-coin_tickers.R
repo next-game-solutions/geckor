@@ -1,11 +1,14 @@
 test_that("coin_tickers returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- coin_tickers(
     coin_id = "cardano",
     exchange_id = "binance",
     max_attempts = 1L
   )
+
+  skip_if(is.null(r), "Data could not be retrieved")
 
   expect_named(r, c(
     "exchange_id", "exchange_name",

@@ -1,9 +1,11 @@
 test_that("supported_currencies returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
-  r <- supported_currencies(max_attempts = 1)
+  r <- supported_currencies(max_attempts = 3)
+  skip_if(is.null(r), "Data could not be retrieved")
 
-  Sys.sleep(1)
+  Sys.sleep(12)
 
   expect_type(r, "character")
   expect_true(is.vector(r))

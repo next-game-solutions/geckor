@@ -1,5 +1,6 @@
 test_that("coin_history_ohlc returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- coin_history_ohlc(
     coin_id = "cardano",
@@ -8,12 +9,16 @@ test_that("coin_history_ohlc returns correct results", {
     max_attempts = 1L
   )
 
+  skip_if(is.null(r), "Data could not be retrieved")
+
   r2 <- coin_history_ohlc(
     coin_id = c("bitcoin", "polkadot", "tron"),
     vs_currency = "usd",
     days = 7L,
     max_attempts = 1L
   )
+
+  skip_if(is.null(r2), "Data could not be retrieved")
 
   expect_named(r, c(
     "timestamp", "coin_id", "vs_currency", "price_open",

@@ -1,5 +1,6 @@
 test_that("coin_history returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- coin_history(
     coin_id = "bitcoin",
@@ -7,11 +8,15 @@ test_that("coin_history returns correct results", {
     days = 7L
   )
 
+  skip_if(is.null(r), "Data could not be retrieved")
+
   r2 <- coin_history(
     coin_id = c("bitcoin", "ethereum", "polkadot"),
     vs_currency = "usd",
     days = 7L
   )
+
+  skip_if(is.null(r2), "Data could not be retrieved")
 
   expect_named(r, c(
     "timestamp", "coin_id", "vs_currency", "price",

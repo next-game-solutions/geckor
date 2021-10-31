@@ -1,5 +1,6 @@
 test_that("coin_history_range returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- coin_history_range(
     coin_id = c("cardano"),
@@ -9,12 +10,16 @@ test_that("coin_history_range returns correct results", {
     max_attempts = 1L
   )
 
+  skip_if(is.null(r), "Data could not be retrieved")
+
   r2 <- coin_history_range(
     coin_id = c("bitcoin", "polkadot", "tron"),
     vs_currency = "usd",
     from = as.POSIXct("2021-10-27 00:00:00", tz = "UTC"),
     to = as.POSIXct("2021-10-29 00:00:00", tz = "UTC")
   )
+
+  skip_if(is.null(r2), "Data could not be retrieved")
 
   expect_named(r, c(
     "timestamp", "coin_id", "vs_currency", "price",

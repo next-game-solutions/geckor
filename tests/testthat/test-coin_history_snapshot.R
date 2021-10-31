@@ -1,5 +1,6 @@
 test_that("history_snapshot returns correct results", {
-  if (!ping()) {Sys.sleep(60)}
+  skip_if_offline("api.coingecko.com")
+  skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- coin_history_snapshot(
     coin_id = "cardano",
@@ -8,12 +9,16 @@ test_that("history_snapshot returns correct results", {
     max_attempts = 1L
   )
 
+  skip_if(is.null(r), "Data could not be retrieved")
+
   r2 <- coin_history_snapshot(
     coin_id = c("bitcoin", "polkadot", "tron"),
     date = as.Date("2021-05-01"),
     vs_currencies = c("usd", "eth"),
     max_attempts = 1L
   )
+
+  skip_if(is.null(r2), "Data could not be retrieved")
 
   expect_s3_class(r, "tbl")
 
