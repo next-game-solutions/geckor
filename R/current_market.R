@@ -99,7 +99,7 @@ current_market <- function(coin_ids,
     r <- api_request(url = url, max_attempts = max_attempts)
 
     if (is.null(r)) {
-      message("No data found. Check if the query parameters are specified correctly")
+      message("\nNo data could be retrieved.")
       return(NULL)
     }
 

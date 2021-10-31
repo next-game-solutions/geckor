@@ -71,7 +71,7 @@ coin_history_snapshot <- function(coin_id,
         r <- api_request(url = url, max_attempts = max_attempts)
 
         if (is.null(r) | !"market_data" %in% names(r)) {
-          message("No data found. Check if the query parameters are specified correctly")
+          message("\nNo data could be retrieved.")
           return(NULL)
         }
 

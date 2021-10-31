@@ -36,6 +36,7 @@ Imports:
     rlang,
     tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    curl
 VignetteBuilder: knitr
 RdMacros: lifecycle

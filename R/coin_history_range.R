@@ -84,7 +84,7 @@ coin_history_range <- function(coin_id,
         r <- api_request(url = url, max_attempts = max_attempts)
 
         if (length(r$prices) == 0) {
-          message("No data found. Check if the query parameters are specified correctly")
+          message("\nNo data could be retrieved.")
           return(NULL)
         }
 
