@@ -1,4 +1,6 @@
 test_that("coin_tickers returns correct results", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- coin_tickers(
     coin_id = "cardano",
     exchange_id = "binance",

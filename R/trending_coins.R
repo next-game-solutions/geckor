@@ -1,6 +1,6 @@
 #' Trending coins
 #'
-#' Retrieves a list of top-7 coins on CoinGecko according to their search popularity
+#' Retrieves top-7 coins on CoinGecko according to their search popularity
 #'
 #' @eval function_params("max_attempts")
 #'

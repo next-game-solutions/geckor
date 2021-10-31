@@ -9,6 +9,7 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  error = TRUE,
   collapse = TRUE,
   comment = "#>"
 )
@@ -20,7 +21,7 @@ Sys.sleep(60)
 library(geckor)
 ```
 
-The [CoinGecko API](https://www.coingecko.com/en/api#explore-api "CoinGecko API") allows one to query market data on over 8000 cryptocurrencies from more than 300 exchanges. A list of the currently supported cryptocurrencies can be obtained with the `supported_coins()` function:
+The [CoinGecko API](https://www.coingecko.com/en/api#explore-api "CoinGecko API") allows one to query market data on thousands of cryptocurrencies from more than 300 exchanges. A list of the currently supported cryptocurrencies can be obtained with the `supported_coins()` function:
 
 ```{r supported-coins}
 coins <- supported_coins()
@@ -46,7 +47,7 @@ head(exchanges, 10)
 
 One of the important columns in the obtained tibble is `trust_score`. This score ranges from 1 to 10 and combines several metrics indicative of how much one can trust the data originating from a given exchange (see [this](https://blog.coingecko.com/trust-score/ "Trust Score v1") and [this](https://blog.coingecko.com/trust-score-2/ "Trust Score v2") articles on the CoinGecko website for details).
 
-When querying the market data for a cryptocurrency, users are always expected to supply one or several reference to express the price in. The list of such reference currencies can be retrieved with the `supported_currencies()` function:
+When querying the market data for a cryptocurrency, users are always expected to supply one or several reference currencies (fiat or crypto) to express the coin price in. The list of such reference currencies can be retrieved with the `supported_currencies()` function:
 
 ```{r supported-currencies}
 currencies <- supported_currencies()

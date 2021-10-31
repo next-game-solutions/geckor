@@ -1,4 +1,6 @@
 test_that("trending_coins returns correct results", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- trending_coins(max_attempts = 1)
 
   expect_s3_class(r, "tbl")

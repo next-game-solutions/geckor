@@ -9,6 +9,7 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  error = TRUE,
   collapse = TRUE,
   comment = "#>"
 )
@@ -32,7 +33,7 @@ coin_history_snapshot(
 )
 ```
 
-The `coin_history_range()` function can be used to query a range of historical dates (specified by the `from` and `to` arguments, which expect POSIXct timestamps). The granularity of the returned data depends on the requested range. Hourly data will be retrieved for periods of up to 90 days, and daily data for periods that are longer than 90 days:
+The `coin_history_range()` function can be used to query a range of historical dates (specified by the `from` and `to` arguments, which expect POSIXct timestamps). Granularity of the returned data depends on the requested range. Hourly data will be retrieved for periods of up to 90 days, and daily data for periods that are longer than 90 days:
 
 ```{r date-range}
 # Range of less than 1 day:
@@ -100,7 +101,7 @@ coin_history(
 )
 ```
 
-The open-high-low-close ([OHLC](https://en.wikipedia.org/wiki/Open-high-low-close_chart)) data characterise within-date and between-date price movements of a financial asset. In `geckor`, this type of data can be retrieved using the `coin_history_ohlc()` function, which has the same arguments as `coin_history()`, except for not having the `interval` argument. The granularity of the retrieved data (i.e. candle's body) depends on the value of `days` as follows:
+The open-high-low-close ([OHLC](https://en.wikipedia.org/wiki/Open-high-low-close_chart)) data characterise within-date and between-date price movements of a financial asset. In `geckor`, this type of data can be retrieved using the `coin_history_ohlc()` function, which has the same arguments as `coin_history()`, except for not having the `interval` argument. Granularity of the retrieved data (i.e. candle's body) depends on the value of `days` as follows:
 
 -   1 day: 30 minutes
 
@@ -137,5 +138,16 @@ coin_history_ohlc(
   coin_id = "bitcoin", 
   vs_currency = "usd",
   days = "max"
+)
+```
+
+As of v0.2.0 of the package, all of the `coin_history_*` functions can retrieve data for multiple coins (up to 30) in one call. All one needs to do for that is pass a vector of coin IDs to the `coin_id` argument. In the following example, we collect market data from the last 2 days for Bitcoin, Cardano and Polkadot:
+
+```{r coin-history-multiple-coins}
+coin_history(
+  coin_id = c("bitcoin", "cardano", "polkadot"),
+  vs_currency = "usd",
+  days = 2, 
+  interval = "daily"
 )
 ```

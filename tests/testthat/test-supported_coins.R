@@ -1,4 +1,6 @@
 test_that("supported_coins returns correct objects", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- supported_coins(max_attempts = 3L)
 
   Sys.sleep(5)

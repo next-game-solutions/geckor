@@ -21,7 +21,7 @@
 #' @eval function_params(c("api_note"))
 #'
 #' @return A tibble with the following columns:
-#' * `timestamp` (POSIXct);
+#' * `timestamp` (POSIXct): beginning of the candle's time interval;
 #' * `coin_id` (character): same as the argument `coin_id`;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price_open` (double): coin price in the beginning of a time interval;
@@ -44,7 +44,7 @@ coin_history_ohlc <- function(coin_id,
                               vs_currency = "usd",
                               days,
                               max_attempts = 3) {
-  if (length(coin_id) > 1L) {
+  if (length(coin_id) > 30L) {
     rlang::abort("Only one `coin_id` is allowed")
   }
 
@@ -63,7 +63,7 @@ coin_history_ohlc <- function(coin_id,
   )
 
   if (is.na(days) |
-    is.na(suppressWarnings(as.numeric(days))) &
+      is.na(suppressWarnings(as.numeric(days))) &
       days != "max") {
     rlang::abort("`days` only accepts coercible-to-numeric values or a character value \"max\"")
   }
@@ -72,38 +72,59 @@ coin_history_ohlc <- function(coin_id,
     rlang::abort("`days` only accepts the following numeric values: 1, 7, 14, 30, 90, 180, 365")
   }
 
-  query_params <- list(
-    vs_currency = vs_currency,
-    days = days
-  )
+  results <-
+    lapply(
+      coin_id,
+      function(coin) {
+        query_params <- list(
+          vs_currency = vs_currency,
+          days = days
+        )
 
-  url <- build_get_request(
-    base_url = "https://api.coingecko.com",
-    path = c("api", "v3", "coins", coin_id, "ohlc"),
-    query_parameters = query_params
-  )
+        url <- build_get_request(
+          base_url = "https://api.coingecko.com",
+          path = c("api", "v3", "coins", coin, "ohlc"),
+          query_parameters = query_params
+        )
 
-  r <- api_request(url = url, max_attempts = max_attempts)
+        r <- api_request(url = url, max_attempts = max_attempts)
 
-  if (length(r) == 0) {
-    message("No data found. Check if the query parameters are specified correctly")
-    return(NULL)
-  }
+        if (length(r) == 0) {
+          message("\nNo data found. Check if the query parameters are specified correctly")
+          return(NULL)
+        }
 
-  prices <- lapply(r, function(x) {
-    tibble::tibble(
-      timestamp = as.POSIXct(x[[1]] / 1000,
-        origin = as.Date("1970-01-01"),
-        tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
-      ),
-      coin_id = coin_id,
-      vs_currency = vs_currency,
-      price_open = x[[2]],
-      price_high = x[[3]],
-      price_low = x[[4]],
-      price_close = x[[5]]
+        prices <- lapply(r, function(x) {
+          tibble::tibble(
+            timestamp = as.POSIXct(x[[1]] / 1000,
+                                   origin = as.Date("1970-01-01"),
+                                   tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
+            ),
+            coin_id = coin,
+            vs_currency = vs_currency,
+            price_open = x[[2]],
+            price_high = x[[3]],
+            price_low = x[[4]],
+            price_close = x[[5]]
+          )
+        })
+
+        result <- dplyr::bind_rows(prices)
+
+        is_na <- apply(result, 2, anyNA)
+
+        if (any(is_na)) {
+          rlang::warn(
+            message = c(
+              "Missing values found in column(s)",
+              names(is_na)[is_na]
+            )
+          )
+        }
+
+        return(result)
+      }
     )
-  })
 
-  return(dplyr::bind_rows(prices))
+  dplyr::bind_rows(results)
 }
