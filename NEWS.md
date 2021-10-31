@@ -2,8 +2,8 @@
 
 ## Major changes
 
-* Significant speed-up (at least 3x) of the `coin_history()` and `coin_range()` functions.
-* All of the `coin_history_*` functions have been re-written and now they can retrieve data for multiple coins (up to 30) in one call.
+* Significant speed-up (at least 3x) of the `coin_history()` and `coin_history_range()` functions.
+* All of the `coin_history_*` functions have been re-written so that they can retrieve data for multiple coins (up to 30) in one call.
 * The internal `api_request()` function has been modified to fail more gracefully when the API calls time out or errors occur.
 
 ## Minor changes
