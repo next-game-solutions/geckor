@@ -38,12 +38,12 @@ api_request <- function(url, max_attempts = 3) {
   )
 
   for (attempt in seq_len(max_attempts)) {
-    r <- try(httr::GET(url, ua, httr::timeout(15)), silent = FALSE)
+    r <- httr::GET(url, ua, httr::timeout(15))
 
-    if (class(r) == "try-error" || httr::http_error(r)) {
+    if (httr::http_error(r)) {
       message("\nFailed to call ", url)
       httr::message_for_status(r)
-      delay <- stats::runif(n = 1, min = attempt, max = 2^attempt)
+      delay <- 2^attempt
       message("\nRetrying after ", round(delay, 2), " seconds...")
       Sys.sleep(delay)
     } else {
@@ -51,7 +51,7 @@ api_request <- function(url, max_attempts = 3) {
     }
   }
 
-  if (class(r) == "try-error" || httr::http_error(r) || class(r) != "response") {
+  if (httr::http_error(r)) {
     message("\nAll calls to ", url, " failed")
     httr::message_for_status(r)
     return(invisible(NULL))
