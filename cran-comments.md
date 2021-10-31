@@ -26,4 +26,4 @@ There are currently no reverse dependencies for this package.
 
 ## Changes made to mitigate error in re-building vignettes
 
-On 29 October 2021, I was notified by Prof. Brian D. Ripley regarding the failure of a recent CRAN check run due to the `Error(s) in re-building vignettes`. A closer examination on my end revealed that this was due to the rate limit imposed by the external API used in the package. In this new version of the package, the issue has been rectified by modifying the underlying code and tests in a way that ensures more graceful failures.
+On 29 October 2021, I was notified by Prof. Brian D. Ripley regarding the failure of a recent CRAN check run due to the `Error(s) in re-building vignettes`. A closer examination on my end revealed that this was due to the rate limit imposed by the external API used in the package. In this new version of the package, the issue has been rectified by modifying the underlying code and tests in a way that ensures more graceful failures (if any).

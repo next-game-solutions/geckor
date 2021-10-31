@@ -63,7 +63,7 @@ coin_history_ohlc <- function(coin_id,
   )
 
   if (is.na(days) |
-      is.na(suppressWarnings(as.numeric(days))) &
+    is.na(suppressWarnings(as.numeric(days))) &
       days != "max") {
     rlang::abort("`days` only accepts coercible-to-numeric values or a character value \"max\"")
   }
@@ -97,8 +97,8 @@ coin_history_ohlc <- function(coin_id,
         prices <- lapply(r, function(x) {
           tibble::tibble(
             timestamp = as.POSIXct(x[[1]] / 1000,
-                                   origin = as.Date("1970-01-01"),
-                                   tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
+              origin = as.Date("1970-01-01"),
+              tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
             ),
             coin_id = coin,
             vs_currency = vs_currency,
