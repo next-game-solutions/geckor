@@ -1,7 +1,7 @@
 test_that("supported_coins returns correct objects", {
-  r <- supported_coins(max_attempts = 2L)
+  r <- supported_coins(max_attempts = 3L)
 
-  Sys.sleep(1)
+  Sys.sleep(5)
 
   expect_s3_class(r, "tbl")
   expect_named(r, c("coin_id", "symbol", "name"))
