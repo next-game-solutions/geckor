@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -101,7 +101,8 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><code>geckor</code> is an R client for the public <a href="https://www.coingecko.com/en/api#explore-api">CoinGecko API</a>. This package implements several endpoints offered by that API, allowing users to collect the current and historical market data on over 8000 cryptocurrencies from more than 300 exchanges. Results are returned in a tabular form (as <a href="https://tibble.tidyverse.org/">tibbles</a>), ready for any downstream analyses.</p>
+<!-- badges: end -->
+<p><code>geckor</code> is an R client for the public <a href="https://www.coingecko.com/en/api#explore-api">CoinGecko API</a>. This package implements several endpoints offered by that API, allowing users to collect the current and historical market data on thousands of cryptocurrencies from more than 300 exchanges. Results are returned in a tabular form (as <a href="https://tibble.tidyverse.org/">tibbles</a>), ready for any downstream analyses.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -127,7 +128,7 @@
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
 <span class="co"># Get the current price of Cardano, Tron, and Polkadot,</span>
 <span class="co"># expressed in USD, EUR, and GBP:</span>
@@ -136,21 +137,21 @@
 <span class="co">#&gt; # A tibble: 9 x 7</span>
 <span class="co">#&gt;   coin_id    price vs_currency   market_cap     vol_24h price_percent_change_24h</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;                    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cardano   1.27   usd         40566153610. 1050831768.                   -3.15 </span>
-<span class="co">#&gt; 2 cardano   1.08   eur         34439690827.  892261254.                   -2.45 </span>
-<span class="co">#&gt; 3 cardano   0.917  gbp         29365960297.  760749658.                   -2.63 </span>
-<span class="co">#&gt; 4 polkadot 14.2    usd         14305263792.  394711644.                   -3.59 </span>
-<span class="co">#&gt; 5 polkadot 12.0    eur         12144825633.  335149657.                   -2.90 </span>
-<span class="co">#&gt; 6 polkadot 10.3    gbp         10355623375.  285751495.                   -3.08 </span>
-<span class="co">#&gt; 7 tron      0.0596 usd          4268429142.  744148318.                   -1.02 </span>
-<span class="co">#&gt; 8 tron      0.0506 eur          3623793899.  631856337.                   -0.309</span>
-<span class="co">#&gt; 9 tron      0.0432 gbp          3089928661.  538726175.                   -0.492</span>
+<span class="co">#&gt; 1 cardano   1.94   usd         61940989996. 1850534392.                    -2.48</span>
+<span class="co">#&gt; 2 cardano   1.68   eur         53609802960. 1601633815.                    -2.42</span>
+<span class="co">#&gt; 3 cardano   1.42   gbp         45261953797. 1352235444.                    -2.48</span>
+<span class="co">#&gt; 4 polkadot 41.4    usd         43169302615. 1141449953.                    -4.01</span>
+<span class="co">#&gt; 5 polkadot 35.9    eur         37362945075.  987922652.                    -3.96</span>
+<span class="co">#&gt; 6 polkadot 30.3    gbp         31544974992.  834088300.                    -4.01</span>
+<span class="co">#&gt; 7 tron      0.0989 usd          7118584479. 2524930683.                    -2.69</span>
+<span class="co">#&gt; 8 tron      0.0856 eur          6161120629. 2185322456.                    -2.64</span>
+<span class="co">#&gt; 9 tron      0.0722 gbp          5201741880. 1845035023.                    -2.69</span>
 <span class="co">#&gt; # ... with 1 more variable: last_updated_at &lt;dttm&gt;</span>
 
 <span class="co"># Get a more comprehensive view of the current Cardano, Tron, and </span>
 <span class="co"># Polkadot markets:</span>
 <span class="fu"><a href="reference/current_market.html">current_market</a></span><span class="op">(</span>coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>, 
-               vs_currency <span class="op">=</span> <span class="st">"usd"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+               vs_currency <span class="op">=</span> <span class="st">"usd"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 3</span>
 <span class="co">#&gt; Columns: 32</span>
@@ -158,34 +159,34 @@
 <span class="co">#&gt; $ symbol                                   &lt;chr&gt; "ada", "dot", "trx"</span>
 <span class="co">#&gt; $ name                                     &lt;chr&gt; "Cardano", "Polkadot", "TRON"</span>
 <span class="co">#&gt; $ vs_currency                              &lt;chr&gt; "usd", "usd", "usd"</span>
-<span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2021-07-13 21:44:54, 2021-07-~</span>
-<span class="co">#&gt; $ current_price                            &lt;dbl&gt; 1.27000, 14.19000, 0.05962</span>
-<span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 40566153610, 14305263792, 426~</span>
-<span class="co">#&gt; $ market_cap_rank                          &lt;int&gt; 5, 9, 26</span>
-<span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 56928044422, NA, NA</span>
-<span class="co">#&gt; $ total_volume                             &lt;int&gt; 1050831768, 394711644, 744148~</span>
-<span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 1.320000, 15.090000, 0.060995</span>
-<span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 1.250000, 14.080000, 0.059096</span>
-<span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; -0.0411919069, -0.5285809229,~</span>
-<span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; -3.15068, -3.59132, -1.02108</span>
-<span class="co">#&gt; $ market_cap_change_24h                    &lt;dbl&gt; -1335284910, -505165459, -35~</span>
-<span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; -3.18673, -3.41088, -0.83531</span>
-<span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 32066390668, 1009861354, 7166~</span>
-<span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1090810486, 1008~</span>
+<span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2021-10-31 13:47:47, 2021-10-~</span>
+<span class="co">#&gt; $ current_price                            &lt;dbl&gt; 1.940000, 41.430000, 0.098853</span>
+<span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 61940989996, 43169302615, 711~</span>
+<span class="co">#&gt; $ market_cap_rank                          &lt;int&gt; 5, 8, 29</span>
+<span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 86924174868, NA, NA</span>
+<span class="co">#&gt; $ total_volume                             &lt;dbl&gt; 1850534392, 1141449953, 25249~</span>
+<span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 2.010000, 43.420000, 0.102361</span>
+<span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 1.93000, 41.33000, 0.09815</span>
+<span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; -0.04922088, -1.73286271, -0.~</span>
+<span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; -2.47851, -4.01494, -2.69494</span>
+<span class="co">#&gt; $ market_cap_change_24h                    &lt;dbl&gt; -1519718166, -2122275474, -1~</span>
+<span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; -2.39474, -4.68581, -2.05226</span>
+<span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 32066390668, 1045208242, 7166~</span>
+<span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1126157374, 1008~</span>
 <span class="co">#&gt; $ max_supply                               &lt;dbl&gt; 4.5e+10, NA, NA</span>
-<span class="co">#&gt; $ ath                                      &lt;dbl&gt; 2.450000, 49.350000, 0.231673</span>
-<span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -48.27021, -71.29259, -74.265~</span>
-<span class="co">#&gt; $ ath_date                                 &lt;dttm&gt; 2021-05-16 07:44:28, 2021-05-~</span>
+<span class="co">#&gt; $ ath                                      &lt;dbl&gt; 3.090000, 49.350000, 0.231673</span>
+<span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -37.41761, -16.25055, -57.317~</span>
+<span class="co">#&gt; $ ath_date                                 &lt;dttm&gt; 2021-09-02 06:00:10, 2021-05-~</span>
 <span class="co">#&gt; $ atl                                      &lt;dbl&gt; 0.01925275, 2.70000000, 0.001~</span>
-<span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 6470.7051, 425.1917, 3204.2278</span>
+<span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 9934.219, 1432.166, 5380.268</span>
 <span class="co">#&gt; $ atl_date                                 &lt;dttm&gt; 2020-03-13 02:22:55, 2020-08-~</span>
-<span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; 0.4737232, 0.7816781, 0.59454~</span>
-<span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; -3.150684, -3.591319, -1.0210~</span>
-<span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; -10.508334, -7.370925, -8.131~</span>
-<span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; -4.929234, -10.054411, -8.932~</span>
-<span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -14.61656, -31.93480, -12.688~</span>
-<span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; 728.2967, 176.3093, 115.3589</span>
-<span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; 897.9664, NA, 228.2605</span>
+<span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; -0.05802379, -0.41113167, 0.6~</span>
+<span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; -2.478513, -4.014941, -2.6949~</span>
+<span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; -10.922508, -6.116299, -2.365~</span>
+<span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; -11.4549672, -1.2885884, -0.3~</span>
+<span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -8.502541, 44.759685, 10.4517~</span>
+<span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; 36.151474, -4.152306, -32.810~</span>
+<span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; 1978.1985, 912.7174, 286.3815</span>
 
 <span class="co"># Collect all historical data on the price of Cardano (expressed in EUR),</span>
 <span class="co"># and plot the result:</span>
@@ -193,10 +194,19 @@
                                 vs_currency <span class="op">=</span> <span class="st">"eur"</span>, 
                                 days <span class="op">=</span> <span class="st">"max"</span><span class="op">)</span>
 
-<span class="va">cardano_history</span> <span class="op">%&gt;%</span> 
+<span class="va">cardano_history</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">timestamp</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># As of v0.2.0 (NOT yet on CRAN), all `coin_history_*`</span>
+<span class="co"># functions can retrieve data for multiple coins (up to 30) </span>
+<span class="co"># in one call, e.g.:</span>
+<span class="va">two_coins</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/coin_history.html">coin_history</a></span><span class="op">(</span>coin_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"polkadot"</span><span class="op">)</span>, 
+                          vs_currency <span class="op">=</span> <span class="st">"usd"</span>, 
+                          days <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="va">two_coins</span><span class="op">$</span><span class="va">coin_id</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; [1] "cardano"  "polkadot"</span></code></pre></div>
 </div>
 <div id="api-rate-limit" class="section level2">
 <h2 class="hasAnchor">
@@ -253,6 +263,7 @@
 <li><a href="https://github.com/next-game-solutions/geckor/actions"><img src="https://github.com/next-game-solutions/geckor/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/next-game-solutions/geckor?branch=main"><img src="https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://cran.r-project.org/package=geckor"><img src="https://cranlogs.r-pkg.org/badges/grand-total/geckor" alt="CRAN downloads"></a></li>
 </ul>
 </div>
 </div>

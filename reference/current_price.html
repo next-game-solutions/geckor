@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="Current coin prices — current_price" />
-<meta property="og:description" content="Retrieves current prices of supported coins in any supported reference currencies" />
+<meta property="og:description" content="Retrieves current prices of supported coins" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Retrieves current prices of supported coins in any supported reference currencies</p>
+    <p>Retrieves current prices of supported coins</p>
     </div>
 
     <pre class="usage"><span class='fu'>current_price</span><span class='op'>(</span>
@@ -168,7 +168,7 @@ IDs can be obtained with the <code><a href='supported_coins.html'>supported_coin
       <th>vs_currencies</th>
       <td><p>(character): a vector with
 names of the reference currencies to express the price in, e.g.
-<code><a href='https://rdrr.io/r/base/c.html'>c("usd", "eur", "btc")</a></code>. An up-to-date list of supported
+<code>c("usd", "eur", "btc")</code>. An up-to-date list of supported
 <code>vs_currencies</code> (both fiat and cryptocurrencies) can be obtained with
 the <code><a href='supported_currencies.html'>supported_currencies()</a></code> function. If <code>vs_currencies</code>
 contains at least one unsupported currency, the call will fail with the
@@ -205,14 +205,15 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
 arguments <code>include_market_cap</code>, <code>include_24h_vol</code> and <code>include_24h_change</code>
 to control the inclusion of the corresponding columns):</p><ul>
 <li><p><code>coin_id</code> (character): coin IDs, ordered alphabetically;</p></li>
+<li><p><code>price</code> (double): coin price;</p></li>
 <li><p><code>vs_currency</code> (character): reference currency, in which the price of
 <code>coin_id</code> is expressed;</p></li>
-<li><p><code>last_updated_at</code> (POSIXct, UTC time zone): timestamp of the last price
-update;</p></li>
 <li><p><code>market_cap</code> (double): current market capitalisation;</p></li>
 <li><p><code>vol_24h</code> (double): trading volume in the last 24 hours;</p></li>
 <li><p><code>price_percent_change_24h</code> (double): percentage change of the price as
-compared to 24 hours ago.</p></li>
+compared to 24 hours ago;</p></li>
+<li><p><code>last_updated_at</code> (POSIXct, UTC time zone): timestamp of the last price
+update.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -225,26 +226,27 @@ keep this limit in mind when developing your applications.</p>
 query parameter), nothing (<code>NULL</code>) will be returned.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>current_price</span><span class='op'>(</span>
-  coin_ids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"aave"</span>, <span class='st'>"tron"</span>, <span class='st'>"bitcoin"</span><span class='op'>)</span>,
-  vs_currencies <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"usd"</span>, <span class='st'>"eur"</span>, <span class='st'>"gbp"</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9 x 7</span>
-#&gt;   coin_id      price vs_currency    market_cap    vol_24h price_percent_change_…
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>                  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> aave      275.     usd           <span style='text-decoration: underline;'>3</span>536<span style='text-decoration: underline;'>395</span>321.    2.46<span style='color: #949494;'>e</span> 8                 -<span style='color: #BB0000;'>7.16</span> 
-#&gt; <span style='color: #BCBCBC;'>2</span> aave      234.     eur           <span style='text-decoration: underline;'>3</span>001<span style='text-decoration: underline;'>756</span>004.    2.09<span style='color: #949494;'>e</span> 8                 -<span style='color: #BB0000;'>6.51</span> 
-#&gt; <span style='color: #BCBCBC;'>3</span> aave      199.     gbp           <span style='text-decoration: underline;'>2</span>559<span style='text-decoration: underline;'>823</span>289.    1.78<span style='color: #949494;'>e</span> 8                 -<span style='color: #BB0000;'>6.68</span> 
-#&gt; <span style='color: #BCBCBC;'>4</span> bitcoin <span style='text-decoration: underline;'>32</span>662      usd         <span style='text-decoration: underline;'>612</span>473<span style='text-decoration: underline;'>915</span>835.    2.02<span style='color: #949494;'>e</span>10                 -<span style='color: #BB0000;'>1.00</span> 
-#&gt; <span style='color: #BCBCBC;'>5</span> bitcoin <span style='text-decoration: underline;'>27</span>726      eur         <span style='text-decoration: underline;'>519</span>913<span style='text-decoration: underline;'>795</span>305.    1.72<span style='color: #949494;'>e</span>10                 -<span style='color: #BB0000;'>0.316</span>
-#&gt; <span style='color: #BCBCBC;'>6</span> bitcoin <span style='text-decoration: underline;'>23</span>642      gbp         <span style='text-decoration: underline;'>443</span>400<span style='text-decoration: underline;'>491</span>369.    1.46<span style='color: #949494;'>e</span>10                 -<span style='color: #BB0000;'>0.491</span>
-#&gt; <span style='color: #BCBCBC;'>7</span> tron        0.059<span style='text-decoration: underline;'>6</span> usd           <span style='text-decoration: underline;'>4</span>268<span style='text-decoration: underline;'>951</span>466.    7.45<span style='color: #949494;'>e</span> 8                 -<span style='color: #BB0000;'>1.26</span> 
-#&gt; <span style='color: #BCBCBC;'>8</span> tron        0.050<span style='text-decoration: underline;'>6</span> eur           <span style='text-decoration: underline;'>3</span>623<span style='text-decoration: underline;'>806</span>176.    6.32<span style='color: #949494;'>e</span> 8                 -<span style='color: #BB0000;'>0.577</span>
-#&gt; <span style='color: #BCBCBC;'>9</span> tron        0.043<span style='text-decoration: underline;'>1</span> gbp           <span style='text-decoration: underline;'>3</span>090<span style='text-decoration: underline;'>507</span>414.    5.39<span style='color: #949494;'>e</span> 8                 -<span style='color: #BB0000;'>0.751</span>
-#&gt; <span style='color: #949494;'># … with 1 more variable: last_updated_at &lt;dttm&gt;</span></div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>current_price</span><span class='op'>(</span></span>
+<span class='r-in'>  coin_ids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"aave"</span>, <span class='st'>"tron"</span>, <span class='st'>"bitcoin"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  vs_currencies <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"usd"</span>, <span class='st'>"eur"</span>, <span class='st'>"gbp"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 9 × 7</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   coin_id      price vs_currency market_cap      vol_24h price_percent_change_2…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> aave      306.     usd            4.05<span style='color: #949494;'>e</span> 9   231<span style='text-decoration: underline;'>884</span>957.                   -<span style='color: #BB0000;'>4.16</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> aave      265.     eur            3.50<span style='color: #949494;'>e</span> 9   200<span style='text-decoration: underline;'>695</span>967.                   -<span style='color: #BB0000;'>4.10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span> aave      224.     gbp            2.96<span style='color: #949494;'>e</span> 9   169<span style='text-decoration: underline;'>444</span>599.                   -<span style='color: #BB0000;'>4.16</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>4</span> bitcoin <span style='text-decoration: underline;'>60</span>517      usd            1.14<span style='color: #949494;'>e</span>12 <span style='text-decoration: underline;'>33</span>563<span style='text-decoration: underline;'>600</span>186.                   -<span style='color: #BB0000;'>1.90</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>5</span> bitcoin <span style='text-decoration: underline;'>52</span>377      eur            9.85<span style='color: #949494;'>e</span>11 <span style='text-decoration: underline;'>29</span>049<span style='text-decoration: underline;'>228</span>833.                   -<span style='color: #BB0000;'>1.84</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>6</span> bitcoin <span style='text-decoration: underline;'>44</span>221      gbp            8.32<span style='color: #949494;'>e</span>11 <span style='text-decoration: underline;'>24</span>525<span style='text-decoration: underline;'>828</span>873.                   -<span style='color: #BB0000;'>1.90</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>7</span> tron        0.099<span style='text-decoration: underline;'>0</span> usd            7.08<span style='color: #949494;'>e</span> 9  <span style='text-decoration: underline;'>2</span>523<span style='text-decoration: underline;'>728</span>152.                   -<span style='color: #BB0000;'>2.28</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>8</span> tron        0.085<span style='text-decoration: underline;'>7</span> eur            6.13<span style='color: #949494;'>e</span> 9  <span style='text-decoration: underline;'>2</span>184<span style='text-decoration: underline;'>281</span>668.                   -<span style='color: #BB0000;'>2.22</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>9</span> tron        0.072<span style='text-decoration: underline;'>3</span> gbp            5.17<span style='color: #949494;'>e</span> 9  <span style='text-decoration: underline;'>1</span>844<span style='text-decoration: underline;'>156</span>301.                   -<span style='color: #BB0000;'>2.28</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 1 more variable: last_updated_at &lt;dttm&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

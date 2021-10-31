@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -176,23 +176,24 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>supported_coins</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>r</span>, <span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 x 3</span>
-#&gt;    coin_id                       symbol   name                         
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                        
-#&gt; <span style='color: #BCBCBC;'> 1</span> 01coin                        zoc      01coin                       
-#&gt; <span style='color: #BCBCBC;'> 2</span> 0-5x-long-algorand-token      algohalf 0.5X Long Algorand Token     
-#&gt; <span style='color: #BCBCBC;'> 3</span> 0-5x-long-altcoin-index-token althalf  0.5X Long Altcoin Index Token
-#&gt; <span style='color: #BCBCBC;'> 4</span> 0-5x-long-balancer-token      balhalf  0.5X Long Balancer Token     
-#&gt; <span style='color: #BCBCBC;'> 5</span> 0-5x-long-bitcoin-cash-token  bchhalf  0.5X Long Bitcoin Cash Token 
-#&gt; <span style='color: #BCBCBC;'> 6</span> 0-5x-long-bitcoin-sv-token    bsvhalf  0.5X Long Bitcoin SV Token   
-#&gt; <span style='color: #BCBCBC;'> 7</span> 0-5x-long-bitcoin-token       half     0.5X Long Bitcoin Token      
-#&gt; <span style='color: #BCBCBC;'> 8</span> 0-5x-long-cardano-token       adahalf  0.5X Long Cardano Token      
-#&gt; <span style='color: #BCBCBC;'> 9</span> 0-5x-long-chainlink-token     linkhalf 0.5X Long Chainlink Token    
-#&gt; <span style='color: #BCBCBC;'>10</span> 0-5x-long-cosmos-token        atomhalf 0.5X Long Cosmos Token       </div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>supported_coins</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>r</span>, <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    coin_id                         symbol   name                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>""</span>                              pappay   Pappay                       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>"</span>01coin<span style='color: #949494;'>"</span>                        zoc      01coin                       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>0-5x-long-algorand-token<span style='color: #949494;'>"</span>      algohalf 0.5X Long Algorand Token     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>"</span>0-5x-long-altcoin-index-token<span style='color: #949494;'>"</span> althalf  0.5X Long Altcoin Index Token</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>"</span>0-5x-long-balancer-token<span style='color: #949494;'>"</span>      balhalf  0.5X Long Balancer Token     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>"</span>0-5x-long-bitcoin-cash-token<span style='color: #949494;'>"</span>  bchhalf  0.5X Long Bitcoin Cash Token </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>0-5x-long-bitcoin-sv-token<span style='color: #949494;'>"</span>    bsvhalf  0.5X Long Bitcoin SV Token   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>"</span>0-5x-long-bitcoin-token<span style='color: #949494;'>"</span>       half     0.5X Long Bitcoin Token      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>"</span>0-5x-long-cardano-token<span style='color: #949494;'>"</span>       adahalf  0.5X Long Cardano Token      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>"</span>0-5x-long-chainlink-token<span style='color: #949494;'>"</span>     linkhalf 0.5X Long Chainlink Token    </span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

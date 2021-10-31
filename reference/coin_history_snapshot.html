@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -153,8 +153,9 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>coin_id</th>
-      <td><p>(character): ID of the coin of interest. An
-up-to-date list of supported coins and their IDs can be retrieved
+      <td><p>(character): ID of the coin of interest or a vector with <em>several</em> IDs.
+The maximum number of coins that can be queried simultaneously is 30.
+An up-to-date list of supported coins and their IDs can be retrieved
 with the <code><a href='supported_coins.html'>supported_coins()</a></code> function.</p></td>
     </tr>
     <tr>
@@ -166,7 +167,7 @@ date, nothing (<code>NULL</code>) will be returned.</p></td>
       <th>vs_currencies</th>
       <td><p>(character): a vector with
 names of the reference currencies to express the price in, e.g.
-<code><a href='https://rdrr.io/r/base/c.html'>c("usd", "eur", "btc")</a></code>. An up-to-date list of supported
+<code>c("usd", "eur", "btc")</code>. An up-to-date list of supported
 <code>vs_currencies</code> (both fiat and cryptocurrencies) can be obtained with
 the <code><a href='supported_currencies.html'>supported_currencies()</a></code> function. If <code>vs_currencies</code>
 contains at least one unsupported currency, the call will fail with the
@@ -183,9 +184,7 @@ implemented with an exponential backoff. Defaults to 3.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If the requested data exist, this function will return a tibble with
-with as many rows as the length of <code>vs_currencies</code> and the following
-columns:</p><ul>
+    <p>A tibble with the following columns:</p><ul>
 <li><p><code>coin_id</code> (character): same as the argument <code>coin_id</code>;</p></li>
 <li><p><code>symbol</code> (character): symbol of the coin;</p></li>
 <li><p><code>name</code> (character): common name of the coin;</p></li>
@@ -205,19 +204,20 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>coin_history_snapshot</span><span class='op'>(</span>
-  coin_id <span class='op'>=</span> <span class='st'>"cardano"</span>,
-  date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2021-05-01"</span><span class='op'>)</span>,
-  vs_currencies <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"usd"</span>, <span class='st'>"eth"</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 8</span>
-#&gt;   coin_id symbol name    date       vs_currency   price  market_cap total_volume
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> cardano ada    Cardano 2021-05-01 eth         4.88<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-4</span>     1.56<span style='color: #949494;'>e</span> 7     1<span style='text-decoration: underline;'>040</span>152.
-#&gt; <span style='color: #BCBCBC;'>2</span> cardano ada    Cardano 2021-05-01 usd         1.35<span style='color: #949494;'>e</span>+0     4.33<span style='color: #949494;'>e</span>10  <span style='text-decoration: underline;'>2</span>888<span style='text-decoration: underline;'>334</span>739.</div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>coin_history_snapshot</span><span class='op'>(</span></span>
+<span class='r-in'>  coin_id <span class='op'>=</span> <span class='st'>"cardano"</span>,</span>
+<span class='r-in'>  date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2021-05-01"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  vs_currencies <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"usd"</span>, <span class='st'>"eth"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 2 × 8</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   coin_id symbol name    date       vs_currency    price market_cap total_volume</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> cardano ada    Cardano 2021-05-01 eth         0.000<span style='text-decoration: underline;'>488</span>    1.56<span style='color: #949494;'>e</span> 7     1<span style='text-decoration: underline;'>040</span>152.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> cardano ada    Cardano 2021-05-01 usd         1.35        4.33<span style='color: #949494;'>e</span>10  <span style='text-decoration: underline;'>2</span>888<span style='text-decoration: underline;'>334</span>739.</span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

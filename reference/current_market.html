@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -181,6 +181,7 @@ as many rows as the length of <code>coin_ids</code> and the following columns:</
 <li><p><code>coin_id</code> (character): coin IDs, ordered by <code>market_cap</code> (see below);</p></li>
 <li><p><code>symbol</code> (character): symbol of the coin;</p></li>
 <li><p><code>name</code> (character): common name of the coin;</p></li>
+<li><p><code>vs_currency</code> (character): same as the argument <code>vs_currency</code>;</p></li>
 <li><p><code>last_updated_at</code> (POSIXct, UTC time zone): timestamp of the last update;</p></li>
 <li><p><code>current_price</code> (double): current price (as of <code>last_updated_at</code>)
 expressed in <code>vs_currency</code>;</p></li>
@@ -196,6 +197,10 @@ of the coin's project;</p></li>
 <li><p><code>price_change_24h</code> (double): price change as compared to 24 hours ago;</p></li>
 <li><p><code>price_change_percentage_24h</code> (double): percentage change of the price as
 compared to 24 hours ago;</p></li>
+<li><p><code>market_cap_change_24h</code> (double): market cap change as compared to 24 hours
+ago;
+<code>market_cap_change_percentage_24h</code> (double): percentage change of the market
+cap as compared to 24 hours ago;</p></li>
 <li><p><code>circulating_supply</code> (double): coin supply currently in circulation;</p></li>
 <li><p><code>total_supply</code> (double): total supply that can potentially be circulated;</p></li>
 <li><p><code>max_supply</code> (double): max possible supply;</p></li>
@@ -225,33 +230,27 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>current_market</span><span class='op'>(</span>
-  coin_ids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"bitcoin"</span>, <span class='st'>"ethereum"</span>, <span class='st'>"cardano"</span><span class='op'>)</span>,
-  vs_currency <span class='op'>=</span> <span class='st'>"usd"</span>
-<span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 32</span>
-#&gt;   coin_id  symbol name  vs_currency last_updated_at     current_price market_cap
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>                      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> bitcoin  btc    Bitc… usd         2021-07-13 <span style='color: #949494;'>21:59:18</span>      <span style='text-decoration: underline;'>32</span>662       6.12<span style='color: #949494;'>e</span>11
-#&gt; <span style='color: #BCBCBC;'>2</span> ethereum eth    Ethe… usd         2021-07-13 <span style='color: #949494;'>21:59:27</span>       <span style='text-decoration: underline;'>1</span>954.      2.28<span style='color: #949494;'>e</span>11
-#&gt; <span style='color: #BCBCBC;'>3</span> cardano  ada    Card… usd         2021-07-13 <span style='color: #949494;'>21:58:45</span>          1.26    4.06<span style='color: #949494;'>e</span>10
-#&gt; <span style='color: #949494;'># … with 25 more variables: market_cap_rank &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   fully_diluted_valuation &lt;dbl&gt;, total_volume &lt;dbl&gt;, high_24h &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   low_24h &lt;dbl&gt;, price_change_24h &lt;dbl&gt;, price_change_percentage_24h &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   market_cap_change_24h &lt;dbl&gt;, market_cap_change_percentage_24h &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   circulating_supply &lt;dbl&gt;, total_supply &lt;dbl&gt;, max_supply &lt;dbl&gt;, ath &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   ath_change_percentage &lt;dbl&gt;, ath_date &lt;dttm&gt;, atl &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   atl_change_percentage &lt;dbl&gt;, atl_date &lt;dttm&gt;,</span>
-#&gt; <span style='color: #949494;'>#   price_change_percentage_1h_in_currency &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   price_change_percentage_24h_in_currency &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   price_change_percentage_7d_in_currency &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   price_change_percentage_14d_in_currency &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   price_change_percentage_30d_in_currency &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   price_change_percentage_200d_in_currency &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   price_change_percentage_1y_in_currency &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>current_market</span><span class='op'>(</span></span>
+<span class='r-in'>  coin_ids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"bitcoin"</span>, <span class='st'>"ethereum"</span>, <span class='st'>"cardano"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  vs_currency <span class='op'>=</span> <span class='st'>"usd"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 3 × 32</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   coin_id  symbol name  vs_currency last_updated_at     current_price market_cap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>                      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> bitcoin  btc    Bitc… usd         2021-10-31 <span style='color: #949494;'>13:59:20</span>      <span style='text-decoration: underline;'>60</span>517       1.14<span style='color: #949494;'>e</span>12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> ethereum eth    Ethe… usd         2021-10-31 <span style='color: #949494;'>13:59:33</span>       <span style='text-decoration: underline;'>4</span>210.      4.96<span style='color: #949494;'>e</span>11</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span> cardano  ada    Card… usd         2021-10-31 <span style='color: #949494;'>14:00:04</span>          1.94    6.21<span style='color: #949494;'>e</span>10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 25 more variables: market_cap_rank &lt;int&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   fully_diluted_valuation &lt;dbl&gt;, total_volume &lt;dbl&gt;, high_24h &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   low_24h &lt;dbl&gt;, price_change_24h &lt;dbl&gt;, price_change_percentage_24h &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   market_cap_change_24h &lt;dbl&gt;, market_cap_change_percentage_24h &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   circulating_supply &lt;dbl&gt;, total_supply &lt;dbl&gt;, max_supply &lt;dbl&gt;, ath &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   ath_change_percentage &lt;dbl&gt;, ath_date &lt;dttm&gt;, atl &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   atl_change_percentage &lt;dbl&gt;, atl_date &lt;dttm&gt;, …</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -171,17 +171,18 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>supported_currencies</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "btc"  "eth"  "ltc"  "bch"  "bnb"  "eos"  "xrp"  "xlm"  "link" "dot" 
-#&gt; [11] "yfi"  "usd"  "aed"  "ars"  "aud"  "bdt"  "bhd"  "bmd"  "brl"  "cad" 
-#&gt; [21] "chf"  "clp"  "cny"  "czk"  "dkk"  "eur"  "gbp"  "hkd"  "huf"  "idr" 
-#&gt; [31] "ils"  "inr"  "jpy"  "krw"  "kwd"  "lkr"  "mmk"  "mxn"  "myr"  "ngn" 
-#&gt; [41] "nok"  "nzd"  "php"  "pkr"  "pln"  "rub"  "sar"  "sek"  "sgd"  "thb" 
-#&gt; [51] "try"  "twd"  "uah"  "vef"  "vnd"  "zar"  "xdr"  "xag"  "xau"  "bits"
-#&gt; [61] "sats"</div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='va'>r</span> <span class='op'>&lt;-</span> <span class='fu'>supported_currencies</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>r</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "btc"  "eth"  "ltc"  "bch"  "bnb"  "eos"  "xrp"  "xlm"  "link" "dot" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [11] "yfi"  "usd"  "aed"  "ars"  "aud"  "bdt"  "bhd"  "bmd"  "brl"  "cad" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "chf"  "clp"  "cny"  "czk"  "dkk"  "eur"  "gbp"  "hkd"  "huf"  "idr" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [31] "ils"  "inr"  "jpy"  "krw"  "kwd"  "lkr"  "mmk"  "mxn"  "myr"  "ngn" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [41] "nok"  "nzd"  "php"  "pkr"  "pln"  "rub"  "sar"  "sek"  "sgd"  "thb" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [51] "try"  "twd"  "uah"  "vef"  "vnd"  "zar"  "xdr"  "xag"  "xau"  "bits"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [61] "sats"</span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
