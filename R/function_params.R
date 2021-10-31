@@ -1,19 +1,20 @@
 #' Definitions of common function arguments
 #'
-#' Used to automatically generate documentation for frequently used arguments
+#' Used to automatically document frequently used arguments
 #'
 #' @param arguments (character): vector with names of the arguments to be
 #'     documented.
 #'
-#' @return Literal descriptions of function arguments.
+#' @return Literal descriptions of the arguments.
 #'
 #' @keywords internal
 #'
 function_params <- function(arguments) {
   descriptions <- c(
-    coin_id = "@param coin_id (character): ID of the coin of interest. An
-       up-to-date list of supported coins and their IDs can be retrieved
-       with the [supported_coins()] function.",
+    coin_id = "@param coin_id (character): ID of the coin of interest or a vector with _several_ IDs.
+       The maximum number of coins that can be queried simultaneously is 30.
+       An up-to-date list of supported coins and their IDs can be retrieved
+       with the `supported_coins()` function.",
     coin_ids = "@param coin_ids (character): a vector with IDs of the coins of
        interest. An up-to-date list of supported coins and their
        IDs can be obtained with the [supported_coins()] function.",

@@ -29,6 +29,7 @@ as many rows as the length of \code{coin_ids} and the following columns:
 \item \code{coin_id} (character): coin IDs, ordered by \code{market_cap} (see below);
 \item \code{symbol} (character): symbol of the coin;
 \item \code{name} (character): common name of the coin;
+\item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{last_updated_at} (POSIXct, UTC time zone): timestamp of the last update;
 \item \code{current_price} (double): current price (as of \code{last_updated_at})
 expressed in \code{vs_currency};
@@ -44,6 +45,10 @@ of the coin's project;
 \item \code{price_change_24h} (double): price change as compared to 24 hours ago;
 \item \code{price_change_percentage_24h} (double): percentage change of the price as
 compared to 24 hours ago;
+\item \code{market_cap_change_24h} (double): market cap change as compared to 24 hours
+ago;
+\code{market_cap_change_percentage_24h} (double): percentage change of the market
+cap as compared to 24 hours ago;
 \item \code{circulating_supply} (double): coin supply currently in circulation;
 \item \code{total_supply} (double): total supply that can potentially be circulated;
 \item \code{max_supply} (double): max possible supply;

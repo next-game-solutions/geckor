@@ -7,9 +7,10 @@
 coin_history_range(coin_id, vs_currency = "usd", from, to, max_attempts = 3)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An
-up-to-date list of supported coins and their IDs can be retrieved
-with the \code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest or a vector with \emph{several} IDs.
+The maximum number of coins that can be queried simultaneously is 30.
+An up-to-date list of supported coins and their IDs can be retrieved
+with the \code{supported_coins()} function.}
 
 \item{vs_currency}{(character): name of the reference currency to
 express the price in. An up-to-date list of supported reference currencies (both
@@ -32,9 +33,10 @@ implemented with an exponential backoff. Defaults to 3.}
 A tibble with the following columns:
 \itemize{
 \item \code{timestamp} (POSIXct);
+\item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price} (double): coin price as of \code{timestamp};
-\item \code{total_trading_vol} (double): a 24 hours rolling-window trading volume, as
+\item \code{total_volume} (double): a 24 hours rolling-window trading volume, as
 of \code{timestampt};
 \item \code{market_cap} (double): market capitalisation, as of \code{timestamp}.
 }
@@ -45,6 +47,10 @@ Retrieves coin-specific market data for a range of historical dates
 \details{
 This function returns hourly data for periods of up to 90 days
 and daily data for periods that are longer than 90 days.
+
+Sometimes, the retrieved data will contain missing values. In such
+cases, the function will issue a warning and show a list
+of columns that have missing values.
 
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},

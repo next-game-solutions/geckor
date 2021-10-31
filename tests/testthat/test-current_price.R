@@ -1,4 +1,6 @@
 test_that("current_price returns correct results", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- current_price(
     coin_ids = c("aave", "tron", "bitcoin"),
     vs_currencies = c("usd", "eur", "gbp"),

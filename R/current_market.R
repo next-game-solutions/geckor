@@ -13,6 +13,7 @@
 #' * `coin_id` (character): coin IDs, ordered by `market_cap` (see below);
 #' * `symbol` (character): symbol of the coin;
 #' * `name` (character): common name of the coin;
+#' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last update;
 #' * `current_price` (double): current price (as of `last_updated_at`)
 #' expressed in `vs_currency`;
@@ -28,6 +29,10 @@
 #' * `price_change_24h` (double): price change as compared to 24 hours ago;
 #' * `price_change_percentage_24h` (double): percentage change of the price as
 #' compared to 24 hours ago;
+#' * `market_cap_change_24h` (double): market cap change as compared to 24 hours
+#' ago;
+#' `market_cap_change_percentage_24h` (double): percentage change of the market
+#' cap as compared to 24 hours ago;
 #' * `circulating_supply` (double): coin supply currently in circulation;
 #' * `total_supply` (double): total supply that can potentially be circulated;
 #' * `max_supply` (double): max possible supply;
@@ -94,7 +99,7 @@ current_market <- function(coin_ids,
     r <- api_request(url = url, max_attempts = max_attempts)
 
     if (is.null(r)) {
-      message("No data found. Check if the query parameters are specified correctly")
+      message("\nNo data could be retrieved.")
       return(NULL)
     }
 

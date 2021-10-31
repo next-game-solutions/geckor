@@ -19,6 +19,11 @@
 #' @keywords internal
 #'
 api_request <- function(url, max_attempts = 3) {
+  if (!curl::has_internet()) {
+    message("No internet connection")
+    return(invisible(NULL))
+  }
+
   if (!is.character(url)) {
     rlang::abort("`url` must be a character value")
   }
@@ -33,34 +38,23 @@ api_request <- function(url, max_attempts = 3) {
   )
 
   for (attempt in seq_len(max_attempts)) {
-    r <- try(httr::GET(url, ua), silent = FALSE)
+    r <- try(httr::GET(url, ua, httr::timeout(15)), silent = FALSE)
 
     if (class(r) == "try-error" || httr::http_error(r)) {
+      message("\nFailed to call ", url)
+      httr::message_for_status(r)
       delay <- stats::runif(n = 1, min = attempt, max = 2^attempt)
-      message(
-        "\nAPI request failed. Retrying after ",
-        round(delay, 2), " seconds..."
-      )
+      message("\nRetrying after ", round(delay, 2), " seconds...")
       Sys.sleep(delay)
     } else {
       break
     }
   }
 
-  if (httr::http_error(r)) {
-    parsed <- jsonlite::fromJSON(
-      httr::content(r, "text"),
-      simplifyVector = FALSE
-    )
-
-    stop(
-      sprintf(
-        "API request failed [status code %s]. \n%s",
-        httr::status_code(r),
-        parsed$error
-      ),
-      call. = FALSE
-    )
+  if (class(r) == "try-error" || httr::http_error(r) || class(r) != "response") {
+    message("\nAll calls to ", url, " failed")
+    httr::message_for_status(r)
+    return(invisible(NULL))
   }
 
   if (httr::http_type(r) != "application/json") {

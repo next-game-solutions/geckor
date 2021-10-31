@@ -7,9 +7,10 @@
 coin_history_snapshot(coin_id, date, vs_currencies = "usd", max_attempts = 3)
 }
 \arguments{
-\item{coin_id}{(character): ID of the coin of interest. An
-up-to-date list of supported coins and their IDs can be retrieved
-with the \code{\link[=supported_coins]{supported_coins()}} function.}
+\item{coin_id}{(character): ID of the coin of interest or a vector with \emph{several} IDs.
+The maximum number of coins that can be queried simultaneously is 30.
+An up-to-date list of supported coins and their IDs can be retrieved
+with the \code{supported_coins()} function.}
 
 \item{date}{(Date): date of interest. If no data exist for the requested
 date, nothing (\code{NULL}) will be returned.}
@@ -28,9 +29,7 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-If the requested data exist, this function will return a tibble with
-with as many rows as the length of \code{vs_currencies} and the following
-columns:
+A tibble with the following columns:
 \itemize{
 \item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{symbol} (character): symbol of the coin;

@@ -1,6 +1,6 @@
 #' Current coin prices
 #'
-#' Retrieves current prices of supported coins in any supported reference currencies
+#' Retrieves current prices of supported coins
 #'
 #' @eval function_params(c("coin_ids", "vs_currencies", "include_market_cap",
 #'                         "include_24h_vol", "include_24h_change",
@@ -13,14 +13,15 @@
 #'    arguments `include_market_cap`, `include_24h_vol` and `include_24h_change`
 #'    to control the inclusion of the corresponding columns):
 #' * `coin_id` (character): coin IDs, ordered alphabetically;
+#' * `price` (double): coin price;
 #' * `vs_currency` (character): reference currency, in which the price of
 #' `coin_id` is expressed;
-#' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last price
-#' update;
 #' * `market_cap` (double): current market capitalisation;
 #' * `vol_24h` (double): trading volume in the last 24 hours;
 #' * `price_percent_change_24h` (double): percentage change of the price as
-#' compared to 24 hours ago.
+#' compared to 24 hours ago;
+#' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last price
+#' update.
 #'
 #' @export
 #'
@@ -68,7 +69,7 @@ current_price <- function(coin_ids,
   r <- api_request(url = url, max_attempts = max_attempts)
 
   if (is.null(r)) {
-    message("No data found. Check if the query parameters are specified correctly")
+    message("\nNo data could be retrieved.")
     return(NULL)
   }
 
@@ -106,9 +107,9 @@ current_price <- function(coin_ids,
         vol_24h = vol_24h,
         price_percent_change_24h = change_24h,
         last_updated_at = as.POSIXct(x$last_updated_at,
-                                     origin = as.Date("1970-01-01"),
-                                     tz = "UTC",
-                                     format = "%Y-%m-%d %H:%M:%S"
+          origin = as.Date("1970-01-01"),
+          tz = "UTC",
+          format = "%Y-%m-%d %H:%M:%S"
         )
       )
   }) %>%

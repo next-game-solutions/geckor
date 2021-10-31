@@ -1,6 +1,15 @@
 test_that("history_snapshot returns correct results", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- coin_history_snapshot(
     coin_id = "cardano",
+    date = as.Date("2021-05-01"),
+    vs_currencies = c("usd", "eth"),
+    max_attempts = 1L
+  )
+
+  r2 <- coin_history_snapshot(
+    coin_id = c("bitcoin", "polkadot", "tron"),
     date = as.Date("2021-05-01"),
     vs_currencies = c("usd", "eth"),
     max_attempts = 1L
@@ -29,4 +38,7 @@ test_that("history_snapshot returns correct results", {
   expect_type(r$price, "double")
   expect_type(r$market_cap, "double")
   expect_type(r$total_volume, "double")
+
+  expect_equal(nrow(r2), 6)
+  expect_setequal(unique(r2$coin_id), c("bitcoin", "polkadot", "tron"))
 })

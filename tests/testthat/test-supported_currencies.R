@@ -1,4 +1,6 @@
 test_that("supported_currencies returns correct results", {
+  if (!ping()) {Sys.sleep(60)}
+
   r <- supported_currencies(max_attempts = 1)
 
   Sys.sleep(1)
