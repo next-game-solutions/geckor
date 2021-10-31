@@ -33,7 +33,7 @@ implemented with an exponential backoff. Defaults to 3.}
 \value{
 A tibble with the following columns:
 \itemize{
-\item \code{timestamp} (POSIXct);
+\item \code{timestamp} (POSIXct): beginning of the candle's time interval;
 \item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{vs_currency} (character): same as the argument \code{vs_currency};
 \item \code{price_open} (double): coin price in the beginning of a time interval;

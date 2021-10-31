@@ -50,7 +50,7 @@ and daily data for periods that are longer than 90 days.
 
 Sometimes, the retrieved data will contain missing values. In such
 cases, the function will issue a warning and show a list
-of column with missing values.
+of columns that have missing values.
 
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},

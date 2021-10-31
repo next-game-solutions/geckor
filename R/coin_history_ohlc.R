@@ -21,7 +21,7 @@
 #' @eval function_params(c("api_note"))
 #'
 #' @return A tibble with the following columns:
-#' * `timestamp` (POSIXct);
+#' * `timestamp` (POSIXct): beginning of the candle's time interval;
 #' * `coin_id` (character): same as the argument `coin_id`;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
 #' * `price_open` (double): coin price in the beginning of a time interval;

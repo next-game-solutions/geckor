@@ -19,7 +19,7 @@
 #'
 #' Sometimes, the retrieved data will contain missing values. In such
 #'     cases, the function will issue a warning and show a list
-#'     of column with missing values.
+#'     of columns that have missing values.
 #'
 #' @eval function_params("api_note")
 #'

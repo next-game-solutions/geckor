@@ -13,14 +13,15 @@
 #'    arguments `include_market_cap`, `include_24h_vol` and `include_24h_change`
 #'    to control the inclusion of the corresponding columns):
 #' * `coin_id` (character): coin IDs, ordered alphabetically;
+#' * `price` (double): coin price;
 #' * `vs_currency` (character): reference currency, in which the price of
 #' `coin_id` is expressed;
-#' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last price
-#' update;
 #' * `market_cap` (double): current market capitalisation;
 #' * `vol_24h` (double): trading volume in the last 24 hours;
 #' * `price_percent_change_24h` (double): percentage change of the price as
-#' compared to 24 hours ago.
+#' compared to 24 hours ago;
+#' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last price
+#' update.
 #'
 #' @export
 #'

@@ -47,14 +47,15 @@ arguments \code{include_market_cap}, \code{include_24h_vol} and \code{include_24
 to control the inclusion of the corresponding columns):
 \itemize{
 \item \code{coin_id} (character): coin IDs, ordered alphabetically;
+\item \code{price} (double): coin price;
 \item \code{vs_currency} (character): reference currency, in which the price of
 \code{coin_id} is expressed;
-\item \code{last_updated_at} (POSIXct, UTC time zone): timestamp of the last price
-update;
 \item \code{market_cap} (double): current market capitalisation;
 \item \code{vol_24h} (double): trading volume in the last 24 hours;
 \item \code{price_percent_change_24h} (double): percentage change of the price as
-compared to 24 hours ago.
+compared to 24 hours ago;
+\item \code{last_updated_at} (POSIXct, UTC time zone): timestamp of the last price
+update.
 }
 }
 \description{

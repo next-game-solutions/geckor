@@ -11,9 +11,9 @@ function_params(arguments)
 documented.}
 }
 \value{
-Literal descriptions of function arguments.
+Literal descriptions of the arguments.
 }
 \description{
-Used to automatically generate documentation for frequently used arguments
+Used to automatically document frequently used arguments
 }
 \keyword{internal}
