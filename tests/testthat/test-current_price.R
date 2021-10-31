@@ -1,7 +1,6 @@
 test_that("current_price returns correct results", {
-  skip_if_offline("api.coingecko.com")
   skip_on_cran()
-  if (!ping()) {Sys.sleep(30)}
+  Sys.sleep(20)
 
   r <- current_price(
     coin_ids = c("aave", "tron", "bitcoin"),

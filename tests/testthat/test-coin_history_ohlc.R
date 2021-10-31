@@ -1,7 +1,6 @@
 test_that("coin_history_ohlc returns correct results", {
-  skip_if_offline("api.coingecko.com")
   skip_on_cran()
-  if (!ping()) {Sys.sleep(60)}
+  Sys.sleep(10)
 
   r <- coin_history_ohlc(
     coin_id = "cardano",

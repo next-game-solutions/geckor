@@ -1,7 +1,6 @@
 test_that("exchange_rates returns correct results", {
-  skip_if_offline("api.coingecko.com")
   skip_on_cran()
-  if (!ping()) {Sys.sleep(60)}
+  Sys.sleep(20)
 
   r1 <- exchange_rate(currency = NULL, max_attempts = 1L)
   r2 <- exchange_rate(

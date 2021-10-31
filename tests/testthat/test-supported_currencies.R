@@ -1,7 +1,6 @@
 test_that("supported_currencies returns correct results", {
-  skip_if_offline("api.coingecko.com")
   skip_on_cran()
-  if (!ping()) {Sys.sleep(60)}
+  Sys.sleep(20)
 
   r <- supported_currencies(max_attempts = 3)
   skip_if(is.null(r), "Data could not be retrieved")
