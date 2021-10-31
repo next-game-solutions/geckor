@@ -115,7 +115,7 @@
 
 <span class="co"># number of supported coins:</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">coins</span><span class="op">)</span>
-<span class="co">#&gt; [1] 10209</span>
+<span class="co">#&gt; [1] 10210</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coins</span>, <span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 × 3</span>
@@ -144,16 +144,16 @@
 <span class="co">#&gt; # A tibble: 10 × 7</span>
 <span class="co">#&gt;    exchange_id name  year_established country url   trust_score trading_volume_…</span>
 <span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;int&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 binance     Bina…             2017 Cayman… http…          10          774363.</span>
-<span class="co">#&gt;  2 gdax        Coin…             2012 United… http…          10          159280.</span>
-<span class="co">#&gt;  3 huobi       Huob…             2013 Seyche… http…          10          117235.</span>
-<span class="co">#&gt;  4 kucoin      KuCo…             2014 Seyche… http…          10           63668.</span>
-<span class="co">#&gt;  5 crypto_com  Cryp…             2019 Cayman… http…          10           56374.</span>
-<span class="co">#&gt;  6 gate        Gate…               NA Hong K… http…          10           41556.</span>
-<span class="co">#&gt;  7 ftx_spot    FTX               2019 Antigu… http…          10           40808.</span>
-<span class="co">#&gt;  8 binance_us  Bina…             2019 United… http…          10           33729.</span>
-<span class="co">#&gt;  9 kraken      Krak…             2011 United… http…          10           20711.</span>
-<span class="co">#&gt; 10 bitfinex    Bitf…             2014 Britis… http…          10           14724.</span></code></pre></div>
+<span class="co">#&gt;  1 binance     Bina…             2017 Cayman… http…          10          755843.</span>
+<span class="co">#&gt;  2 gdax        Coin…             2012 United… http…          10          159093.</span>
+<span class="co">#&gt;  3 huobi       Huob…             2013 Seyche… http…          10          116935.</span>
+<span class="co">#&gt;  4 kucoin      KuCo…             2014 Seyche… http…          10           62395.</span>
+<span class="co">#&gt;  5 crypto_com  Cryp…             2019 Cayman… http…          10           58048.</span>
+<span class="co">#&gt;  6 gate        Gate…               NA Hong K… http…          10           43945.</span>
+<span class="co">#&gt;  7 ftx_spot    FTX               2019 Antigu… http…          10           40095.</span>
+<span class="co">#&gt;  8 binance_us  Bina…             2019 United… http…          10           34927.</span>
+<span class="co">#&gt;  9 kraken      Krak…             2011 United… http…          10           20449.</span>
+<span class="co">#&gt; 10 bitfinex    Bitf…             2014 Britis… http…          10           14360.</span></code></pre></div>
 <p>One of the important columns in the obtained tibble is <code>trust_score</code>. This score ranges from 1 to 10 and combines several metrics indicative of how much one can trust the data originating from a given exchange (see <a href="https://blog.coingecko.com/trust-score/" title="Trust Score v1">this</a> and <a href="https://blog.coingecko.com/trust-score-2/" title="Trust Score v2">this</a> articles on the CoinGecko website for details).</p>
 <p>When querying the market data for a cryptocurrency, users are always expected to supply one or several reference currencies (fiat or crypto) to express the coin price in. The list of such reference currencies can be retrieved with the <code><a href="../reference/supported_currencies.html">supported_currencies()</a></code> function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
