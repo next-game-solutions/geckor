@@ -1,8 +1,8 @@
 test_that("supported_coins returns correct objects", {
   skip_on_cran()
-  Sys.sleep(20)
+  Sys.sleep(30)
 
-  r <- supported_coins(max_attempts = 3L)
+  r <- supported_coins()
   skip_if(is.null(r), "Data could not be retrieved")
 
   Sys.sleep(2)

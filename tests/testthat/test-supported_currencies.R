@@ -1,8 +1,8 @@
 test_that("supported_currencies returns correct results", {
   skip_on_cran()
-  Sys.sleep(20)
+  Sys.sleep(30)
 
-  r <- supported_currencies(max_attempts = 3)
+  r <- supported_currencies()
   skip_if(is.null(r), "Data could not be retrieved")
 
   Sys.sleep(12)

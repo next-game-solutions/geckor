@@ -6,8 +6,7 @@ test_that("coin_history_range returns correct results", {
     coin_id = c("cardano"),
     vs_currency = "usd",
     from = as.POSIXct("2021-01-01 13:00:00", tz = "UTC"),
-    to = as.POSIXct("2021-01-01 18:00:00", tz = "UTC"),
-    max_attempts = 1L
+    to = as.POSIXct("2021-01-01 18:00:00", tz = "UTC")
   )
 
   skip_if(is.null(r), "Data could not be retrieved")

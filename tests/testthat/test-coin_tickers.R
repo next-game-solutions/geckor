@@ -4,8 +4,7 @@ test_that("coin_tickers returns correct results", {
 
   r <- coin_tickers(
     coin_id = "cardano",
-    exchange_id = "binance",
-    max_attempts = 1L
+    exchange_id = "binance"
   )
 
   skip_if(is.null(r), "Data could not be retrieved")

@@ -5,8 +5,7 @@ test_that("history_snapshot returns correct results", {
   r <- coin_history_snapshot(
     coin_id = "cardano",
     date = as.Date("2021-05-01"),
-    vs_currencies = c("usd", "eth"),
-    max_attempts = 1L
+    vs_currencies = c("usd", "eth")
   )
 
   skip_if(is.null(r), "Data could not be retrieved")
@@ -14,8 +13,7 @@ test_that("history_snapshot returns correct results", {
   r2 <- coin_history_snapshot(
     coin_id = c("bitcoin", "polkadot", "tron"),
     date = as.Date("2021-05-01"),
-    vs_currencies = c("usd", "eth"),
-    max_attempts = 1L
+    vs_currencies = c("usd", "eth")
   )
 
   skip_if(is.null(r2), "Data could not be retrieved")

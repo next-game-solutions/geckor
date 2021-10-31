@@ -1,14 +1,13 @@
 test_that("current_price returns correct results", {
   skip_on_cran()
-  Sys.sleep(20)
+  Sys.sleep(30)
 
   r <- current_price(
     coin_ids = c("aave", "tron", "bitcoin"),
     vs_currencies = c("usd", "eur", "gbp"),
     include_market_cap = TRUE,
     include_24h_vol = TRUE,
-    include_24h_change = TRUE,
-    max_attempts = 1L
+    include_24h_change = TRUE
   )
 
   skip_if(is.null(r), "Data could not be retrieved")

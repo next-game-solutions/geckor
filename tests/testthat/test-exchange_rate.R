@@ -1,12 +1,9 @@
 test_that("exchange_rates returns correct results", {
   skip_on_cran()
-  Sys.sleep(20)
+  Sys.sleep(30)
 
-  r1 <- exchange_rate(currency = NULL, max_attempts = 1L)
-  r2 <- exchange_rate(
-    currency = c("usd", "eur", "gbp"),
-    max_attempts = 1L
-  )
+  r1 <- exchange_rate(currency = NULL)
+  r2 <- exchange_rate(currency = c("usd", "eur", "gbp"))
 
   skip_if(is.null(r1), "Data could not be retrieved")
   skip_if(is.null(r2), "Data could not be retrieved")

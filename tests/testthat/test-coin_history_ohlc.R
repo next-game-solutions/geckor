@@ -6,7 +6,7 @@ test_that("coin_history_ohlc returns correct results", {
     coin_id = "cardano",
     vs_currency = "usd",
     days = 7L,
-    max_attempts = 1L
+    max_attempts = 3
   )
 
   skip_if(is.null(r), "Data could not be retrieved")
@@ -15,7 +15,7 @@ test_that("coin_history_ohlc returns correct results", {
     coin_id = c("bitcoin", "polkadot", "tron"),
     vs_currency = "usd",
     days = 7L,
-    max_attempts = 1L
+    max_attempts = 3
   )
 
   skip_if(is.null(r2), "Data could not be retrieved")
