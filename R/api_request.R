@@ -66,9 +66,7 @@ api_request <- function(url, max_attempts = 3) {
     simplifyVector = FALSE
   )
 
-  if (length(parsed) == 0) {
-    return(NULL)
-  }
+  if (length(parsed) == 0) {return(NULL)}
 
   return(parsed)
 }
