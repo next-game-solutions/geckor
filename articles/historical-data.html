@@ -117,12 +117,25 @@
   date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2021-01-01"</span><span class="op">)</span>,
   vs_currencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"usd"</span>, <span class="st">"eur"</span>, <span class="st">"gbp"</span><span class="op">)</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 × 8</span>
-<span class="co">#&gt;   coin_id symbol name    date       vs_currency  price   market_cap total_volume</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 bitcoin btc    Bitcoin 2021-01-01 eur         23759.      4.42e11 35613370771.</span>
-<span class="co">#&gt; 2 bitcoin btc    Bitcoin 2021-01-01 gbp         21228.      3.95e11 31819429092.</span>
-<span class="co">#&gt; 3 bitcoin btc    Bitcoin 2021-01-01 usd         29022.      5.39e11 43503516563.</span></code></pre></div>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Failed to call https://api.coingecko.com/api/v3/simple/supported_vs_currencies</span>
+<span class="co">#&gt; Too Many Requests (RFC 6585) (HTTP 429).</span>
+<span class="co">#&gt; Retrying after 2 seconds...</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Failed to call https://api.coingecko.com/api/v3/simple/supported_vs_currencies</span>
+<span class="co">#&gt; Too Many Requests (RFC 6585) (HTTP 429).</span>
+<span class="co">#&gt; Retrying after 2.27 seconds...</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Failed to call https://api.coingecko.com/api/v3/simple/supported_vs_currencies</span>
+<span class="co">#&gt; Too Many Requests (RFC 6585) (HTTP 429).</span>
+<span class="co">#&gt; Retrying after 5.16 seconds...</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; All calls to https://api.coingecko.com/api/v3/simple/supported_vs_currencies failed</span>
+<span class="co">#&gt; Too Many Requests (RFC 6585) (HTTP 429).</span>
+<span class="co">#&gt; Error: The following base currencies are not currently supported:</span>
+<span class="co">#&gt; * usd</span>
+<span class="co">#&gt; * eur</span>
+<span class="co">#&gt; * gbp</span></code></pre></div>
 <p>The <code><a href="../reference/coin_history_range.html">coin_history_range()</a></code> function can be used to query a range of historical dates (specified by the <code>from</code> and <code>to</code> arguments, which expect POSIXct timestamps). Granularity of the returned data depends on the requested range. Hourly data will be retrieved for periods of up to 90 days, and daily data for periods that are longer than 90 days:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Range of less than 1 day:</span>
@@ -132,20 +145,23 @@
   from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span><span class="op">(</span><span class="st">"2020-01-01 10:00:10"</span><span class="op">)</span>,
   to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span><span class="op">(</span><span class="st">"2020-01-01 20:45:10"</span><span class="op">)</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11 × 6</span>
-<span class="co">#&gt;    timestamp           coin_id vs_currency price total_volume    market_cap</span>
-<span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2020-01-01 10:01:04 bitcoin usd         7189. 19341132038. 130485645003.</span>
-<span class="co">#&gt;  2 2020-01-01 11:05:36 bitcoin usd         7199. 19197826855. 130544600075.</span>
-<span class="co">#&gt;  3 2020-01-01 12:08:49 bitcoin usd         7200. 19201215025. 130449996904.</span>
-<span class="co">#&gt;  4 2020-01-01 13:05:26 bitcoin usd         7203. 19252707591. 130621414174.</span>
-<span class="co">#&gt;  5 2020-01-01 14:07:19 bitcoin usd         7197. 19829886768. 130590596115.</span>
-<span class="co">#&gt;  6 2020-01-01 15:00:24 bitcoin usd         7221. 19536563317. 130659235317.</span>
-<span class="co">#&gt;  7 2020-01-01 16:09:55 bitcoin usd         7213. 18694377689. 130761256011.</span>
-<span class="co">#&gt;  8 2020-01-01 17:00:34 bitcoin usd         7216. 18563380452. 130600986770.</span>
-<span class="co">#&gt;  9 2020-01-01 18:00:18 bitcoin usd         7235. 17760548574. 131290371444.</span>
-<span class="co">#&gt; 10 2020-01-01 19:09:39 bitcoin usd         7234. 18082279778. 131291561459.</span>
-<span class="co">#&gt; 11 2020-01-01 20:00:46 bitcoin usd         7226. 18034097111. 131054114141.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Failed to call https://api.coingecko.com/api/v3/simple/supported_vs_currencies</span>
+<span class="co">#&gt; Too Many Requests (RFC 6585) (HTTP 429).</span>
+<span class="co">#&gt; Retrying after 1.15 seconds...</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Failed to call https://api.coingecko.com/api/v3/simple/supported_vs_currencies</span>
+<span class="co">#&gt; Too Many Requests (RFC 6585) (HTTP 429).</span>
+<span class="co">#&gt; Retrying after 3.5 seconds...</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Failed to call https://api.coingecko.com/api/v3/simple/supported_vs_currencies</span>
+<span class="co">#&gt; Too Many Requests (RFC 6585) (HTTP 429).</span>
+<span class="co">#&gt; Retrying after 3.91 seconds...</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; All calls to https://api.coingecko.com/api/v3/simple/supported_vs_currencies failed</span>
+<span class="co">#&gt; Too Many Requests (RFC 6585) (HTTP 429).</span>
+<span class="co">#&gt; Error: The following base currencies are not currently supported:</span>
+<span class="co">#&gt; * usd</span>
 
 <span class="co"># Range of &gt;90 days:</span>
 <span class="fu"><a href="../reference/coin_history_range.html">coin_history_range</a></span><span class="op">(</span>
@@ -225,7 +241,7 @@
 <span class="co">#&gt;   timestamp           coin_id vs_currency  price total_volume market_cap</span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 2021-10-31 00:00:00 bitcoin usd         61837. 31810216330.    1.17e12</span>
-<span class="co">#&gt; 2 2021-10-31 20:08:09 bitcoin usd         60727. 32540047491.    1.15e12</span>
+<span class="co">#&gt; 2 2021-10-31 20:38:40 bitcoin usd         61095. 32834880268.    1.15e12</span>
 
 <span class="co"># Less than 90 days, with `interval = "daily"`:</span>
 <span class="fu"><a href="../reference/coin_history.html">coin_history</a></span><span class="op">(</span>
@@ -287,7 +303,7 @@
 <span class="co">#&gt; # A tibble: 49 × 7</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency price_open price_high price_low</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-10-30 20:30:00 bitcoin usd             61956.     61997.    61953.</span>
+<span class="co">#&gt;  1 2021-10-30 20:30:00 bitcoin usd             61955.     61955.    61953.</span>
 <span class="co">#&gt;  2 2021-10-30 21:00:00 bitcoin usd             61978.     61979.    61889.</span>
 <span class="co">#&gt;  3 2021-10-30 21:30:00 bitcoin usd             61801.     61801.    61697.</span>
 <span class="co">#&gt;  4 2021-10-30 22:00:00 bitcoin usd             61658.     61758.    61618.</span>
@@ -305,10 +321,10 @@
   vs_currency <span class="op">=</span> <span class="st">"usd"</span>,
   days <span class="op">=</span> <span class="fl">7</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 42 × 7</span>
+<span class="co">#&gt; # A tibble: 43 × 7</span>
 <span class="co">#&gt;    timestamp           coin_id vs_currency price_open price_high price_low</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2021-10-25 00:00:00 bitcoin usd             60561.     61315.    60561.</span>
+<span class="co">#&gt;  1 2021-10-25 00:00:00 bitcoin usd             61315.     61315.    60922.</span>
 <span class="co">#&gt;  2 2021-10-25 04:00:00 bitcoin usd             61120.     62311.    61120.</span>
 <span class="co">#&gt;  3 2021-10-25 08:00:00 bitcoin usd             62282.     62470.    62115.</span>
 <span class="co">#&gt;  4 2021-10-25 12:00:00 bitcoin usd             62991.     63081.    62991.</span>
@@ -318,7 +334,7 @@
 <span class="co">#&gt;  8 2021-10-26 04:00:00 bitcoin usd             63228.     63267.    63034.</span>
 <span class="co">#&gt;  9 2021-10-26 08:00:00 bitcoin usd             63153.     63153.    62675.</span>
 <span class="co">#&gt; 10 2021-10-26 12:00:00 bitcoin usd             63031.     63238.    62930.</span>
-<span class="co">#&gt; # … with 32 more rows, and 1 more variable: price_close &lt;dbl&gt;</span>
+<span class="co">#&gt; # … with 33 more rows, and 1 more variable: price_close &lt;dbl&gt;</span>
 
 <span class="co"># 4-days granularity:</span>
 <span class="fu"><a href="../reference/coin_history_ohlc.html">coin_history_ohlc</a></span><span class="op">(</span>
@@ -377,10 +393,10 @@
 <span class="co">#&gt; 3 2021-10-31 20:08:09 bitcoin  usd         60727.   32540047491.    1.15e12</span>
 <span class="co">#&gt; 4 2021-10-30 00:00:00 cardano  usd             2.02  2105358110.    6.45e10</span>
 <span class="co">#&gt; 5 2021-10-31 00:00:00 cardano  usd             1.95  1583695724.    6.26e10</span>
-<span class="co">#&gt; 6 2021-10-31 19:59:44 cardano  usd             1.95  1906170998.    6.28e10</span>
+<span class="co">#&gt; 6 2021-10-31 20:35:12 cardano  usd             1.96  1918268793.    6.25e10</span>
 <span class="co">#&gt; 7 2021-10-30 00:00:00 polkadot usd            44.1   2174026709.    4.60e10</span>
 <span class="co">#&gt; 8 2021-10-31 00:00:00 polkadot usd            42.7    921954043.    4.46e10</span>
-<span class="co">#&gt; 9 2021-10-31 19:59:54 polkadot usd            42.3   1164468757.    4.43e10</span></code></pre></div>
+<span class="co">#&gt; 9 2021-10-31 20:35:30 polkadot usd            42.5   1182910259.    4.42e10</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
