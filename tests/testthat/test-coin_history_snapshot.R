@@ -1,7 +1,7 @@
 test_that("history_snapshot returns correct results", {
   skip_if_offline("api.coingecko.com")
   skip_on_cran()
-  skip_if_not(ping(), message = "CoinGecko API is unavailable")
+  if (!ping()) {Sys.sleep(60)}
 
   r <- coin_history_snapshot(
     coin_id = "cardano",

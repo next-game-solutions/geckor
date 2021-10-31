@@ -1,7 +1,7 @@
 test_that("trending_coins returns correct results", {
   skip_if_offline("api.coingecko.com")
   skip_on_cran()
-  skip_if_not(ping(), message = "CoinGecko API is unavailable")
+  if (!ping()) {Sys.sleep(60)}
 
   r <- trending_coins(max_attempts = 1)
   skip_if(is.null(r), "Data could not be retrieved")
