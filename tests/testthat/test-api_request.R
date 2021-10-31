@@ -1,5 +1,6 @@
 test_that("api_request returns correct objects", {
   skip_if_offline("api.coingecko.com")
+  skip_on_cran()
   skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   base_url <- "https://api.coingecko.com"

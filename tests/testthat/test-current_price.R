@@ -1,5 +1,6 @@
 test_that("current_price returns correct results", {
   skip_if_offline("api.coingecko.com")
+  skip_on_cran()
   skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- current_price(

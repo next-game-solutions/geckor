@@ -1,5 +1,6 @@
 test_that("coin_history_ohlc returns correct results", {
   skip_if_offline("api.coingecko.com")
+  skip_on_cran()
   skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r <- coin_history_ohlc(

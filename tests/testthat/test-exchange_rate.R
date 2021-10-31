@@ -1,5 +1,6 @@
 test_that("exchange_rates returns correct results", {
   skip_if_offline("api.coingecko.com")
+  skip_on_cran()
   skip_if_not(ping(), message = "CoinGecko API is unavailable")
 
   r1 <- exchange_rate(currency = NULL, max_attempts = 1L)
