@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -121,15 +121,15 @@
 <span class="co">#&gt; # A tibble: 9 × 7</span>
 <span class="co">#&gt;   coin_id    price vs_currency   market_cap     vol_24h price_percent_change_24h</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;                    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cardano   1.96   usd         62530227485. 1916692272.                    -1.09</span>
-<span class="co">#&gt; 2 cardano   1.7    eur         54079267240. 1658138152.                    -1.07</span>
-<span class="co">#&gt; 3 cardano   1.43   gbp         45685522154. 1399685616.                    -1.15</span>
-<span class="co">#&gt; 4 polkadot 42.5    usd         44241707272. 1178487412.                    -1.74</span>
-<span class="co">#&gt; 5 polkadot 36.8    eur         38262440535. 1019514174.                    -1.72</span>
-<span class="co">#&gt; 6 polkadot 31.1    gbp         32323654959.  860603396.                    -1.80</span>
-<span class="co">#&gt; 7 tron      0.101  usd          7195386108. 2492416795.                    -1.20</span>
-<span class="co">#&gt; 8 tron      0.0873 eur          6222929676. 2156199739.                    -1.18</span>
-<span class="co">#&gt; 9 tron      0.0737 gbp          5257057021. 1820114781.                    -1.26</span>
+<span class="co">#&gt; 1 cardano   1.97   usd         62961901389. 1942921885.                    0.822</span>
+<span class="co">#&gt; 2 cardano   1.7    eur         54371190678. 1676463749.                    0.514</span>
+<span class="co">#&gt; 3 cardano   1.44   gbp         46001413279. 1420783001.                    0.895</span>
+<span class="co">#&gt; 4 polkadot 48.5    usd         50311554475. 2740382452.                   15.0  </span>
+<span class="co">#&gt; 5 polkadot 41.8    eur         43427424476. 2364558181.                   14.7  </span>
+<span class="co">#&gt; 6 polkadot 35.4    gbp         36748012192. 2003934812.                   15.1  </span>
+<span class="co">#&gt; 7 tron      0.101  usd          7223493095. 1902742343.                    1.08 </span>
+<span class="co">#&gt; 8 tron      0.0870 eur          6231064602. 1641794550.                    0.772</span>
+<span class="co">#&gt; 9 tron      0.0737 gbp          5277903018. 1391401269.                    1.15 </span>
 <span class="co">#&gt; # … with 1 more variable: last_updated_at &lt;dttm&gt;</span></code></pre></div>
 <p>See <code><a href="../reference/current_price.html">?current_price</a></code> for definitions of columns in the resultant tibble.</p>
 <p>The <code><a href="../reference/exchange_rate.html">exchange_rate()</a></code> function can be used to obtain the current exchange rates for any supported reference currency, expressed in Bitcoin. The <code>currency</code> argument of this function specifies the list of currencies of interest. If <code>currency = NULL</code>, data for all supported currencies will be returned:</p>
@@ -139,25 +139,25 @@
 <span class="co">#&gt; # A tibble: 10 × 5</span>
 <span class="co">#&gt;    timestamp           currency name                        price_in_btc type  </span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;    &lt;chr&gt;                              &lt;dbl&gt; &lt;chr&gt; </span>
-<span class="co">#&gt;  1 2021-10-31 20:37:27 aed      United Arab Emirates Dirham      224113. fiat  </span>
-<span class="co">#&gt;  2 2021-10-31 20:37:27 ars      Argentine Peso                  6083827. fiat  </span>
-<span class="co">#&gt;  3 2021-10-31 20:37:27 aud      Australian Dollar                 81238. fiat  </span>
-<span class="co">#&gt;  4 2021-10-31 20:37:27 bch      Bitcoin Cash                        102. crypto</span>
-<span class="co">#&gt;  5 2021-10-31 20:37:27 bdt      Bangladeshi Taka                5226442. fiat  </span>
-<span class="co">#&gt;  6 2021-10-31 20:37:27 bhd      Bahraini Dinar                    23005. fiat  </span>
-<span class="co">#&gt;  7 2021-10-31 20:37:27 bits     Bits                            1000000  crypto</span>
-<span class="co">#&gt;  8 2021-10-31 20:37:27 bmd      Bermudian Dollar                  61018. fiat  </span>
-<span class="co">#&gt;  9 2021-10-31 20:37:27 bnb      Binance Coin                        117. crypto</span>
-<span class="co">#&gt; 10 2021-10-31 20:37:27 brl      Brazil Real                      344003. fiat</span>
+<span class="co">#&gt;  1 2021-11-01 15:57:02 aed      United Arab Emirates Dirham      225965. fiat  </span>
+<span class="co">#&gt;  2 2021-11-01 15:57:02 ars      Argentine Peso                  6140992. fiat  </span>
+<span class="co">#&gt;  3 2021-11-01 15:57:02 aud      Australian Dollar                 81695. fiat  </span>
+<span class="co">#&gt;  4 2021-11-01 15:57:02 bch      Bitcoin Cash                        105. crypto</span>
+<span class="co">#&gt;  5 2021-11-01 15:57:02 bdt      Bangladeshi Taka                5269470. fiat  </span>
+<span class="co">#&gt;  6 2021-11-01 15:57:02 bhd      Bahraini Dinar                    23194. fiat  </span>
+<span class="co">#&gt;  7 2021-11-01 15:57:02 bits     Bits                            1000000  crypto</span>
+<span class="co">#&gt;  8 2021-11-01 15:57:02 bmd      Bermudian Dollar                  61517. fiat  </span>
+<span class="co">#&gt;  9 2021-11-01 15:57:02 bnb      Binance Coin                        115. crypto</span>
+<span class="co">#&gt; 10 2021-11-01 15:57:02 brl      Brazil Real                      349454. fiat</span>
 
 <span class="va">some_rates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/exchange_rate.html">exchange_rate</a></span><span class="op">(</span>currency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"btc"</span>, <span class="st">"usd"</span>, <span class="st">"rub"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">some_rates</span>
 <span class="co">#&gt; # A tibble: 3 × 5</span>
 <span class="co">#&gt;   timestamp           currency name          price_in_btc type  </span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;    &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt; </span>
-<span class="co">#&gt; 1 2021-10-31 20:37:27 btc      Bitcoin                 1  crypto</span>
-<span class="co">#&gt; 2 2021-10-31 20:37:27 rub      Russian Ruble     4322616. fiat  </span>
-<span class="co">#&gt; 3 2021-10-31 20:37:27 usd      US Dollar           61018. fiat</span></code></pre></div>
+<span class="co">#&gt; 1 2021-11-01 15:57:02 btc      Bitcoin                 1  crypto</span>
+<span class="co">#&gt; 2 2021-11-01 15:57:02 rub      Russian Ruble     4383256. fiat  </span>
+<span class="co">#&gt; 3 2021-11-01 15:57:02 usd      US Dollar           61517. fiat</span></code></pre></div>
 <p>The <code><a href="../reference/current_market.html">current_market()</a></code> function retrieves a rich set of data points describing the current market status of the cryptocurrencies of interest. Let’s collect such data for Cardano, Tron, and Polkadot:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/current_market.html">current_market</a></span><span class="op">(</span>
@@ -172,34 +172,34 @@
 <span class="co">#&gt; $ symbol                                   &lt;chr&gt; "ada", "dot", "trx"</span>
 <span class="co">#&gt; $ name                                     &lt;chr&gt; "Cardano", "Polkadot", "TRON"</span>
 <span class="co">#&gt; $ vs_currency                              &lt;chr&gt; "usd", "usd", "usd"</span>
-<span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2021-10-31 20:36:36, 2021-10-…</span>
-<span class="co">#&gt; $ current_price                            &lt;dbl&gt; 1.960000, 42.530000, 0.100883</span>
-<span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 62530227485, 44241707272, 719…</span>
-<span class="co">#&gt; $ market_cap_rank                          &lt;int&gt; 5, 8, 29</span>
-<span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 87751074510, NA, NA</span>
-<span class="co">#&gt; $ total_volume                             &lt;dbl&gt; 1916692272, 1178487412, 24924…</span>
-<span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 2.010000, 43.290000, 0.102264</span>
-<span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 1.93000, 41.33000, 0.09815</span>
-<span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; -0.021504331, -0.752362925, -…</span>
-<span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; -1.08504, -1.73825, -1.19647</span>
-<span class="co">#&gt; $ market_cap_change_24h                    &lt;dbl&gt; -928008795, -1016989897, -10…</span>
-<span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; -1.46239, -2.24706, -1.41369</span>
-<span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 32066390668, 1045430273, 7166…</span>
-<span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1126374442, 1008…</span>
+<span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2021-11-01 15:55:02, 2021-11-…</span>
+<span class="co">#&gt; $ current_price                            &lt;dbl&gt; 1.970000, 48.480000, 0.100798</span>
+<span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 62961901389, 50311554475, 722…</span>
+<span class="co">#&gt; $ market_cap_rank                          &lt;int&gt; 5, 8, 30</span>
+<span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 88356859112, NA, NA</span>
+<span class="co">#&gt; $ total_volume                             &lt;dbl&gt; 1942802122, 2740382452, 19030…</span>
+<span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 2.000000, 48.440000, 0.102011</span>
+<span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 1.920000, 42.030000, 0.098313</span>
+<span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; 0.01589940, 6.34000000, 0.001…</span>
+<span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; 0.81528, 15.04079, 1.08280</span>
+<span class="co">#&gt; $ market_cap_change_24h                    &lt;dbl&gt; 610156041, 6522760033, 38887…</span>
+<span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; 0.97857, 14.89596, 0.54125</span>
+<span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 32066390668, 1046044876, 7166…</span>
+<span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1126994753, 1008…</span>
 <span class="co">#&gt; $ max_supply                               &lt;dbl&gt; 4.5e+10, NA, NA</span>
 <span class="co">#&gt; $ ath                                      &lt;dbl&gt; 3.090000, 49.350000, 0.231673</span>
-<span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -36.62334, -14.00049, -56.569…</span>
+<span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -36.23617, -2.22400, -56.48172</span>
 <span class="co">#&gt; $ ath_date                                 &lt;dttm&gt; 2021-09-02 06:00:10, 2021-05-…</span>
 <span class="co">#&gt; $ atl                                      &lt;dbl&gt; 0.01925275, 2.70000000, 0.001…</span>
-<span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 10061.569, 1473.330, 5476.364</span>
+<span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 10123.646, 1688.777, 5487.633</span>
 <span class="co">#&gt; $ atl_date                                 &lt;dttm&gt; 2020-03-13 02:22:55, 2020-08-…</span>
-<span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; -0.07671787, 0.10229393, -0.1…</span>
-<span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; -1.085040, -1.738249, -1.1964…</span>
-<span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; -9.8321759, -3.6167955, -0.36…</span>
-<span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; -10.371153, 1.339445, 1.647398</span>
-<span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -7.382588, 48.613680, 12.7199…</span>
-<span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; 37.818004, -1.600515, -31.430…</span>
-<span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; 2003.6362, 939.6794, 294.3161</span></code></pre></div>
+<span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; 0.3030895, 2.0234662, 0.36584…</span>
+<span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; 0.8152756, 15.0407865, 1.0827…</span>
+<span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; -7.632646, 13.998260, 1.135122</span>
+<span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; -8.885625, 15.063443, 1.944723</span>
+<span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -12.492718, 51.588222, 6.3289…</span>
+<span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; 35.02367, 14.06720, -28.66163</span>
+<span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; 2017.0403, 1060.2672, 289.8312</span></code></pre></div>
 <p>See <code><a href="../reference/current_market.html">?current_market</a></code> for definitions of columns in the resultant tibble.</p>
 <p>The <code><a href="../reference/coin_tickers.html">coin_tickers()</a></code> function allows one to query the current data on all trading pairs of a cryptocurrency from a given exchange. In the example below, we collect such data for Cardano traded at Binance:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -216,21 +216,21 @@
 <span class="co">#&gt; $ coin_id                        &lt;chr&gt; "cardano", "cardano", "cardano", "carda…</span>
 <span class="co">#&gt; $ name                           &lt;chr&gt; "Cardano", "Cardano", "Cardano", "Carda…</span>
 <span class="co">#&gt; $ base                           &lt;chr&gt; "ADA", "ADA", "ADA", "ADA", "ADA", "ADA…</span>
-<span class="co">#&gt; $ target                         &lt;chr&gt; "USDT", "BTC", "BUSD", "USDC", "ETH", "…</span>
+<span class="co">#&gt; $ target                         &lt;chr&gt; "USDT", "BUSD", "BTC", "USDC", "ETH", "…</span>
 <span class="co">#&gt; $ trust_score                    &lt;chr&gt; "green", "green", "green", "green", "gr…</span>
-<span class="co">#&gt; $ last_price                     &lt;dbl&gt; 1.9540e+00, 3.2080e-05, 1.9540e+00, 1.9…</span>
-<span class="co">#&gt; $ last_fetch_at                  &lt;dttm&gt; 2021-10-31 20:23:49, 2021-10-31 20:34:…</span>
-<span class="co">#&gt; $ last_traded_at                 &lt;dttm&gt; 2021-10-31 20:23:49, 2021-10-31 20:34:…</span>
-<span class="co">#&gt; $ bid_ask_spread_percentage      &lt;dbl&gt; 0.051046, 0.030998, 0.051151, 0.102354,…</span>
-<span class="co">#&gt; $ trading_volume_24h             &lt;dbl&gt; 153468902.03, 38859620.54, 25456552.76,…</span>
-<span class="co">#&gt; $ last_price_btc                 &lt;dbl&gt; 3.224e-05, 3.208e-05, 3.220e-05, 3.225e…</span>
-<span class="co">#&gt; $ last_price_eth                 &lt;dbl&gt; 0.00046005, 0.00045691, 0.00045867, 0.0…</span>
-<span class="co">#&gt; $ last_price_usd                 &lt;dbl&gt; 1.96, 1.96, 1.96, 1.96, 1.96, 1.95, 1.9…</span>
-<span class="co">#&gt; $ trading_volume_24h_btc         &lt;dbl&gt; 4948.000000, 1247.000000, 819.794000, 8…</span>
-<span class="co">#&gt; $ trading_volume_24h_eth         &lt;dbl&gt; 70603.00000, 17755.00000, 11676.00000, …</span>
-<span class="co">#&gt; $ trading_volume_24h_usd         &lt;int&gt; 301065971, 76059929, 50018184, 5056923,…</span>
-<span class="co">#&gt; $ cost_to_move_up_2percent_usd   &lt;dbl&gt; 3620051.15, 840700.29, 984955.18, 74622…</span>
-<span class="co">#&gt; $ cost_to_move_down_2percent_usd &lt;dbl&gt; 3668953.06, 1004343.64, 1032515.74, 398…</span>
+<span class="co">#&gt; $ last_price                     &lt;dbl&gt; 1.9630e+00, 1.9630e+00, 3.1960e-05, 1.9…</span>
+<span class="co">#&gt; $ last_fetch_at                  &lt;dttm&gt; 2021-11-01 15:53:00, 2021-11-01 15:52:…</span>
+<span class="co">#&gt; $ last_traded_at                 &lt;dttm&gt; 2021-11-01 15:53:00, 2021-11-01 15:52:…</span>
+<span class="co">#&gt; $ bid_ask_spread_percentage      &lt;dbl&gt; 0.050942, 0.050916, 0.062520, 0.101781,…</span>
+<span class="co">#&gt; $ trading_volume_24h             &lt;dbl&gt; 146061153.54, 24854636.08, 33652901.62,…</span>
+<span class="co">#&gt; $ last_price_btc                 &lt;dbl&gt; 3.194e-05, 3.192e-05, 3.196e-05, 3.191e…</span>
+<span class="co">#&gt; $ last_price_eth                 &lt;dbl&gt; 0.00045213, 0.00045174, 0.00045221, 0.0…</span>
+<span class="co">#&gt; $ last_price_usd                 &lt;dbl&gt; 1.97, 1.96, 1.97, 1.96, 1.97, 1.97, 1.9…</span>
+<span class="co">#&gt; $ trading_volume_24h_btc         &lt;dbl&gt; 4666.000000, 793.457000, 1076.000000, 5…</span>
+<span class="co">#&gt; $ trading_volume_24h_eth         &lt;dbl&gt; 66038.00000, 11228.00000, 15218.00000, …</span>
+<span class="co">#&gt; $ trading_volume_24h_usd         &lt;int&gt; 287156509, 48826211, 66182506, 3470851,…</span>
+<span class="co">#&gt; $ cost_to_move_up_2percent_usd   &lt;dbl&gt; 3694400.21, 916516.13, 952267.78, 55130…</span>
+<span class="co">#&gt; $ cost_to_move_down_2percent_usd &lt;dbl&gt; 4023448.94, 1087374.02, 879487.34, 1972…</span>
 <span class="co">#&gt; $ is_anomaly                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</span>
 <span class="co">#&gt; $ is_stale                       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</span>
 <span class="co">#&gt; $ trade_url                      &lt;chr&gt; "https://www.binance.com/en/trade/ADA_U…</span></code></pre></div>
@@ -241,13 +241,13 @@
 <span class="co">#&gt; # A tibble: 7 × 7</span>
 <span class="co">#&gt;   timestamp           popularity_rank_24h coin_id  name   symbol market_cap_rank</span>
 <span class="co">#&gt;   &lt;dttm&gt;                            &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;            &lt;int&gt;</span>
-<span class="co">#&gt; 1 2021-10-31 20:37:29                   1 richqua… Rich … QUACK              711</span>
-<span class="co">#&gt; 2 2021-10-31 20:37:29                   2 ariva    Ariva  ARV                676</span>
-<span class="co">#&gt; 3 2021-10-31 20:37:29                   3 wall-st… Wall … WSG                720</span>
-<span class="co">#&gt; 4 2021-10-31 20:37:29                   4 taboo-t… Taboo… TABOO              352</span>
-<span class="co">#&gt; 5 2021-10-31 20:37:29                   5 vulcan-… Vulca… PYR                229</span>
-<span class="co">#&gt; 6 2021-10-31 20:37:29                   6 decentr… Decen… MANA                46</span>
-<span class="co">#&gt; 7 2021-10-31 20:37:29                   7 shiba-i… Shiba… SHIB                10</span>
+<span class="co">#&gt; 1 2021-11-01 15:57:07                   1 baby-do… Baby … BABYD…             139</span>
+<span class="co">#&gt; 2 2021-11-01 15:57:07                   2 splinte… Splin… SPS                496</span>
+<span class="co">#&gt; 3 2021-11-01 15:57:07                   3 alien-w… Alien… TLM                243</span>
+<span class="co">#&gt; 4 2021-11-01 15:57:07                   4 ufo-gam… UFO G… UFO                143</span>
+<span class="co">#&gt; 5 2021-11-01 15:57:07                   5 solfarm  Tulip… TULIP              820</span>
+<span class="co">#&gt; 6 2021-11-01 15:57:07                   6 yooshi   YooShi YOOSHI             112</span>
+<span class="co">#&gt; 7 2021-11-01 15:57:07                   7 shiba-i… Shiba… SHIB                 9</span>
 <span class="co">#&gt; # … with 1 more variable: price_btc &lt;dbl&gt;</span></code></pre></div>
   </div>
 
