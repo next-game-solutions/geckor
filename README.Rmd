@@ -74,9 +74,8 @@ cardano_history %>%
   ggplot(aes(timestamp, price)) +
   geom_line() + theme_minimal()
 
-# As of v0.2.0, all `coin_history_*`
-# functions can retrieve data for multiple coins (up to 30) 
-# in one call, e.g.:
+# As of v0.2.0, all `coin_history_*()` functions can retrieve 
+# data for multiple coins (up to 30) in one call, e.g.:
 two_coins <- coin_history(coin_id = c("cardano", "polkadot"), 
                           vs_currency = "usd", 
                           days = 3)
