@@ -1,6 +1,6 @@
 test_that("coin_history_ohlc returns correct results", {
   skip_on_cran()
-  Sys.sleep(10)
+  Sys.sleep(30)
 
   r <- coin_history_ohlc(
     coin_id = "cardano",

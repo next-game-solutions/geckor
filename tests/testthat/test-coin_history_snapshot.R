@@ -1,6 +1,6 @@
 test_that("history_snapshot returns correct results", {
   skip_on_cran()
-  Sys.sleep(10)
+  Sys.sleep(30)
 
   r <- coin_history_snapshot(
     coin_id = "cardano",

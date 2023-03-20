@@ -1,6 +1,6 @@
 test_that("coin_history returns correct results", {
   skip_on_cran()
-  Sys.sleep(10)
+  Sys.sleep(30)
 
   r <- coin_history(
     coin_id = "bitcoin",

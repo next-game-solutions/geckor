@@ -1,6 +1,6 @@
 test_that("coin_tickers returns correct results", {
   skip_on_cran()
-  Sys.sleep(10)
+  Sys.sleep(30)
 
   r <- coin_tickers(
     coin_id = "cardano",

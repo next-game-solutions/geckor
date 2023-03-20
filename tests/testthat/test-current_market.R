@@ -1,6 +1,6 @@
 test_that("current_market returns correct results", {
   skip_on_cran()
-  Sys.sleep(10)
+  Sys.sleep(30)
 
   r <- current_market(
     coin_ids = c("aave", "tron", "bitcoin"),

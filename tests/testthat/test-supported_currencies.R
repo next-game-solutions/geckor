@@ -5,7 +5,7 @@ test_that("supported_currencies returns correct results", {
   r <- supported_currencies()
   skip_if(is.null(r), "Data could not be retrieved")
 
-  Sys.sleep(12)
+  Sys.sleep(20)
 
   expect_type(r, "character")
   expect_true(is.vector(r))

@@ -7,11 +7,10 @@
 #' @return Character vector with abbreviated names of the currencies.
 #' @export
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf ping()
 #' r <- supported_currencies()
 #' print(r)
-#' }
+#'
 supported_currencies <- function(max_attempts = 3) {
   validate_arguments(arg_max_attempts = max_attempts)
 

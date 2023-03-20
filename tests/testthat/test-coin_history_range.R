@@ -1,6 +1,6 @@
 test_that("coin_history_range returns correct results", {
   skip_on_cran()
-  Sys.sleep(10)
+  Sys.sleep(30)
 
   r <- coin_history_range(
     coin_id = c("cardano"),

@@ -37,11 +37,10 @@
 #'
 #' @export
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf ping()
 #' r <- coin_history(coin_id = "bitcoin", vs_currency = "usd", days = 30)
 #' print(r)
-#' }
+#'
 coin_history <- function(coin_id,
                          vs_currency = "usd",
                          days,

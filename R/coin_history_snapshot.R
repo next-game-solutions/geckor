@@ -25,15 +25,14 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf ping()
 #' r <- coin_history_snapshot(
 #'   coin_id = "cardano",
 #'   date = as.Date("2021-05-01"),
 #'   vs_currencies = c("usd", "eth")
 #' )
 #' print(r)
-#' }
+#'
 coin_history_snapshot <- function(coin_id,
                                   date,
                                   vs_currencies = "usd",

@@ -1,6 +1,6 @@
 test_that("trending_coins returns correct results", {
   skip_on_cran()
-  Sys.sleep(10)
+  Sys.sleep(20)
 
   r <- trending_coins()
   skip_if(is.null(r), "Data could not be retrieved")

@@ -5,7 +5,7 @@ test_that("supported_coins returns correct objects", {
   r <- supported_coins()
   skip_if(is.null(r), "Data could not be retrieved")
 
-  Sys.sleep(2)
+  Sys.sleep(20)
 
   expect_s3_class(r, "tbl")
   expect_named(r, c("coin_id", "symbol", "name"))

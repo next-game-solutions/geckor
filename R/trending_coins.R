@@ -20,11 +20,10 @@
 #'
 #' @export
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf ping()
 #' r <- trending_coins()
 #' print(r)
-#' }
+#'
 trending_coins <- function(max_attempts = 3) {
   validate_arguments(arg_max_attempts = max_attempts)
 
