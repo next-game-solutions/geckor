@@ -1,6 +1,6 @@
 test_that("history_snapshot returns correct results", {
   skip_on_cran()
-  Sys.sleep(80)
+  Sys.sleep(60)
   skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
 
   r <- coin_history_snapshot(
@@ -10,6 +10,7 @@ test_that("history_snapshot returns correct results", {
   )
 
   skip_if(is.null(r), "Data could not be retrieved")
+  skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
 
   r2 <- coin_history_snapshot(
     coin_id = c("bitcoin", "polkadot", "tron"),

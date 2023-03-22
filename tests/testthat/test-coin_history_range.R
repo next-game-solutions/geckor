@@ -11,6 +11,7 @@ test_that("coin_history_range returns correct results", {
   )
 
   skip_if(is.null(r), "Data could not be retrieved")
+  skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
 
   r2 <- coin_history_range(
     coin_id = c("bitcoin", "polkadot", "tron"),

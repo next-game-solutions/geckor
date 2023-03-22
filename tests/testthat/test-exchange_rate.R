@@ -1,6 +1,6 @@
 test_that("exchange_rates returns correct results", {
   skip_on_cran()
-  Sys.sleep(80)
+  Sys.sleep(60)
   skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
 
   r1 <- exchange_rate(currency = NULL)
