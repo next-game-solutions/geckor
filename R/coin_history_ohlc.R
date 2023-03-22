@@ -43,8 +43,8 @@ coin_history_ohlc <- function(coin_id,
                               vs_currency = "usd",
                               days,
                               max_attempts = 3) {
-  if (length(coin_id) > 30L) {
-    rlang::abort("Only one `coin_id` is allowed")
+  if (length(coin_id) > 5L) {
+    rlang::abort("The max allowed length of `coin_id` is 5")
   }
 
   if (length(vs_currency) > 1L) {

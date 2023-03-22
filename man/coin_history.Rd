@@ -14,7 +14,7 @@ coin_history(
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest or a vector with \emph{several} IDs.
-The maximum number of coins that can be queried simultaneously is 30.
+The maximum number of coins that can be queried simultaneously is 5.
 An up-to-date list of supported coins and their IDs can be retrieved
 with the \code{supported_coins()} function.}
 

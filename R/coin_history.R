@@ -46,8 +46,8 @@ coin_history <- function(coin_id,
                          days,
                          interval = NULL,
                          max_attempts = 3) {
-  if (length(coin_id) > 30L) {
-    rlang::abort("The max allowed length of `coin_id` is 30")
+  if (length(coin_id) > 5L) {
+    rlang::abort("The max allowed length of `coin_id` is 5")
   }
 
   if (length(vs_currency) > 1L) {
