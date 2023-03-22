@@ -39,7 +39,7 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\donttest{
+\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # get exchange rates for all supported currencies
 r1 <- exchange_rate()
 print(r1)
@@ -47,5 +47,5 @@ print(r1)
 # get exchange rates for a set of currencies:
 r2 <- exchange_rate(currency = c("usd", "eur", "gbp"))
 print(r2)
-}
+\dontshow{\}) # examplesIf}
 }

@@ -1,11 +1,10 @@
 test_that("supported_exchanges returns correct results", {
   skip_on_cran()
-  Sys.sleep(30)
+  Sys.sleep(80)
+  skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
 
   r <- supported_exchanges()
   skip_if(is.null(r), "Data could not be retrieved")
-
-  Sys.sleep(20)
 
   expect_named(r, c(
     "exchange_id",

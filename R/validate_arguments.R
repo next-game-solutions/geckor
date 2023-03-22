@@ -68,7 +68,7 @@ validate_arguments <- function(arg_max_attempts = NULL,
   }
 
   if (!is.null(arg_date)) {
-    if (class(arg_date) != "Date") {
+    if (!inherits(arg_date, "Date")) {
       rlang::abort("All dates must be of class Date")
     }
   }

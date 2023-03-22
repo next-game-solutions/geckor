@@ -1,6 +1,7 @@
 test_that("coin_history_ohlc returns correct results", {
   skip_on_cran()
-  Sys.sleep(30)
+  Sys.sleep(80)
+  skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
 
   r <- coin_history_ohlc(
     coin_id = "cardano",

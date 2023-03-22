@@ -69,8 +69,8 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\donttest{
+\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- coin_history(coin_id = "bitcoin", vs_currency = "usd", days = 30)
 print(r)
-}
+\dontshow{\}) # examplesIf}
 }

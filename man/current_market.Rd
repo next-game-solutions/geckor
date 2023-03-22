@@ -81,11 +81,11 @@ which has a limit of 50 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\donttest{
+\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- current_market(
   coin_ids = c("bitcoin", "ethereum", "cardano"),
   vs_currency = "usd"
 )
 print(r)
-}
+\dontshow{\}) # examplesIf}
 }
