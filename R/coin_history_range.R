@@ -32,8 +32,7 @@
 #'
 #' @export
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf ping()
 #' r <- coin_history_range(
 #'   coin_id = "cardano",
 #'   vs_currency = "usd",
@@ -41,14 +40,14 @@
 #'   to = as.POSIXct("2021-01-01 18:00:00", tz = "UTC")
 #' )
 #' print(r)
-#' }
+#'
 coin_history_range <- function(coin_id,
                                vs_currency = "usd",
                                from,
                                to,
                                max_attempts = 3) {
-  if (length(coin_id) > 30L) {
-    rlang::abort("The max allowed length of `coin_id` is 30")
+  if (length(coin_id) > 5L) {
+    rlang::abort("The max allowed length of `coin_id` is 5")
   }
 
   if (length(vs_currency) > 1L) {

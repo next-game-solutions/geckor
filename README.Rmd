@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.xcvRmd. Please edit that file -->
 
 ```{r, include = FALSE, message=FALSE}
 knitr::opts_chunk$set(
@@ -21,11 +21,11 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-`geckor` is an R client for the public [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements several endpoints offered by that API, allowing users to collect the current and historical market data on thousands of cryptocurrencies from more than 300 exchanges. Results are returned in a tabular form (as [tibbles](https://tibble.tidyverse.org/)), ready for any downstream analyses.
+`geckor` is an R client for the _free_ version of the [CoinGecko API](https://www.coingecko.com/en/api#explore-api). This package implements several endpoints offered by that API, allowing users to collect the current and historical market data on thousands of cryptocurrencies from hundreds of exchanges. Results are returned in a tabular form (as [tibbles](https://tibble.tidyverse.org/)), ready for any downstream analyses.
 
 ## Installation
 
-A stable version of this package can be installed from [CRAN](https://cran.r-project.org/web/packages/geckor/index.html) the usual way:
+A stable version of the package can be installed from [CRAN](https://CRAN.R-project.org/package=geckor) the usual way:
 
 ``` r
 install.packages("geckor")
@@ -45,7 +45,8 @@ Detailed examples of how to use `geckor` can be found in its [online documentati
 ```{r load-geckor}
 library(geckor)
 
-# check if the CoinGecko service is available:
+# check if the CoinGecko service is available (this command can be
+# particularly useful to check if the API rate limit has been exceeded):
 ping()
 ```
 
@@ -74,17 +75,25 @@ cardano_history %>%
   ggplot(aes(timestamp, price)) +
   geom_line() + theme_minimal()
 
-# As of v0.2.0, all `coin_history_*()` functions can retrieve 
-# data for multiple coins (up to 30) in one call, e.g.:
+# Here we are querying the history of two coins simultaneously: 
+# "cardano" and "polkadot":
 two_coins <- coin_history(coin_id = c("cardano", "polkadot"), 
                           vs_currency = "usd", 
                           days = 3)
 two_coins$coin_id %>% unique()
 ```
 
+> NOTE: As of v0.2.0, all `coin_history_*()` functions could retrieve data for up 30 coins in one call. However, this number had to be scaled down to 5 in the current version, v0.3.0, due to the significantly lower API rate limit imposed by CoinGecko.
+
+
 ## API rate limit
 
-The public [CoinGecko API](https://www.coingecko.com/api/documentations/v3) offers a rate limit of 50 calls per minute. Please keep this limit in mind when developing your applications using the `geckor` package.
+When this package was first released back in 2021, the free version of the 
+[CoinGecko API](https://www.coingecko.com/api/documentations/v3) offered a rate
+limit of ca. 50 calls/minute. Unfortunately, since then CoinGecko has 
+reduced that rate dramatically in a push to commercialise their product. As of
+March 2023, a realistic rate limit was around 10-15 calls/minute, making it
+rather hard to use the free API (and, therefore, `geckor`) for any serious workloads. Please keep this in mind when developing your applications using the `geckor` package.
 
 ## Getting help
 

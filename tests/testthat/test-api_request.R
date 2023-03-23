@@ -1,6 +1,7 @@
 test_that("api_request returns correct objects", {
   skip_on_cran()
-  Sys.sleep(10)
+  Sys.sleep(60)
+  skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
 
   base_url <- "https://api.coingecko.com"
   url <- httr::modify_url(base_url, path = c("api", "v3", "ping"))

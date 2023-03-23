@@ -8,7 +8,7 @@ coin_history_ohlc(coin_id, vs_currency = "usd", days, max_attempts = 3)
 }
 \arguments{
 \item{coin_id}{(character): ID of the coin of interest or a vector with \emph{several} IDs.
-The maximum number of coins that can be queried simultaneously is 30.
+The maximum number of coins that can be queried simultaneously is 5.
 An up-to-date list of supported coins and their IDs can be retrieved
 with the \code{supported_coins()} function.}
 
@@ -57,16 +57,16 @@ body) depends on the value of \code{days} as follows:
 
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
-which has a limit of 50 calls per minute. Please
+which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\donttest{
+\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- coin_history_ohlc(
   coin_id = "cardano",
   vs_currency = "usd",
   days = 7
 )
 print(r)
-}
+\dontshow{\}) # examplesIf}
 }

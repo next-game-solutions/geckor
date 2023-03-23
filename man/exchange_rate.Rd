@@ -35,11 +35,11 @@ Retrieves the current exchange rate for a crypto- of fiat currency in Bitcoin
 \details{
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
-which has a limit of 50 calls per minute. Please
+which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\donttest{
+\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # get exchange rates for all supported currencies
 r1 <- exchange_rate()
 print(r1)
@@ -47,5 +47,5 @@ print(r1)
 # get exchange rates for a set of currencies:
 r2 <- exchange_rate(currency = c("usd", "eur", "gbp"))
 print(r2)
-}
+\dontshow{\}) # examplesIf}
 }

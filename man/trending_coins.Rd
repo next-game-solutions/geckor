@@ -33,12 +33,12 @@ CoinGecko website over the last 24 hours.
 
 This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
-which has a limit of 50 calls per minute. Please
+which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\donttest{
+\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- trending_coins()
 print(r)
-}
+\dontshow{\}) # examplesIf}
 }

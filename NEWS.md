@@ -1,3 +1,16 @@
+# geckor 0.3.0
+
+## Major changes
+
+* All of the `coin_history_*` functions now accept a much smaller number of coin IDs to process simultaneously (5 vs 30 in the previous version of `geckor`). This reduction had to be introduced due to CoinGecko significantly lowering the rate limit of the free version of their API (from 50 to ca. 10-30 calls/minute).
+* To avoid going over the API rate limit, the pause between function calls in all tests has been significantly increased.
+* Examples in the package documentation now won't run if the API rate limit has been exceeded (this is done with the help of the `@examplesIf` tag and the `ping()` function).
+
+## Minor changes
+
+* Package documentation modified according to the introduced changes. 
+
+
 # geckor 0.2.0
 
 ## Major changes

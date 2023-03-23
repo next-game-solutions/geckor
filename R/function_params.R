@@ -12,7 +12,7 @@
 function_params <- function(arguments) {
   descriptions <- c(
     coin_id = "@param coin_id (character): ID of the coin of interest or a vector with _several_ IDs.
-       The maximum number of coins that can be queried simultaneously is 30.
+       The maximum number of coins that can be queried simultaneously is 5.
        An up-to-date list of supported coins and their IDs can be retrieved
        with the `supported_coins()` function.",
     coin_ids = "@param coin_ids (character): a vector with IDs of the coins of
@@ -39,7 +39,7 @@ function_params <- function(arguments) {
        hours ago.",
     api_note = "@details This function is based on the public
                [CoinGecko API](https://www.coingecko.com/api/documentations/v3),
-               which has a limit of 50 calls per minute. Please
+               which has a rate limit of 10-30 calls per minute. Please
                keep this limit in mind when developing your applications.",
     max_attempts = "@param max_attempts (double, positive): specifies the
                maximum number of attempts to call the CoinGecko API (e.g., if
