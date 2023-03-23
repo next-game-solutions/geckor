@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-A stable version of the package can be installed from [CRAN](https://cran.r-project.org/web/packages/geckor/index.html) the usual way:
+A stable version of the package can be installed from [CRAN](https://CRAN.R-project.org/package=geckor) the usual way:
 
 ``` r
 install.packages("geckor")

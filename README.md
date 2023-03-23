@@ -1,5 +1,5 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.xcvRmd. Please edit that file -->
 
 # geckor <img src="man/figures/logo.png" align="right" height="169"/>
 
@@ -15,19 +15,18 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/geckor)](https://cran.r
 
 <!-- badges: end -->
 
-`geckor` is an R client for the public [CoinGecko
+`geckor` is an R client for the *free* version of the [CoinGecko
 API](https://www.coingecko.com/en/api#explore-api). This package
 implements several endpoints offered by that API, allowing users to
 collect the current and historical market data on thousands of
-cryptocurrencies from more than 300 exchanges. Results are returned in a
+cryptocurrencies from hundreds of exchanges. Results are returned in a
 tabular form (as [tibbles](https://tibble.tidyverse.org/)), ready for
 any downstream analyses.
 
 ## Installation
 
-A stable version of this package can be installed from
-[CRAN](https://cran.r-project.org/web/packages/geckor/index.html) the
-usual way:
+A stable version of the package can be installed from
+[CRAN](https://CRAN.R-project.org/package=geckor) the usual way:
 
 ``` r
 install.packages("geckor")
@@ -52,7 +51,8 @@ library(geckor)
 #> R client for the CoinGecko API
 #> Developed by Next Game Solutions (http://nextgamesolutions.com)
 
-# check if the CoinGecko service is available:
+# check if the CoinGecko service is available (this command can be
+# particularly useful to check if the API rate limit has been exceeded):
 ping()
 #> [1] TRUE
 ```
@@ -65,19 +65,19 @@ library(ggplot2)
 # expressed in USD, EUR, and GBP:
 current_price(coin_ids = c("cardano", "tron", "polkadot"),
               vs_currencies = c("usd", "eur", "gbp"))
-#> # A tibble: 9 x 7
-#>   coin_id    price vs_currency   market_cap     vol_24h price_percent_change_24h
-#>   <chr>      <dbl> <chr>              <dbl>       <dbl>                    <dbl>
-#> 1 cardano   1.97   usd         62961901389. 1941895477.                    0.842
-#> 2 cardano   1.7    eur         54371190678. 1675714039.                    0.542
-#> 3 cardano   1.44   gbp         46001413279. 1419661527.                    0.889
-#> 4 polkadot 48.4    usd         50311554475. 2713102647.                   14.8  
-#> 5 polkadot 41.7    eur         43427424476. 2341209528.                   14.4  
-#> 6 polkadot 35.4    gbp         36748012192. 1983467952.                   14.8  
-#> 7 tron      0.101  usd          7223493095. 1907815134.                    0.965
-#> 8 tron      0.0870 eur          6231064602. 1646305190.                    0.665
-#> 9 tron      0.0737 gbp          5277903018. 1394746410.                    1.01 
-#> # ... with 1 more variable: last_updated_at <dttm>
+#> # A tibble: 9 × 7
+#>   coin_id   price vs_currency   market_cap   vol_24h price…¹ last_updated_at    
+#>   <chr>     <dbl> <chr>              <dbl>     <dbl>   <dbl> <dttm>             
+#> 1 cardano  0.371  usd         12997756880.    4.23e8    2.61 2023-03-23 21:35:30
+#> 2 cardano  0.342  eur         11997748459.    3.90e8    2.85 2023-03-23 21:35:30
+#> 3 cardano  0.302  gbp         10577275601.    3.44e8    2.43 2023-03-23 21:35:30
+#> 4 polkadot 6.27   usd          7622428922.    1.86e8    3.11 2023-03-23 21:36:03
+#> 5 polkadot 5.79   eur          7036370852.    1.72e8    3.36 2023-03-23 21:36:03
+#> 6 polkadot 5.1    gbp          6203727206.    1.52e8    2.94 2023-03-23 21:36:03
+#> 7 tron     0.0663 usd          6049312269.    7.33e8    9.61 2023-03-23 21:36:15
+#> 8 tron     0.0612 eur          5584204846.    6.77e8    9.87 2023-03-23 21:36:15
+#> 9 tron     0.0540 gbp          4923402171.    5.97e8    9.44 2023-03-23 21:36:15
+#> # … with abbreviated variable name ¹​price_percent_change_24h
 
 # Get a more comprehensive view of the current Cardano, Tron, and 
 # Polkadot markets:
@@ -90,34 +90,34 @@ current_market(coin_ids = c("cardano", "tron", "polkadot"),
 #> $ symbol                                   <chr> "ada", "dot", "trx"
 #> $ name                                     <chr> "Cardano", "Polkadot", "TRON"
 #> $ vs_currency                              <chr> "usd", "usd", "usd"
-#> $ last_updated_at                          <dttm> 2021-11-01 15:52:06, 2021-11-~
-#> $ current_price                            <dbl> 1.970000, 48.370000, 0.100774
-#> $ market_cap                               <dbl> 62961901389, 50311554475, 722~
-#> $ market_cap_rank                          <int> 5, 8, 30
-#> $ fully_diluted_valuation                  <dbl> 88356859112, NA, NA
-#> $ total_volume                             <dbl> 1941895477, 2713102647, 19078~
-#> $ high_24h                                 <dbl> 2.000000, 48.410000, 0.102011
-#> $ low_24h                                  <dbl> 1.920000, 42.030000, 0.098313
-#> $ price_change_24h                         <dbl> 0.01642317, 6.23000000, 0.000~
-#> $ price_change_percentage_24h              <dbl> 0.84201, 14.78245, 0.96538
-#> $ market_cap_change_24h                    <dbl> 610156041, 6522760033, 38887~
-#> $ market_cap_change_percentage_24h         <dbl> 0.97857, 14.89596, 0.54125
-#> $ circulating_supply                       <dbl> 32066390668, 1046044876, 7166~
-#> $ total_supply                             <dbl> 45000000000, 1126994753, 1008~
+#> $ last_updated_at                          <dttm> 2023-03-23 21:35:30, 2023-03-…
+#> $ current_price                            <dbl> 0.371018, 6.270000, 0.066308
+#> $ market_cap                               <dbl> 12997756880, 7622428922, 6049…
+#> $ market_cap_rank                          <int> 7, 13, 16
+#> $ fully_diluted_valuation                  <dbl> 16689933284, 8130281468, 6049…
+#> $ total_volume                             <int> 422729930, 186311319, 7333750…
+#> $ high_24h                                 <dbl> 0.387702, 6.430000, 0.066840
+#> $ low_24h                                  <dbl> 0.357681, 6.040000, 0.059550
+#> $ price_change_24h                         <dbl> 0.00941979, 0.18892400, 0.00…
+#> $ price_change_percentage_24h              <dbl> 2.60504, 3.10692, 9.61177
+#> $ market_cap_change_24h                    <int> 253782697, 214677775, 5332640…
+#> $ market_cap_change_percentage_24h         <dbl> 1.99139, 2.89802, 9.66750
+#> $ circulating_supply                       <dbl> 35045020830, 1214960962, 9113…
+#> $ total_supply                             <dbl> 45000000000, 1295909046, 9113…
 #> $ max_supply                               <dbl> 4.5e+10, NA, NA
-#> $ ath                                      <dbl> 3.090000, 49.350000, 0.231673
-#> $ ath_change_percentage                    <dbl> -36.23617, -2.22400, -56.48172
-#> $ ath_date                                 <dttm> 2021-09-02 06:00:10, 2021-05-~
-#> $ atl                                      <dbl> 0.01925275, 2.70000000, 0.001~
-#> $ atl_change_percentage                    <dbl> 10123.646, 1688.777, 5487.633
-#> $ atl_date                                 <dttm> 2020-03-13 02:22:55, 2020-08-~
-#> $ price_change_percentage_1h_in_currency   <dbl> 0.1115647, 1.3788054, 0.25362~
-#> $ price_change_percentage_24h_in_currency  <dbl> 0.8420050, 14.7824486, 0.9653~
-#> $ price_change_percentage_7d_in_currency   <dbl> -7.594107, 13.739417, 1.111000
-#> $ price_change_percentage_14d_in_currency  <dbl> -8.847608, 14.802182, 1.920407
-#> $ price_change_percentage_30d_in_currency  <dbl> -12.456206, 51.244028, 6.3035~
-#> $ price_change_percentage_200d_in_currency <dbl> 35.08001, 13.80820, -28.67864
-#> $ price_change_percentage_1y_in_currency   <dbl> 2017.9236, 1057.6327, 289.7382
+#> $ ath                                      <dbl> 3.090000, 54.980000, 0.231673
+#> $ ath_change_percentage                    <dbl> -87.96914, -88.60833, -71.215…
+#> $ ath_date                                 <dttm> 2021-09-02 06:00:10, 2021-11-…
+#> $ atl                                      <dbl> 0.01925275, 2.70000000, 0.001…
+#> $ atl_change_percentage                    <dbl> 1828.9812, 132.1908, 3595.9172
+#> $ atl_date                                 <dttm> 2020-03-13 02:22:55, 2020-08-…
+#> $ price_change_percentage_1h_in_currency   <dbl> -0.9711197, -0.2364526, 1.241…
+#> $ price_change_percentage_24h_in_currency  <dbl> 2.605042, 3.106919, 9.611768
+#> $ price_change_percentage_7d_in_currency   <dbl> 13.967481, 6.388207, 1.002458
+#> $ price_change_percentage_14d_in_currency  <dbl> 16.530775, 11.874656, 1.456164
+#> $ price_change_percentage_30d_in_currency  <dbl> -7.95468, -16.70648, -7.72304
+#> $ price_change_percentage_200d_in_currency <dbl> -22.751476, -13.840078, 5.029…
+#> $ price_change_percentage_1y_in_currency   <dbl> -61.976078, -69.214604, 4.504…
 
 # Collect all historical data on the price of Cardano (expressed in EUR),
 # and plot the result:
@@ -133,8 +133,11 @@ cardano_history %>%
 <img src="man/figures/README-example-1.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
-# As of v0.2.0, all `coin_history_*()` functions can retrieve 
-# data for multiple coins (up to 30) in one call, e.g.:
+
+# As of v0.2.0, all `coin_history_*()` functions could retrieve 
+# data for up 30 coins in one call. However, this number had to be scaled
+# down to 5 in v0.3.0 due to the significantly lower API rate limit that had 
+# been introduced by CoinGecko:
 two_coins <- coin_history(coin_id = c("cardano", "polkadot"), 
                           vs_currency = "usd", 
                           days = 3)
@@ -144,9 +147,13 @@ two_coins$coin_id %>% unique()
 
 ## API rate limit
 
-The public [CoinGecko
-API](https://www.coingecko.com/api/documentations/v3) offers a rate
-limit of 50 calls per minute. Please keep this limit in mind when
+When this package was first released back in 2021, the free version of
+the [CoinGecko API](https://www.coingecko.com/api/documentations/v3)
+offered a rate limit of ca. 50 calls/minute. Unfortunately, since then
+CoinGecko has reduced that rate dramatically in a push to commercialise
+their product. As of March 2023, a realistic rate limit was around 10-15
+calls/minute, making it rather hard to use the free API (and, therefore,
+`geckor`) for any serious workloads. Please keep this in mind when
 developing your applications using the `geckor` package.
 
 ## Getting help
@@ -165,7 +172,7 @@ been downloaded from
 and is believed to be in the public domain. The logo has been created
 using the [hexmake app](https://connect.thinkr.fr/hexmake/).
 
-Copyright © 2021 [Next Game Solutions OÜ](http://nextgamesolutions.com)
+Copyright © 2023 [Next Game Solutions OÜ](http://nextgamesolutions.com)
 
 ------------------------------------------------------------------------
 
