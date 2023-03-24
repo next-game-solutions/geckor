@@ -37,7 +37,7 @@
 #'
 #' @export
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- coin_history(coin_id = "bitcoin", vs_currency = "usd", days = 30)
 #' print(r)
 #'

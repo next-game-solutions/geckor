@@ -24,7 +24,7 @@
 #'
 #' @export
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' # get exchange rates for all supported currencies
 #' r1 <- exchange_rate()
 #' print(r1)

@@ -38,7 +38,7 @@ The `coin_history_range()` function can be used to query a range of historical d
 ```{r date-range}
 # Range of less than 1 day:
 coin_history_range(
-  coin_id = "bitcoin", 
+  coin_id = "bitcoin",
   vs_currency = "usd",
   from = as.POSIXct("2020-01-01 10:00:10"),
   to = as.POSIXct("2020-01-01 20:45:10")
@@ -46,7 +46,7 @@ coin_history_range(
 
 # Range of >90 days:
 coin_history_range(
-  coin_id = "bitcoin", 
+  coin_id = "bitcoin",
   vs_currency = "usd",
   from = as.POSIXct("2021-01-01 00:00:00"),
   to = as.POSIXct("2021-05-01 00:00:00")
@@ -80,7 +80,7 @@ Notice the different data granularity in the last two examples. Generally, if `d
 coin_history(
   coin_id = "bitcoin",
   vs_currency = "usd",
-  days = 1, 
+  days = 1,
   interval = "daily"
 )
 
@@ -88,7 +88,7 @@ coin_history(
 coin_history(
   coin_id = "bitcoin",
   vs_currency = "usd",
-  days = 10, 
+  days = 10,
   interval = "daily"
 )
 
@@ -96,7 +96,7 @@ coin_history(
 coin_history(
   coin_id = "bitcoin",
   vs_currency = "usd",
-  days = 100, 
+  days = 100,
   interval = "daily"
 )
 ```
@@ -114,28 +114,28 @@ The only values currently accepted by the `days` argument are 1, 7, 14, 30, 90, 
 ```{r ohlc}
 # 30-minutes granularity:
 coin_history_ohlc(
-  coin_id = "bitcoin", 
+  coin_id = "bitcoin",
   vs_currency = "usd",
   days = 1
 )
 
 # 4-hours granularity:
 coin_history_ohlc(
-  coin_id = "bitcoin", 
+  coin_id = "bitcoin",
   vs_currency = "usd",
   days = 7
 )
 
 # 4-days granularity:
 coin_history_ohlc(
-  coin_id = "bitcoin", 
+  coin_id = "bitcoin",
   vs_currency = "usd",
   days = 90
 )
 
 # 4-days granularity:
 coin_history_ohlc(
-  coin_id = "bitcoin", 
+  coin_id = "bitcoin",
   vs_currency = "usd",
   days = "max"
 )
@@ -147,7 +147,7 @@ As of v0.2.0 of the package, all of the `coin_history_*` functions can retrieve 
 coin_history(
   coin_id = c("bitcoin", "cardano", "polkadot"),
   vs_currency = "usd",
-  days = 2, 
+  days = 2,
   interval = "daily"
 )
 ```

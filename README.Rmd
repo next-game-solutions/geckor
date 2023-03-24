@@ -56,30 +56,39 @@ library(ggplot2)
 
 # Get the current price of Cardano, Tron, and Polkadot,
 # expressed in USD, EUR, and GBP:
-current_price(coin_ids = c("cardano", "tron", "polkadot"),
-              vs_currencies = c("usd", "eur", "gbp"))
+current_price(
+  coin_ids = c("cardano", "tron", "polkadot"),
+  vs_currencies = c("usd", "eur", "gbp")
+)
 
-# Get a more comprehensive view of the current Cardano, Tron, and 
+# Get a more comprehensive view of the current Cardano, Tron, and
 # Polkadot markets:
-current_market(coin_ids = c("cardano", "tron", "polkadot"), 
-               vs_currency = "usd") %>% 
+current_market(
+  coin_ids = c("cardano", "tron", "polkadot"),
+  vs_currency = "usd"
+) %>%
   glimpse()
 
 # Collect all historical data on the price of Cardano (expressed in EUR),
 # and plot the result:
-cardano_history <- coin_history(coin_id = "cardano", 
-                                vs_currency = "eur", 
-                                days = "max")
+cardano_history <- coin_history(
+  coin_id = "cardano",
+  vs_currency = "eur",
+  days = "max"
+)
 
-cardano_history %>% 
+cardano_history %>%
   ggplot(aes(timestamp, price)) +
-  geom_line() + theme_minimal()
+  geom_line() +
+  theme_minimal()
 
-# Here we are querying the history of two coins simultaneously: 
+# Here we are querying the history of two coins simultaneously:
 # "cardano" and "polkadot":
-two_coins <- coin_history(coin_id = c("cardano", "polkadot"), 
-                          vs_currency = "usd", 
-                          days = 3)
+two_coins <- coin_history(
+  coin_id = c("cardano", "polkadot"),
+  vs_currency = "usd",
+  days = 3
+)
 two_coins$coin_id %>% unique()
 ```
 

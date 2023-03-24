@@ -25,7 +25,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- coin_history_snapshot(
 #'   coin_id = "cardano",
 #'   date = as.Date("2021-05-01"),

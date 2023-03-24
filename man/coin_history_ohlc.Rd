@@ -31,7 +31,8 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-A tibble with the following columns:
+If the API call succeeds, the function returns a tibble with
+the following columns:
 \itemize{
 \item \code{timestamp} (POSIXct): beginning of the candle's time interval;
 \item \code{coin_id} (character): same as the argument \code{coin_id};
@@ -41,6 +42,10 @@ A tibble with the following columns:
 \item \code{price_low} (double): lowest coin price observed within a time interval;
 \item \code{price_close} (double): coin price in the end of a time interval.
 }
+
+If no data can be retrieved (e.g., because of going over the API
+rate limit or mis-specifying the query parameters), the function
+returns nothing (\code{NULL}).
 }
 \description{
 Retrieves open-high-low-close price data for the last \emph{n} days
@@ -61,7 +66,7 @@ which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- coin_history_ohlc(
   coin_id = "cardano",
   vs_currency = "usd",

@@ -32,15 +32,6 @@ validate_arguments <- function(arg_max_attempts = NULL,
     if (!is.character(arg_vs_currencies)) {
       rlang::abort("`vs_currencies` must be a character vector")
     }
-
-    supported_vs_currencies <- supported_currencies()
-
-    if (!all(arg_vs_currencies %in% supported_vs_currencies)) {
-      rlang::abort(c(
-        "The following base currencies are not currently supported:",
-        arg_vs_currencies[!arg_vs_currencies %in% supported_vs_currencies]
-      ))
-    }
   }
 
   if (!is.null(arg_include_market_cap)) {

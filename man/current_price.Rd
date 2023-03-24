@@ -71,7 +71,7 @@ If no data can be retrieved (e.g. because of a misspecified
 query parameter), nothing (\code{NULL}) will be returned.
 }
 \examples{
-\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- current_price(
   coin_ids = c("aave", "tron", "bitcoin"),
   vs_currencies = c("usd", "eur", "gbp")

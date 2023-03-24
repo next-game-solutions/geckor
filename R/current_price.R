@@ -28,7 +28,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- current_price(
 #'   coin_ids = c("aave", "tron", "bitcoin"),
 #'   vs_currencies = c("usd", "eur", "gbp")

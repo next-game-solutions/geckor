@@ -32,7 +32,7 @@
 #'
 #' @export
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- coin_history_range(
 #'   coin_id = "cardano",
 #'   vs_currency = "usd",

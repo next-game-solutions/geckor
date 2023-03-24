@@ -15,3 +15,7 @@ Pings the CoinGecko API to check if the service is available
 \details{
 This function has no arguments.
 }
+\examples{
+ifelse(ping(), "API is available", "API is not available")
+
+}
