@@ -18,7 +18,8 @@
 #'
 #' @eval function_params("api_note")
 #'
-#' @return A tibble with the following columns:
+#' @return If the API call succeeds, the function returns a tibble with
+#' the following columns:
 #' * `timestamp` (POSIXct);
 #' * `coin_id` (character): same as the argument `coin_id`;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
@@ -26,6 +27,10 @@
 #' * `total_volume` (double): a 24 hours rolling-window trading volume, as
 #' of `timestampt`;
 #' * `market_cap` (double): market capitalisation, as of `timestamp`.
+#'
+#' If no data can be retrieved (e.g., because of going over the API
+#' rate limit or mis-specifying the query parameters), the function
+#' returns nothing (`NULL`).
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
@@ -82,8 +87,7 @@ coin_history_range <- function(coin_id,
 
         r <- api_request(url = url, max_attempts = max_attempts)
 
-        if (length(r$prices) == 0) {
-          message("\nNo data could be retrieved.")
+        if (is.null(r)) {
           return(NULL)
         }
 
@@ -153,5 +157,11 @@ coin_history_range <- function(coin_id,
       }
     )
 
-  dplyr::bind_rows(results)
+  results <- dplyr::bind_rows(results)
+
+  if (nrow(results) == 0) {
+    return(NULL)
+  } else {
+    return(results)
+  }
 }
