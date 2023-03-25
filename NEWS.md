@@ -6,8 +6,9 @@ CoinGecko significantly reduced the rate limit of the free version of its API - 
 
 * All of the `coin_history_*` functions now accept a much smaller number of coin IDs to process simultaneously (5 vs 30 in v0.2.0).
 * The `coin_tickers()` function retrieves up to 5 pages of data.
-* The pause between function calls in all tests was significantly increased.
+* Tests are now skipped not only on CRAN but also when `ping()` returns `FALSE` before running the test.
 * Examples in the package documentation now won't execute when running `R CMD check`.
+* Examples in vignettes are not evaluated any more.
 
 ## Minor changes
 

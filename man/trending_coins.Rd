@@ -13,7 +13,8 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-A tibble with the following columns:
+If the API call succeeds, the function returns a tibble with the
+following columns:
 \itemize{
 \item \code{timestamp} (POSIXct): date and time of the API request;
 \item \code{popularity_rank_24h} (integer): popularity rank in the last 24 hours;
@@ -37,8 +38,7 @@ which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- trending_coins()
 print(r)
-\dontshow{\}) # examplesIf}
+
 }

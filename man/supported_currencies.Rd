@@ -13,7 +13,7 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-Character vector with abbreviated names of the currencies.
+A character vector with abbreviated names of the currencies.
 }
 \description{
 Retrieves a list of base currencies currently supported by the CoinGecko API
@@ -25,8 +25,8 @@ which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+FALSE
 r <- supported_currencies()
 print(r)
-\dontshow{\}) # examplesIf}
+
 }
