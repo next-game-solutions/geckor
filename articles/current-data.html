@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,23 +40,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/next-game-solutions/geckor/">
+  <a href="https://github.com/next-game-solutions/geckor/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -92,13 +88,13 @@
 
       
 
-      </header><script src="current-data_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Current market data</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/next-game-solutions/geckor/blob/master/vignettes/current-data.Rmd"><code>vignettes/current-data.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/next-game-solutions/geckor/blob/HEAD/vignettes/current-data.Rmd" class="external-link"><code>vignettes/current-data.Rmd</code></a></small>
       <div class="hidden name"><code>current-data.Rmd</code></div>
 
     </div>
@@ -106,149 +102,71 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/next-game-solutions/geckor">geckor</a></span><span class="op">)</span>
-<span class="co">#&gt; R client for the CoinGecko API</span>
-<span class="co">#&gt; Developed by Next Game Solutions (http://nextgamesolutions.com)</span></code></pre></div>
-<p>The CoinGecko API allows one to query market data on cryptocurrencies in real time. There are several functions in <code>geckor</code> that can be used to collect such data.</p>
-<p>The current prices for a set of cryptocurrencies of interest can be queried with the <code><a href="../reference/current_price.html">current_price()</a></code> function. The two important arguments expected by this function are <code>coin_ids</code> (a character vector with coin IDs; see <code><a href="../reference/supported_coins.html">?supported_coins</a></code> for details) and <code>vs_currencies</code> (a character vector with abbreviated names of reference currencies, which are used to express the coin price in; see <code><a href="../reference/supported_currencies.html">?supported_currencies</a></code> for details). In the example below, we are requesting the current prices for Cardano, Tron, and Polkadot, expressed in USD, EUR, and GBP:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/next-game-solutions/geckor" class="external-link">geckor</a></span><span class="op">)</span></span></code></pre></div>
+<p>The CoinGecko API allows one to query market data on cryptocurrencies
+in real time. <code>geckor</code> has several functions that can be used
+to collect such data.</p>
+<p>The current prices for a set of cryptocurrencies of interest can be
+queried using the <code><a href="../reference/current_price.html">current_price()</a></code> function. The function
+expects two important arguments: <code>coin_ids</code> (a character
+vector with coin IDs; see <code><a href="../reference/supported_coins.html">?supported_coins</a></code> for details) and
+<code>vs_currencies</code> (a character vector with abbreviated names of
+reference currencies used to express the coin price; see
+<code><a href="../reference/supported_currencies.html">?supported_currencies</a></code> for details). In the example below,
+we request the current prices for Cardano, Tron, and Polkadot, expressed
+in USD, EUR, and GBP:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">prices</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/current_price.html">current_price</a></span><span class="op">(</span>
-  coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,
-  vs_currencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"usd"</span>, <span class="st">"eur"</span>, <span class="st">"gbp"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">prices</span>
-<span class="co">#&gt; # A tibble: 9 × 7</span>
-<span class="co">#&gt;   coin_id    price vs_currency   market_cap     vol_24h price_percent_change_24h</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;                    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cardano   1.97   usd         62961901389. 1942921885.                    0.822</span>
-<span class="co">#&gt; 2 cardano   1.7    eur         54371190678. 1676463749.                    0.514</span>
-<span class="co">#&gt; 3 cardano   1.44   gbp         46001413279. 1420783001.                    0.895</span>
-<span class="co">#&gt; 4 polkadot 48.5    usd         50311554475. 2740382452.                   15.0  </span>
-<span class="co">#&gt; 5 polkadot 41.8    eur         43427424476. 2364558181.                   14.7  </span>
-<span class="co">#&gt; 6 polkadot 35.4    gbp         36748012192. 2003934812.                   15.1  </span>
-<span class="co">#&gt; 7 tron      0.101  usd          7223493095. 1902742343.                    1.08 </span>
-<span class="co">#&gt; 8 tron      0.0870 eur          6231064602. 1641794550.                    0.772</span>
-<span class="co">#&gt; 9 tron      0.0737 gbp          5277903018. 1391401269.                    1.15 </span>
-<span class="co">#&gt; # … with 1 more variable: last_updated_at &lt;dttm&gt;</span></code></pre></div>
-<p>See <code><a href="../reference/current_price.html">?current_price</a></code> for definitions of columns in the resultant tibble.</p>
-<p>The <code><a href="../reference/exchange_rate.html">exchange_rate()</a></code> function can be used to obtain the current exchange rates for any supported reference currency, expressed in Bitcoin. The <code>currency</code> argument of this function specifies the list of currencies of interest. If <code>currency = NULL</code>, data for all supported currencies will be returned:</p>
+<code class="sourceCode R"><span><span class="va">prices</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/current_price.html">current_price</a></span><span class="op">(</span></span>
+<span>  coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,</span>
+<span>  vs_currencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"usd"</span>, <span class="st">"eur"</span>, <span class="st">"gbp"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">prices</span><span class="op">)</span></span></code></pre></div>
+<p>See <code><a href="../reference/current_price.html">?current_price</a></code> for the definitions of the columns in
+the resulting tibble.</p>
+<p>The <code><a href="../reference/exchange_rate.html">exchange_rate()</a></code> function can be used to obtain the
+current exchange rates for any supported reference currency, expressed
+in Bitcoin. The <code>currency</code> argument of this function
+specifies the list of currencies of interest. If
+<code>currency = NULL</code>, data for all supported currencies will be
+returned:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">all_rates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/exchange_rate.html">exchange_rate</a></span><span class="op">(</span>currency <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">all_rates</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 10 × 5</span>
-<span class="co">#&gt;    timestamp           currency name                        price_in_btc type  </span>
-<span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt;    &lt;chr&gt;                              &lt;dbl&gt; &lt;chr&gt; </span>
-<span class="co">#&gt;  1 2021-11-01 15:57:02 aed      United Arab Emirates Dirham      225965. fiat  </span>
-<span class="co">#&gt;  2 2021-11-01 15:57:02 ars      Argentine Peso                  6140992. fiat  </span>
-<span class="co">#&gt;  3 2021-11-01 15:57:02 aud      Australian Dollar                 81695. fiat  </span>
-<span class="co">#&gt;  4 2021-11-01 15:57:02 bch      Bitcoin Cash                        105. crypto</span>
-<span class="co">#&gt;  5 2021-11-01 15:57:02 bdt      Bangladeshi Taka                5269470. fiat  </span>
-<span class="co">#&gt;  6 2021-11-01 15:57:02 bhd      Bahraini Dinar                    23194. fiat  </span>
-<span class="co">#&gt;  7 2021-11-01 15:57:02 bits     Bits                            1000000  crypto</span>
-<span class="co">#&gt;  8 2021-11-01 15:57:02 bmd      Bermudian Dollar                  61517. fiat  </span>
-<span class="co">#&gt;  9 2021-11-01 15:57:02 bnb      Binance Coin                        115. crypto</span>
-<span class="co">#&gt; 10 2021-11-01 15:57:02 brl      Brazil Real                      349454. fiat</span>
-
-<span class="va">some_rates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/exchange_rate.html">exchange_rate</a></span><span class="op">(</span>currency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"btc"</span>, <span class="st">"usd"</span>, <span class="st">"rub"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">some_rates</span>
-<span class="co">#&gt; # A tibble: 3 × 5</span>
-<span class="co">#&gt;   timestamp           currency name          price_in_btc type  </span>
-<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;    &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt; </span>
-<span class="co">#&gt; 1 2021-11-01 15:57:02 btc      Bitcoin                 1  crypto</span>
-<span class="co">#&gt; 2 2021-11-01 15:57:02 rub      Russian Ruble     4383256. fiat  </span>
-<span class="co">#&gt; 3 2021-11-01 15:57:02 usd      US Dollar           61517. fiat</span></code></pre></div>
-<p>The <code><a href="../reference/current_market.html">current_market()</a></code> function retrieves a rich set of data points describing the current market status of the cryptocurrencies of interest. Let’s collect such data for Cardano, Tron, and Polkadot:</p>
+<code class="sourceCode R"><span><span class="va">all_rates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/exchange_rate.html">exchange_rate</a></span><span class="op">(</span>currency <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">all_rates</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">some_rates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/exchange_rate.html">exchange_rate</a></span><span class="op">(</span>currency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"btc"</span>, <span class="st">"usd"</span>, <span class="st">"rub"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">some_rates</span><span class="op">)</span></span></code></pre></div>
+<p>The <code><a href="../reference/current_market.html">current_market()</a></code> function retrieves a rich set of
+data points describing the current market status of the cryptocurrencies
+of interest. Let’s collect such data for Cardano, Tron, and
+Polkadot:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/current_market.html">current_market</a></span><span class="op">(</span>
-  coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,
-  vs_currency <span class="op">=</span> <span class="st">"usd"</span>
-<span class="op">)</span>
-
-<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">cm</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 3</span>
-<span class="co">#&gt; Columns: 32</span>
-<span class="co">#&gt; $ coin_id                                  &lt;chr&gt; "cardano", "polkadot", "tron"</span>
-<span class="co">#&gt; $ symbol                                   &lt;chr&gt; "ada", "dot", "trx"</span>
-<span class="co">#&gt; $ name                                     &lt;chr&gt; "Cardano", "Polkadot", "TRON"</span>
-<span class="co">#&gt; $ vs_currency                              &lt;chr&gt; "usd", "usd", "usd"</span>
-<span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2021-11-01 15:55:02, 2021-11-…</span>
-<span class="co">#&gt; $ current_price                            &lt;dbl&gt; 1.970000, 48.480000, 0.100798</span>
-<span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 62961901389, 50311554475, 722…</span>
-<span class="co">#&gt; $ market_cap_rank                          &lt;int&gt; 5, 8, 30</span>
-<span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 88356859112, NA, NA</span>
-<span class="co">#&gt; $ total_volume                             &lt;dbl&gt; 1942802122, 2740382452, 19030…</span>
-<span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 2.000000, 48.440000, 0.102011</span>
-<span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 1.920000, 42.030000, 0.098313</span>
-<span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; 0.01589940, 6.34000000, 0.001…</span>
-<span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; 0.81528, 15.04079, 1.08280</span>
-<span class="co">#&gt; $ market_cap_change_24h                    &lt;dbl&gt; 610156041, 6522760033, 38887…</span>
-<span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; 0.97857, 14.89596, 0.54125</span>
-<span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 32066390668, 1046044876, 7166…</span>
-<span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1126994753, 1008…</span>
-<span class="co">#&gt; $ max_supply                               &lt;dbl&gt; 4.5e+10, NA, NA</span>
-<span class="co">#&gt; $ ath                                      &lt;dbl&gt; 3.090000, 49.350000, 0.231673</span>
-<span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -36.23617, -2.22400, -56.48172</span>
-<span class="co">#&gt; $ ath_date                                 &lt;dttm&gt; 2021-09-02 06:00:10, 2021-05-…</span>
-<span class="co">#&gt; $ atl                                      &lt;dbl&gt; 0.01925275, 2.70000000, 0.001…</span>
-<span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 10123.646, 1688.777, 5487.633</span>
-<span class="co">#&gt; $ atl_date                                 &lt;dttm&gt; 2020-03-13 02:22:55, 2020-08-…</span>
-<span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; 0.3030895, 2.0234662, 0.36584…</span>
-<span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; 0.8152756, 15.0407865, 1.0827…</span>
-<span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; -7.632646, 13.998260, 1.135122</span>
-<span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; -8.885625, 15.063443, 1.944723</span>
-<span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -12.492718, 51.588222, 6.3289…</span>
-<span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; 35.02367, 14.06720, -28.66163</span>
-<span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; 2017.0403, 1060.2672, 289.8312</span></code></pre></div>
-<p>See <code><a href="../reference/current_market.html">?current_market</a></code> for definitions of columns in the resultant tibble.</p>
-<p>The <code><a href="../reference/coin_tickers.html">coin_tickers()</a></code> function allows one to query the current data on all trading pairs of a cryptocurrency from a given exchange. In the example below, we collect such data for Cardano traded at Binance:</p>
+<code class="sourceCode R"><span><span class="va">cm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/current_market.html">current_market</a></span><span class="op">(</span></span>
+<span>  coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,</span>
+<span>  vs_currency <span class="op">=</span> <span class="st">"usd"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cm</span><span class="op">)</span></span></code></pre></div>
+<p>See <code><a href="../reference/current_market.html">?current_market</a></code> for the definitions of the columns
+in the resultant tibble.</p>
+<p>The <code><a href="../reference/coin_tickers.html">coin_tickers()</a></code> function allows one to query the
+current data on all trading pairs of a cryptocurrency from a given
+exchange. In the example below, we collect such data for Cardano traded
+at Binance:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cardano_tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/coin_tickers.html">coin_tickers</a></span><span class="op">(</span>
-  coin_id <span class="op">=</span> <span class="st">"cardano"</span>,
-  exchange_id <span class="op">=</span> <span class="st">"binance"</span>
-<span class="op">)</span>
-
-<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">cardano_tickers</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 14</span>
-<span class="co">#&gt; Columns: 23</span>
-<span class="co">#&gt; $ exchange_id                    &lt;chr&gt; "binance", "binance", "binance", "binan…</span>
-<span class="co">#&gt; $ exchange_name                  &lt;chr&gt; "Binance", "Binance", "Binance", "Binan…</span>
-<span class="co">#&gt; $ coin_id                        &lt;chr&gt; "cardano", "cardano", "cardano", "carda…</span>
-<span class="co">#&gt; $ name                           &lt;chr&gt; "Cardano", "Cardano", "Cardano", "Carda…</span>
-<span class="co">#&gt; $ base                           &lt;chr&gt; "ADA", "ADA", "ADA", "ADA", "ADA", "ADA…</span>
-<span class="co">#&gt; $ target                         &lt;chr&gt; "USDT", "BUSD", "BTC", "USDC", "ETH", "…</span>
-<span class="co">#&gt; $ trust_score                    &lt;chr&gt; "green", "green", "green", "green", "gr…</span>
-<span class="co">#&gt; $ last_price                     &lt;dbl&gt; 1.9630e+00, 1.9630e+00, 3.1960e-05, 1.9…</span>
-<span class="co">#&gt; $ last_fetch_at                  &lt;dttm&gt; 2021-11-01 15:53:00, 2021-11-01 15:52:…</span>
-<span class="co">#&gt; $ last_traded_at                 &lt;dttm&gt; 2021-11-01 15:53:00, 2021-11-01 15:52:…</span>
-<span class="co">#&gt; $ bid_ask_spread_percentage      &lt;dbl&gt; 0.050942, 0.050916, 0.062520, 0.101781,…</span>
-<span class="co">#&gt; $ trading_volume_24h             &lt;dbl&gt; 146061153.54, 24854636.08, 33652901.62,…</span>
-<span class="co">#&gt; $ last_price_btc                 &lt;dbl&gt; 3.194e-05, 3.192e-05, 3.196e-05, 3.191e…</span>
-<span class="co">#&gt; $ last_price_eth                 &lt;dbl&gt; 0.00045213, 0.00045174, 0.00045221, 0.0…</span>
-<span class="co">#&gt; $ last_price_usd                 &lt;dbl&gt; 1.97, 1.96, 1.97, 1.96, 1.97, 1.97, 1.9…</span>
-<span class="co">#&gt; $ trading_volume_24h_btc         &lt;dbl&gt; 4666.000000, 793.457000, 1076.000000, 5…</span>
-<span class="co">#&gt; $ trading_volume_24h_eth         &lt;dbl&gt; 66038.00000, 11228.00000, 15218.00000, …</span>
-<span class="co">#&gt; $ trading_volume_24h_usd         &lt;int&gt; 287156509, 48826211, 66182506, 3470851,…</span>
-<span class="co">#&gt; $ cost_to_move_up_2percent_usd   &lt;dbl&gt; 3694400.21, 916516.13, 952267.78, 55130…</span>
-<span class="co">#&gt; $ cost_to_move_down_2percent_usd &lt;dbl&gt; 4023448.94, 1087374.02, 879487.34, 1972…</span>
-<span class="co">#&gt; $ is_anomaly                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</span>
-<span class="co">#&gt; $ is_stale                       &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</span>
-<span class="co">#&gt; $ trade_url                      &lt;chr&gt; "https://www.binance.com/en/trade/ADA_U…</span></code></pre></div>
-<p>See <code><a href="../reference/coin_tickers.html">?coin_tickers</a></code> for definitions of columns in the resultant tibble.</p>
-<p>Finally, one can use the <code><a href="../reference/trending_coins.html">trending_coins()</a></code> function to obtain a list of top-7 trending coins in terms of their search popularity on CoinGecko:</p>
+<code class="sourceCode R"><span><span class="va">cardano_tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/coin_tickers.html">coin_tickers</a></span><span class="op">(</span></span>
+<span>  coin_id <span class="op">=</span> <span class="st">"cardano"</span>,</span>
+<span>  exchange_id <span class="op">=</span> <span class="st">"binance"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cardano_tickers</span><span class="op">)</span></span></code></pre></div>
+<p>See <code><a href="../reference/coin_tickers.html">?coin_tickers</a></code> for definitions of columns in the
+resultant tibble.</p>
+<p>Finally, one can use the <code><a href="../reference/trending_coins.html">trending_coins()</a></code> function to
+obtain a list of top-7 trending coins in terms of their search
+popularity on CoinGecko:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/trending_coins.html">trending_coins</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 7 × 7</span>
-<span class="co">#&gt;   timestamp           popularity_rank_24h coin_id  name   symbol market_cap_rank</span>
-<span class="co">#&gt;   &lt;dttm&gt;                            &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;            &lt;int&gt;</span>
-<span class="co">#&gt; 1 2021-11-01 15:57:07                   1 baby-do… Baby … BABYD…             139</span>
-<span class="co">#&gt; 2 2021-11-01 15:57:07                   2 splinte… Splin… SPS                496</span>
-<span class="co">#&gt; 3 2021-11-01 15:57:07                   3 alien-w… Alien… TLM                243</span>
-<span class="co">#&gt; 4 2021-11-01 15:57:07                   4 ufo-gam… UFO G… UFO                143</span>
-<span class="co">#&gt; 5 2021-11-01 15:57:07                   5 solfarm  Tulip… TULIP              820</span>
-<span class="co">#&gt; 6 2021-11-01 15:57:07                   6 yooshi   YooShi YOOSHI             112</span>
-<span class="co">#&gt; 7 2021-11-01 15:57:07                   7 shiba-i… Shiba… SHIB                 9</span>
-<span class="co">#&gt; # … with 1 more variable: price_btc &lt;dbl&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/trending_coins.html">trending_coins</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -260,11 +178,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Sergey Mastitsky.</p>
+  <p></p>
+<p>Developed by Sergey Mastitsky.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -272,6 +192,8 @@
 
   
 
+
+  
 
   </body>
 </html>

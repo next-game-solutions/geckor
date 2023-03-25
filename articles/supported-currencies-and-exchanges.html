@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,23 +40,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geckor</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/next-game-solutions/geckor/">
+  <a href="https://github.com/next-game-solutions/geckor/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -92,13 +88,14 @@
 
       
 
-      </header><script src="supported-currencies-and-exchanges_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Supported coins, base currencies, and exchanges</h1>
+      <h1 data-toc-skip>Supported coins, base currencies, and
+exchanges</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/next-game-solutions/geckor/blob/master/vignettes/supported-currencies-and-exchanges.Rmd"><code>vignettes/supported-currencies-and-exchanges.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/next-game-solutions/geckor/blob/HEAD/vignettes/supported-currencies-and-exchanges.Rmd" class="external-link"><code>vignettes/supported-currencies-and-exchanges.Rmd</code></a></small>
       <div class="hidden name"><code>supported-currencies-and-exchanges.Rmd</code></div>
 
     </div>
@@ -106,66 +103,41 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/next-game-solutions/geckor">geckor</a></span><span class="op">)</span>
-<span class="co">#&gt; R client for the CoinGecko API</span>
-<span class="co">#&gt; Developed by Next Game Solutions (http://nextgamesolutions.com)</span></code></pre></div>
-<p>The <a href="https://www.coingecko.com/en/api#explore-api" title="CoinGecko API">CoinGecko API</a> allows one to query market data on thousands of cryptocurrencies from more than 300 exchanges. A list of the currently supported cryptocurrencies can be obtained with the <code><a href="../reference/supported_coins.html">supported_coins()</a></code> function:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/next-game-solutions/geckor" class="external-link">geckor</a></span><span class="op">)</span></span></code></pre></div>
+<p>The <a href="https://www.coingecko.com/en/api#explore-api" title="CoinGecko API" class="external-link">CoinGecko API</a> allows one to query market data
+on thousands of cryptocurrencies from hundreds of exchanges. You can
+obtain a list of the currently supported cryptocurrencies with the
+<code><a href="../reference/supported_coins.html">supported_coins()</a></code> function:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">coins</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supported_coins.html">supported_coins</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># number of supported coins:</span>
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">coins</span><span class="op">)</span>
-<span class="co">#&gt; [1] 10279</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coins</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 10 × 3</span>
-<span class="co">#&gt;    coin_id                         symbol   name                         </span>
-<span class="co">#&gt;    &lt;chr&gt;                           &lt;chr&gt;    &lt;chr&gt;                        </span>
-<span class="co">#&gt;  1 ""                              pappay   Pappay                       </span>
-<span class="co">#&gt;  2 "01coin"                        zoc      01coin                       </span>
-<span class="co">#&gt;  3 "0-5x-long-algorand-token"      algohalf 0.5X Long Algorand Token     </span>
-<span class="co">#&gt;  4 "0-5x-long-altcoin-index-token" althalf  0.5X Long Altcoin Index Token</span>
-<span class="co">#&gt;  5 "0-5x-long-balancer-token"      balhalf  0.5X Long Balancer Token     </span>
-<span class="co">#&gt;  6 "0-5x-long-bitcoin-cash-token"  bchhalf  0.5X Long Bitcoin Cash Token </span>
-<span class="co">#&gt;  7 "0-5x-long-bitcoin-sv-token"    bsvhalf  0.5X Long Bitcoin SV Token   </span>
-<span class="co">#&gt;  8 "0-5x-long-bitcoin-token"       half     0.5X Long Bitcoin Token      </span>
-<span class="co">#&gt;  9 "0-5x-long-cardano-token"       adahalf  0.5X Long Cardano Token      </span>
-<span class="co">#&gt; 10 "0-5x-long-chainlink-token"     linkhalf 0.5X Long Chainlink Token</span></code></pre></div>
-<p>The first column in the resultant tibble contains coin IDs in the format expected by other <code>geckor</code> functions.</p>
-<p>Similarly, a list of supported exchanges can be retrieved with the <code><a href="../reference/supported_exchanges.html">supported_exchanges()</a></code> function:</p>
+<code class="sourceCode R"><span><span class="va">coins</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supported_coins.html">supported_coins</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># number of supported coins:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">coins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">coins</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<p>The first column in the resultant tibble contains coin IDs in the
+format expected by other <code>geckor</code> functions.</p>
+<p>Similarly, you can retrieve a list of supported exchanges with the
+<code><a href="../reference/supported_exchanges.html">supported_exchanges()</a></code> function:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">exchanges</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supported_exchanges.html">supported_exchanges</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># number of supported exchanges:</span>
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">exchanges</span><span class="op">)</span>
-<span class="co">#&gt; [1] 324</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">exchanges</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 10 × 7</span>
-<span class="co">#&gt;    exchange_id name  year_established country url   trust_score trading_volume_…</span>
-<span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;int&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 binance     Bina…             2017 Cayman… http…          10          586078.</span>
-<span class="co">#&gt;  2 gdax        Coin…             2012 United… http…          10          124419.</span>
-<span class="co">#&gt;  3 huobi       Huob…             2013 Seyche… http…          10           99670.</span>
-<span class="co">#&gt;  4 crypto_com  Cryp…             2019 Cayman… http…          10           60246.</span>
-<span class="co">#&gt;  5 kucoin      KuCo…             2014 Seyche… http…          10           56256.</span>
-<span class="co">#&gt;  6 ftx_spot    FTX               2019 Antigu… http…          10           44309.</span>
-<span class="co">#&gt;  7 gate        Gate…               NA Hong K… http…          10           42878.</span>
-<span class="co">#&gt;  8 binance_us  Bina…             2019 United… http…          10           24931.</span>
-<span class="co">#&gt;  9 kraken      Krak…             2011 United… http…          10           22161.</span>
-<span class="co">#&gt; 10 bitfinex    Bitf…             2014 Britis… http…          10           17124.</span></code></pre></div>
-<p>One of the important columns in the obtained tibble is <code>trust_score</code>. This score ranges from 1 to 10 and combines several metrics indicative of how much one can trust the data originating from a given exchange (see <a href="https://blog.coingecko.com/trust-score/" title="Trust Score v1">this</a> and <a href="https://blog.coingecko.com/trust-score-2/" title="Trust Score v2">this</a> articles on the CoinGecko website for details).</p>
-<p>When querying the market data for a cryptocurrency, users are always expected to supply one or several reference currencies (fiat or crypto) to express the coin price in. The list of such reference currencies can be retrieved with the <code><a href="../reference/supported_currencies.html">supported_currencies()</a></code> function:</p>
+<code class="sourceCode R"><span><span class="va">exchanges</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supported_exchanges.html">supported_exchanges</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># number of supported exchanges:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">exchanges</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">exchanges</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<p>One of the important columns in the obtained tibble is
+<code>trust_score</code>. This score ranges from 1 to 10 and combines
+several metrics indicative of how much one can trust the data
+originating from a given exchange (see <a href="https://blog.coingecko.com/trust-score/" title="Trust Score v1" class="external-link">this</a> and <a href="https://blog.coingecko.com/trust-score-2/" title="Trust Score v2" class="external-link">this</a> articles on the CoinGecko website for
+details).</p>
+<p>When querying market data for a cryptocurrency, users are always
+expected to supply one or several reference currencies (fiat or crypto)
+to express the coin price. You can retrieve the list of such reference
+currencies with the <code><a href="../reference/supported_currencies.html">supported_currencies()</a></code> function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">currencies</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supported_currencies.html">supported_currencies</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">currencies</span>
-<span class="co">#&gt;  [1] "btc"  "eth"  "ltc"  "bch"  "bnb"  "eos"  "xrp"  "xlm"  "link" "dot" </span>
-<span class="co">#&gt; [11] "yfi"  "usd"  "aed"  "ars"  "aud"  "bdt"  "bhd"  "bmd"  "brl"  "cad" </span>
-<span class="co">#&gt; [21] "chf"  "clp"  "cny"  "czk"  "dkk"  "eur"  "gbp"  "hkd"  "huf"  "idr" </span>
-<span class="co">#&gt; [31] "ils"  "inr"  "jpy"  "krw"  "kwd"  "lkr"  "mmk"  "mxn"  "myr"  "ngn" </span>
-<span class="co">#&gt; [41] "nok"  "nzd"  "php"  "pkr"  "pln"  "rub"  "sar"  "sek"  "sgd"  "thb" </span>
-<span class="co">#&gt; [51] "try"  "twd"  "uah"  "vef"  "vnd"  "zar"  "xdr"  "xag"  "xau"  "bits"</span>
-<span class="co">#&gt; [61] "sats"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">currencies</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supported_currencies.html">supported_currencies</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">currencies</span><span class="op">)</span></span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -177,11 +149,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Sergey Mastitsky.</p>
+  <p></p>
+<p>Developed by Sergey Mastitsky.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -189,6 +163,8 @@
 
   
 
+
+  
 
   </body>
 </html>
