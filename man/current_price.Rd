@@ -42,8 +42,9 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-A tibble, which by the default will contain the following columns (use
-arguments \code{include_market_cap}, \code{include_24h_vol} and \code{include_24h_change}
+If the API call succeeds, the function returns a tibble, which by
+default will contain the following columns (use arguments
+\code{include_market_cap}, \code{include_24h_vol} and \code{include_24h_change}
 to control the inclusion of the corresponding columns):
 \itemize{
 \item \code{coin_id} (character): coin IDs, ordered alphabetically;
@@ -57,6 +58,10 @@ compared to 24 hours ago;
 \item \code{last_updated_at} (POSIXct, UTC time zone): timestamp of the last price
 update.
 }
+
+If no data can be retrieved (e.g., because of going over the API
+rate limit or mis-specifying the query parameters), the function
+returns nothing (\code{NULL}).
 }
 \description{
 Retrieves current prices of supported coins

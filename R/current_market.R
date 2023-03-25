@@ -8,8 +8,9 @@
 #'    query parameter), nothing (`NULL`) will be returned.
 #' @eval function_params("api_note")
 #'
-#' @return If the requested data exist, this function will return a tibble with
-#'    as many rows as the length of `coin_ids` and the following columns:
+#' @return If the API call succeeds and the requested data exist, this function
+#' will return a tibble with as many rows as the length of `coin_ids` and the
+#' following columns:
 #' * `coin_id` (character): coin IDs, ordered by `market_cap` (see below);
 #' * `symbol` (character): symbol of the coin;
 #' * `name` (character): common name of the coin;
@@ -50,6 +51,10 @@
 #' percentage change in price as compared to various points in the past
 #' (in particular, 1 hour, 24 hours, 7 days, 14 days, 30 days, 200 days,
 #' and 1 year).
+#'
+#' If no data can be retrieved (e.g., because of going over the API
+#' rate limit or mis-specifying the query parameters), the function
+#' returns nothing (`NULL`).
 #'
 #' @export
 #'

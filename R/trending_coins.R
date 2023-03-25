@@ -9,7 +9,8 @@
 #'
 #' @eval function_params("api_note")
 #'
-#' @return A tibble with the following columns:
+#' @return If the API call succeeds, the function returns a tibble with the
+#' following columns:
 #' * `timestamp` (POSIXct): date and time of the API request;
 #' * `popularity_rank_24h` (integer): popularity rank in the last 24 hours;
 #' * `coin_id` (character): coin ID;
@@ -20,7 +21,7 @@
 #'
 #' @export
 #'
-#' @examplesIf ping()
+#' @examples
 #' r <- trending_coins()
 #' print(r)
 #'

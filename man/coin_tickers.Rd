@@ -21,7 +21,8 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-A tibble with the following columns:
+If the API call succeeds, the function returns a tibble with
+the following columns:
 \itemize{
 \item \code{exchange_id} (character): same as the argument \code{exchange_id};
 \item \code{exchange_name} (character): common name of the exchange;
@@ -72,6 +73,10 @@ been updated for a while (see "Outlier detection" in
 website);
 \item \code{trade_url} (character): URL to this trading pair's page.
 }
+
+If no data can be retrieved (e.g., because of going over the API
+rate limit or mis-specifying the query parameters), the function
+returns nothing (\code{NULL}).
 }
 \description{
 Retrieves the most recent exchange tickers for a coin
@@ -81,9 +86,15 @@ This function is based on the public
 \href{https://www.coingecko.com/api/documentations/v3}{CoinGecko API},
 which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
+
+Many exchanges offer a large number of target
+currencies, which necessitates pagination when querying the data. However,
+if the number of pages to retrieve is too large, the free version of the
+CoinGecko API fails due to hitting the rate limit. To avoid such failures,
+the \code{coin_tickers()} function retrieves up to \emph{5 pages} of data.
 }
 \examples{
-\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- coin_tickers(coin_id = "cardano", exchange_id = "binance")
 print(r)
 \dontshow{\}) # examplesIf}

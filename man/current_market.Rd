@@ -23,8 +23,9 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-If the requested data exist, this function will return a tibble with
-as many rows as the length of \code{coin_ids} and the following columns:
+If the API call succeeds and the requested data exist, this function
+will return a tibble with as many rows as the length of \code{coin_ids} and the
+following columns:
 \itemize{
 \item \code{coin_id} (character): coin IDs, ordered by \code{market_cap} (see below);
 \item \code{symbol} (character): symbol of the coin;
@@ -67,6 +68,10 @@ percentage change in price as compared to various points in the past
 (in particular, 1 hour, 24 hours, 7 days, 14 days, 30 days, 200 days,
 and 1 year).
 }
+
+If no data can be retrieved (e.g., because of going over the API
+rate limit or mis-specifying the query parameters), the function
+returns nothing (\code{NULL}).
 }
 \description{
 Retrieves current market data for a set of coins

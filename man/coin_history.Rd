@@ -38,7 +38,8 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-A tibble with the following columns:
+If the API call succeeds, the function returns a tibble with
+the following columns:
 \itemize{
 \item \code{timestamp} (POSIXct);
 \item \code{coin_id} (character): same as the argument \code{coin_id};
@@ -48,6 +49,10 @@ A tibble with the following columns:
 of \code{timestamp};
 \item \code{market_cap} (double): market capitalisation, as of \code{timestamp}.
 }
+
+If no data can be retrieved (e.g., because of going over the API
+rate limit or mis-specifying the query parameters), the function
+returns nothing (\code{NULL}).
 }
 \description{
 Retrieves coin-specific market data for the last \emph{n} days

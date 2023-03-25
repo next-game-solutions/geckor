@@ -11,7 +11,7 @@
 #'
 #' @export
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- supported_coins()
 #' head(r, 10)
 #'

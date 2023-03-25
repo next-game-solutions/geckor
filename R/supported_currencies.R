@@ -4,10 +4,10 @@
 #'
 #' @eval function_params(c("max_attempts", "api_note"))
 #'
-#' @return Character vector with abbreviated names of the currencies.
+#' @return A character vector with abbreviated names of the currencies.
 #' @export
 #'
-#' @examplesIf ping()
+#' @examples FALSE
 #' r <- supported_currencies()
 #' print(r)
 #'
