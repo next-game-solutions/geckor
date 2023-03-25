@@ -9,9 +9,10 @@
 #' @details If no data can be retrieved (e.g. because of a misspecified
 #'    query parameter), nothing (`NULL`) will be returned.
 #'
-#' @return A tibble, which by the default will contain the following columns (use
-#'    arguments `include_market_cap`, `include_24h_vol` and `include_24h_change`
-#'    to control the inclusion of the corresponding columns):
+#' @return If the API call succeeds, the function returns a tibble, which by
+#' default will contain the following columns (use arguments
+#' `include_market_cap`, `include_24h_vol` and `include_24h_change`
+#' to control the inclusion of the corresponding columns):
 #' * `coin_id` (character): coin IDs, ordered alphabetically;
 #' * `price` (double): coin price;
 #' * `vs_currency` (character): reference currency, in which the price of
@@ -23,12 +24,16 @@
 #' * `last_updated_at` (POSIXct, UTC time zone): timestamp of the last price
 #' update.
 #'
+#' If no data can be retrieved (e.g., because of going over the API
+#' rate limit or mis-specifying the query parameters), the function
+#' returns nothing (`NULL`).
+#'
 #' @export
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- current_price(
 #'   coin_ids = c("aave", "tron", "bitcoin"),
 #'   vs_currencies = c("usd", "eur", "gbp")

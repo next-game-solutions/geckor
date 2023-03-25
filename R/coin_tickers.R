@@ -10,7 +10,8 @@
 #'     with the [supported_exchanges()] function.
 #' @eval function_params(c("max_attempts", "api_note"))
 #'
-#' @return A tibble with the following columns:
+#' @return If the API call succeeds, the function returns a tibble with
+#' the following columns:
 #'
 #' * `exchange_id` (character): same as the argument `exchange_id`;
 #' * `exchange_name` (character): common name of the exchange;
@@ -61,9 +62,19 @@
 #' website);
 #' * `trade_url` (character): URL to this trading pair's page.
 #'
+#' If no data can be retrieved (e.g., because of going over the API
+#' rate limit or mis-specifying the query parameters), the function
+#' returns nothing (`NULL`).
+#'
+#' @details Many exchanges offer a large number of target
+#' currencies, which necessitates pagination when querying the data. However,
+#' if the number of pages to retrieve is too large, the free version of the
+#' CoinGecko API fails due to hitting the rate limit. To avoid such failures,
+#' the `coin_tickers()` function retrieves up to _5 pages_ of data.
+#'
 #' @export
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- coin_tickers(coin_id = "cardano", exchange_id = "binance")
 #' print(r)
 #'
@@ -94,6 +105,7 @@ coin_tickers <- function(coin_id,
   )
 
   while (TRUE) {
+
     query_parameters$page <- p
 
     url <- build_get_request(
@@ -104,13 +116,17 @@ coin_tickers <- function(coin_id,
 
     r <- api_request(url = url, max_attempts = max_attempts)
 
-    if (length(r$tickers) == 0) {
+    if (is.null(r) | length(r$tickers) == 0) {
       break
     }
 
     data <- c(data, r)
 
     p <- p + 1
+
+    if (p > 5) {
+      break
+    }
   }
 
   data_parsed <- lapply(data$tickers, function(x) {
@@ -151,5 +167,11 @@ coin_tickers <- function(coin_id,
     return(result)
   })
 
-  return(dplyr::bind_rows(data_parsed))
+  results <- dplyr::bind_rows(data_parsed)
+
+  if (nrow(results) == 0) {
+    return(NULL)
+  } else {
+    return(results)
+  }
 }

@@ -29,7 +29,8 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-A tibble with the following columns:
+If the API call succeeds, the function returns a tibble with
+the following columns:
 \itemize{
 \item \code{coin_id} (character): same as the argument \code{coin_id};
 \item \code{symbol} (character): symbol of the coin;
@@ -41,6 +42,10 @@ is expressed (ordered alphabetically);
 \item \code{market_cap} (double): market capitalisation of the coin;
 \item \code{total_volume} (double): total trading volume recorded on that \code{date}.
 }
+
+If no data can be retrieved (e.g., because of going over the API
+rate limit or mis-specifying the query parameters), the function
+returns nothing (\code{NULL}).
 }
 \description{
 Coin-specific market data for a given historical date
@@ -52,7 +57,7 @@ which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- coin_history_snapshot(
   coin_id = "cardano",
   date = as.Date("2021-05-01"),

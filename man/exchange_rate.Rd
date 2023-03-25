@@ -20,7 +20,8 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-A tibble with the following columns:
+If the API call succeeds, the function returns a tibble with the
+following columns:
 \itemize{
 \item \code{timestamp} (POSIXct): date and time of the API request;
 \item \code{currency} (character): abbreviated name of the currency;
@@ -28,6 +29,10 @@ A tibble with the following columns:
 \item \code{price_in_btc} (double): price in Bitcoin;
 \item \code{type} (character): type of the currency (\code{"fiat"} or \code{"crypto"}).
 }
+
+If no data can be retrieved (e.g., because of going over the API
+rate limit or mis-specifying the query parameters), the function
+returns nothing (\code{NULL}).
 }
 \description{
 Retrieves the current exchange rate for a crypto- of fiat currency in Bitcoin
@@ -39,7 +44,7 @@ which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # get exchange rates for all supported currencies
 r1 <- exchange_rate()
 print(r1)

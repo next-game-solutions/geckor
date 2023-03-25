@@ -2,9 +2,13 @@
 
 ## Major changes
 
-* All of the `coin_history_*` functions now accept a much smaller number of coin IDs to process simultaneously (5 vs 30 in the previous version of `geckor`). This reduction had to be introduced due to CoinGecko significantly lowering the rate limit of the free version of their API (from 50 to ca. 10-30 calls/minute).
-* To avoid going over the API rate limit, the pause between function calls in all tests has been significantly increased.
-* Examples in the package documentation now won't run if the API rate limit has been exceeded (this is done with the help of the `@examplesIf` tag and the `ping()` function).
+CoinGecko significantly reduced the rate limit of the free version of its API - from 50 to ca. 10-30 calls/minute. This had a dramatic effect on how `geckor` functions and how much data can be retrieved using its functions. In particular, the following changes had to be introduced in v0.3.0: 
+
+* All of the `coin_history_*` functions now accept a much smaller number of coin IDs to process simultaneously (5 vs 30 in v0.2.0).
+* The `coin_tickers()` function retrieves up to 5 pages of data.
+* Tests are now skipped not only on CRAN but also when `ping()` returns `FALSE` before running the test.
+* Examples in the package documentation now won't execute when running `R CMD check`.
+* Examples in vignettes are not evaluated any more.
 
 ## Minor changes
 

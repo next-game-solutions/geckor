@@ -38,7 +38,8 @@ the first call fails for some reason). Additional attempts are
 implemented with an exponential backoff. Defaults to 3.}
 }
 \value{
-A tibble with the following columns:
+If the API call succeeds, the function returns a tibble with
+the following columns:
 \itemize{
 \item \code{timestamp} (POSIXct);
 \item \code{coin_id} (character): same as the argument \code{coin_id};
@@ -48,6 +49,10 @@ A tibble with the following columns:
 of \code{timestamp};
 \item \code{market_cap} (double): market capitalisation, as of \code{timestamp}.
 }
+
+If no data can be retrieved (e.g., because of going over the API
+rate limit or mis-specifying the query parameters), the function
+returns nothing (\code{NULL}).
 }
 \description{
 Retrieves coin-specific market data for the last \emph{n} days
@@ -69,7 +74,7 @@ which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-\dontshow{if (ping()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- coin_history(coin_id = "bitcoin", vs_currency = "usd", days = 30)
 print(r)
 \dontshow{\}) # examplesIf}

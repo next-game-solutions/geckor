@@ -24,7 +24,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
-#' @examplesIf ping()
+#' @examples FALSE
 #' r <- supported_exchanges()
 #' print(r)
 #'

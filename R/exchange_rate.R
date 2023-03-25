@@ -11,7 +11,8 @@
 #'
 #' @eval function_params(c("max_attempts", "api_note"))
 #'
-#' @return A tibble with the following columns:
+#' @return If the API call succeeds, the function returns a tibble with the
+#' following columns:
 #'
 #' * `timestamp` (POSIXct): date and time of the API request;
 #' * `currency` (character): abbreviated name of the currency;
@@ -19,12 +20,16 @@
 #' * `price_in_btc` (double): price in Bitcoin;
 #' * `type` (character): type of the currency (`"fiat"` or `"crypto"`).
 #'
+#' If no data can be retrieved (e.g., because of going over the API
+#' rate limit or mis-specifying the query parameters), the function
+#' returns nothing (`NULL`).
+#'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
 #' @export
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' # get exchange rates for all supported currencies
 #' r1 <- exchange_rate()
 #' print(r1)

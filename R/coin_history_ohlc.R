@@ -20,7 +20,8 @@
 #'
 #' @eval function_params(c("api_note"))
 #'
-#' @return A tibble with the following columns:
+#' @return If the API call succeeds, the function returns a tibble with
+#' the following columns:
 #' * `timestamp` (POSIXct): beginning of the candle's time interval;
 #' * `coin_id` (character): same as the argument `coin_id`;
 #' * `vs_currency` (character): same as the argument `vs_currency`;
@@ -29,9 +30,13 @@
 #' * `price_low` (double): lowest coin price observed within a time interval;
 #' * `price_close` (double): coin price in the end of a time interval.
 #'
+#' If no data can be retrieved (e.g., because of going over the API
+#' rate limit or mis-specifying the query parameters), the function
+#' returns nothing (`NULL`).
+#'
 #' @export
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- coin_history_ohlc(
 #'   coin_id = "cardano",
 #'   vs_currency = "usd",
@@ -88,8 +93,7 @@ coin_history_ohlc <- function(coin_id,
 
         r <- api_request(url = url, max_attempts = max_attempts)
 
-        if (length(r) == 0) {
-          message("\nNo data found. Check if the query parameters are specified correctly")
+        if (is.null(r)) {
           return(NULL)
         }
 
@@ -125,5 +129,11 @@ coin_history_ohlc <- function(coin_id,
       }
     )
 
-  dplyr::bind_rows(results)
+  results <- dplyr::bind_rows(results)
+
+  if (nrow(results) == 0) {
+    return(NULL)
+  } else {
+    return(results)
+  }
 }

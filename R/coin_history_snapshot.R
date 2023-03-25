@@ -9,7 +9,8 @@
 #'
 #' @eval function_params("api_note")
 #'
-#' @return A tibble with the following columns:
+#' @return If the API call succeeds, the function returns a tibble with
+#' the following columns:
 #' * `coin_id` (character): same as the argument `coin_id`;
 #' * `symbol` (character): symbol of the coin;
 #' * `name` (character): common name of the coin;
@@ -20,12 +21,16 @@
 #' * `market_cap` (double): market capitalisation of the coin;
 #' * `total_volume` (double): total trading volume recorded on that `date`.
 #'
+#' If no data can be retrieved (e.g., because of going over the API
+#' rate limit or mis-specifying the query parameters), the function
+#' returns nothing (`NULL`).
+#'
 #' @export
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
-#' @examplesIf ping()
+#' @examplesIf FALSE
 #' r <- coin_history_snapshot(
 #'   coin_id = "cardano",
 #'   date = as.Date("2021-05-01"),
@@ -70,7 +75,6 @@ coin_history_snapshot <- function(coin_id,
         r <- api_request(url = url, max_attempts = max_attempts)
 
         if (is.null(r) | !"market_data" %in% names(r)) {
-          message("\nNo data could be retrieved.")
           return(NULL)
         }
 
@@ -127,5 +131,11 @@ coin_history_snapshot <- function(coin_id,
       }
     )
 
-  dplyr::bind_rows(results)
+  results <- dplyr::bind_rows(results)
+
+  if (nrow(results) == 0) {
+    return(NULL)
+  } else {
+    return(results)
+  }
 }

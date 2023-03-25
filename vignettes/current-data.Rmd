@@ -11,19 +11,18 @@ vignette: >
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = FALSE
 )
-
-Sys.sleep(60) # to avoid build errors due to API rate limit
 ```
 
 ```{r setup}
 library(geckor)
 ```
 
-The CoinGecko API allows one to query market data on cryptocurrencies in real time. There are several functions in `geckor` that can be used to collect such data.
+The CoinGecko API allows one to query market data on cryptocurrencies in real time. `geckor` has several functions that can be used to collect such data.
 
-The current prices for a set of cryptocurrencies of interest can be queried with the `current_price()` function. The two important arguments expected by this function are `coin_ids` (a character vector with coin IDs; see `?supported_coins` for details) and `vs_currencies` (a character vector with abbreviated names of reference currencies, which are used to express the coin price in; see `?supported_currencies` for details). In the example below, we are requesting the current prices for Cardano, Tron, and Polkadot, expressed in USD, EUR, and GBP:
+The current prices for a set of cryptocurrencies of interest can be queried using the `current_price()` function. The function expects two important arguments: `coin_ids` (a character vector with coin IDs; see `?supported_coins` for details) and `vs_currencies` (a character vector with abbreviated names of reference currencies used to express the coin price; see `?supported_currencies` for details). In the example below, we request the current prices for Cardano, Tron, and Polkadot, expressed in USD, EUR, and GBP:
 
 ```{r current-price}
 prices <- current_price(
@@ -31,10 +30,10 @@ prices <- current_price(
   vs_currencies = c("usd", "eur", "gbp")
 )
 
-prices
+print(prices)
 ```
 
-See `?current_price` for definitions of columns in the resultant tibble.
+See `?current_price` for the definitions of the columns in the resulting tibble.
 
 The `exchange_rate()` function can be used to obtain the current exchange rates for any supported reference currency, expressed in Bitcoin. The `currency` argument of this function specifies the list of currencies of interest. If `currency = NULL`, data for all supported currencies will be returned:
 
@@ -43,7 +42,7 @@ all_rates <- exchange_rate(currency = NULL)
 head(all_rates, 10)
 
 some_rates <- exchange_rate(currency = c("btc", "usd", "rub"))
-some_rates
+print(some_rates)
 ```
 
 The `current_market()` function retrieves a rich set of data points describing the current market status of the cryptocurrencies of interest. Let's collect such data for Cardano, Tron, and Polkadot:
@@ -57,7 +56,7 @@ cm <- current_market(
 dplyr::glimpse(cm)
 ```
 
-See `?current_market` for definitions of columns in the resultant tibble.
+See `?current_market` for the definitions of the columns in the resultant tibble.
 
 The `coin_tickers()` function allows one to query the current data on all trading pairs of a cryptocurrency from a given exchange. In the example below, we collect such data for Cardano traded at Binance:
 

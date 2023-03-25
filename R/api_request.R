@@ -43,7 +43,7 @@ api_request <- function(url, max_attempts = 3) {
     if (httr::http_error(r)) {
       message("\nFailed to call ", url)
       httr::message_for_status(r)
-      delay <- 2^attempt
+      delay <- 4^attempt
       message("\nRetrying after ", round(delay, 2), " seconds...")
       Sys.sleep(delay)
     } else {
@@ -52,9 +52,8 @@ api_request <- function(url, max_attempts = 3) {
   }
 
   if (httr::http_error(r)) {
-    message("\nAll calls to ", url, " failed")
-    httr::message_for_status(r)
-    return(invisible(NULL))
+    message("\nAll calls to ", url, " failed. Try again after a long pause")
+    return(NULL)
   }
 
   if (httr::http_type(r) != "application/json") {
@@ -66,7 +65,9 @@ api_request <- function(url, max_attempts = 3) {
     simplifyVector = FALSE
   )
 
-  if (length(parsed) == 0) {return(NULL)}
+  if (length(parsed) == 0) {
+    return(NULL)
+  }
 
   return(parsed)
 }
