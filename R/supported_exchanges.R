@@ -24,7 +24,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
-#' @examples FALSE
+#' @examplesIf FALSE
 #' r <- supported_exchanges()
 #' print(r)
 #'
