@@ -8,6 +8,9 @@
 #'
 #' @keywords internal
 #'
+#' @importFrom knitr clean_cache
+#' @importFrom lifecycle badge
+#'
 validate_arguments <- function(arg_max_attempts = NULL,
                                arg_coin_ids = NULL,
                                arg_vs_currencies = NULL,
