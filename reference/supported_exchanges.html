@@ -108,26 +108,10 @@ keep this limit in mind when developing your applications.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="cn">FALSE</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">supported_exchanges</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 546 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    exchange_id name                year_established country    url   trust_score</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> binance     Binance                         <span style="text-decoration: underline;">2</span>017 Cayman Is… http…          10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> gdax        Coinbase Exchange               <span style="text-decoration: underline;">2</span>012 United St… http…          10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> kucoin      KuCoin                          <span style="text-decoration: underline;">2</span>014 Seychelles http…          10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> kraken      Kraken                          <span style="text-decoration: underline;">2</span>011 United St… http…          10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bitfinex    Bitfinex                        <span style="text-decoration: underline;">2</span>014 British V… http…          10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bybit_spot  Bybit                           <span style="text-decoration: underline;">2</span>018 British V… http…           9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> huobi       Huobi                           <span style="text-decoration: underline;">2</span>013 Seychelles http…           9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bingx       BingX                           <span style="text-decoration: underline;">2</span>018 United St… http…           9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> crypto_com  Crypto.com Exchange             <span style="text-decoration: underline;">2</span>019 Malta      http…           9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> binance_us  Binance US                      <span style="text-decoration: underline;">2</span>019 United St… http…           9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 536 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: trading_volume_24h_btc &lt;dbl&gt;</span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
