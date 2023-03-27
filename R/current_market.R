@@ -61,7 +61,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
-#' @examplesIf FALSE
+#' @examplesIf ping()
 #' r <- current_market(
 #'   coin_ids = c("bitcoin", "ethereum", "cardano"),
 #'   vs_currency = "usd"

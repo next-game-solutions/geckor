@@ -7,7 +7,7 @@
 #' @return Returns `TRUE` if the service is available and `FALSE` otherwise.
 #' @export
 #'
-#' @examples
+#' @examplesIf FALSE
 #' ifelse(ping(), "API is available", "API is not available")
 #'
 ping <- function() {

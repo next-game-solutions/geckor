@@ -21,7 +21,7 @@
 #'
 #' @export
 #'
-#' @examples
+#' @examplesIf ping()
 #' r <- trending_coins()
 #' print(r)
 #'
