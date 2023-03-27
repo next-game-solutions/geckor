@@ -105,7 +105,6 @@ coin_tickers <- function(coin_id,
   )
 
   while (TRUE) {
-
     query_parameters$page <- p
 
     url <- build_get_request(

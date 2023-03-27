@@ -19,6 +19,13 @@ ping <- function() {
       utils::packageVersion("geckor")
     )
   )
-  r <- httr::GET(url, ua, httr::timeout(10))
-  return(httr::status_code(r) == 200)
+  tryCatch(
+    {
+      r <- httr::GET(url, ua, httr::timeout(10))
+      httr::status_code(r) == 200
+    },
+    error = function(e) {
+      return(FALSE)
+    }
+  )
 }
