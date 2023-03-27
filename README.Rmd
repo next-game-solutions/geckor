@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# geckor <img src="man/figures/logo.png" align="right" height="169"/>
+# geckor <img src="man/figures/logo.png" align="right" height="169" style="float:right; height:169px;">
 
 <!-- badges: start -->
 

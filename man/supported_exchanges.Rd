@@ -39,8 +39,8 @@ which has a rate limit of 10-30 calls per minute. Please
 keep this limit in mind when developing your applications.
 }
 \examples{
-FALSE
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 r <- supported_exchanges()
 print(r)
-
+\dontshow{\}) # examplesIf}
 }

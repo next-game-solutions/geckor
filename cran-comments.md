@@ -10,7 +10,7 @@ errors 0 | warnings 0 | notes 0
 
 ## Test environments
 
-* Local Windows 10 Pro, R 4.1.0
+* Local Windows 10 Pro, R 4.2.2
 * Github Actions (https://github.com/next-game-solutions/geckor/actions):
   * Ubuntu 20.04, R-devel and R-release
   * Mac OS latest, R-release
