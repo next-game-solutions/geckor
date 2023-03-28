@@ -69,7 +69,7 @@ coin_history <- function(coin_id,
   )
 
   if (is.na(days) ||
-    is.na(suppressWarnings(as.numeric(days))) && days != "max") {
+      is.na(suppressWarnings(as.numeric(days))) && days != "max") {
     rlang::abort("`days` only accepts coercible-to-numeric values or a character value \"max\"")
   }
 

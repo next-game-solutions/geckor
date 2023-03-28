@@ -129,29 +129,29 @@ current_market <- function(coin_ids,
         dplyr::relocate(vs_currency, .after = name) %>%
         dplyr::relocate(last_updated_at, .after = vs_currency) %>%
         dplyr::relocate(price_change_percentage_1h_in_currency,
-          .after = atl_date
+                        .after = atl_date
         ) %>%
         dplyr::relocate(price_change_percentage_24h_in_currency,
-          .after = price_change_percentage_1h_in_currency
+                        .after = price_change_percentage_1h_in_currency
         ) %>%
         dplyr::relocate(price_change_percentage_7d_in_currency,
-          .after = price_change_percentage_24h_in_currency
+                        .after = price_change_percentage_24h_in_currency
         ) %>%
         dplyr::relocate(price_change_percentage_14d_in_currency,
-          .after = price_change_percentage_7d_in_currency
+                        .after = price_change_percentage_7d_in_currency
         ) %>%
         dplyr::relocate(price_change_percentage_30d_in_currency,
-          .after = price_change_percentage_14d_in_currency
+                        .after = price_change_percentage_14d_in_currency
         ) %>%
         dplyr::relocate(price_change_percentage_200d_in_currency,
-          .after = price_change_percentage_30d_in_currency
+                        .after = price_change_percentage_30d_in_currency
         ) %>%
         dplyr::mutate_at(
           .vars = dplyr::vars(tidyselect::contains("date")),
           .funs = ~ as.POSIXct(gsub("T", " ", .x),
-            origin = as.Date("1970-01-01"),
-            tz = "UTC",
-            format = "%Y-%m-%d %H:%M:%S"
+                               origin = as.Date("1970-01-01"),
+                               tz = "UTC",
+                               format = "%Y-%m-%d %H:%M:%S"
           )
         )
     }
