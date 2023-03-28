@@ -59,7 +59,6 @@
 #' @export
 #'
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @examplesIf ping()
 #' r <- current_market(
@@ -123,29 +122,29 @@ current_market <- function(coin_ids,
       x %>%
         tibble::as_tibble() %>%
         dplyr::rename(
-          coin_id = .data$id,
-          last_updated_at = .data$last_updated
+          coin_id = id,
+          last_updated_at = last_updated
         ) %>%
         dplyr::mutate(vs_currency = vs_currency) %>%
-        dplyr::relocate(.data$vs_currency, .after = .data$name) %>%
-        dplyr::relocate(.data$last_updated_at, .after = vs_currency) %>%
-        dplyr::relocate(.data$price_change_percentage_1h_in_currency,
-          .after = .data$atl_date
+        dplyr::relocate(vs_currency, .after = name) %>%
+        dplyr::relocate(last_updated_at, .after = vs_currency) %>%
+        dplyr::relocate(price_change_percentage_1h_in_currency,
+          .after = atl_date
         ) %>%
-        dplyr::relocate(.data$price_change_percentage_24h_in_currency,
-          .after = .data$price_change_percentage_1h_in_currency
+        dplyr::relocate(price_change_percentage_24h_in_currency,
+          .after = price_change_percentage_1h_in_currency
         ) %>%
-        dplyr::relocate(.data$price_change_percentage_7d_in_currency,
-          .after = .data$price_change_percentage_24h_in_currency
+        dplyr::relocate(price_change_percentage_7d_in_currency,
+          .after = price_change_percentage_24h_in_currency
         ) %>%
-        dplyr::relocate(.data$price_change_percentage_14d_in_currency,
-          .after = .data$price_change_percentage_7d_in_currency
+        dplyr::relocate(price_change_percentage_14d_in_currency,
+          .after = price_change_percentage_7d_in_currency
         ) %>%
-        dplyr::relocate(.data$price_change_percentage_30d_in_currency,
-          .after = .data$price_change_percentage_14d_in_currency
+        dplyr::relocate(price_change_percentage_30d_in_currency,
+          .after = price_change_percentage_14d_in_currency
         ) %>%
-        dplyr::relocate(.data$price_change_percentage_200d_in_currency,
-          .after = .data$price_change_percentage_30d_in_currency
+        dplyr::relocate(price_change_percentage_200d_in_currency,
+          .after = price_change_percentage_30d_in_currency
         ) %>%
         dplyr::mutate_at(
           .vars = dplyr::vars(tidyselect::contains("date")),

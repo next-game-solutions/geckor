@@ -31,7 +31,6 @@
 #' @export
 #'
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @examplesIf FALSE
 #' r <- current_price(
@@ -118,7 +117,7 @@ current_price <- function(coin_ids,
       )
   }) %>%
     dplyr::bind_rows(.id = "coin_id") %>%
-    dplyr::arrange(.data$coin_id)
+    dplyr::arrange(coin_id)
 
   return(result)
 }

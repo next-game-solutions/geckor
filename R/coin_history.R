@@ -38,7 +38,6 @@
 #' returns nothing (`NULL`).
 #'
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @export
 #'
@@ -145,7 +144,7 @@ coin_history <- function(coin_id,
           ) %>%
           dplyr::mutate(
             timestamp = as.POSIXct(
-              .data$timestamp / 1000,
+              timestamp / 1000,
               origin = as.Date("1970-01-01"),
               tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
             )

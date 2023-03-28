@@ -25,7 +25,6 @@
 #' returns nothing (`NULL`).
 #'
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @export
 #'
@@ -65,8 +64,8 @@ exchange_rate <- function(currency = NULL,
   result <- r %>%
     lapply(tibble::as_tibble) %>%
     dplyr::bind_rows() %>%
-    dplyr::select(-.data$unit) %>%
-    dplyr::rename(price_in_btc = .data$value)
+    dplyr::select(-unit) %>%
+    dplyr::rename(price_in_btc = value)
 
   return(
     dplyr::bind_cols(
