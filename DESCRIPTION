@@ -1,6 +1,6 @@
 Package: geckor
 Title: R Client for the 'CoinGecko' API
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: c(
     person("Sergey", "Mastitsky",
            role = c("aut", "cre"),

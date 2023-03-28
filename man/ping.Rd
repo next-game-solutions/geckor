@@ -16,6 +16,7 @@ Pings the CoinGecko API to check if the service is available
 This function has no arguments.
 }
 \examples{
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 ifelse(ping(), "API is available", "API is not available")
-
+\dontshow{\}) # examplesIf}
 }
