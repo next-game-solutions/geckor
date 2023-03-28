@@ -77,8 +77,6 @@ current_market <- function(coin_ids,
     arg_max_attempts = max_attempts
   )
 
-  n_coins <- length(coin_ids)
-
   data <- list()
   p <- 1L
 

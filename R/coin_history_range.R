@@ -65,7 +65,7 @@ coin_history_range <- function(coin_id,
     arg_max_attempts = max_attempts
   )
 
-  if (!inherits(from, "POSIXct") | !inherits(to, "POSIXct")) {
+  if (!inherits(from, "POSIXct") || !inherits(to, "POSIXct")) {
     rlang::abort("`from` and `to` must be of class POSIXct")
   }
 

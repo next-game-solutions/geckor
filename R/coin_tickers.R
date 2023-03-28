@@ -115,7 +115,7 @@ coin_tickers <- function(coin_id,
 
     r <- api_request(url = url, max_attempts = max_attempts)
 
-    if (is.null(r) | length(r$tickers) == 0) {
+    if (is.null(r) || length(r$tickers) == 0) {
       break
     }
 

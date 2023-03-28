@@ -71,6 +71,8 @@ supported_exchanges <- function(max_attempts = 3) {
           exchange_id = .data$id,
           trading_volume_24h_btc = .data$trade_volume_24h_btc
         )
+
+      return(result)
     }
   ) %>%
     dplyr::bind_rows()

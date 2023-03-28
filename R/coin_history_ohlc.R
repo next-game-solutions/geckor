@@ -66,13 +66,13 @@ coin_history_ohlc <- function(coin_id,
     arg_max_attempts = max_attempts
   )
 
-  if (is.na(days) |
-    is.na(suppressWarnings(as.numeric(days))) &
+  if (is.na(days) ||
+    is.na(suppressWarnings(as.numeric(days))) &&
       days != "max") {
     rlang::abort("`days` only accepts coercible-to-numeric values or a character value \"max\"")
   }
 
-  if (is.numeric(days) & !days %in% c(1, 7, 14, 30, 90, 180, 365)) {
+  if (is.numeric(days) && !days %in% c(1, 7, 14, 30, 90, 180, 365)) {
     rlang::abort("`days` only accepts the following numeric values: 1, 7, 14, 30, 90, 180, 365")
   }
 

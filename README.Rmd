@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# geckor <a href="https://next-game-solutions.github.io/geckor/"><img src="man/figures/logo.png" align="right" height="169" /></a>
+# geckor <a href="https://next-game-solutions.github.io/geckor/"><img src="man/figures/logo.png" align="right" height="170" /></a>
 
 <!-- badges: start -->
 

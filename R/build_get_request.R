@@ -26,11 +26,11 @@ build_get_request <- function(base_url = "https://api.coingecko.com",
     rlang::abort("`base_url` must be a character value")
   }
 
-  if (!is.character(path) & !is.null(path)) {
+  if (!is.character(path) && !is.null(path)) {
     rlang::abort("`path` must be a character vector or NULL")
   }
 
-  if (!is.list(query_parameters) & !is.null(query_parameters)) {
+  if (!is.list(query_parameters) && !is.null(query_parameters)) {
     rlang::abort("`query_parameters` must be a named list or NULL")
   }
 

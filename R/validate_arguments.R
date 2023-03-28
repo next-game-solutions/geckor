@@ -20,7 +20,7 @@ validate_arguments <- function(arg_max_attempts = NULL,
                                arg_include_24h_change = NULL,
                                arg_date = NULL) {
   if (!is.null(arg_max_attempts)) {
-    if (!(is.numeric(arg_max_attempts) & arg_max_attempts > 0)) {
+    if (!(is.numeric(arg_max_attempts) && arg_max_attempts > 0)) {
       rlang::abort("`max_attempts` must be a positive number")
     }
   }
@@ -44,7 +44,7 @@ validate_arguments <- function(arg_max_attempts = NULL,
   }
 
   if (!is.null(arg_exchange_id)) {
-    if (!is.character(arg_exchange_id) | length(arg_exchange_id) != 1) {
+    if (!is.character(arg_exchange_id) || length(arg_exchange_id) != 1) {
       rlang::abort("`exchange_id` must be a single character value")
     }
   }
