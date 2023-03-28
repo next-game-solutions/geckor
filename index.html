@@ -92,7 +92,8 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="geckor-">geckor <img src="reference/figures/logo.png" align="right" height="169"><a class="anchor" aria-label="anchor" href="#geckor-"></a>
+<div class="page-header"><h1 id="geckor-">geckor <a href="https://next-game-solutions.github.io/geckor/" class="external-link"><img src="reference/figures/logo.png" align="right" height="170"></a>
+<a class="anchor" aria-label="anchor" href="#geckor-"></a>
 </h1></div>
 <!-- badges: start -->
 
@@ -128,26 +129,30 @@
 <span></span>
 <span><span class="co"># Get the current price of Cardano, Tron, and Polkadot,</span></span>
 <span><span class="co"># expressed in USD, EUR, and GBP:</span></span>
-<span><span class="fu"><a href="reference/current_price.html">current_price</a></span><span class="op">(</span>coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,</span>
-<span>              vs_currencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"usd"</span>, <span class="st">"eur"</span>, <span class="st">"gbp"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/current_price.html">current_price</a></span><span class="op">(</span></span>
+<span>  coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,</span>
+<span>  vs_currencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"usd"</span>, <span class="st">"eur"</span>, <span class="st">"gbp"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 9 × 7</span></span>
 <span><span class="co">#&gt;   coin_id   price vs_currency   market_cap   vol_24h price…¹ last_updated_at    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dttm&gt;             </span></span>
-<span><span class="co">#&gt; 1 cardano  0.371  usd         13028922854.    4.24e8    3.08 2023-03-23 21:43:52</span></span>
-<span><span class="co">#&gt; 2 cardano  0.343  eur         12027532873.    3.92e8    3.33 2023-03-23 21:43:52</span></span>
-<span><span class="co">#&gt; 3 cardano  0.302  gbp         10605569261.    3.45e8    2.92 2023-03-23 21:43:52</span></span>
-<span><span class="co">#&gt; 4 polkadot 6.28   usd          7628067560.    1.86e8    3.32 2023-03-23 21:43:52</span></span>
-<span><span class="co">#&gt; 5 polkadot 5.79   eur          7041781915.    1.72e8    3.56 2023-03-23 21:43:52</span></span>
-<span><span class="co">#&gt; 6 polkadot 5.11   gbp          6209262250.    1.52e8    3.16 2023-03-23 21:43:52</span></span>
-<span><span class="co">#&gt; 7 tron     0.0662 usd          6039369545.    7.30e8    9.96 2023-03-23 21:43:43</span></span>
-<span><span class="co">#&gt; 8 tron     0.0612 eur          5575189641.    6.74e8   10.2  2023-03-23 21:43:43</span></span>
-<span><span class="co">#&gt; 9 tron     0.0539 gbp          4916058889.    5.94e8    9.79 2023-03-23 21:43:43</span></span>
+<span><span class="co">#&gt; 1 cardano  0.361  usd         12689075561.    3.15e8   5.17  2023-03-28 19:23:43</span></span>
+<span><span class="co">#&gt; 2 cardano  0.333  eur         11699962121.    2.90e8   4.72  2023-03-28 19:23:43</span></span>
+<span><span class="co">#&gt; 3 cardano  0.293  gbp         10284203893.    2.55e8   4.72  2023-03-28 19:23:43</span></span>
+<span><span class="co">#&gt; 4 polkadot 6.06   usd          7371780769.    1.51e8   3.10  2023-03-28 19:23:40</span></span>
+<span><span class="co">#&gt; 5 polkadot 5.59   eur          6797150458.    1.40e8   2.64  2023-03-28 19:23:40</span></span>
+<span><span class="co">#&gt; 6 polkadot 4.91   gbp          5974658763.    1.23e8   2.66  2023-03-28 19:23:40</span></span>
+<span><span class="co">#&gt; 7 tron     0.0641 usd          5851571758.    3.52e8   0.874 2023-03-28 19:23:36</span></span>
+<span><span class="co">#&gt; 8 tron     0.0591 eur          5396319475.    3.24e8   0.425 2023-03-28 19:23:36</span></span>
+<span><span class="co">#&gt; 9 tron     0.0520 gbp          4741938206.    2.85e8   0.448 2023-03-28 19:23:36</span></span>
 <span><span class="co">#&gt; # … with abbreviated variable name ¹​price_percent_change_24h</span></span>
 <span></span>
-<span><span class="co"># Get a more comprehensive view of the current Cardano, Tron, and </span></span>
+<span><span class="co"># Get a more comprehensive view of the current Cardano, Tron, and</span></span>
 <span><span class="co"># Polkadot markets:</span></span>
-<span><span class="fu"><a href="reference/current_market.html">current_market</a></span><span class="op">(</span>coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>, </span>
-<span>               vs_currency <span class="op">=</span> <span class="st">"usd"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="fu"><a href="reference/current_market.html">current_market</a></span><span class="op">(</span></span>
+<span>  coin_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"tron"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,</span>
+<span>  vs_currency <span class="op">=</span> <span class="st">"usd"</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 3</span></span>
 <span><span class="co">#&gt; Columns: 32</span></span>
@@ -155,52 +160,57 @@
 <span><span class="co">#&gt; $ symbol                                   &lt;chr&gt; "ada", "dot", "trx"</span></span>
 <span><span class="co">#&gt; $ name                                     &lt;chr&gt; "Cardano", "Polkadot", "TRON"</span></span>
 <span><span class="co">#&gt; $ vs_currency                              &lt;chr&gt; "usd", "usd", "usd"</span></span>
-<span><span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2023-03-23 21:43:52, 2023-03-…</span></span>
-<span><span class="co">#&gt; $ current_price                            &lt;dbl&gt; 0.371426, 6.280000, 0.066244</span></span>
-<span><span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 13028922854, 7628067560, 6039…</span></span>
+<span><span class="co">#&gt; $ last_updated_at                          &lt;dttm&gt; 2023-03-28 19:23:43, 2023-03-…</span></span>
+<span><span class="co">#&gt; $ current_price                            &lt;dbl&gt; 0.361329, 6.060000, 0.064135</span></span>
+<span><span class="co">#&gt; $ market_cap                               &lt;dbl&gt; 12689075561, 7371780769, 5851…</span></span>
 <span><span class="co">#&gt; $ market_cap_rank                          &lt;int&gt; 7, 13, 16</span></span>
-<span><span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 16729952346, 8136302371, 6039…</span></span>
-<span><span class="co">#&gt; $ total_volume                             &lt;int&gt; 424158989, 186239027, 7297677…</span></span>
-<span><span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 0.387702, 6.430000, 0.066840</span></span>
-<span><span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 0.357681, 6.040000, 0.059550</span></span>
-<span><span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; 0.01109763, 0.20156200, 0.00…</span></span>
-<span><span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; 3.07987, 3.31757, 9.96016</span></span>
-<span><span class="co">#&gt; $ market_cap_change_24h                    &lt;int&gt; 339334455, 239944930, 5255401…</span></span>
-<span><span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; 2.67412, 3.24771, 9.53131</span></span>
-<span><span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 35045020830, 1214960962, 9113…</span></span>
-<span><span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1295910095, 9113…</span></span>
+<span><span class="co">#&gt; $ fully_diluted_valuation                  &lt;dbl&gt; 16293567152, 7862074556, 5851…</span></span>
+<span><span class="co">#&gt; $ total_volume                             &lt;int&gt; 314844487, 151291225, 3516209…</span></span>
+<span><span class="co">#&gt; $ high_24h                                 &lt;dbl&gt; 0.362596, 6.060000, 0.064538</span></span>
+<span><span class="co">#&gt; $ low_24h                                  &lt;dbl&gt; 0.340777, 5.810000, 0.063214</span></span>
+<span><span class="co">#&gt; $ price_change_24h                         &lt;dbl&gt; 0.01777009, 0.18186900, 0.00…</span></span>
+<span><span class="co">#&gt; $ price_change_percentage_24h              &lt;dbl&gt; 5.17235, 3.09588, 0.87356</span></span>
+<span><span class="co">#&gt; $ market_cap_change_24h                    &lt;int&gt; 649457410, 226364606, 58443269</span></span>
+<span><span class="co">#&gt; $ market_cap_change_percentage_24h         &lt;dbl&gt; 5.39434, 3.16797, 1.00884</span></span>
+<span><span class="co">#&gt; $ circulating_supply                       &lt;dbl&gt; 35045020830, 1216721335, 9106…</span></span>
+<span><span class="co">#&gt; $ total_supply                             &lt;dbl&gt; 45000000000, 1297644918, 9106…</span></span>
 <span><span class="co">#&gt; $ max_supply                               &lt;dbl&gt; 4.5e+10, NA, NA</span></span>
 <span><span class="co">#&gt; $ ath                                      &lt;dbl&gt; 3.090000, 54.980000, 0.231673</span></span>
-<span><span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -87.95001, -88.58185, -71.379…</span></span>
+<span><span class="co">#&gt; $ ath_change_percentage                    &lt;dbl&gt; -88.27058, -88.97655, -72.260…</span></span>
 <span><span class="co">#&gt; $ ath_date                                 &lt;dttm&gt; 2021-09-02 06:00:10, 2021-11-…</span></span>
 <span><span class="co">#&gt; $ atl                                      &lt;dbl&gt; 0.01925275, 2.70000000, 0.001…</span></span>
-<span><span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 1832.0491, 132.7305, 3574.8213</span></span>
+<span><span class="co">#&gt; $ atl_change_percentage                    &lt;dbl&gt; 1780.6496, 124.6856, 3461.6535</span></span>
 <span><span class="co">#&gt; $ atl_date                                 &lt;dttm&gt; 2020-03-13 02:22:55, 2020-08-…</span></span>
-<span><span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; -0.32828795, -0.08720183, 0.9…</span></span>
-<span><span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; 3.079866, 3.317569, 9.960155</span></span>
-<span><span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; 14.0927307, 6.5148329, 0.9053…</span></span>
-<span><span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; 16.658842, 12.007811, 1.358576</span></span>
-<span><span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -7.853523, -16.607342, -7.811…</span></span>
-<span><span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; -22.666581, -13.737529, 4.928…</span></span>
-<span><span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; -61.934290, -69.177963, 4.403…</span></span>
+<span><span class="co">#&gt; $ price_change_percentage_1h_in_currency   &lt;dbl&gt; 0.9341879, 1.8463548, 0.14733…</span></span>
+<span><span class="co">#&gt; $ price_change_percentage_24h_in_currency  &lt;dbl&gt; 5.1723483, 3.0958767, 0.87355…</span></span>
+<span><span class="co">#&gt; $ price_change_percentage_7d_in_currency   &lt;dbl&gt; 7.964421, -1.040912, -2.327616</span></span>
+<span><span class="co">#&gt; $ price_change_percentage_14d_in_currency  &lt;dbl&gt; 5.0559277, -0.7807645, -4.477…</span></span>
+<span><span class="co">#&gt; $ price_change_percentage_30d_in_currency  &lt;dbl&gt; -0.3644916, -7.3714292, -5.62…</span></span>
+<span><span class="co">#&gt; $ price_change_percentage_200d_in_currency &lt;dbl&gt; -24.728783, -18.104854, 4.645…</span></span>
+<span><span class="co">#&gt; $ price_change_percentage_1y_in_currency   &lt;dbl&gt; -69.35711, -72.94615, -6.99422</span></span>
 <span></span>
 <span><span class="co"># Collect all historical data on the price of Cardano (expressed in EUR),</span></span>
 <span><span class="co"># and plot the result:</span></span>
-<span><span class="va">cardano_history</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/coin_history.html">coin_history</a></span><span class="op">(</span>coin_id <span class="op">=</span> <span class="st">"cardano"</span>, </span>
-<span>                                vs_currency <span class="op">=</span> <span class="st">"eur"</span>, </span>
-<span>                                days <span class="op">=</span> <span class="st">"max"</span><span class="op">)</span></span>
+<span><span class="va">cardano_history</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/coin_history.html">coin_history</a></span><span class="op">(</span></span>
+<span>  coin_id <span class="op">=</span> <span class="st">"cardano"</span>,</span>
+<span>  vs_currency <span class="op">=</span> <span class="st">"eur"</span>,</span>
+<span>  days <span class="op">=</span> <span class="st">"max"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">cardano_history</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">cardano_history</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">timestamp</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># Here we are querying the history of two coins simultaneously: </span></span>
+<span><span class="co"># Here we are querying the history of two coins simultaneously:</span></span>
 <span><span class="co"># "cardano" and "polkadot":</span></span>
-<span><span class="va">two_coins</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/coin_history.html">coin_history</a></span><span class="op">(</span>coin_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"polkadot"</span><span class="op">)</span>, </span>
-<span>                          vs_currency <span class="op">=</span> <span class="st">"usd"</span>, </span>
-<span>                          days <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">two_coins</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/coin_history.html">coin_history</a></span><span class="op">(</span></span>
+<span>  coin_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cardano"</span>, <span class="st">"polkadot"</span><span class="op">)</span>,</span>
+<span>  vs_currency <span class="op">=</span> <span class="st">"usd"</span>,</span>
+<span>  days <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">two_coins</span><span class="op">$</span><span class="va">coin_id</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "cardano"  "polkadot"</span></span></code></pre></div>
 <blockquote>
@@ -267,6 +277,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/next-game-solutions/geckor/actions" class="external-link"><img src="https://github.com/next-game-solutions/geckor/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://cran.r-project.org/package=geckor" class="external-link"><img src="https://www.r-pkg.org/badges/version/geckor" alt="CRAN status"></a></li>
 <li><a href="https://codecov.io/gh/next-game-solutions/geckor?branch=main" class="external-link"><img src="https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
 <li><a href="https://cran.r-project.org/package=geckor" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/geckor" alt="CRAN downloads"></a></li>
