@@ -1,7 +1,6 @@
 test_that("supported_currencies returns correct results", {
   skip_on_cran()
-  Sys.sleep(80)
-  skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
+  Sys.sleep(61)
 
   r <- supported_currencies()
   skip_if(is.null(r), "Data could not be retrieved")

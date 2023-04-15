@@ -1,7 +1,6 @@
 test_that("supported_coins returns correct objects", {
   skip_on_cran()
-  Sys.sleep(60)
-  skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
+  Sys.sleep(61)
 
   r <- supported_coins()
   skip_if(is.null(r), "Data could not be retrieved")

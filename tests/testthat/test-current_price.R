@@ -1,7 +1,6 @@
 test_that("current_price returns correct results", {
   skip_on_cran()
-  Sys.sleep(80)
-  skip_if_not(ping(), message = "Skipping test as the API call rate has been exceeded")
+  Sys.sleep(61)
 
   r <- current_price(
     coin_ids = c("aave", "tron", "bitcoin"),

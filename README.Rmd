@@ -21,7 +21,6 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/geckor)](https://cran.r-project.org/package=geckor)
 [![Codecov test coverage](https://codecov.io/gh/next-game-solutions/geckor/branch/main/graph/badge.svg)](https://codecov.io/gh/next-game-solutions/geckor?branch=main)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable) 
-[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/geckor)](https://cran.r-project.org/package=geckor)
 
 <!-- badges: end -->
 
@@ -29,13 +28,10 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-A stable version of the package can be installed from [CRAN](https://CRAN.R-project.org/package=geckor) the usual way:
+As of v0.3.0, `geckor` is no longer published on CRAN.
 
-``` r
-install.packages("geckor")
-```
 
-To install the development version from GitHub, use the following command(s):
+To install the package from GitHub, use the following command(s):
 
 ``` r
 # install.packages("devtools")

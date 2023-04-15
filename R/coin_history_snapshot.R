@@ -28,7 +28,6 @@
 #' @export
 #'
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @examplesIf FALSE
 #' r <- coin_history_snapshot(
@@ -85,7 +84,7 @@ coin_history_snapshot <- function(coin_id,
             names_to = "vs_currency",
             values_to = "price"
           ) %>%
-          dplyr::filter(.data$vs_currency %in% vs_currencies)
+          dplyr::filter(vs_currency %in% vs_currencies)
 
         market_cap <- r$market_data$market_cap %>%
           tibble::as_tibble() %>%
@@ -94,7 +93,7 @@ coin_history_snapshot <- function(coin_id,
             names_to = "vs_currency",
             values_to = "market_cap"
           ) %>%
-          dplyr::filter(.data$vs_currency %in% vs_currencies)
+          dplyr::filter(vs_currency %in% vs_currencies)
 
         total_volume <- r$market_data$total_volume %>%
           tibble::as_tibble() %>%
@@ -103,7 +102,7 @@ coin_history_snapshot <- function(coin_id,
             names_to = "vs_currency",
             values_to = "total_volume"
           ) %>%
-          dplyr::filter(.data$vs_currency %in% vs_currencies)
+          dplyr::filter(vs_currency %in% vs_currencies)
 
         result <- dplyr::inner_join(price, market_cap, by = "vs_currency") %>%
           dplyr::inner_join(total_volume, by = "vs_currency")
@@ -114,7 +113,7 @@ coin_history_snapshot <- function(coin_id,
           name = r$name,
           date = date
         ), result) %>%
-          dplyr::arrange(.data$vs_currency)
+          dplyr::arrange(vs_currency)
 
         is_na <- apply(result, 2, anyNA)
 

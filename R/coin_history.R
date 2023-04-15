@@ -38,7 +38,6 @@
 #' returns nothing (`NULL`).
 #'
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @export
 #'
@@ -70,7 +69,7 @@ coin_history <- function(coin_id,
   )
 
   if (is.na(days) ||
-    is.na(suppressWarnings(as.numeric(days))) && days != "max") {
+      is.na(suppressWarnings(as.numeric(days))) && days != "max") {
     rlang::abort("`days` only accepts coercible-to-numeric values or a character value \"max\"")
   }
 
@@ -145,7 +144,7 @@ coin_history <- function(coin_id,
           ) %>%
           dplyr::mutate(
             timestamp = as.POSIXct(
-              .data$timestamp / 1000,
+              timestamp / 1000,
               origin = as.Date("1970-01-01"),
               tz = "UTC", format = "%Y-%m-%d %H:%M:%S"
             )

@@ -22,7 +22,6 @@
 #' @export
 #'
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @examplesIf FALSE
 #' r <- supported_exchanges()
@@ -68,8 +67,8 @@ supported_exchanges <- function(max_attempts = 3) {
 
       result <- tibble::as_tibble(x) %>%
         dplyr::rename(
-          exchange_id = .data$id,
-          trading_volume_24h_btc = .data$trade_volume_24h_btc
+          exchange_id = id,
+          trading_volume_24h_btc = trade_volume_24h_btc
         )
 
       return(result)

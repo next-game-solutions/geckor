@@ -31,7 +31,6 @@
 #' @export
 #'
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
 #'
 #' @examplesIf FALSE
 #' r <- current_price(
@@ -111,14 +110,14 @@ current_price <- function(coin_ids,
         vol_24h = vol_24h,
         price_percent_change_24h = change_24h,
         last_updated_at = as.POSIXct(x$last_updated_at,
-          origin = as.Date("1970-01-01"),
-          tz = "UTC",
-          format = "%Y-%m-%d %H:%M:%S"
+                                     origin = as.Date("1970-01-01"),
+                                     tz = "UTC",
+                                     format = "%Y-%m-%d %H:%M:%S"
         )
       )
   }) %>%
     dplyr::bind_rows(.id = "coin_id") %>%
-    dplyr::arrange(.data$coin_id)
+    dplyr::arrange(coin_id)
 
   return(result)
 }
